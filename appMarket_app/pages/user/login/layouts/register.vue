@@ -69,6 +69,7 @@
 		onLoad(options) {
 			//#ifdef APP-PLUS
 				var info = plus.push.getClientInfo();
+				console.log(info);
 				this.ruleform.clientid =  info.clientid
 			//#endif
 			//#ifdef H5

@@ -96,6 +96,7 @@ import 'provider.js';
 uni.setStorageSync('siteName', 'https://appMarket.doxinsoft.com');
 wx.setStorageSync('site_name', 456);
 uni.removeStorageSync('jsdk');
+uni.removeStorageSync('unionid')
 uni.removeStorageSync('distribution');
 uni.removeStorageSync('ztd');
 uni.removeStorageSync('proid');
