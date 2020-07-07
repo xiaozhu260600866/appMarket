@@ -1,0 +1,44 @@
+<template>
+	<view class="proLists">
+		<dx-products-pic v-for="item in data" :src="item.firstCover" :isList="true">
+			<view class="title fs-16 fw-bold">{{ item.name }}</view>
+			<view class="grade flex-middle fc-3 fs-13 mt3">
+				<view class="sales">销 <text class="Arial">{{ item.sales }}</text></view>
+				<view class="fresh pl15">当前库存：<text class="Arial">{{ item.num  }}</text></view>
+			</view>
+			<view class="num flex mt3">
+				<view class="nav">新鲜度 <text class="Arial">{{ item.fresh }}</text></view>
+			</view>
+			<view class="flex-between">
+				<dx-price v-model="item.price" split :intSize="20" :decimalSize="12"></dx-price>
+			</view>
+			<view class="edit-nav flex-right">
+				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>
+				<dx-button size="mini">下架</dx-button>
+			</view>
+		</dx-products-pic>
+	</view>
+</template>
+<script>
+	export default {
+		props: ["data"]
+	}
+</script>
+<style scoped>
+/* 左侧导航布局 start*/
+/* 隐藏scroll-view滚动条*/
+::-webkit-scrollbar {width: 0;height: 0;color: transparent;}
+.tab-view {width: 180upx;position: fixed;left: 0;z-index: 10;}
+.tab-bar-item {width: 180upx;height: 110upx;background: #f6f6f6;box-sizing: border-box;display: flex;align-items: center;justify-content: center;font-size: 26upx;color: #444;font-weight: 400;}
+.active {position: relative;color: #000;font-size: 30upx;font-weight: 600;background: #fcfcfc;}
+.active::before {content: "";position: absolute;border-left: 8upx solid #57C734;height: 30upx;left: 0;}
+/* 左侧导航布局 end*/
+
+
+.right-box {width: 100%;position: fixed;padding-left: 180upx;box-sizing: border-box;left: 0;}
+
+.proLists .num .nav{background-color: rgba(87,199,52,0.1);color: #57C734;padding: 8upx 16upx;border-radius: 6upx;font-size: 24upx;line-height: 30upx;}
+
+.edit-nav /deep/span{display: flex;}
+.edit-nav /deep/.dxi-btn{margin: 20upx 0 0 20upx;}
+</style>

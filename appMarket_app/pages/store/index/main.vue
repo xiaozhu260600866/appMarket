@@ -1,0 +1,152 @@
+<template>
+	<view class="store_show" v-if="data.show">
+		<view class="store-header-box main-bg flex-middle fc-white plr15" :style="{height:height_+'px'}">
+			<view class="store-header-icon lh-24" :style="{paddingTop:top+'px'}">
+				<view class="dxi-icon dxi-icon-left" @click="goto('/pages/index/main',2)"></view>
+			</view>
+			<view class="store-header flex1 text-center" :style="{paddingTop:top+'px',}">
+				商品详情
+			</view>
+			<view class="store-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}">
+				<view :class="['fs-20 dxi-icon lh-20 flex',data.collect == true ? 'dxi-icon-heart-fill':'dxi-icon-heart']" @click="collection"></view>
+				<view class="fs-12 lh-16">{{data.collect == true ? '已收藏':'收藏'}}</view>
+			</view>
+		</view>
+		<dx-products-pic :src="merchant.cover" :isList="true" myclass="main-bg fc-white pb0" :imgWidth="100" :imgHeight="100">
+			<view class="grade flex-baseline">
+				<dx-icon name="star-fill" size="14" color="#ff721f"></dx-icon>
+				<view class="num fs-15 ml5">5分</view>
+			</view>
+			<view class="flex-middle businessHours mtb5">
+				<view class="nav">营业时间：<text class="Arial">{{ merchant.hour_time }}</text></view>
+			</view>
+			<view class="flex-middle fs-15">
+				<dx-icon name="location" size="14" color="#fff"></dx-icon>
+			<!-- 	<view class="province plr5">{{ store.province }}</view>
+				<view class="city pr5">{{ store.city }}</view> -->
+				<view class="address flex1 nowrap w-b100">{{ merchant.address }}</view>
+			</view>
+		</dx-products-pic>
+		<!-- <dx-tabs :data="tabs" :currentTab="currentTab>2?0:currentTab" @change="change" selectedColor="#57C734" sliderBgColor="#57C734"></dx-tabs> -->
+		<dx-tabs :tabs="tabs" v-model="type" selectedColor="#57C734" sliderBgColor="#57C734" :nameSize="16" :height="88"></dx-tabs>
+		<view class="" v-if="type  == 'order'">
+			<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:height+'px'}">
+				<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
+				 :data-current="key"  @click="changeClassKey(key)">
+					<text>{{item.label}}</text>
+				</view>
+			</scroll-view>
+			<scroll-view scroll-y scroll-with-animation class="right-box">
+				<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart"></store-pro>
+			</scroll-view>
+		</view>
+		<view class="store-footer flex-middle">
+			<view class="icon" @click="goto('/pages/user/cart/main',2)">
+				<dx-icon name="cart" size="20" color="#fff"></dx-icon>
+				<view class="fs-12 fc-white lh-16">购物车</view>
+				<view class="num">{{data.cartData.num}}</view>
+			</view>
+			<dx-price v-model="data.cartData.amount" split :intSize="20" :decimalSize="12"></dx-price>
+		</view>
+	</view>
+</template>
+
+<script>
+import dxProductsPic from 'doxinui/components/products/pic'
+import dxTabs from "doxinui/components/tabs/tabs"
+import storePro from '@/components/store_pro'
+	export default {
+		components:{
+			dxProductsPic,
+			dxTabs,
+			storePro
+		},
+		data() {
+			return {
+				formAction: '/merchant/show',
+				mpType: 'page', //用来分清父和子组件
+				data: this.formatData(this),
+				getSiteName: this.getSiteName(),
+				height_:64,
+				top: 0, //标题图标距离顶部距离
+				height: 0, //scroll-view高度
+				merchant_id:0,
+				merchant:{},
+				selectClassKey:0,
+				type:'order',
+				tabs: [{
+					name: "下单",
+					value:'order',
+				}, {
+					name: "评价",
+					value:'evaluate'
+				}, {
+					name: "商家",
+					value:'merchant'
+				}],
+				scrollTop: 0 ,//tab标题的滚动条位置
+			}
+		},
+		onLoad: function(options) {
+			this.merchant_id = options.merchant_id;
+			let obj = {};
+			// #ifdef MP-WEIXIN
+			obj = wx.getMenuButtonBoundingClientRect();
+			// #endif
+			// #ifdef MP-BAIDU
+			obj = swan.getMenuButtonBoundingClientRect();
+			// #endif
+			// #ifdef MP-ALIPAY
+			my.hideAddToDesktopMenu();
+			// #endif
+			uni.getSystemInfo({
+				success: (res) => {
+					this.width = obj.left || res.windowWidth;
+					this.height_ = obj.top ? (obj.top + obj.height + 8) : (res.statusBarHeight + 44);
+					this.top = obj.top ? (obj.top + (obj.height - 32) / 2) : (res.statusBarHeight + 6);
+					this.scrollH = res.windowWidth
+					this.width_ = res.windowWidth
+					this.height = res.windowHeight
+				}
+			})
+			uni.getSystemInfo({
+				success: (res) => {
+					let header = 92;
+					// #ifdef H5
+					header = 0;
+					// #endif
+					this.height = res.windowHeight - uni.upx2px(header)
+				}
+			});
+			this.ajax();
+		
+		},
+		methods: {
+			collection(){
+				this.data.collect = !this.data.collect;
+				this.postAjax("/user/collectionAdd",{merchant_id:this.merchant.id,collect:this.data.collect}).then(msg=>{
+					
+				});
+			},
+			changeCart(item){
+				this.data.cartData.num = item.cartData.num;
+				this.data.cartData.amount = item.cartData.amount;
+			},
+			changeClassKey(key){
+				console.log(0);
+				this.selectClassKey = key;
+			},
+			ajax() {
+				this.getAjaxForApp(this, {merchant_id:this.merchant_id
+				
+				}).then(msg => {
+					this.merchant = msg.detail;
+					
+				});
+			}
+		}
+	}
+</script>
+<style scoped="">
+@import url('index.css')
+</style>

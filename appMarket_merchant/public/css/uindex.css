@@ -1,0 +1,38 @@
+/* 头部 */
+.dis-header {position: relative;padding: 0 30upx 30upx;background-color: #33c45d;}
+.dis-header .dis-top{padding-top: 16upx;text-align: right;}
+.dis-header .dis-top .quit{padding: 0 24upx;height: 52upx;line-height: 48upx;color: #fff;font-size: 24upx;border-radius: 10upx;border: 2upx #f2f2f2 solid;display: inline-block;}
+.dis-header .date-search .search-select{border-color: #f2f2f2;}
+.dis-header .date-search .search-select .order-picker{height: 52upx;line-height: 52upx;color:#fff;min-height: 52upx;padding: 0 30upx 0 10upx;}
+.dis-header .date-search .search-select .iconfont{color:#fff;font-size: 18upx;height: 52upx;line-height: 52upx;right: 16upx!important;}
+.dis-header .dis-info{text-align: center;padding-top: 20upx;}
+.dis-header .dis-info .img{width: 140upx;height: 140upx;border-radius: 50%;border: 8upx solid rgba(255,255,255,0.5);}
+.dis-header .dis-info .name{font-size: 28upx;color: #fff;}
+
+
+/* 项目 */
+.sup-sec {display: flex;flex-wrap: wrap;padding: 20upx;background-color: #fff;margin-bottom: 24upx;}
+.sup-sec .sec-group{width: 25%;text-align: center;padding: 20upx 0;}
+.sup-sec .sec-group .icon{background: #999;width: 92upx;height: 92upx;text-align: center;line-height: 92upx;border-radius: 50%;margin: 0 auto;}
+.sup-sec .sec-group:nth-child(1) .icon{background: #FB6E52;}
+.sup-sec .sec-group:nth-child(2) .icon{background: #359DF6;}
+.sup-sec .sec-group:nth-child(3) .icon{background: #FAA25D;}
+.sup-sec .sec-group:nth-child(4) .icon{background: #A154AF;}
+.sup-sec .sec-group:nth-child(5) .icon{background: #48CFAE;}
+.sup-sec .sec-group:nth-child(6) .icon{background: #ff6c81;}
+.sup-sec .sec-group:nth-child(7) .icon{background: #6c90d0;}
+.sup-sec .sec-group:nth-child(8) .icon{background: #007AFF;}
+.sup-sec .sec-group .icon .iconfont{font-size: 52upx;color: #fff;}
+.sup-sec .sec-group .name{font-size: 28upx;color: #353535;margin-top: 16upx;}
+
+
+/* 余额 */
+.sup-balance{display: flex;justify-content: space-between;align-items: center;background-color: #fff;padding: 24upx 30upx;margin-bottom: 24upx;}
+
+
+/* 统计 */
+.ac-group .ac-row{display: flex;justify-content: space-between;align-items: center;padding: 24upx 30upx;border-bottom: 2upx #f2f2f2 solid;}
+.ac-group .ac-row .label{font-size: 30upx;color: #999;line-height: 48upx;}
+.ac-group .ac-row .value{font-size: 32upx;color: #999;line-height: 48upx;height: 48upx;}
+.ac-group .ac-row .value span{font-size: 48upx;}
+.ac-group .ac-row .ellipsis{color: #999;line-height: 48upx;}

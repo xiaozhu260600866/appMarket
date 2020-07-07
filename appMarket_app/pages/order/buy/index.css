@@ -1,0 +1,54 @@
+.block-sec{background: #fff;margin: 0 24upx 24upx;border-radius: 8upx;}
+
+/* 选择地址 */
+.add_group{display: flex;justify-content: space-between;align-items: center;padding: 0 30upx;height: 106upx;line-height: 40upx;font-size: 30upx;}
+.add_group .left_txt{flex: 1;padding-right: 30upx;}
+.add-add{display: flex;justify-content: space-between;align-items: center;}
+.add-add .add-icon{background: #3384FA;width: 40px;height: 40px;text-align: center;line-height: 40px;color: #fff;font-size: 18px;border-radius: 6px;}
+.add-add .add-txt{flex: 1;overflow: hidden;}
+
+
+/* 地址信息 */
+.add-info{display: flex;justify-content: space-between;align-items: center;}
+.add-info .info{flex: 1;overflow: hidden;}
+.add-info .info .name{line-height: 48upx;}
+.add-info .info .add-detail{display: flex;}
+.add-info .info .add-detail .label{width: 90upx;line-height: 40upx;}
+.add-info .info .add-detail .name{flex: 1;overflow: hidden;line-height: 40upx;}
+.add-info .group{position: relative;border-left: 2upx #ddd solid;}
+.add-info .group:before{content: "";display: block;position: absolute;top: 50%;left: -8upx;width: 8upx;height: 8upx;border-width: 0 0 2upx 2upx;border-color: #dadada;border-style: solid;transform: rotate(45deg);background: #fff;margin-top: -3px;}
+.add-info .group .img{width: 92upx;height: 92upx;border-radius: 50%;display: flex;}
+.add-info .group .tip{height: 36upx;line-height: 32upx;border: 2upx #ff721f solid;border-radius: 4upx;font-size: 20upx;color: #ff721f;width: 72upx;text-align: center;margin: 0 auto;}
+
+
+/* 计算与优惠信息 */
+#calculation {padding: 24upx 0;}
+#calculation .list-group {padding: 0 30upx;line-height: 80upx;display: flex;justify-content: space-between;}
+#calculation .list-group .txt {font-size: 30upx;}
+
+
+/* 结算脚部 */
+#buy_footer {height: 100upx;line-height: 100upx;position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;display: flex;align-items: center;z-index: 1;border-top: 1upx solid #f7f7f7;}
+#buy_footer .f_left{color: #FF4351;flex: 1;overflow: hidden;}
+#buy_footer>section{flex: 1;overflow: hidden;}
+#buy_footer .f_right .txt{font-size: 30upx;}
+
+#order-footer{position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;height: 100upx;display: flex;justify-content: space-between;align-items: center;border-top: 1upx solid #f7f7f7;}
+#order-footer .rbtn{display: flex;justify-content: flex-end;height: 100upx;align-items: center;}
+#order-footer .rbtn .btn-nav{line-height: 68upx;border: 1upx #ddd solid;border-radius: 39upx;color: #555;font-size: 30upx;text-align: center;margin-right: 20upx;display: block;width: 200upx;}
+#order-footer .rbtn .inbtn{background: #FE4543;border-color: #FE4543;color: #fff;}
+#order-footer .rbtn .gobuy{height: 100upx;line-height: 100upx;width: 280upx;font-size: 32upx;margin-right: 0;border-radius: 0;}
+#order-footer .rbtn .gobuy label{line-height: 100upx;}
+#order-footer .rbtn .obtn{border: 2upx #ddd solid!important;background: #fff!important;color: #555!important;}
+
+
+/* 订单页面 */
+#mode /deep/.dx-txt{text-align: right;}
+#buy_footer .f_right /deep/.nav{color: #fff;background: #FF4351;font-size: 30upx;border-radius: 40upx;line-height: 80upx;padding: 0 50upx!important;margin: 0 10upx;}
+#buy_footer .f_right /deep/.nav-o{color: #232325;font-size: 30upx;border-radius: 40upx;line-height: 78upx;padding: 0 50upx!important;margin: 0 10upx;border: 1upx solid #8c8c8c;}
+
+
+/* 产品 */
+.storePro /deep/.dx-txt{text-align: right;font-size: 30upx;}
+.storeName{display: flex;align-items: center;padding: 20upx;border-bottom: 2upx #eee solid;}
+.storeName .img{width: 40upx;height: 40upx;display: flex;border-radius: 50%;margin-right: 20upx;}

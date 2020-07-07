@@ -1,0 +1,9 @@
+.addressLists{position: relative;}
+.addressLists::before{content: '';display: block;position: absolute;left:30upx;right: 0;bottom: 0;border-bottom: 2upx #eee solid;}
+.addressLists:last-child::before{display: none;}
+.addressLists .info{line-height: 52upxpx;}
+.addressLists .info .address{color: #666;line-height: 40upx;}
+/* .addressLists .ad_nav{justify-content: flex-end;}
+.addressLists .ad_nav .ad_nav_btn{width: 140upx;height: 56upx;line-height: 52upx;text-align: center;font-size: 28upx;border: 2upx #aaa solid;border-radius: 30upx;margin-left: 10upx;color: #666;background: #fff;} */
+.addressLists .ad_icon{margin: -10upx 0;}
+.addressLists .ad_icon .icon{height: 56upx;color: #666;}

@@ -1,0 +1,8 @@
+page{background: #FFf;}
+
+.payed-content{width:100%;}
+.payed-content .con{width:100%;display: flex;align-content: center;justify-content: center;flex-wrap: wrap;padding: 30px 0;}
+.payed-content .con .p{width: 100%;text-align: center;}
+.payed-content .con .content{font-size: 18px;}
+
+.button{width:90%;margin:0 auto;height:50px;line-height:50px;text-align:center;border-radius: 3px;}

@@ -1,0 +1,25 @@
+
+/* 删除 */
+.del-icon{border-radius: 50%;width: 26px;height: 26px;line-height: 26px;text-align: center;}
+
+
+/* 列表 */
+.pro_info{background: #fff;margin: 24upx;border-radius: 12upx;}
+.pro_info .order_date{height: 100upx;line-height: 100upx;display: flex;justify-content: space-between;align-items: center;}
+.pro_info .order_info{display: flex;}
+.pro_info .order_info .pro_img .img{width: 160upx;height: 160upx;display: flex;border-radius: 10upx;}
+.pro_info .order_count{height: 80upx;line-height: 80upx;display: flex;justify-content: flex-end;}
+
+
+.pro_info .pro_right{flex: 1;overflow: auto;width: 100%;display: flex;height: 160upx;flex-direction: column;align-content: space-between;}
+
+
+.pro_info .btn-item{display: flex;justify-content: flex-end;}
+.pro_info .btn-item .btn-nav{width: 80px;height: 30px;line-height: 28px;border: 1px #ddd solid;border-radius: 15px;color: #555;font-size: 26upx;text-align: center;margin-left: 10px;display: block;}
+.pro_info .btn-item .btn-nav:last-child{background: #FE4543;border: 0;color: #fff;line-height: 30px;}
+.pro_info .btn-item .obtn{border: 1px #ddd solid!important;background: #fff!important;color: #555!important;}
+
+
+/* 产品 */
+.storeName{display: flex;align-items: center;padding: 20upx 20upx 10upx;}
+.storeName .img{width: 40upx;height: 40upx;display: flex;border-radius: 50%;margin-right: 20upx;}

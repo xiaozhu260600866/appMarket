@@ -1,0 +1,25 @@
+/* 头部 */
+.head-info{background-image: linear-gradient(to bottom, #57C734, #5ed938);}
+.utop{width: 100%;padding: 60upx 40upx 120upx;}
+.utop .uinfo{display: flex;align-items: center;position: relative;}
+.utop .uinfo .header-img .img{width: 120upx;height: 120upx;border-radius: 50%;border: 4upx #fff solid;display: flex;}
+.utop .uinfo .right{flex: 1;overflow: hidden;}
+.utop .uinfo .info{display: flex;align-items: center;}
+.utop .uinfo .gosign{height: 60upx;line-height: 60upx;border: 1upx #fff solid;border-radius: 40upx;text-align: center;padding: 0 30upx;}
+.utop .login-nav{background-color: rgba(0,0,0,0.25);border-radius: 30upx;}
+
+
+/* 块 */
+.ugorup-box{border-radius: 24upx;margin: 24upx;}
+
+
+/* 统计 */
+.head-count{display: flex;margin-top: -64upx;}
+.head-count .c-item{text-align: center;padding: 20upx 0;position: relative;width: 100%;}
+.head-count .c-item::before{content: '';display: flex;position: absolute;right: 0;top: 50%;margin-top: -20upx;height: 40upx;width: 2upx;background-color: #ddd;}
+.head-count .c-item:last-child::before{width: 0;}
+.head-count .num{line-height: 60upx;}
+.head-count .name{line-height: 40upx;}
+
+
+.ubutton::after{border: 0;}

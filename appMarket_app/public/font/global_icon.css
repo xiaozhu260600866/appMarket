@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 1695758 */
+  src: url('https://at.alicdn.com/t/font_1695758_q6p6fhw9mnn.eot');
+  src: url('https://at.alicdn.com/t/font_1695758_q6p6fhw9mnn.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_1695758_q6p6fhw9mnn.woff2') format('woff2'),
+  url('https://at.alicdn.com/t/font_1695758_q6p6fhw9mnn.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_1695758_q6p6fhw9mnn.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_1695758_q6p6fhw9mnn.svg#iconfont') format('svg');
+}
+
+/* 3314024140@qq.com  dxi3229010  包工淘 */
+
+.dxi-icon {
+	font-family: "iconfont" !important;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 32upx;
+	display: inline-block;
+}
+.dxi-icon-home:before{content: "\c800";}/* 首页 */
+.dxi-icon-home2:before{content: "\c6e9";}/* 首页 */
+.dxi-icon-home3:before{content: "\c682";}/* 首页 */
+.dxi-icon-home-fill:before{content: "\c801";}/* 首页-填充 */
+.dxi-icon-label:before{content: "\c603";}/* 标题 */
+.dxi-icon-label-fill:before{content: "\c602";}/* 标题-填充 */
+.dxi-icon-three-row1:before{content: "\c656";}/* 三横-圆角 */
+.dxi-icon-three-row2:before{content: "\c657";}/* 三横 */
+.dxi-icon-zoom-in:before{content: "\c620";}/* 放大 */
+.dxi-icon-zoom-out:before{content: "\c621";}/* 缩小 */
+.dxi-icon-ellipsis-row:before{content: "\c608";}/* 横向省略号 */
+.dxi-icon-ellipsis:before{content: "\c609";}/* 竖向省略号 */
+.dxi-icon-settings:before{content: "\c632";}/* 设置 */
+.dxi-icon-settings-fill:before{content: "\c631";}/* 设置-填充 */
+.dxi-icon-star:before{content: "\c600";}/* 星星 */
+.dxi-icon-star-fill:before{content: "\c601";}/* 星星-填充 */
+.dxi-icon-nothing:before{content: "\c642";}/* 无数据 */
+.dxi-icon-order1:before{content: "\c622";}/* 订单 */
+.dxi-icon-order1-fill:before{content: "\c62c";}/* 订单 */
+.dxi-icon-order2:before{content: "\c654";}/* 订单 */
+.dxi-icon-order3:before{content: "\c655";}/* 订单 */
+.dxi-icon-sweep-code:before{content: "\c60b";}/* 扫码 */
+.dxi-icon-gift:before{content: "\c638";}/* 礼物 */
+.dxi-icon-bill:before{content: "\c625";}/* 账单 */
+.dxi-icon-pie:before{content: "\c690";}/* 饼图 */
+.dxi-icon-currency:before{content: "\c724";}/* 货币 */
+.dxi-icon-take-goods:before{content: "\c60a";}/* 取货 */
+.dxi-icon-shop:before{content: "\c668";}/* 商城 */
+.dxi-icon-time1:before{content: "\c626";}/* 时间 */
+.dxi-icon-time2:before{content: "\c61e";}/* 时间 */
+.dxi-icon-wallet:before{content: "\c669";}/* 钱包 */
+.dxi-icon-wallet-fill:before{content: "\c610";}/* 钱包-填充 */
+.dxi-icon-wechat-circle:before{content: "\c607";}/* 微信 */
+.dxi-icon-wechat:before{content: "\c66b";}/* 微信 */
+.dxi-icon-alipay-fill:before{content: "\c613";}/* 支付宝 */
+.dxi-icon-transport:before{content: "\c6b1";}/* 运输 */
+.dxi-icon-share1:before{content: "\c619";}/* 分享 */
+.dxi-icon-share2:before{content: "\c696";}/* 分享 */
+.dxi-icon-complete:before{content: "\c617";}/* 已完成 */
+.dxi-icon-authenticated:before{content: "\c614";}/* 已验证 */
+.dxi-icon-user1:before{content: "\c737";}/* 用户 */
+.dxi-icon-user2:before{content: "\c635";}/* 用户 */
+.dxi-icon-user3:before{content: "\c629";}/* 用户 */
+.dxi-icon-user-fill1:before{content: "\c68a";}/* 用户-填充 */
+.dxi-icon-user-fill2:before{content: "\c6ba";}/* 用户-填充 */
+.dxi-icon-department:before{content: "\c644";}/* 部门 */
+.dxi-icon-signin:before{content: "\c6a6";}/* 签到 */
+.dxi-icon-edit-fill:before{content: "\c6d4";}/* 编辑-填充 */
+.dxi-icon-cart:before{content: "\c618";}/* 购物车 */
+.dxi-icon-cart-fill:before{content: "\c6b2";}/* 购物车-填充 */
+.dxi-icon-classify:before{content: "\c667";}/* 分类 */
+.dxi-icon-classify-fill:before{content: "\c65c";}/* 分类-填充 */
+.dxi-icon-heart:before{content: "\c872";}/* 心 */
+.dxi-icon-heart-fill:before{content: "\c86f";}/* 心-填充 */
+.dxi-icon-praise:before{content: "\c871";}/* 赞 */
+.dxi-icon-praise-fill:before{content: "\c870";}/* 赞-填充 */
+.dxi-icon-turning-top:before{content: "\cf9c";}/* 上三角 */
+.dxi-icon-turning-down:before{content: "\cf9b";}/* 下三角 */
+.dxi-icon-turning-left:before{content: "\cf9e";}/* 左三角 */
+.dxi-icon-turning-right:before{content: "\cf9d";}/* 右三角 */
+.dxi-icon-tel:before{content: "\c653";}/* 电话 */
+.dxi-icon-tel-fill:before{content: "\c652";}/* 电话-填充 */
+.dxi-icon-tel-circle:before{content: "\c62f";}/* 电话-圆圈 */
+.dxi-icon-message:before{content: "\c69f";}/* 消息 */
+.dxi-icon-message-fill:before{content: "\c69c";}/* 消息-填充 */
+.dxi-icon-location:before{content: "\c628";}/* 定位 */
+.dxi-icon-location2:before{content: "\c63d";}/* 定位 */
+.dxi-icon-location-fill:before{content: "\c752";}/* 定位-填充 */
+.dxi-icon-del:before{content: "\c63f";}/* 删除 */
+.dxi-icon-off:before{content: "\c624";}/* 关闭 */
+.dxi-icon-add:before{content: "\c85a";}/* 加 */
+.dxi-icon-minus:before{content: "\c984";}/* 减 */
+.dxi-icon-success:before{content: "\c676";}/* 成功 */
+.dxi-icon-fail:before{content: "\c988";}/* 失败 */
+.dxi-icon-left:before{content: "\c303";}/* 左 */
+.dxi-icon-right:before{content: "\c302";}/* 右 */
+.dxi-icon-top:before{content: "\c304";}/* 上 */
+.dxi-icon-down:before{content: "\c305";}/* 下 */
+.dxi-icon-right2:before{content: "\c301";}/* 右 */
+.dxi-icon-dot-circle:before{content: "\c6bf";}/* 点 */
+.dxi-icon-loading:before{content: "\c692";}/* 加载中 */
+.dxi-icon-bankCard:before{content: "\c623";}/* 银行卡 */
+.dxi-icon-bankCard-fill:before{content: "\c670";}/* 银行卡-填充 */
+.dxi-icon-edit:before{content: "\c679";}/* 编辑 */
+
+.dxi-icon-:before{content: "\c";}/*  */

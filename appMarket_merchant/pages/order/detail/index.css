@@ -1,0 +1,12 @@
+.block-sec{background: #fff;margin: 0 24upx 24upx;border-radius: 8upx;}
+
+.de-group{padding: 20upx 30upx;font-size: 30upx;}
+.de-group .row{line-height: 60upx;}
+
+
+.orderDetail .pro{padding: 20upx 30upx;}
+.orderDetail .pro .reamrk{padding: 16upx 20upx;background-color: #eee;color: #57C734;font-size: 14upx;border-radius: 6upx;}
+.orderDetail .proLists{display: flex;height: 88upx;line-height: 88upx;position: relative;border-bottom: 1upx #eee solid;}
+.orderDetail .proLists::before{content: "";display: block;position: absolute;left: 30upx;border-bottom: 1upx #eee solid;bottom: 0;}
+.orderDetail .proLists .td{margin: 0 20upx;}
+.orderDetail .proLists .name{flex: 1}

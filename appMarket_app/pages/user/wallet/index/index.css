@@ -1,0 +1,4 @@
+.count-header{padding: 20upx 20upx 20upx 40upx;position: relative;}
+.count-header .name{margin-bottom: 50upx;}
+.count-header .count-num{font-size: 92upx;color: #fff;font-family: Arial;line-height: 120upx;}
+.count-header /deep/.record{position: absolute;top: 20upx;right: 20upx;}

@@ -1,0 +1,16 @@
+/* 满减 */
+.full-group .sort{font-size: 30upx;font-family: Arial;}
+.full-group .row{display: flex;justify-content: space-between;align-items: center;padding: 10upx 0;}
+.full-group .right{display: flex;align-items: center;font-size: 30upx;}
+.full-group .right /deep/.dx-cell{padding: 0;}
+.full-group .right /deep/.dx-cell .dx-input{width: 160upx;text-align: center;}
+.full-group .right .letter{padding: 0 6upx;}
+
+
+/deep/.right-input .dx-input{text-align: right;padding-right: 20upx;}
+/deep/.right-input .dx-cell_bd{text-align: right;}
+
+
+.full_price{text-align: right;display: inline-block;}
+.full_price /deep/.dx-cell{padding: 0;border-bottom: 0;}
+.full_price /deep/.dx-input{width: 200upx;text-align: center;border-bottom: 2upx #eee solid;}

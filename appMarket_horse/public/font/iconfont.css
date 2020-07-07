@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 1369426 */
+  src: url('https://at.alicdn.com/t/font_1369426_4x63czgg6xx.eot');
+  src: url('https://at.alicdn.com/t/font_1369426_4x63czgg6xx.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_1369426_4x63czgg6xx.woff2') format('woff2'),
+  url('https://at.alicdn.com/t/font_1369426_4x63czgg6xx.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_1369426_4x63czgg6xx.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_1369426_4x63czgg6xx.svg#iconfont') format('svg');
+}
+
+/* 商城图标 */
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dis-user:before{content: "\f909";}/* 用户 */
+.icon-dis-phone:before{content: "\f910";}/* 电话 */
+.icon-cart:before{content: "\f903";}/*购物车 */
+.icon-cart-del:before{content: "\f904";}/* 购物车del */
+.icon-date:before{content: "\f604";}/* 日期 */
+
+.icon-user-qrcode:before{content: "\e603";}/* 二维码 */
+.icon-shop-wechat:before{content: "\f678";}/* 微信 */
+
+
+.icon-pro-cart:before{content: "\f903";}/* 商品详情-购物车 */
+.icon-pro-share:before{content: "\f902";}/* 商品详情-分享 */
+.icon-pro-home-o:before{content: "\f900";}/*  商品详情-首页-空 */
+.icon-pro-home:before{content: "\f901";}/*  商品详情-首页 */
+.icon-pro-service-o:before{content: "\f6dd";}/* 商品详情-客服-空 */
+.icon-pro-class-top:before{content: "\ff9c";}/* 向上 */
+.icon-pro-class-bottom:before{content: "\ff8c";}/* 向下 */
+.icon-pro-shop:before{content: "\f311";}/* 商城 */
+
+
+.icon-count-plus:before{content: "\f906";}/* 加号 */
+.icon-count-minus:before{content: "\f905";}/* 减号 */
+
+
+.icon-starno:before{content: "\f907";}/* 未收藏 */
+.icon-staryes:before{content: "\f908";}/* 已收藏 */
+
+
+.icon-user-order:before{content: "\e63c";}/* 我的订单 */
+.icon-user-wallet:before{content: "\f64c";}/* 我的收入 */
+.icon-user-evaluate:before{content: "\f63a";}/* 我的评价 */
+.icon-user-info:before{content: "\f684";}/* 个人信息 */
+
+
+.icon-pshare-wechat:before{content: "\f607";color: #75C519;}/* 微信 */
+.icon-pshare-save:before{content: "\fcec";color: #29AD35;}/* 保存 */
+
+
+.icon-:before{content: "\f";}/*  */
+.icon-:before{content: "\f";}/*  */

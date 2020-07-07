@@ -1,0 +1,37 @@
+page{background: #fff;}
+checkbox{zoom: 80%;display: flex;}
+
+
+/* 全部列表 */
+.car_list{padding-bottom: 100upx;position: relative;}
+
+.storeName{display: flex;align-items: center;padding: 20upx;border-bottom: 2upx #eee solid;}
+.storeName .img{width: 40upx;height: 40upx;display: flex;border-radius: 50%;margin-right: 20upx;}
+
+
+/* 产品列表 */
+#pro_info{position: relative;}
+#pro_info .list-group{padding: 20upx 30upx;border-bottom: 1upx #eee solid;}
+#pro_info:last-child .list-group{border-bottom: 0;}
+#pro_info .zheng{position: relative;z-index: 1;}
+#pro_info .Rinfo{height: 100%;display: flex;align-content: space-between;flex-wrap: wrap;}
+#pro_info .del{position:absolute;right:0;top: 0;line-height: 40upx;}
+#pro_info .del .iconfont{font-size: 32upx;color:#718191;}
+
+
+/* 结算 */
+#cartfooter{height: 100upx;line-height: 100upx;position: fixed;left: 0;bottom: 0;width: 100%;background:#fff;z-index:9;display: flex;}
+#cartfooter .lInfo{display: flex;justify-content: space-between;flex: 1;width: 100%;overflow: hidden;}
+#cartfooter .lInfo .group{display: flex;align-items: center;}
+#cartfooter .zheng{padding: 0 10upx 0 20upx;height: 100upx;display: flex;align-items: center;}
+#cartfooter .zheng checkbox{display: flex;}
+#cartfooter .submit{}
+
+/*  #ifdef  H5 */
+#cartfooter{bottom: 100upx;}
+/*  #endif  */
+
+
+.cart-empty{text-align: center;}
+.cart-empty .img{width: 100upx;height: 100upx;}
+.cart-empty .btn{border: 2upx #FF721F solid;background: transparent;border-radius: 72upx;height: 72upx;line-height: 72upx;width: 200upx;margin: 0 auto;color: #FF721F;font-size: 28upx;}

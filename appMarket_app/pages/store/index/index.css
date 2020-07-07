@@ -1,0 +1,25 @@
+.store-header-icon .dxi-icon{display: flex;justify-content: center;}
+
+
+.store_show .businessHours .nav{background-color: #7AC53D;padding: 12upx 20upx;color: #ffff;font-size: 30upx;line-height: 36upx;}
+
+
+/* 左侧导航布局 start*/
+
+/* 隐藏scroll-view滚动条*/
+::-webkit-scrollbar {width: 0;height: 0;color: transparent;}
+
+.tab-view {width: 200upx;position: fixed;left: 0;top: 400upx;z-index: 11;background: #f6f6f6;height: calc(100% - 500upx);}
+.tab-bar-item {width: 200upx;height: 110upx;background: #f6f6f6;display: flex;align-items: center;justify-content: center;font-size: 30upx;color: #444;font-weight: 400;}
+.active {position: relative;color: #000;font-size: 32upx;font-weight: 600;background: #fcfcfc;}
+.active::before {content: "";position: absolute;border-left: 8upx solid #57C734;height: 30upx;left: 0;}
+/* 左侧导航布局 end*/
+
+.right-box{position: fixed;left: 0;top: 400upx;z-index: 10;padding-left: 200upx;width: 100%;height: calc(100% - 500upx);}
+
+
+/* 脚部 */
+.store-footer{position: fixed;left: 0;bottom: 0;width: 100%;z-index: 100;background-color: #fff;border-top: 2upx #eee solid;height: 100upx;}
+.store-footer .icon{width: 120upx;height: 120upx;border-radius: 50%;background-color: #57C734;text-align: center;margin: -40upx 60upx 0 60upx;padding-top: 10upx;position: relative;}
+.store-footer .dxi-icon{line-height: 60upx;}
+.store-footer .icon .num{position: absolute;top: 0;right: -10upx;background-color: #F0B744;color: #846425;font-size: 22upx;height: 40upx;line-height: 40upx;width: 40upx;border-radius: 50%;}

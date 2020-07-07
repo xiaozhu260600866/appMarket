@@ -1,0 +1,7 @@
+.discounts_item .type{color: #fff;width: 40upx;height: 40upx;line-height: 40upx;text-align: center;border-radius: 6upx;font-size: 20upx;background-color: #FF0101;margin-right: 30upx;}
+.discounts_item .type-dis{background-color: #FF4136;}
+.discounts_item .type-coupon{background-color: #FF721F;}
+
+.discounts_item .edit_icon{margin: -20upx 0;}
+.discounts_item .edit_icon .icon{height: 60upx;color: #666;width: 60upx;line-height: 60upx;border-radius: 50%;background-color: #f2f2f2;text-align: center;margin: 10upx 0;}
+.discounts_item .edit_icon .dxi-icon{display: flex;justify-content: center;font-size: 28upx;}

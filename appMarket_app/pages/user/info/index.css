@@ -1,0 +1,22 @@
+.info-sec-title{height: 68upx;line-height: 68upx;padding: 0 30upx;font-size: 28upx;color: #999;background-color: #f2f2f2;}
+
+
+.login_out{background-color: #fff;height: 100upx;line-height: 100upx;text-align: center;color: red;font-size: 30upx;letter-spacing: 2upx;margin: 24upx 0;}
+
+
+.info-form /deep/.dx-txt{text-align: right;position: relative;padding-right: 26upx;min-height: 34px;color: #666;}
+.info-form /deep/.dx-txt::before,
+.info-form /deep/ .headerPic::before{content: " ";display: inline-block;height: 12upx;width: 12upx;border-width: 2upx 2upx 0 0;border-color: #c8c8cd;border-style: solid;-webkit-transform: matrix(.71,1,-.71,1,0,0);transform: matrix(.71,1,-.71,1,0,0);position: relative;top: -4upx;position: absolute;top: 50%;margin-top: -6upx;right: 4upx;}
+.info-form /deep/ .headerPic .dx-txt::before{display: none;}
+.info-form /deep/ .headerPic .img{width: 100upx;height: 100upx;border-radius: 50%;display: flex;margin-right: 26upx;}
+.info-form /deep/ .headerPic{position: relative;}
+.info-form /deep/ .headerPic::before{right: 34upx;}
+.info-form /deep/ .picker{color: #666;}
+
+.info-subBtn /deep/.dxi-btn{border-color: #57C734;background-color: #57C734;color: #fff;}
+
+
+/* 支付密码 */
+.payP-box{text-align: center;position: fixed;top: 50%;margin-top: -80upx;left: 0;width: 100%;}
+.num-group{display: flex;justify-content: center;}
+.num-group input{width: 100upx;height: 100upx;border: 2upx #f2f2f2 solid;background-color: #fff;text-align: center;}

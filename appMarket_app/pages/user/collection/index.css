@@ -1,0 +1,13 @@
+/* 头部城市+logo */
+.top-city{position: fixed;left: 0;width: 100%;z-index: 101;box-shadow: 0 0 20upx 0 hsla(0, 6%, 58%, .2);-webkit-box-shadow: 0 0 20upx 0 hsla(0, 6%, 58%, .2);-moz-box-shadow: 0 0 20upx 0 hsla(0, 6%, 58%, .2);align-items: center;padding: 0 15upx 20upx;}
+.top-city .left-city{padding-right: 30upx;}
+.top-city .right-search{flex: 1;}
+
+/* #ifdef MP-ALIPAY */
+/* #endif */
+
+.ibanner{padding-top: 110upx;position: relative;}
+.ibanner .banner-bg{position: absolute;top: 0;left: 0;width: 100%;z-index: 1;height: 310upx;}
+.ibanner .banner-bg>.main-bg{width: 50%;height: 354upx;border: 1px solid transparent;z-index: 1;position: absolute;top: 50upx;}
+.ibanner .banner-bg-left{left: 0;transform: skewY(8deg);}
+.ibanner .banner-bg-right{right: 0;transform: skewY(-8deg);}

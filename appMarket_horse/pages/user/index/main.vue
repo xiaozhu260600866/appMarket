@@ -1,0 +1,137 @@
+<template>
+	<view>
+		<view>
+			<view class="head-info utop">
+				<view class="uinfo">
+					<view class="header-img">
+						<image class="img" :src="userInfo.headerPic" />
+					</view>
+					<view class="flex-between flex-middle flex1">
+						<view class="pl15 fc-white right info" @click="goto('/pages/user/setting/layouts/info',1)">
+							<view class="fs-18">{{ userInfo.name}}</view>
+							<view class="fs-16 Arial">ID:782</view>
+						</view>
+						<view class="status"><weui-input v-model="ruleform.sendType" name="sendType" changeField="value" type="select" dataKey="sendTypeArr"></weui-input></view>
+					</view>
+				</view>
+			</view>
+			
+			<view class="ugorup-box bg-f mb8 count">
+				<view class="head-count">
+					<view class="c-item" @click="goto('/pages/user/wallet/index/main',1)">
+						<view class="num fs-18 fc-3">{{count.amount}}<text class="fs-14">元</text></view>
+						<view class="name fs-13 fc-6">今日收入</view>
+					</view>
+					<view class="c-item">
+						<view class="num fs-18 fc-3">{{count.integral}}<text class="fs-14">单</text></view>
+						<view class="name fs-13 fc-6">今日完成订单</view>
+					</view>
+					<view class="c-item">
+						<view class="num fs-18 fc-3">{{ count.couponNum }}<text class="fs-14">分</text></view>
+						<view class="name fs-13 fc-6">综合评价</view>
+					</view>
+				</view>
+			</view>
+			
+			<view class="ugorup-box bg-f mb8">
+				<dx-title name="常用工具" nameBold="bold" :nameSize="15" :height="40"></dx-title>
+				<dx-nav-class :data="applyArray" myclass="bdr12" num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5"></dx-nav-class>
+			</view>
+			
+		</view>
+	</view>
+</template>
+
+<script>
+import dxTitle from "doxinui/components/title/title"
+import dxNavClass from "doxinui/components/nav-class/nav-class"
+	export default {
+		components:{
+			dxTitle,
+			dxNavClass
+		},
+		data() {
+			return {
+				formAction: '/shop/user',
+				mpType: 'page', //用来分清父和子组件
+				data: this.formatData(this),
+				getSiteName: this.getSiteName(),
+				ruleform:{
+					sendType: 1
+				},
+				userLogin: true,
+				count:{
+					amount:24,
+					integral:11,
+					couponNum:0
+				},
+				userInfo:{
+					headerPic:'/static/icon.png',
+					name:'东信科技-梅'
+				},
+				applyArray:[
+					{
+						url:'/pages/order/lists/main',
+						type: 1,
+						icon:'iconfont icon-user-order',
+						name:'我的订单'
+					},{
+						url:'/pages/user/wallet/index/main',
+						type: 1,
+						icon:'iconfont icon-user-wallet',
+						name:'我的收入'
+					},{
+						url:'/pages/user/evaluate/main',
+						type: 1,
+						icon:'iconfont icon-user-evaluate',
+						name:'我的评价'
+					},{
+						url:'/pages/user/info/main',
+						type: 1,
+						icon:'iconfont icon-user-info',
+						name:'个人信息'
+					}
+				],
+				sendTypeArr: [{
+					label: '开工',
+					value: '1',
+				},{
+					label: '休息',
+					value: '2',
+				}],
+			}
+		},
+		methods: {
+			ajax() {
+				this.getAjaxForApp(this, {
+				
+				}).then(msg => {
+					
+				});
+			}
+		},
+		onLoad(options) {
+			
+			// uni.getSystemInfo({
+			// 	success:res=> {
+			// 		this.getError(res.screenHeight+'');
+			// 		console.log(res.screenHeight);
+			// 	}
+			// });
+			//this.ajax();
+		},
+		onReachBottom() {
+			this.hasMore(this);
+		},
+		onPullDownRefresh() {
+			this.data.nextPage = 1;
+			this.ajax();
+		},
+		onShareAppMessage() {
+			return this.shareSource(this, '商城');
+		},
+	}
+</script>
+<style scoped="">
+@import url('index.css')
+</style>
