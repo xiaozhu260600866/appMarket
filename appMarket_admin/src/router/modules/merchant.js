@@ -10,6 +10,12 @@ const merchantRouter = {
     meta: { title: '商家管理', icon: 'dx-hr' },
     children: [
         {
+          path: 'order-lists',
+          component: () => import('@/views/merchant/order/lists'),
+          name: 'merchantOrderLists',
+          meta: { title: '订单列表', icon: 'dx-hr-info', params: { status: 3 }}
+        },
+        {
           path: 'lists',
           component: () => import('@/views/merchant/lists'),
           name: 'merchantLists',
