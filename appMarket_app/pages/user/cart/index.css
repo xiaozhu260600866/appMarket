@@ -14,6 +14,8 @@ checkbox{zoom: 80%;display: flex;}
 #pro_info .list-group{padding: 20upx 30upx;border-bottom: 1upx #eee solid;}
 #pro_info:last-child .list-group{border-bottom: 0;}
 #pro_info .zheng{position: relative;z-index: 1;}
+/deep/.uni-checkbox-input{color: #57C734!important;}
+/deep/uni-checkbox:not([disabled]) .uni-checkbox-input:hover{border-color: #57C734!important;}
 #pro_info .Rinfo{height: 100%;display: flex;align-content: space-between;flex-wrap: wrap;}
 #pro_info .del{position:absolute;right:0;top: 0;line-height: 40upx;}
 #pro_info .del .iconfont{font-size: 32upx;color:#718191;}

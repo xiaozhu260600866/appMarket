@@ -234,6 +234,27 @@
 			}
 		},
 		{
+			"path": "pages/user/coupon/lists/main",
+			"style": {
+				"navigationBarTitleText": "优惠券",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/integral/shop/lists/main",
+			"style": {
+				"navigationBarTitleText": "积分商城",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/distribution/add/lists/main",
+			"style": {
+				"navigationBarTitleText": "邀请返利",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/user/address/lists/main",
 			"style": {
 				"navigationBarTitleText": "地址管理",

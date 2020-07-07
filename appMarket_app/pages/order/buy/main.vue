@@ -4,9 +4,14 @@
 		<view class="mt12 pb50" v-if="data.show">
 			<view id="address" class="block-sec" v-if="ruleform.shipping == 1">
 				<block v-if="!address">
-					<view class="add_group" @click="createAddress">
+					<!-- <view class="add_group" @click="createAddress">
 						<view class="left_txt fc-6">收货地址：<span class="fc-3">(暂无收货地址)</span></view>
 						<view class="iconfont icon-right fs-12 fc-9"></view>
+					</view> -->
+					<view class="add-add p15" @click="createAddress">
+						<p class="add-icon iconfont icon-count-plus mr10"></p>
+						<p class="add-txt fs-15">新增收货地址</p>
+						<p class="iconfont icon-right fs-12 fc-9"></p>
 					</view>
 				</block>
 				<block v-else>

@@ -4,7 +4,7 @@
 .add_group{display: flex;justify-content: space-between;align-items: center;padding: 0 30upx;height: 106upx;line-height: 40upx;font-size: 30upx;}
 .add_group .left_txt{flex: 1;padding-right: 30upx;}
 .add-add{display: flex;justify-content: space-between;align-items: center;}
-.add-add .add-icon{background: #3384FA;width: 40px;height: 40px;text-align: center;line-height: 40px;color: #fff;font-size: 18px;border-radius: 6px;}
+.add-add .add-icon{background: #57C734;width: 40px;height: 40px;text-align: center;line-height: 40px;color: #fff;font-size: 18px;border-radius: 6px;}
 .add-add .add-txt{flex: 1;overflow: hidden;}
 
 

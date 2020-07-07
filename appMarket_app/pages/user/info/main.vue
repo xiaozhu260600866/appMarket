@@ -5,7 +5,7 @@
 			<view class="bg-f">
 				<weui-input v-model="ruleform.header" label="头像" type="txt" name="header" myclass="headerPic" >
 					<view slot="right">
-						<image :src="ruleform.pic  || 'https://appmarket.doxinsoft.com/images/nopic.jpg'" class="img" @click="uploadHeaderImg"></image>
+						<image :src="ruleform.pic  || 'https://boss.doxinsoft.com/images/nouser01.png'" class="img" @click="uploadHeaderImg"></image>
 					</view>
 				</weui-input>
 				<view @click="goto('/pages/user/info/layouts/nickName',1)">
