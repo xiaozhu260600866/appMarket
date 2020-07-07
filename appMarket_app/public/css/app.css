@@ -34,4 +34,4 @@ button::after{border: 0;}
 
 
 /* weui-inpu */
-.dx-label,.dx-input{font-size: 32upx!important;}
+.dx-label,.dx-input,.dx-text{font-size: 32upx!important;}
