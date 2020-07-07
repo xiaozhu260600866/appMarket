@@ -36,7 +36,7 @@
 #order-footer{position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;height: 100upx;display: flex;justify-content: space-between;align-items: center;border-top: 1upx solid #f7f7f7;}
 #order-footer .rbtn{display: flex;justify-content: flex-end;height: 100upx;align-items: center;}
 #order-footer .rbtn .btn-nav{line-height: 68upx;border: 1upx #ddd solid;border-radius: 39upx;color: #555;font-size: 30upx;text-align: center;margin-right: 20upx;display: block;width: 200upx;}
-#order-footer .rbtn .inbtn{background: #FE4543;border-color: #FE4543;color: #fff;}
+#order-footer .rbtn .inbtn{background: #57C734;border-color: #57C734;color: #fff;}
 #order-footer .rbtn .gobuy{height: 100upx;line-height: 100upx;width: 280upx;font-size: 32upx;margin-right: 0;border-radius: 0;}
 #order-footer .rbtn .gobuy label{line-height: 100upx;}
 #order-footer .rbtn .obtn{border: 2upx #ddd solid!important;background: #fff!important;color: #555!important;}
@@ -44,7 +44,7 @@
 
 /* 订单页面 */
 #mode /deep/.dx-txt{text-align: right;}
-#buy_footer .f_right /deep/.nav{color: #fff;background: #FF4351;font-size: 30upx;border-radius: 40upx;line-height: 80upx;padding: 0 50upx!important;margin: 0 10upx;}
+#buy_footer .f_right /deep/.nav{color: #fff;background: #57C734;font-size: 30upx;border-radius: 40upx;line-height: 80upx;padding: 0 50upx!important;margin: 0 10upx;}
 #buy_footer .f_right /deep/.nav-o{color: #232325;font-size: 30upx;border-radius: 40upx;line-height: 78upx;padding: 0 50upx!important;margin: 0 10upx;border: 1upx solid #8c8c8c;}
 
 

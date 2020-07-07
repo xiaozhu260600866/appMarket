@@ -27,16 +27,14 @@
 					</view>
 				
 					<my-picker :picker-list="data.deliverData" column-num="3" @confirm="deliverCallBack" >
-						<view :class="['weui-cell','weui-cell_input']">
-							<view class="weui-cell__hd">
-								<view class="weui-label fs14">选择时间<span class="font_red">*</span></view>
+						<view class="dx-cell">
+							<view class="dx-cell_hd">
+								<view class="dx-label">选择时间</view>
 							</view>
-							<view class="weui-cell__bd text-right">
-								<span >{{ruleform.deliver_date || ''}}</span>
+							<view class="dx-cell_bd text-right">
+								<view >{{ruleform.deliver_date || ''}}</view>
 							</view>
-							<view class="weui-cell__ft" >
-								<text class="weui-cell__ft_in-access"></text>
-							</view>
+							<view class="dx-cell_ft dx_ft-access"></view>
 						</view>
 					</my-picker>
 				</block>
@@ -54,8 +52,7 @@
 				</view>
 			</view>
 			<view id="mode" class="block-sec">
-				<weui-input v-model="ruleform.remark"  label="买家留言" type="text" name="remark"
-				 placeholder="点击给卖家留言"></weui-input>
+				<weui-input v-model="ruleform.remark" label="买家留言" type="text" name="remark" placeholder="点击给卖家留言"></weui-input>
 			</view>
 			<view id="buy_footer">
 				<view class="f_left price fs-18 plr10">￥
@@ -218,5 +215,6 @@
 	}
 </script>
 <style scoped="">
-@import url('index.css')
+@import url('index.css');
+@import url("xiaozhu/css/dx-input")
 </style>

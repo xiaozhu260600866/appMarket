@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="login-body">
 		<page :parentData="data" :formAction="formAction"></page>
 		<view>
 			<view class="logo">

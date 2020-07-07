@@ -80,6 +80,9 @@
 	uni-tabbar .uni-tabbar {
 		z-index: 99 !important;
 	}
+	uni-tabbar .uni-tabbar-border{
+		background-color: transparent!important;
+	}
 
 	.list-group .group-item uni-input input {
 		height: 32px !important;

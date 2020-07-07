@@ -13,8 +13,8 @@
 				<view>我已阅读并同意</view>
 				<view class="main-color" @click="goto('/pages/news/show/main',1)">《用户协议》</view>
 			</view>
-			<view class="m20 info-subBtn"><dx-button block @click="submit">完成</dx-button></view>
-			<view class="text-center fs-13 fc-9 mt30" @click="goto('/pages/user/login/main')">立即登录</view>
+			<view class="m20 info-subBtn"><dx-button block size="lg" @click="submit">完成</dx-button></view>
+			<view class="m20 info-login" @click="goto('/pages/user/login/main')"><dx-button type="success" block size="lg" plain>立即登录</dx-button></view>
 		</view>
 	</view>
 </template>

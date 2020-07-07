@@ -10,7 +10,7 @@
 			</view>
 		</view>
 		<view @click="submit">
-			<dxftButton type="success" btnBg="#57C734" btnBd="#57C734"><text class="dxi-icon dxi-icon-add pr10"></text>添加地址</dxftButton>
+			<dxftButton type="success" btnBg="#57C734" btnBd="#57C734">保存</dxftButton>
 		</view>
 	</view>
 </template>

@@ -1,7 +1,7 @@
 <template>
 	<view class="stre_pro bg-f">
 		<dx-products-pic v-for="item in data" :src="item.firstCover" :isList="true"  @click="goto('/pages/product/show/main?id='+item.id,1)">
-			<view class="title fs-16 fw-bold" >{{ item.name }}</view>
+			<view class="title fs-15" >{{ item.name }}</view>
 			<view class="grade flex-middle fc-3 fs-12 mt3" @click="goto('/pages/product/show/main?id='+item.id,1)" >
 				<view class="sales">月销 <text class="Arial">{{ item.sales }}</text></view>
 				<view class="fresh pl15">数量：<text class="Arial">{{ item.num }}</text></view>
@@ -10,7 +10,7 @@
 			<view class="flex-between">
 				<dx-price v-model="item.price" split :intSize="20" :decimalSize="12"></dx-price>
 			</view>
-			<div class="flex-center mr20" v-if="canBuy"><tui-numberbox v-model="item.buyNum" @change="addCart(item)"></tui-numberbox></div>
+			<div class="flex-right" v-if="canBuy"><tui-numberbox v-model="item.buyNum" @change="addCart(item)"></tui-numberbox></div>
 		</dx-products-pic>
 	</view>
 </template>

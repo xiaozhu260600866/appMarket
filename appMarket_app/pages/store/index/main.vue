@@ -12,31 +12,34 @@
 				<view class="fs-12 lh-16">{{data.collect == true ? '已收藏':'收藏'}}</view>
 			</view>
 		</view>
-		<dx-products-pic :src="merchant.cover" :isList="true" myclass="main-bg fc-white pb0" :imgWidth="100" :imgHeight="100">
-			<view class="grade flex-baseline">
-				<dx-icon name="star-fill" size="14" color="#ff721f"></dx-icon>
-				<view class="num fs-15 ml5">5分</view>
-			</view>
-			<view class="flex-middle businessHours mtb5">
-				<view class="nav">营业时间：<text class="Arial">{{ merchant.hour_time }}</text></view>
-			</view>
-			<view class="flex-middle fs-15">
-				<dx-icon name="location" size="14" color="#fff"></dx-icon>
-			<!-- 	<view class="province plr5">{{ store.province }}</view>
-				<view class="city pr5">{{ store.city }}</view> -->
-				<view class="address flex1 nowrap w-b100">{{ merchant.address }}</view>
-			</view>
-		</dx-products-pic>
-		<!-- <dx-tabs :data="tabs" :currentTab="currentTab>2?0:currentTab" @change="change" selectedColor="#57C734" sliderBgColor="#57C734"></dx-tabs> -->
-		<dx-tabs :tabs="tabs" v-model="type" selectedColor="#57C734" sliderBgColor="#57C734" :nameSize="16" :height="88"></dx-tabs>
-		<view class="" v-if="type  == 'order'">
-			<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:height+'px'}">
+		<view class="topInfo" :style="{top:height_+'px',}" style="height: 224upx;">
+			<dx-products-pic :src="merchant.cover" :isList="true" myclass="main-bg fc-white pb0" :imgWidth="100" :imgHeight="100">
+				<view class="grade flex-baseline">
+					<dx-icon name="star-fill" :size="14" color="#ff721f"></dx-icon>
+					<view class="num fs-15 ml5">5分</view>
+				</view>
+				<view class="flex-middle businessHours mtb5">
+					<view class="nav">营业时间：<text class="Arial">{{ merchant.hour_time }}</text></view>
+				</view>
+				<view class="flex-middle fs-15">
+					<dx-icon name="location" size="14" color="#fff"></dx-icon>
+				<!-- 	<view class="province plr5">{{ store.province }}</view>
+					<view class="city pr5">{{ store.city }}</view> -->
+					<view class="address flex1 nowrap w-b100">{{ merchant.address }}</view>
+				</view>
+			</dx-products-pic>
+		</view>
+		<view class="tabs-num" :style="{top: (upx2px(224)+height_)+'px'}">
+			<dx-tabs :tabs="tabs" v-model="type" selectedColor="#57C734" sliderBgColor="#57C734" :nameSize="16" :height="88"></dx-tabs>
+		</view>
+		<view class="proCon" v-if="type  == 'order'">
+			<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:height+'px',top:(upx2px(224+88)+height_)+'px',}">
 				<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
 				 :data-current="key"  @click="changeClassKey(key)">
 					<text>{{item.label}}</text>
 				</view>
 			</scroll-view>
-			<scroll-view scroll-y scroll-with-animation class="right-box">
+			<scroll-view scroll-y scroll-with-animation class="right-box" :style="{top:(upx2px(224+88)+height_)+'px',}">
 				<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart"></store-pro>
 			</scroll-view>
 		</view>
@@ -111,6 +114,7 @@ import storePro from '@/components/store_pro'
 			})
 			uni.getSystemInfo({
 				success: (res) => {
+					
 					let header = 92;
 					// #ifdef H5
 					header = 0;
@@ -135,6 +139,9 @@ import storePro from '@/components/store_pro'
 			changeClassKey(key){
 				console.log(0);
 				this.selectClassKey = key;
+			},
+			upx2px(val){
+				return uni.upx2px(val);
 			},
 			ajax() {
 				this.getAjaxForApp(this, {merchant_id:this.merchant_id
