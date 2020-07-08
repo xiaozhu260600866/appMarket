@@ -247,6 +247,7 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 			return this.shareSource(this, '商城');
 		},
 		onLoad(options) {
+			
 			let obj = {};
 			// #ifdef MP-WEIXIN
 			obj = wx.getMenuButtonBoundingClientRect();
