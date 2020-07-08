@@ -19,19 +19,24 @@
 			plus.push.addEventListener("receive", function(msg) {
 				// plus.ui.alert(2);  
 				console.log("recevice1:" + JSON.stringify(msg))
-				console.log(msg.content);
+				console.log(msg);
 				// that.postAjax("/text").then(msg2=>{
 					
 				// });
-				if(msg.content ){
-					 var v = JSON.parse(msg.content)
-					 console.log(v);
+				if(msg.payload ){
+					console.log("进来这里1");
+					console.log(msg.payload);
+					 if(typeof(msg.payload) == 'string'){
+						  var v = JSON.parse(msg.payload)
+					 }else{
+						 var v = msg.payload
+					 }
 					 let bgAudioMannager = uni.getBackgroundAudioManager();
 					 bgAudioMannager.src = v.voice;
 					 bgAudioMannager.play()
 					 console.log(plus.os.name);
 					 if (plus.os.name == 'iOS') { //如果是IOS
-						 if (msg.aps == null && msg.type == "receive") {   
+						 if (msg.type == "receive") {   
 							plus.push.createMessage(v.content, v.content, {title: v.content}); 
 						 }
 					 }else{
@@ -39,12 +44,13 @@
 					 }  
 				}
 				if(msg.aps && msg.aps.category ){
+					console.log("进来这里2");
 					 var v = JSON.parse(msg.aps.category);
 				     let bgAudioMannager = uni.getBackgroundAudioManager();
 				     bgAudioMannager.src =v.voice;
 				     bgAudioMannager.play()
 					 if (plus.os.name == 'iOS') { //如果是IOS
-						 if (msg.aps == null && msg.type == "receive") {   
+						 if ( msg.type == "receive") {   
 							plus.push.createMessage(v.content, v.content, {title: v.content}); 
 						 }
 					 }else{

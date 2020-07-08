@@ -247,7 +247,11 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 			return this.shareSource(this, '商城');
 		},
 		onLoad(options) {
-			
+			// const bgAudioMannager = uni.getBackgroundAudioManager();
+			// bgAudioMannager.stop();  
+			// bgAudioMannager.src = 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3';  
+			// bgAudioMannager.play(); 
+			console.log(5)
 			let obj = {};
 			// #ifdef MP-WEIXIN
 			obj = wx.getMenuButtonBoundingClientRect();
