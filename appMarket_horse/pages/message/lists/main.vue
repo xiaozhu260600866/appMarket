@@ -1,6 +1,6 @@
 <template>
 	<view class="bg-f">
-		<dx-list-msg :imgSrc="item.headerPic" :name="item.name" :content="item.content" v-for="(item,key) in messageLists">
+		<dx-list-msg :imgSrc="item.headerPic" :name="item.name" :content="item.content" v-for="(item,key) in messageLists" @click="goto('/pages/message/chat/main',1)">
 			<view slot="right">
 				<view class="right-box">
 					<view class="time fs-12 fc-9 Arial">{{item.news_time}}</view>
@@ -25,22 +25,16 @@
 				getSiteName: this.getSiteName(),
 				messageLists:[{
 					headerPic:'/static/banner01.jpg',
-					name:'东信科技-梅',
-					content:'您好，请问有什么可帮到您！',
+					name:'东风生鲜',
+					content:'您好，您需要多少呢？我们珠三角地区可以包邮的',
 					news_time:'14:02',
-					meassage_num: 3
+					meassage_num: 1
 				},{
-					headerPic:'/static/banner01.jpg',
-					name:'东信科技-梅',
-					content:'您好，请问有什么可帮到您！',
-					news_time:'14:02',
+					headerPic:'/static/message-send.png',
+					name:'交易物流信息',
+					content:'即将确认收货通知',
+					news_time:'10:02',
 					meassage_num: 0
-				},{
-					headerPic:'/static/banner01.jpg',
-					name:'东信科技-梅',
-					content:'您好，请问有什么可帮到您！',
-					news_time:'14:02',
-					meassage_num: 7
 				}]
 			}
 		},

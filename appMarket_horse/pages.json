@@ -64,6 +64,13 @@
 			}
 		},
 		{
+			"path": "pages/message/chat/main",
+			"style": {
+				"navigationBarTitleText": "东风生鲜",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/order/detail/main",
 			"style": {
 				"navigationBarTitleText": "订单详情",
