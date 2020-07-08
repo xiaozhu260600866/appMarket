@@ -6,9 +6,11 @@
 					<view class="title fs-17 fw-bold">{{ item.name }}</view>
 					<view class="status fc-9 fs-14" >营业中</view>
 				</view>
-				<view class="grade flex-baseline">
-					<dx-icon name="star-fill" size="12" color="#ff721f"></dx-icon>
-					<view class="num fc-orange fs-13 ml5">5分</view>
+				<view class="flex-middle businessHours">
+					<view class="nav">营业时间：<text class="Arial">{{ item.hour_time }}</text></view>
+				</view>
+				<view class="grade flex-baseline mt3">
+					<tui-rate :current="4" :disabled="true" :score="0.45"></tui-rate>
 				</view>
 				<view class="flex-middle fs-13 fc-3 lh-20">
 					<view class="pr12">起送<text class="num">￥{{item.order_amount}}</text></view>
@@ -17,9 +19,6 @@
 					</view>
 					<view class="num"><text class="num">1</text>时<text class="num">1</text>分</view>
 				</view>
-				<view class="flex-middle businessHours mt3">
-					<view class="nav">营业时间：<text class="Arial">{{ item.hour_time }}</text></view>
-				</view>
 			</view>
 		</dx-products-pic>
 	</view>
@@ -27,6 +26,7 @@
 <script>
 import dxProductsPic from 'doxinui/components/products/pic'
 import filterKm from '@/components/filterKm';
+import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 	export default {
 	components: {
 		dxProductsPic,
@@ -51,5 +51,5 @@ import filterKm from '@/components/filterKm';
 }
 </script>
 <style>
-.shop_list .businessHours .nav{background-color: #fef8e0;padding: 10upx 16upx;border-radius: 6upx;color: #f88109;font-size: 26upx;line-height: 30upx;}
+.shop_list .businessHours .nav{background-color: #F4F4F4;padding: 10upx 16upx;border-radius: 6upx;color: #333;font-size: 26upx;line-height: 30upx;}
 </style>
