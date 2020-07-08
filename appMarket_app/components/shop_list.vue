@@ -6,19 +6,23 @@
 					<view class="title fs-17 fw-bold">{{ item.name }}</view>
 					<view class="status fc-9 fs-14" >营业中</view>
 				</view>
-				<view class="flex-middle businessHours">
-					<view class="nav">营业时间：<text class="Arial">{{ item.hour_time }}</text></view>
-				</view>
-				<view class="grade flex-baseline mt3">
-					<tui-rate :current="4" :disabled="true" :score="0.45"></tui-rate>
-				</view>
-				<view class="flex-middle fs-13 fc-3 lh-20">
-					<view class="pr12">起送<text class="num">￥{{item.order_amount}}</text></view>
-					<view class="pr12 num">
-						<filterKm v-model="item.juli" v-if="item.juli"></filterKm>
+				<view class="flex">
+					<view class="flex1">
+						<view class="flex-middle businessHours">
+							<view class="nav">营业时间：<text class="Arial">{{ item.hour_time }}</text></view>
+						</view>
+						<view class="grade flex-baseline mt3">
+							<tui-rate :current="4" :disabled="true" active="#FDB508" :score="'0.'+'35'" :size="14"></tui-rate>
+							<view class="fs-12 pl5 lh-24">4.35分</view>
+						</view>
+						<view class="flex-middle fs-13 fc-3 lh-20">
+							<view class="pr12">起送<text class="num">￥{{item.order_amount}}</text></view>
+							<view class="num"><text class="num">01</text>时<text class="num">15</text>分</view>
+						</view>
 					</view>
-					<view class="num"><text class="num">1</text>时<text class="num">1</text>分</view>
+					<view class="location fs-13 fc-9 Arial" v-if="item.juli"><filterKm v-model="item.juli" v-if="item.juli"></filterKm></view>
 				</view>
+					
 			</view>
 		</dx-products-pic>
 	</view>
@@ -30,7 +34,8 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 	export default {
 	components: {
 		dxProductsPic,
-		filterKm
+		filterKm,
+		tuiRate
 	},
 	props:{
 		data:{
@@ -52,4 +57,5 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 </script>
 <style>
 .shop_list .businessHours .nav{background-color: #F4F4F4;padding: 10upx 16upx;border-radius: 6upx;color: #333;font-size: 26upx;line-height: 30upx;}
+.shop_list .grade{color: #FDB508;}
 </style>
