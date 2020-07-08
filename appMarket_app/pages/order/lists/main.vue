@@ -68,7 +68,7 @@
 					</view>
 				</view>
 			</view>
-			<hasMore :parentData="data" source="order"></hasMore>
+			<hasMore :parentData="data"></hasMore>
 		</view>
 	</view>
 </template>

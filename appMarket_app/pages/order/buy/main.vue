@@ -17,7 +17,7 @@
 				<block v-else>
 					<view class="add-info flex-middle plr15" @click="addressLists">
 						<view class="licon pr15">
-							<span class="dxi-icon dxi-icon-location2 fs-24 fc-blue"></span>
+							<span class="iconfont icon-location-c-fill fs-24 main-color"></span>
 						</view>
 						<view class="info ptb10 flex1">
 							<view class="name fs-15">
