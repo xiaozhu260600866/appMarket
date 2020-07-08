@@ -29,13 +29,29 @@
 					 let bgAudioMannager = uni.getBackgroundAudioManager();
 					 bgAudioMannager.src = v.voice;
 					 bgAudioMannager.play()
+					 console.log(plus.os.name);
+					 if (plus.os.name == 'iOS') { //如果是IOS
+						 if (msg.aps == null && msg.type == "receive") {   
+							plus.push.createMessage(v.content, v.content, {title: v.content}); 
+						 }
+					 }else{
+						 plus.push.createMessage(v.content, v.content, {title: v.content});
+					 }  
 				}
 				if(msg.aps && msg.aps.category ){
 					 var v = JSON.parse(msg.aps.category);
 				     let bgAudioMannager = uni.getBackgroundAudioManager();
 				     bgAudioMannager.src =v.voice;
 				     bgAudioMannager.play()
+					 if (plus.os.name == 'iOS') { //如果是IOS
+						 if (msg.aps == null && msg.type == "receive") {   
+							plus.push.createMessage(v.content, v.content, {title: v.content}); 
+						 }
+					 }else{
+					 	plus.push.createMessage(v.content, v.content, {title: v.content});
+					 } 
 				 }
+				 
 				
 			}, false);
 			//#endif 

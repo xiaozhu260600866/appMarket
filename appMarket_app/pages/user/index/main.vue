@@ -2,7 +2,7 @@
 	<view>
 		<view v-if="data.show">
 			<view class="head-info utop">
-				<view class="uinfo" v-if="!user.username">
+				<view class="uinfo" v-if="!user">
 					<view class="header-img">
 						<image class="img" src="https://boss.doxinsoft.com/images/nouser01.png" />
 					</view>
@@ -24,11 +24,11 @@
 			</view>
 			<view class="ugorup-box bg-f mb8 head-count">
 				<view class="c-item" @click="checkLogin('/pages/user/wallet/index/main',1)">
-					<p class="num fs-18 fc-3">{{user.username ? user.amount:0}}</p>
+					<p class="num fs-18 fc-3">{{user ? user.amount:0}}</p>
 					<p class="name fs-13 fc-6">余额</p>
 				</view>
 				<view class="c-item">
-					<p class="num fs-18 fc-3">{{user.username? user.integral :0}}</p>
+					<p class="num fs-18 fc-3">{{user? user.integral :0}}</p>
 					<p class="name fs-13 fc-6">积分</p>
 				</view>
 				<view class="c-item">
