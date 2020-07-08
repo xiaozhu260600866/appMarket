@@ -19,7 +19,7 @@
 					<view @click="goto('/pages/user/login/layouts/register',1)">快速注册</view>
 				</view>
 				<view class="mt15 other-type">
-					<dx-divider>其它登录方式</dx-divider>
+					<dx-divider :border="true">其它登录方式</dx-divider>
 					<view class="wechat mt10" @click="wechatAuth"><text class="dxi-icon dxi-icon-wechat"></text></view>
 				</view>
 			</view>
