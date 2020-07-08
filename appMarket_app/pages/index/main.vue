@@ -22,9 +22,9 @@
 		<dx-nav-class :data="data.location.data" num="5" pageNum="10" :imgWidth="44" :imgHeight="44" :namePTop="0" :isturnpage="false" @click="navGo"></dx-nav-class>
 		<!-- 今日特价 -->
 		<view class="iSale bg-f m12 bdr6">
-			<dx-title name="今日特价" arrow :noborder="true">
+			<dx-title name="今日特价" :nameSize="14" nameBold="bold" arrow :noborder="true">
 				<view slot="left">
-					<view class="iconfont icon-index-star-c fc-red fs-18 mr10"></view>
+					<view class="iconfont icon-index-star-c fc-red fs-18 mr10 pt3"></view>
 				</view>
 				<view slot="right">
 					<view class="fs-13 fc-9">更多</view>
