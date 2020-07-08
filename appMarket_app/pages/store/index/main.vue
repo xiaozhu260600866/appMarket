@@ -12,10 +12,10 @@
 				<view class="fs-12 lh-16">{{data.collect == true ? '已收藏':'收藏'}}</view>
 			</view>
 		</view>
-		<view class="topInfo" :style="{top:height_+'px',}" style="height: 224upx;">
-			<dx-products-pic :src="merchant.cover" :isList="true" myclass="main-bg fc-white pb0" :imgWidth="100" :imgHeight="100">
+		<view class="topInfo" :style="{top:height_+'px',}" style="height: 248upx;">
+			<dx-products-pic :src=" merchant.cover? merchant.cover : '/static/nopropic.png'" :isList="true" myclass="main-bg fc-white" :imgWidth="100" :imgHeight="100">
 				<view class="grade flex-baseline">
-					<dx-icon name="star-fill" :size="14" color="#ff721f"></dx-icon>
+					<tui-rate :current="5" :disabled="true" active="#FDB508" :score="0" :size="14"></tui-rate>
 					<view class="num fs-15 ml5">5分</view>
 				</view>
 				<view class="flex-middle businessHours mtb5">
@@ -29,17 +29,17 @@
 				</view>
 			</dx-products-pic>
 		</view>
-		<view class="tabs-num" :style="{top: (upx2px(224)+height_)+'px'}">
+		<view class="tabs-num" :style="{top: (upx2px(248)+height_)+'px'}">
 			<dx-tabs :tabs="tabs" v-model="type" selectedColor="#57C734" sliderBgColor="#57C734" :nameSize="16" :height="88"></dx-tabs>
 		</view>
 		<view class="proCon" v-if="type  == 'order'">
-			<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:height+'px',top:(upx2px(224+88)+height_)+'px',}">
+			<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:height+'px',top:(upx2px(248+88)+height_)+'px',}">
 				<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
 				 :data-current="key"  @click="changeClassKey(key)">
 					<text>{{item.label}}</text>
 				</view>
 			</scroll-view>
-			<scroll-view scroll-y scroll-with-animation class="right-box" :style="{top:(upx2px(224+88)+height_)+'px',}">
+			<scroll-view scroll-y scroll-with-animation class="right-box" :style="{top:(upx2px(248+88)+height_)+'px',}">
 				<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart"></store-pro>
 			</scroll-view>
 		</view>
@@ -58,11 +58,13 @@
 import dxProductsPic from 'doxinui/components/products/pic'
 import dxTabs from "doxinui/components/tabs/tabs"
 import storePro from '@/components/store_pro'
+import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 	export default {
 		components:{
 			dxProductsPic,
 			dxTabs,
-			storePro
+			storePro,
+			tuiRate
 		},
 		data() {
 			return {
