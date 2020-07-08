@@ -1,32 +1,35 @@
 <template>
 	<view>
+		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction" Fbottom="bottom: 180upx">
 			<view slot="floatBtn">
 				<view @click="goto('/pages/product/create_edit/main',1)">
-					<floatBtn type="2" icon="icon-count-plus" myclass="float-nav-green" iSize="fs-19" nSize="fs-12" title="新增"></floatBtn>
+					<floatBtn type="2" icon="icon-count-plus" myclass="float-nav-green topFloat" iSize="fs-22" nSize="fs-12" title="新增"></floatBtn>
 				</view>
 			</view>
 		</page>
-		<view class="pro-header-box main-bg flex-middle fc-white plr10" :style="{height:height_+'px'}">
-			<view class="pro-header flex1 text-center" :style="{paddingTop:top+'px',paddingLeft:40*2+'rpx'}">
-				商品详情
-			</view>
-			<view class="pro-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}">
-				<view class="dxi-icon dxi-icon-zoom-in" @click="goto('/pages/search/products/main',1)"></view>
-			</view>
-		</view>
-		<view>
-			<scroll-view scroll-y scroll-with-animation class="tab-view pb50" :scroll-top="scrollTop" :style="{height:height+'px',top:top_+'px'}">
-				<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
-				 :data-current="index"  @click="changeClassKey(key)">
-					<text>{{item.label}}</text>
+		<view class="zindex2">
+			<view class="pro-header-box main-bg flex-middle fc-white plr10" :style="{height:height_+'px'}">
+				<view class="pro-header flex1 text-center" :style="{paddingTop:top+'px',paddingLeft:40*2+'rpx'}">
+					商品详情
 				</view>
-			</scroll-view>
-			<block v-for="(item,index) in data.productClass" :key="index">
-				<scroll-view scroll-y class="right-box pb50" :style="{height:height+'px',top:top_+'px'}" v-if="currentTab==index">
-						<productLists :data="data.productClass[selectClassKey].products.data"></productLists>
+				<view class="pro-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}">
+					<view class="dxi-icon dxi-icon-zoom-in" @click="goto('/pages/search/products/main',1)"></view>
+				</view>
+			</view>
+			<view>
+				<scroll-view scroll-y scroll-with-animation class="tab-view pb50" :scroll-top="scrollTop" :style="{height:height+'px',top:height_+'px'}">
+					<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
+					 :data-current="index"  @click="changeClassKey(key)">
+						<text>{{item.label}}</text>
+					</view>
 				</scroll-view>
-			</block>
+				<block v-for="(item,index) in data.productClass" :key="index">
+					<scroll-view scroll-y class="right-box pb50" :style="{height:height+'px',top:height_+'px'}" v-if="currentTab==index">
+						<productLists :data="data.productClass[selectClassKey].products.data"></productLists>
+					</scroll-view>
+				</block>
+			</view>
 		</view>
 	</view>
 </template>

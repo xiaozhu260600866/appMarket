@@ -39,7 +39,7 @@
 						</view>
 						<view class="print">
 							<dx-button round btnBd="#fff" @click="printf(item)">打印小票</dx-button>
-							<dx-button round btnBd="#fff" @click="order(item)">接单</dx-button>
+							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3">接单</dx-button>
 						</view>
 					</view>
 				</view>

@@ -1,10 +1,10 @@
 <template>
 	<view class="proLists">
-		<dx-products-pic v-for="item in data" :src="item.firstCover" :isList="true">
-			<view class="title fs-16 fw-bold">{{ item.name }}</view>
+		<dx-products-pic v-for="item in data" :src="item.firstCover ?item.firstCover:'/static/nopropic.png'" :isList="true">
+			<view class="title fs-16 fw-bold pr15">{{ item.name }}</view>
 			<view class="grade flex-middle fc-3 fs-13 mt3">
-				<view class="sales">销 <text class="Arial">{{ item.sales }}</text></view>
-				<view class="fresh pl15">当前库存：<text class="Arial">{{ item.num  }}</text></view>
+				<view class="sales pr15">销量 <text class="Arial">53{{ item.sales }}</text></view>
+				<view class="fresh">当前库存：<text class="Arial">{{ item.num  }}</text></view>
 			</view>
 			<view class="num flex mt3">
 				<view class="nav">新鲜度 <text class="Arial">{{ item.fresh }}</text></view>
@@ -16,11 +16,16 @@
 				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>
 				<dx-button size="mini">下架</dx-button>
 			</view>
+			<view class="del-icon"><text class="dxi-icon dxi-icon-del"></text></view>
 		</dx-products-pic>
 	</view>
 </template>
 <script>
+import dxProductsPic from "doxinui/components/products/pic"
 	export default {
+		components:{
+			dxProductsPic
+		},
 		props: ["data"]
 	}
 </script>
@@ -41,4 +46,8 @@
 
 .edit-nav /deep/span{display: flex;}
 .edit-nav /deep/.dxi-btn{margin: 20upx 0 0 20upx;}
+
+/deep/.dxi_pic-lists{position: relative;}
+.dxi-icon{position: absolute;top: 0;right: 0;width: 80upx;height: 80upx;text-align: center;line-height: 80upx;}
+
 </style>

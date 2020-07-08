@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="info-form">
 			<view class="bg-f">

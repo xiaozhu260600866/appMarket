@@ -1,4 +1,4 @@
-.logo{padding: 80upx 0;text-align: center;}
+.logo{padding: 80upx 0;text-align: center;position: relative;z-index: 2;}
 .logo .img{width: 160upx;height: 160upx;border-radius: 12upx;}
 
 .other-type .wechat{text-align: center;}

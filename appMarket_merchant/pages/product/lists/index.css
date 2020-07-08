@@ -1,7 +1,17 @@
+/* 活动按钮 */
+/deep/.topFloat{height: 110upx!important;width: 110upx!important;}
+/deep/.topFloat .nav-box{height: 110upx!important;width: 110upx!important;}
+/deep/.topFloat .one-icon .iconfont{height: 110upx!important;line-height: 110upx!important;}
+/deep/.topFloat .nav-icon{height: 68upx!important;line-height: 68upx!important;}
+
+
+.pro-header-box{position: fixed;left: 0;width: 100%;top: 0;}
+
+
 /* 左侧导航布局 start*/
 /* 隐藏scroll-view滚动条*/
 ::-webkit-scrollbar {width: 0;height: 0;color: transparent;}
-.tab-view {width: 180upx;position: fixed;left: 0;z-index: 10;}
+.tab-view {width: 180upx;position: fixed;left: 0;z-index: 10;background: #f6f6f6;}
 .tab-bar-item {width: 180upx;height: 110upx;background: #f6f6f6;box-sizing: border-box;display: flex;align-items: center;justify-content: center;font-size: 26upx;color: #444;font-weight: 400;}
 .active {position: relative;color: #000;font-size: 30upx;font-weight: 600;background: #fcfcfc;}
 .active::before {content: "";position: absolute;border-left: 8upx solid #57C734;height: 30upx;left: 0;}

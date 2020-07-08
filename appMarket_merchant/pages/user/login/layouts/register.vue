@@ -1,29 +1,28 @@
 <template>
 	<view>
+		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="info-form">
 			<view class="bg-f" v-if="step == 1">
-				<my-picker :picker-list="data.citys" column-num="3"  @confirm="cityCallBack">
-					<view :class="['weui-cell','weui-cell_input']">
-						<view class="weui-cell__hd">
-							<view class="weui-label fs14">选择省市区<span class="font_red">*</span></view>
+				<my-picker :picker-list="data.citys" :column-num="3"  @confirm="cityCallBack">
+					<view class="dx-cell">
+						<view class="dx-cell_hd">
+							<view class="dx-label">省市区<span class="star">*</span></view>
 						</view>
-						<view class="weui-cell__bd text-right">
-							<span v-for="v in ruleform.cityName">{{v}}</span>
+						<view class="dx-cell_bd text-right">
+							<span class="pl8" v-for="v in ruleform.cityName">{{v}}</span>
 						</view>
-						<view class="weui-cell__ft" >
-							<text class="weui-cell__ft_in-access"></text>
-						</view>
+						<view class="dx-cell_ft dx_ft-access"></view>
 					</view>
 				</my-picker>
-				<weui-input v-model="ruleform.market_id" label="选择市场" datatype="require" name="market_id" changeField="value" type="select" dataKey="market"></weui-input>
+				<weui-input v-model="ruleform.market_id" label="市场" datatype="require" name="market_id" changeField="value" type="select" dataKey="market"></weui-input>
 				<weui-input v-model="ruleform.address" label="详细地址" type="location" name="address" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.phone" label="手机号" type="number" name="phone" datatype="require|phone"></weui-input>
 				<weui-input v-model="ruleform.code" label="验证码" datatype="require" type="sms" name="sms" :phone="ruleform.phone"
 				 action="/sendSms.html"></weui-input>
 				<weui-input v-model="ruleform.password" label="密码" datatype="require" type="password" name="password"></weui-input>
 				<view class="m20 info-subBtn">
-					<dx-button block @click="submit">下一步</dx-button>
+					<dx-button block size="lg" @click="submit">下一步</dx-button>
 				</view>
 			</view>
 			<view class="bg-f" v-if="step == 2">
@@ -31,13 +30,13 @@
 				 datatype="require"></weui-input>
 				<weui-input v-model="ruleform.idCard2" label="身份证人像面" type="upload" upurl='merchant' allowUpLoadNum="1" name="idCard2"
 				 datatype="require"></weui-input>
-				 <weui-input v-model="ruleform.company_logo" label="营业执照" type="upload" upurl='merchant' allowUpLoadNum="1" name="company_logo"
+				<weui-input v-model="ruleform.company_logo" label="营业执照" type="upload" upurl='merchant' allowUpLoadNum="1" name="company_logo"
 				  datatype="require"></weui-input>
-				  <weui-input v-model="ruleform.health_logo" label="健康证" type="upload" upurl='merchant' allowUpLoadNum="1" name="health_logo"
+				<weui-input v-model="ruleform.health_logo" label="健康证" type="upload" upurl='merchant' allowUpLoadNum="1" name="health_logo"
 				   datatype="require"></weui-input>
-				   <view class="m20 info-subBtn">
-				   	<dx-button block @click="submit">完成</dx-button>
-				   </view>
+				<view class="m20 info-subBtn">
+					<dx-button block size="lg" @click="submit">完成</dx-button>
+				</view>
 			
 			</view>
 		
@@ -147,5 +146,6 @@
 	}
 </script>
 <style scoped="">
-	@import url('../index.css')
+@import url('../index.css');
+@import url("xiaozhu/css/dx-input")
 </style>

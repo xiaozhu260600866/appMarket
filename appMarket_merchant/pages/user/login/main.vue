@@ -1,7 +1,8 @@
 <template>
 	<view>
+		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view >
+		<view class="zindex2">
 			<view class="logo">
 				<img class="img" :src="login.src">
 			</view>
@@ -11,7 +12,7 @@
 					<weui-input v-model="ruleform.password" placeholder="请输入密码" type="password" myclass="plr0" name="password" datatype="require"></weui-input>
 				</view>
 				<view class="mt30">
-					<dx-button type="success" block @click="submit">登录</dx-button>
+					<dx-button type="success" size="lg" block @click="submit">登录</dx-button>
 				</view>
 				<view class="flex-between flex-middle mt15 fc-6 fs-14">
 					<view @click="goto('/pages/user/login/layouts/password',1)">忘记密码</view>
@@ -44,7 +45,7 @@
 				getSiteName: this.getSiteName(),
 				ruleform:{},
 				login:{
-					src:'static/banner01.jpg'
+					src:'static/logo.png'
 				}
 			}
 		},

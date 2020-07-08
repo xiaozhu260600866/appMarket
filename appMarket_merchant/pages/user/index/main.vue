@@ -55,7 +55,7 @@
 					{url:'/pages/user/finance/client',type: 1,icon:'iconfont icon-user-finance-client',name:'顾客分析'},
 					{url:'/pages/user/discounts/lists/main',type: 1,icon:'iconfont icon-user-coupon',name:'优惠活动'},
 					{url:'/pages/news/lists/main',type: 1,icon:'iconfont icon-user-news',name:'店铺公告'}
-				]" myclass="bdr12" num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5"></dx-nav-class>
+				]" @click="checkAuth" myclass="bdr12" num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5"></dx-nav-class>
 			</view>
 			
 		</view>
@@ -174,6 +174,9 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 			}
 		},
 		methods: {
+			checkAuth(v){
+				return this.goto(v.url,v.type);
+			},
 			ajax() {
 				this.getAjaxForApp(this, {
 				
