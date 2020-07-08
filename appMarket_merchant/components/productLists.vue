@@ -3,14 +3,14 @@
 		<dx-products-pic v-for="item in data" :src="item.firstCover ?item.firstCover:'/static/nopropic.png'" :isList="true">
 			<view class="title fs-16 fw-bold pr15">{{ item.name }}</view>
 			<view class="grade flex-middle fc-3 fs-13 mt3">
-				<view class="sales pr15">销量 <text class="Arial">53{{ item.sales }}</text></view>
+				<view class="sales pr15">销量：<text class="Arial">53{{ item.sales }}</text></view>
 				<view class="fresh">当前库存：<text class="Arial">{{ item.num  }}</text></view>
 			</view>
 			<view class="num flex mt3">
-				<view class="nav">新鲜度 <text class="Arial">{{ item.fresh }}</text></view>
+				<view class="nav">新鲜度：<text class="Arial">{{ item.freshness }}</text></view>
 			</view>
 			<view class="flex-between">
-				<dx-price v-model="item.price" split :intSize="20" :decimalSize="12"></dx-price>
+				<dx-price v-model="item.price" split :intSize="16" :decimalSize="12"></dx-price>
 			</view>
 			<view class="edit-nav flex-right">
 				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>

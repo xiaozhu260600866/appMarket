@@ -17,7 +17,7 @@
 						</view>
 						<view class="flex-middle">
 							<view class="icon dxi-icon dxi-icon-location-fill mr12"></view>
-							<view class="icon dxi-icon dxi-icon-tel-fill"></view>
+							<view class="icon dxi-icon dxi-icon-tel-fill" @click="phone(parent.getUser.phone)"></view>
 						</view>
 					</view>
 					<view class="address mt5 fc-6">{{ parent.getUser.address }}</view>
@@ -37,7 +37,7 @@
 					</view>
 				</view>
 			</view>
-			<hasMore :parentData="data" source="order"></hasMore>
+			<!-- <hasMore :parentData="data" source="order"></hasMore> -->
 		</view>
 	</view>
 </template>

@@ -4,14 +4,17 @@
 		<page :parentData="data" :formAction="formAction" Fbottom="bottom: 180upx">
 			<view slot="floatBtn">
 				<view @click="goto('/pages/product/create_edit/main',1)">
-					<floatBtn type="2" icon="icon-count-plus" myclass="float-nav-green topFloat" iSize="fs-22" nSize="fs-12" title="新增"></floatBtn>
+					<floatBtn type="2" icon="icon-count-plus" myclass="float-nav-green topFloat" iSize="fs-22" nSize="fs-13" title="新增"></floatBtn>
 				</view>
 			</view>
 		</page>
 		<view class="zindex2">
 			<view class="pro-header-box main-bg flex-middle fc-white plr10" :style="{height:height_+'px'}">
+				<view class="pro-header-icon lh-24" :style="{paddingTop:top+'px'}">
+					<view class="dxi-icon dxi-icon-left" @click="goto('/pages/user/index/main',2)"></view>
+				</view>
 				<view class="pro-header flex1 text-center" :style="{paddingTop:top+'px',paddingLeft:40*2+'rpx'}">
-					商品详情
+					商品管理
 				</view>
 				<view class="pro-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}">
 					<view class="dxi-icon dxi-icon-zoom-in" @click="goto('/pages/search/products/main',1)"></view>

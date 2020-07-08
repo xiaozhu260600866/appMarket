@@ -2,7 +2,7 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view>
-			<dx-tabs :tabs="tabs" v-model="status" @change="ajax()" selectedColor="#57C734" sliderBgColor="#57C734" :height="92"
+			<dx-tabs :tabs="tabs" v-model="status" @change="ajax()" selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :size="32"
 			 :padding="0"></dx-tabs>
 			<view class="Iorder">
 				<view class="Iorder-list">
@@ -14,20 +14,20 @@
 							</view>
 							<view class="status main-color">{{item.status_message}}</view>
 						</view>
-						<view class="info">
+						<view class="info fs-15 fc-3">
 							<view class="flex-between flex-middle">
 								<view class="flex1">
-									<view class="name lh-24">{{ item.user.name }}<text class="Arial pl10">{{ item.user.phone }}</text></view>
-									<view class="msg fs-13 fc-6 lh-16">第<text class="Arial">1</text>次下单　收藏用户</view>
+									<view class="name lh-24">{{ item.addr_name }}<text class="Arial pl10">{{ item.addr_phone }}</text></view>
+									<view class="msg fs-13">第<text class="Arial">1</text>次下单　收藏用户</view>
 								</view>
-								<view class="icon dxi-icon dxi-icon-tel-fill"></view>
+								<view class="icon dxi-icon dxi-icon-tel-fill" @click="phone(item.addr_phone)"></view>
 							</view>
-							<view class="address mt5 fs-16">{{ item.addr_address }}</view>
+							<view class="address">{{ item.addr_address }}</view>
 						</view>
-						<view class="pro">
+						<view class="pro fs-14">
 							<view class="count">商品<text>({{item.products.length}})</text></view>
 							<view class="reamrk mt10">备注：{{ item.remark }}</view>
-							<view class="proLists fs-14" v-for="(v,num) in item.products">
+							<view class="proLists" v-for="(v,num) in item.products">
 								<view class="td name">{{ v.getProduct.name }}</view>
 								<view class="td num">X{{ v.num }}</view>
 								<view class="td price fc-3">{{ v.price }}</view>
@@ -44,6 +44,7 @@
 					</view>
 				</view>
 			</view>
+			<hasMore :parentData="data"></hasMore>
 		</view>
 		<printf ref="printf"></printf>
 	</view>

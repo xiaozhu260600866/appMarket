@@ -50,7 +50,7 @@
 					{url:'/pages/product/lists/main',type: 1,icon:'iconfont icon-user-products',name:'商品'},
 					{url:'/pages/user/evaluate/main',type: 1,icon:'iconfont icon-user-evaluate',name:'评价'},
 					{url:'/pages/user/wallet/index/main',type: 1,icon:'iconfont icon-user-wallet',name:'钱包'},
-					{url:'/pages/order/lists/main',type: 1,icon:'iconfont icon-user-order',name:'订单'},
+					{url:'/pages/index/main',type: 2,icon:'iconfont icon-user-order',name:'订单'},
 					{url:'/pages/user/finance/products',type: 1,icon:'iconfont icon-user-finance-pro',name:'菜品分析'},
 					{url:'/pages/user/finance/client',type: 1,icon:'iconfont icon-user-finance-client',name:'顾客分析'},
 					{url:'/pages/user/discounts/lists/main',type: 1,icon:'iconfont icon-user-coupon',name:'优惠活动'},
@@ -81,8 +81,8 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 				},
 				userLogin: true,
 				count:{
-					amount:9824,
-					integral:11,
+					amount:0,
+					integral:0,
 					couponNum:0
 				},
 				userInfo:{
@@ -175,6 +175,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 		},
 		methods: {
 			checkAuth(v){
+				console.log(v);
 				return this.goto(v.url,v.type);
 			},
 			ajax() {

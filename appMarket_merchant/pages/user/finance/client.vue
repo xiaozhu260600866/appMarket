@@ -25,12 +25,12 @@
 			<view class="bg-f mb12">
 				<view class="bd-be">
 					<dx-title name="收藏人数" :nameSize="15">
-						<view slot="right" class="fs-16 Arial fc-3">0</view>
+						<view slot="right" class="fs-16 Arial fc-3 flex1">0</view>
 					</dx-title>
 				</view>
 				<view class="bd-be">
 					<dx-title name="本周新增" :nameSize="15">
-						<view slot="right" class="fs-16 Arial fc-3">0</view>
+						<view slot="right" class="fs-16 Arial fc-3 flex1">0</view>
 					</dx-title>
 				</view>
 				<view class="ptb50 fs-16 fc-6 text-center">曲线统计图</view>

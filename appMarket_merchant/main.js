@@ -56,7 +56,7 @@ Vue.component(
 	dxAddress
 );
 
-import floatBtn from 'xiaozhu/wechatapp/components/floatBtn'
+import floatBtn from 'xiaozhu/uniapp/components/floatBtn'
 Vue.component(
 	'floatBtn',
 	floatBtn

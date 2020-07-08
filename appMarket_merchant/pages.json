@@ -101,7 +101,7 @@
 		{
 			"path": "pages/search/products/main",
 			"style": {
-				"navigationBarTitleText": "搜索商城",
+				"navigationBarTitleText": "搜索商品",
 				"enablePullDownRefresh": true
 			}
 		},

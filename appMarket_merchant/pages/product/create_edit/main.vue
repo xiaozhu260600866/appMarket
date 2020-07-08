@@ -12,7 +12,7 @@
 				<weui-input v-model="ruleform.specs" label="规格" placeholder="0.00斤" type="number" name="specs" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.num" label="库存" placeholder="0" type="number" name="num" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.freshness" label="新鲜度" placeholder="0-10数字越大表示越新鲜" type="number" name="freshness" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.fclass" label="商品属性" name="fclass" changeField="value" type="select" dataKey="propertyArr"></weui-input>
+				<weui-input v-model="ruleform.fclass" label="商品分类" name="fclass" changeField="value" type="select" dataKey="propertyArr"></weui-input>
 				<weui-input v-model="ruleform.shell_date" label="售买时间" type="date" name="date"></weui-input>
 			</view>
 			<view class="bg-f mb12">
@@ -25,7 +25,7 @@
 				<weui-input v-model="ruleform.auto_putaway" label="自动上架" type="switch" name="auto_putaway" ></weui-input>
 				<weui-input v-if="ruleform.auto_putaway" v-model="ruleform.putaway_date" label="售买时间" type="date" name="putaway_date"></weui-input>
 			</view>
-			<view @click="submit"><dxftButton type="primary" btnBg="#57C734" btnBd="#57C734">保存</dxftButton></view>
+			<view @click="submit"><dxftButton type="success" btnBg="#57C734" btnBd="#57C734">保存</dxftButton></view>
 		</view>
 	</view>
 </template>
