@@ -1,7 +1,8 @@
 <template>
 	<view>
+		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="info-form">
+		<view class="info-form zindex2">
 			<view class="bg-f">
 				<weui-input v-model="ruleform.sms" label="手机号" type="sms" name="sms" :phone="ruleform.phone" action="/auth/sendSms"></weui-input>
 				<weui-input v-model="ruleform.loginPassword" label="密码" type="number" name="loginPassword"></weui-input>
