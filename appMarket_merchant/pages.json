@@ -39,7 +39,7 @@
 			"path": "pages/user/login/layouts/register",
 			"style": {
 				"navigationBarTitleText": "快速注册",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": false
 			}
 		},
 		{

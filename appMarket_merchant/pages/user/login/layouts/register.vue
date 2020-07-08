@@ -16,7 +16,7 @@
 					</view>
 				</my-picker>
 				<weui-input v-model="ruleform.market_id" label="市场" datatype="require" name="market_id" changeField="value" type="select" dataKey="market"></weui-input>
-				<weui-input v-model="ruleform.address" label="详细地址" type="location" name="address" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.address" label="详细地址" type="location" name="address" datatype="require"  @callback="locationRes"></weui-input>
 				<weui-input v-model="ruleform.phone" label="手机号" type="number" name="phone" datatype="require|phone"></weui-input>
 				<weui-input v-model="ruleform.code" label="验证码" datatype="require" type="sms" name="sms" :phone="ruleform.phone"
 				 action="/sendSms.html"></weui-input>
@@ -65,6 +65,10 @@
 			}
 		},
 		methods: {
+			locationRes(res){
+				this.ruleform.location_x = res.latitude;
+				this.ruleform.location_y = res.longitude;
+			},
 			checkboxChange(e) {
 				let value = e.mp.detail.value.length;
 				this.ruleform.agress = value;
@@ -99,7 +103,7 @@
 						}else{
 							this.postAjax("/merchant/register", this.ruleform).then(msg => {
 								if (msg.data.status == 2) {
-									this.goto("/pages/login/main");
+									this.goto("/pages/user/login/main");
 								}
 							});
 						}
@@ -123,7 +127,7 @@
 			this.ruleform.clientid = info.clientid
 			//#endif
 			//#ifdef H5
-			this.ruleform.clientid = 'f5ce477bc2d8d5e1e1c3cdd2e059b924'
+			this.ruleform.clientid = '06c346e5ebc8af7fb57d01130ffc05d8'
 			//#endif
 			//var info = plus.push.getClientInfo();
 			//this.ruleform.clientid =  info.clientid
