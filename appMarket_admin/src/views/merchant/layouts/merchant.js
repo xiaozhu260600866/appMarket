@@ -11,7 +11,8 @@ export default {
         'checkAll': true,
         'searchFields': [
           { 'prop': 'name', 'type': 'text', 'label': '商家名称' },
-          { 'prop': 'phone', 'type': 'text', 'label': '商家电话' }
+          { 'prop': 'phone', 'type': 'text', 'label': '商家电话' },
+          { 'prop': 'phone', 'type': 'text', 'label': '所属市场' }
           ],
           'tarbars': {
               'prop': 'status',

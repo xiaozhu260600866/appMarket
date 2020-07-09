@@ -7,6 +7,7 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 /* Router Modules */
+import indexRouter from './modules/index'
 import settingRouter from './modules/setting'
 import userRouter from './modules/user'
 import articleRouter from './modules/article'
@@ -95,6 +96,7 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
+  indexRouter,
   userRouter,
   articleRouter,
   feedbackRouter,
