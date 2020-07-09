@@ -16,7 +16,7 @@
 				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>
 				<dx-button size="mini">下架</dx-button>
 			</view>
-			<view class="del-icon"><text class="dxi-icon dxi-icon-del"></text></view>
+			<view class="del-icon"><text class="dxi-icon dxi-icon-del" @click="del(item)"></text></view>
 		</dx-products-pic>
 	</view>
 </template>
@@ -25,6 +25,26 @@ import dxProductsPic from "doxinui/components/products/pic"
 	export default {
 		components:{
 			dxProductsPic
+		},
+		methods:{
+			del(item) {
+				uni.showModal({
+					title: '提示',
+					content: '您确定要删除这个产品吗',
+					success: res => {
+						if (res.confirm) {
+							this.postAjax('/ajax/mydel', {
+								id: item.id,
+								tablename: 'products'
+							}).then(msg=>{
+								if (msg.data.status == 2) {
+									this.getParent(this).ajax();
+								}
+							});
+						}
+					}
+				})
+			},
 		},
 		props: ["data"]
 	}

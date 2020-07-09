@@ -30,27 +30,29 @@
 					<view class="fs-13 fc-9">更多</view>
 				</view>
 			</dx-title>
-			<dx-products-scroll :data="saleLists" :itemWidth="120" bgColor="transparent" :itemLRMargin="5" imgHeight="172rpx" imgR="12rpx"></dx-products-scroll>
+			<dx-products-scroll :data="data.isindexLists.data" :itemWidth="120" bgColor="transparent" :itemLRMargin="5" imgHeight="172rpx" imgR="12rpx"></dx-products-scroll>
 		</view>
 		<view class="iad-img">
 			<image src="../../static/Iad02.jpg" mode="widthFix" class="img"></image>
 		</view>
 		<!-- 附近的市场 -->
-		<view class="markt-group" v-for="v in marktGroup">
+		<view class="markt-group" v-for="v in data.market">
 			<view class="markt-ad">
-				<image class="flex img" :src="v.adCover" mode="widthFix"></image>
+				<image class="flex img" :src="v.getPic" mode="widthFix"></image>
 				<view class="info plr15 pt10">
 					<view class="name flex-middle">
-						<view class="fs-17 fw-bold lh-24">{{ v.markt.name }}</view>
-						<view class="ml10 lh-24"><tui-rate :current="v.markt.current" :disabled="true" :score="'0.'+v.markt.score" :size="14"></tui-rate></view>
-						<view class="fs-12 pl5 lh-24">{{ v.markt.current }}.{{ v.markt.score }}分</view>
+						<view class="fs-17 fw-bold lh-24">{{ v.name }}</view>
+						<view class="ml10 lh-24"><tui-rate current="5" :disabled="true" score="5" :size="14"></tui-rate></view>
+						<view class="fs-12 pl5 lh-24">5分</view>
 					</view>
-					<view class="address fs-13 mtb3"><text class="dxi-icon dxi-icon-location-fill fs-13 pr5"></text>{{ v.markt.address }}</view>
-					<view class="remark fs-12">起送<text class="Arial pr10">￥{{ v.markt.send_price }}</text><text class="Arial">{{ v.markt.location }}</text>km</view>
+					<view class="address fs-13 mtb3"><text class="dxi-icon dxi-icon-location-fill fs-13 pr5"></text>{{ v.address }}</view>
+				<view class="remark fs-12">起送<text class="Arial pr10">￥100</text>
+					<filterKm v-model="v.juli" v-if="v.juli"></filterKm>
+				</view> 
 				</view>
 			</view>
 			<view @click="goto('/pages/product/show/main',1)">
-				<dx-products-scroll :data="v.productsLists" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100" :itemLRMargin="3"></dx-products-scroll>
+				<dx-products-scroll :data="v.product.data" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100" :itemLRMargin="3"></dx-products-scroll>
 			</view>
 		</view>
 		<!-- 市场列表 -->
@@ -72,6 +74,7 @@ import dxTabsScroll from "doxinui/components/tabs/tabs_scroll"
 import shopList from "components/shop_list.vue"
 import dxTitle from "doxinui/components/title/title"
 import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
+import filterKm from '@/components/filterKm';
 	export default {
 		components:{
 			dxNavClass,
@@ -79,7 +82,8 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 			shopList,
 			dxTabsScroll,
 			dxTitle,
-			tuiRate
+			tuiRate,
+			filterKm
 		},
 		data() {
 			return {
@@ -276,7 +280,9 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 			//#endif
 			
 		
-			this.ajax();
+			this.getMyAddress(this, msg=>{
+				this.ajax();
+			});
 		},
 		methods: {
 			change(e) {
@@ -292,7 +298,23 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 				this.getAjaxForApp(this, {
 				
 				}).then(msg => {
-					this.setTitle("你好");
+					if(this.data.isindexLists.data.length){
+						this.data.isindexLists.data.forEach(v=>{
+							this.$set(v,"pic",v.firstCover)
+						});
+						console.log(this.data.isindexLists);
+					}
+					if(this.data.market.length){
+						this.data.market.forEach(market=>{
+							if(market.product.data.length){
+								market.product.data.forEach(v=>{
+									this.$set(v,"pic",v.firstCover)
+								});
+							}
+							
+						});
+						console.log(this.data.market);
+					}
 				});
 			},
 			navGo(v){

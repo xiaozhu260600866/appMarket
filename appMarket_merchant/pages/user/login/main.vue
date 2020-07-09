@@ -90,7 +90,7 @@
 			this.ruleform.clientid = info.clientid
 			//#endif
 			//#ifdef H5
-			this.ruleform.clientid = '06c346e5ebc8af7fb57d01130ffc05d8'
+			this.ruleform.clientid = '6e011a9587b572c95a189135de443b60'
 			//#endif
 			console.log(this.ruleform);
 			//this.getError(uni.getStorageSync('openid') + '1');
