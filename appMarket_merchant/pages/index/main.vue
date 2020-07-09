@@ -125,7 +125,7 @@
 					status: this.status
 
 				}).then(msg => {
-					this.setTitle("你好");
+					this.setTitle(msg.merchant.name);
 				});
 			}
 

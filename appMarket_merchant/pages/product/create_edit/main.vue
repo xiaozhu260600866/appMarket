@@ -12,7 +12,7 @@
 				<weui-input v-model="ruleform.specs" label="规格" placeholder="0.00斤" type="number" name="specs" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.num" label="库存" placeholder="0" type="number" name="num" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.freshness" label="新鲜度" placeholder="0-10数字越大表示越新鲜" type="number" name="freshness" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.fclass" label="商品分类" name="fclass" changeField="value" type="select" dataKey="propertyArr"></weui-input>
+				<weui-input v-model="ruleform.fclass" label="商品分类" name="fclass" changeField="value" type="select" datatype="require" dataKey="propertyArr"></weui-input>
 				<weui-input v-model="ruleform.shell_date" label="售买时间" type="date" name="date"></weui-input>
 			</view>
 			<view class="bg-f mb12">
@@ -50,6 +50,16 @@ import dxftButton from "doxinui/components/button/footer-button"
 		},
 		methods: {
 			submit(){
+				if(!this.ruleform.auto_group){
+					delete this.vaildate.group_num;
+					delete this.vaildate.group_price;
+				}
+				if(!this.ruleform.auto_putaway){
+					delete this.vaildate.auto_putaway;
+				
+				}
+				console.log(this.vaildate);
+				
 				this.vaildForm(this,res=>{
 					if(res){
 						this.postAjax(this.formAction,this.ruleform).then(msg=>{

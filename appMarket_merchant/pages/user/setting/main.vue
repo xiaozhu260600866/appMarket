@@ -23,7 +23,7 @@
 					<weui-input v-model="ruleform.loginPassword" label="登录密码" type="txt" name="loginPassword" arrow></weui-input>
 				</view>
 			</view>
-			<view class="login_out">退出登录</view>
+			<view class="login_out" @click="lgout">退出登录</view>
 		</view>
 	</view>
 </template>
@@ -54,6 +54,16 @@
 			}
 		},
 		methods: {
+			lgout(){
+				this.getConfirm("是否确认退出登录",()=>{
+					this.postAjax("/merchant/lgout").then(msg=>{
+						if(msg.data.status == 2){
+							uni.removeStorageSync('userInfo');
+							this.goto("/pages/user/login/main");
+						}
+					});
+				});
+			},
 			ajax() {
 				this.getAjaxForApp(this, {
 				
