@@ -23,6 +23,20 @@
 			}
 		},
 		{
+			"path": "pages/user/message/chat/main",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/message/lists/main",
+			"style": {
+				"navigationBarTitleText": "信息列表",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/user/cart/main",
 			"style": {
 				"navigationBarTitleText": "购物车",
@@ -304,7 +318,7 @@
 				"selectedIconPath": "static/image/F02.png"
 			},
 			{
-				"pagePath": "pages/message/lists/main",
+				"pagePath": "pages/user/message/lists/main",
 				"text": "消息",
 				"iconPath": "static/image/G01.png",
 				"selectedIconPath": "static/image/G02.png"

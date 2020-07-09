@@ -17,6 +17,7 @@
 				</my-picker>
 				<weui-input v-model="ruleform.market_id" label="市场" datatype="require" name="market_id" changeField="value" type="select" dataKey="market"></weui-input>
 				<weui-input v-model="ruleform.address" label="详细地址" type="location" name="address" datatype="require"  @callback="locationRes"></weui-input>
+				<weui-input v-model="ruleform.name" label="商家名称" type="text" name="name" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.phone" label="手机号" type="number" name="phone" datatype="require|phone"></weui-input>
 				<weui-input v-model="ruleform.code" label="验证码" datatype="require" type="sms" name="sms" :phone="ruleform.phone"
 				 action="/sendSms.html"></weui-input>
