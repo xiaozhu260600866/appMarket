@@ -1,8 +1,8 @@
 <template>
   <div>
-    <dx-table :data="data" :global-data="globalData" :operate-width="280" @submitBeforeCallBack="submitBeforeCallBack">
+    <dx-table :data="data" :global-data="globalData" :operate-width="240" @submitBeforeCallBack="submitBeforeCallBack">
       <div slot="operate" slot-scope="scope">
-        <el-button @click="toDown(scope.row)">下级城市</el-button>
+        <el-button type="primary" size="small" @click="toDown(scope.row)">下级城市</el-button>
       </div>
     </dx-table>
   </div></template>

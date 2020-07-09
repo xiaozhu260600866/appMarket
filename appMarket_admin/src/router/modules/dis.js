@@ -7,19 +7,19 @@ const disRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'dis',
-    meta: {title: '分销管理', icon: 'dx-hr'},
+    meta: {title: '分销管理', icon: 'dx-dis'},
     children: [
         {
           path: 'config',
           component: () => import('@/views/dis/config'),
           name: 'disConfig',
-          meta: { title: '分销设置', icon: 'dx-hr-info' }
+          meta: { title: '分销设置', icon: 'documentation' }
         },
         {
           path: 'lists',
           component: () => import('@/views/dis/lists'),
           name: 'disLists',
-          meta: { title: '分销列表', icon: 'dx-hr-info' }
+          meta: { title: '分销列表', icon: 'documentation' }
         },
 
     ]

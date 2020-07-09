@@ -47,12 +47,16 @@ export default {
            }]
        },
         'tableFields': [
+            { 'prop': 'id', 'minWidth': '', 'width': '80','align': 'center', 'append_table_': 0, 'label': '编号' },
             { 'prop': 'cover', 'minWidth': '', 'width': '60', 'append_table_cover': 1, 'label': '图片' },
             { 'prop': 'name', 'minWidth': '180', 'width': '', 'append_table_': 0, 'label': '产品名称' },
-            { 'prop': 'merchant_name', 'minWidth': '180', 'width': '', 'append_table_': 0, 'label': '商家名称' },
+            { 'prop': 'fclassname', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '分类' },
+            { 'prop': 'merchant_name', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '商家名称' },
             { 'prop': 'price', 'minWidth': '', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '单价' },
-            { 'prop': 'num', 'minWidth': '', 'width': '80', 'align': 'center', 'append_table_': 0, 'label': '库存' },
-            { 'prop': 'fclassname', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '分类' },
+            { 'prop': 'specs', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '规格' },
+            { 'prop': 'num', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '库存' },
+            { 'prop': '', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '销量' },
+            { 'prop': '', 'minWidth': '', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '状态' },
             { 'prop': 'shell_date', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '售卖日期' },
             { 'prop': 'created_at', 'minWidth': '', 'width': '160', 'append_table_': 0, 'label': '发布日期' }
         ],

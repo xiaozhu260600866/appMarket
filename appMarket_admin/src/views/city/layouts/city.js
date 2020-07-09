@@ -18,8 +18,9 @@ export default {
         'tableFields': [{
             'name': '',
             'prop': 'id',
-            'minWidth': '180',
-            'width': '',
+            'minWidth': '',
+            'width': '80',
+            'align': 'center',
             'append_table_': 0,
             'label': 'ID编号'
         }, {
@@ -32,18 +33,18 @@ export default {
         }, {
             'name': '',
             'prop': 'getStatus',
-            'minWidth': '180',
-            'width': '',
+            'minWidth': '',
+            'width': '120',
             'append_table_': 0,
             'label': '状态'
         },
         {
             'name': '',
             'prop': 'status',
-            'minWidth': '180',
-            type: 'editField',
-            url: '/admin/city/editField',
-            'width': '',
+            'minWidth': '',
+            'width': '120',
+            'type': 'editField',
+            'url': '/admin/city/editField',
             'append_table_': 0,
             'label': '开通/不开通'
         }],

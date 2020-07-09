@@ -15,11 +15,11 @@ export default {
             'label': '名称'
         }],
         'tableFields': [
-          { 'prop': 'name', 'minWidth': '180', 'append_table_': 0, 'label': '市场名称' },
-          { 'prop': 'hour_time', 'minWidth': '180', 'append_table_': 0, 'label': '营业时间' },
-          { 'prop': 'address', 'minWidth': '180', 'append_table_': 0, 'label': '市场地址' },
-          { 'prop': 'putaway', 'minWidth': '180', type: 'editField', url: '/admin/market/editField', 'append_table_': 0, 'label': '启用/禁用' },
-          { 'prop': 'created_at', 'minWidth': '180', 'append_table_': 0, 'label': '创建时间' }
+          { 'prop': 'name', 'minWidth': '100','width':'', 'append_table_': 0, 'label': '市场名称' },
+          { 'prop': 'hour_time', 'minWidth': '','width':'120', 'append_table_': 0, 'label': '营业时间' },
+          { 'prop': 'address', 'minWidth': '180','width':'', 'append_table_': 0, 'label': '市场地址' },
+          { 'prop': 'putaway', 'minWidth': '','width':'90', 'align': 'center','type': 'editField', 'url': '/admin/market/editField', 'append_table_': 0, 'label': '启用/禁用' },
+          { 'prop': 'created_at', 'minWidth': '','width':'160', 'append_table_': 0, 'label': '创建时间' }
        ],
         'formFields': [
           { prop: 'name', datatype: 'require', type: 'text', label: '市场名称' },

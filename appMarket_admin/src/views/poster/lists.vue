@@ -1,6 +1,6 @@
 <template>
     <div>
-      <dx-table :data="data" :globalData="globalData" @submitBeforeCallBack="submitBeforeCallBack" :operateWidth="280">    </dx-table>
+      <dx-table :data="data" :globalData="globalData" @submitBeforeCallBack="submitBeforeCallBack" :operateWidth="180">    </dx-table>
     </div>
 </template>
 <script type="text/javascript">

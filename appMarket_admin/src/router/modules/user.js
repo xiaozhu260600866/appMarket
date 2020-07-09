@@ -7,12 +7,12 @@ const userRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'User',
-    meta: {title: '会员管理', icon: 'dx-hr'},
+    meta: {title: '会员管理', icon: 'dx-vip-user'},
     children: [{
         path: 'lists',
         component: () => import('@/views/user/lists'),
         name: 'UserLists',
-        meta: { title: '会员列表', icon: 'dx-hr-info' }
+        meta: { title: '会员列表', icon: 'dx-vip-user' }
     } //{
       //     path: 'show',
       //     component: () => import('@/views/user/show'),

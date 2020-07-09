@@ -54,16 +54,16 @@ export default {
             {
                 "name": "",
                 "prop": "fclassname",
-                "minWidth": "180",
-                "width": "",
+                "minWidth": "",
+                "width": "180",
                 "append_table_": 0,
                 "label": "分类"
             },
             {
                 "name": "",
                 "prop": "published_at",
-                "minWidth": "180",
-                "width": "",
+                "minWidth": "",
+                "width": "120",
                 "append_table_": 0,
                 "label": "发布日期"
             },

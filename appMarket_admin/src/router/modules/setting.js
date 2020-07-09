@@ -7,7 +7,7 @@ const settingRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'Setting',
-    meta: { title: '基本配置', icon: 'dx-sales' },
+    meta: { title: '基本配置', icon: 'dx-setting' },
     children: [{
         path: 'system',
         component: () => import('@/views/setting/system'),

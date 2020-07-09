@@ -95,13 +95,13 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  settingRouter,
   userRouter,
   articleRouter,
   feedbackRouter,
   merchantRouter,
   horseRouter,
   disRouter,
+  settingRouter,
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

@@ -7,13 +7,13 @@ const horseRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'Horse',
-    meta: { title: '骑家管理', icon: 'dx-hr' },
+    meta: { title: '骑家管理', icon: 'dx-horse' },
     children: [
         {
           path: 'lists',
           component: () => import('@/views/horse/lists'),
           name: 'horseLists',
-          meta: { title: '骑手列表', icon: 'dx-hr-info' }
+          meta: { title: '骑手列表', icon: 'dx-horse' }
         },
     ]
 }

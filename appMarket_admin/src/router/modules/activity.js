@@ -7,13 +7,13 @@ const merchantRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'Merchant',
-    meta: { title: '商家管理', icon: 'dx-hr' },
+    meta: { title: '商家管理', icon: 'dx-merchant' },
     children: [
         {
           path: 'lists',
           component: () => import('@/views/merchant/lists'),
           name: 'merchantLists',
-          meta: { title: '商家列表', icon: 'dx-hr-info' }
+          meta: { title: '商家列表', icon: 'dx-merchant' }
         }
         // {
         //   path: 'order-lists',
