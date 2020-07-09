@@ -8,10 +8,11 @@
 			<view class="mlr30">
 				<view class="login-list">
 					<weui-input v-model="ruleform.username" placeholder="手机号码" type="number" myclass="plr0" name="username" datatype="require|phone"></weui-input>
+					<weui-input v-model="ruleform.address" placeholder="手机号码" type="location" myclass="plr0" name="address" datatype="require|phone"></weui-input>
 					<weui-input v-model="ruleform.password" placeholder="请输入密码" type="password" myclass="plr0" name="password" datatype="require"></weui-input>
 				</view>
 				<view class="mt30">
-					<dx-button type="success" block>登录</dx-button>
+					<dx-button type="success" block>登录1</dx-button>
 				</view>
 				<view class="flex-between flex-middle mt15 fc-6 fs-14">
 					<view @click="goto('/pages/login/layouts/password',1)">忘记密码</view>
