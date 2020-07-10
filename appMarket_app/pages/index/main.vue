@@ -30,7 +30,7 @@
 					<view class="fs-13 fc-9">更多</view>
 				</view>
 			</dx-title>
-			<dx-products-scroll :data="data.isindexLists.data" :itemWidth="120" bgColor="transparent" :itemLRMargin="5" imgHeight="172rpx" imgR="12rpx"></dx-products-scroll>
+			<dx-products-scroll @click="toProduct" :data="data.isindexLists.data" :itemWidth="120" bgColor="transparent" :itemLRMargin="5" imgHeight="172rpx" imgR="12rpx"></dx-products-scroll>
 		</view>
 		<view class="iad-img">
 			<image src="../../static/Iad02.jpg" mode="widthFix" class="img"></image>
@@ -51,8 +51,8 @@
 				</view> 
 				</view>
 			</view>
-			<view @click="goto('/pages/product/show/main',1)">
-				<dx-products-scroll :data="v.product.data" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100" :itemLRMargin="3"></dx-products-scroll>
+			<view>
+				<dx-products-scroll  @click="toProduct" :data="v.product.data" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100" :itemLRMargin="3"></dx-products-scroll>
 			</view>
 		</view>
 		<!-- 市场列表 -->
@@ -293,6 +293,10 @@ import filterKm from '@/components/filterKm';
 				this.wechatLogin().then(msg=>{
 					this.userInfo = msg;
 				});
+			},
+			toProduct(item){
+				console.log(item);
+				return this.goto("/pages/product/show/main?id="+item.id,1);
 			},
 			ajax() {
 				this.getAjaxForApp(this, {
