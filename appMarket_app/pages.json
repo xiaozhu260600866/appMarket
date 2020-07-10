@@ -171,6 +171,13 @@
 			}
 		},
 		{
+			"path": "pages/order/map/main",
+			"style": {
+				"navigationBarTitleText": "地图",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
 			"path": "pages/order/buy/detail",
 			"style": {
 				"navigationBarTitleText": "订单详情",

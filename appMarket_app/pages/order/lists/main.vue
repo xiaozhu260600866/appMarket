@@ -54,7 +54,11 @@
 					<view class="btn-item" v-if="parent.status == 5">
 						<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">申请售后</view>
 						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
+					
 						<view class="btn-nav" @click="goto('/pages/shop/order/buy/detail?order_no='+parent.order_no,1)">确认收货</view>
+					</view>
+					<view class="btn-item" >
+						<view class="btn-nav" @click="goto('/pages/order/map/main?order_no='+parent.order_no,1)" v-if="location">查看骑手位置</view>
 					</view>
 					<!-- 待评价 申请售后&再次购买&立即评价-->
 					<view class="btn-item" v-if="parent.status == 9">
@@ -86,6 +90,7 @@
 				formAction: '/user/order-lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
+				location:{},
 				getSiteName: this.getSiteName(),
 				status: 12,
 				tabs: [{
@@ -113,12 +118,20 @@
 			ajax() {
 				
 				this.getAjaxForApp(this).then(msg => {
-					
+					  
 				});
 			}
 		},
 		onLoad(options) {
 			this.status = options.status;
+			let location_x = uni.getStorageSync('location_x');
+			if(location_x){
+				this.location.location_x = uni.getStorageSync('location_x');
+			}
+			let location_y = uni.getStorageSync('location_x');
+			if(location_y){
+				this.location.location_y = uni.getStorageSync('location_y');
+			}
 			this.ajax();
 		},
 		onReachBottom() {

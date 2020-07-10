@@ -144,6 +144,7 @@
 						this_.initMap(res)
 						this_.markers[0].latitude = res.latitude
 						this_.markers[0].longitude = res.longitude
+					    this.postAjax("/horse/updateHorseLocation",{latitude:res.latitude,longitude:res.longitude,order_no:this.order.order_no},"notloing");
 						
 					},
 					fail: function(e) {
