@@ -1,12 +1,35 @@
+/* 登录logo */
 .logo{padding: 80upx 0;text-align: center;position: relative;z-index: 2;}
 .logo .img{width: 160upx;height: 160upx;border-radius: 12upx;}
 
-.other-type{position: fixed;bottom: 180upx;width: 100%;left: 0;}
+
+/* 其他登录方式 */
+.other-type{padding-top: 120upx;}
 .other-type .wechat{text-align: center;}
 .other-type .wechat .dxi-icon{font-size: 40upx;color: #57C734;display: inline-block;width: 80upx;height: 80upx;text-align: center;line-height: 80upx;border: 1upx #57C734 solid;border-radius: 50%;}
 
-.footer-agreement{position: fixed;bottom: 60upx;text-align: center;left: 0;width: 100%;display: flex;justify-content: center;align-items: center;font-size: 28upx;}
 
+/* 同意条款 */
+.footer-agreement{display: flex;justify-content: center;align-items: center;font-size: 28upx;padding-top: 40upx;}
+.agreement checkbox{zoom: 70%;display: flex;}
+
+
+/* 提交按钮 */
 .info-subBtn /deep/.dxi-btn{border-color: #57C734;background-color: #57C734;color: #fff;}
 
-.agreement checkbox{zoom: 70%;display: flex;}
+
+/* 信息填写 */
+.login-list /deep/.slot-icon .iconfont{font-size: 36upx;color: #666;padding-right: 30upx;}
+.login-list /deep/.dx-input,
+.info-form /deep/.dx-cell,
+.info-form /deep/.dx-input
+{font-size: 32upx;}
+
+
+/* 证件上传 */
+.upload-photoid .t-title{padding: 40upx 40upx 30upx;text-align: center;}
+.upload-photoid .t-title .name{font-size: 36upx;color: #333;line-height: 40upx;}
+.upload-photoid .t-title .remark{font-size: 28upx;color: #999;line-height: 40upx;}
+.upload-photoid .photoid{padding: 0 100upx;}
+.upload-photoid .photoid .item{background-color: #f2f3f7;padding: 40upx 0;display: flex;justify-content: center;align-items: center;margin: 40upx 0;}
+.upload-photoid .photoid .img{width: 290upx;height: 200upx;display: flex;}

@@ -3,7 +3,7 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="pb50 pro_edit" v-if="data.show">
 			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.name" placeholder="请输入产品标题" type="text" name="name" datatype="require" myclass="title"></weui-input>
+				<weui-input v-model="ruleform.name" placeholder="请输入产品标题" errorMessage="产品标题" type="text" name="name" datatype="require" myclass="title"></weui-input>
 				<weui-input v-model="ruleform.cover" label="上传产品图" type="upload" upurl='product' allowUpLoadNum="5" name="cover" datatype="require"></weui-input>
 			</view>
 			<view class="bg-f mb12">

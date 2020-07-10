@@ -86,7 +86,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 					couponNum:0
 				},
 				userInfo:{
-					headerPic:'/static/icon.png',
+					headerPic:'https://appmarket.doxinsoft.com/images/nouser01.png',
 					name:'东信科技-梅',
 					id:2576
 				},
