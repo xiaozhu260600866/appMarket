@@ -3,6 +3,7 @@
 /deep/.topFloat .nav-box{height: 110upx!important;width: 110upx!important;}
 /deep/.topFloat .one-icon .iconfont{height: 110upx!important;line-height: 110upx!important;}
 /deep/.topFloat .nav-icon{height: 68upx!important;line-height: 68upx!important;padding-top: 6upx;}
+/deep/.topFloat .nav-name{font-size: 26upx!important;}
 
 
 .pro-header-box{position: fixed;left: 0;width: 100%;top: 0;}

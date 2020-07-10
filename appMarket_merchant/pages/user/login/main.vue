@@ -8,8 +8,16 @@
 			</view>
 			<view class="mlr30">
 				<view class="login-list">
-					<weui-input v-model="ruleform.username" placeholder="手机号码" type="number" myclass="plr0" name="username" datatype="require|phone"></weui-input>
-					<weui-input v-model="ruleform.password" placeholder="请输入密码" type="password" myclass="plr0" name="password" datatype="require"></weui-input>
+					<weui-input v-model="ruleform.username" placeholder="手机号码" type="number" myclass="plr0" name="username" datatype="require|phone">
+						<view slot="left" class="slot-icon">
+							<view class="iconfont icon-login-phone"></view>
+						</view>
+					</weui-input>
+					<weui-input v-model="ruleform.password" placeholder="请输入密码" type="password" myclass="plr0" name="password" datatype="require">
+						<view slot="left" class="slot-icon">
+							<view class="iconfont icon-login-passwork"></view>
+						</view>
+					</weui-input>
 				</view>
 				<view class="mt30">
 					<dx-button type="success" size="lg" block @click="submit">登录</dx-button>
@@ -25,7 +33,7 @@
 			</view>
 			<view class="footer-agreement fc-8">
 				<view>登录即同意</view>
-				<view class="fc-3" @click="goto('/pages/news/show/main',1)">同城菜场服务条款</view>
+				<view class="main-color" @click="goto('/pages/news/show/main',1)">同城菜场服务条款</view>
 			</view>
 		</view>
 	</view>
@@ -45,7 +53,7 @@
 				getSiteName: this.getSiteName(),
 				ruleform:{},
 				login:{
-					src:'static/logo.png'
+					src:'https://appmarket.doxinsoft.com/images/wap/logo.png'
 				}
 			}
 		},
@@ -90,7 +98,7 @@
 			this.ruleform.clientid = info.clientid
 			//#endif
 			//#ifdef H5
-			this.ruleform.clientid = '6e011a9587b572c95a189135de443b60'
+			this.ruleform.clientid = '671e8d9c8ec68bc782a581a9fdbf1798'
 			//#endif
 			console.log(this.ruleform);
 			//this.getError(uni.getStorageSync('openid') + '1');
