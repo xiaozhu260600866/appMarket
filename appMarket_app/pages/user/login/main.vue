@@ -8,8 +8,16 @@
 			</view>
 			<view class="mlr30">
 				<view class="login-list">
-					<weui-input v-model="ruleform.username" placeholder="手机号码" type="number" myclass="plr0" name="username" datatype="require|phone"></weui-input>
-					<weui-input v-model="ruleform.password" placeholder="请输入密码" type="password" myclass="plr0" name="password" datatype="require"></weui-input>
+					<weui-input v-model="ruleform.username" placeholder="手机号码" type="number" myclass="plr0" name="username" datatype="require|phone">
+						<view slot="left" class="slot-icon">
+							<view class="iconfont icon-login-phone"></view>
+						</view>
+					</weui-input>
+					<weui-input v-model="ruleform.password" placeholder="请输入密码" type="password" myclass="plr0" name="password" datatype="require">
+						<view slot="left" class="slot-icon">
+							<view class="iconfont icon-login-passwork"></view>
+						</view>
+					</weui-input>
 				</view>
 				<view class="mt30">
 					<dx-button type="success" size="lg" block @click="submit">登录</dx-button>

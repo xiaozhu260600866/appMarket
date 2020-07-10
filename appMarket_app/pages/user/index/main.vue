@@ -51,7 +51,7 @@
 					{url:'/pages/order/lists/main',	type: 1,cover:'/static/order-icon03.png',name:'待收货',number:data.order5},
 					{url:'/pages/order/lists/main',	type: 1,cover:'/static/order-icon04.png',name:'待评价',number:data.order9},
 					{url:'/pages/order/lists/main',	type: 1,cover:'/static/order-icon05.png',name:'售后',number:data.order10}
-				]" @click="checkAuth" isAuth myclass="bdr12" :num="5" :imgWidth="30" :imgHeight="30" :imgR="0" :nameSize="12" :namePTop="5"></dx-nav-class>
+				]" @click="checkAuth" isAuth myclass="bdr12" :num="5" :imgWidth="30" :imgHeight="30" :imgR="0" :nameSize="12" :namePTop="5" numBg="#ff721f"></dx-nav-class>
 			</view>
 			<view class="ugorup-box bg-f mb8">
 				<dx-title name="常用工具" nameBold="bold" :nameSize="15" :height="40"></dx-title>

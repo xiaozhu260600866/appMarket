@@ -8,7 +8,7 @@
 			</view>
 			<view class="num flex mt3"><view class="nav">新鲜度 <text class="Arial">{{ item.freshness }}</text></view></view>
 			<view class="flex-between">
-				<dx-price v-model="item.price" split :intSize="20" :decimalSize="12"></dx-price>
+				<dx-price v-model="item.price" split :intSize="16" :decimalSize="12"></dx-price>
 			</view>
 			<div class="flex-right" v-if="canBuy"><tui-numberbox v-model="item.buyNum" @change="addCart(item)"></tui-numberbox></div>
 		</dx-products-pic>

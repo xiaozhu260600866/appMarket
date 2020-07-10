@@ -42,16 +42,16 @@
 				<view class="info plr15 pt10">
 					<view class="name flex-middle">
 						<view class="fs-17 fw-bold lh-24">{{ v.name }}</view>
-						<view class="ml10 lh-24"><tui-rate current="5" :disabled="true" score="5" :size="14"></tui-rate></view>
+						<view class="ml10 lh-24"><tui-rate current="5" :disabled="true" score="5" active="#Ff721f" :size="14"></tui-rate></view>
 						<view class="fs-12 pl5 lh-24">5分</view>
 					</view>
 					<view class="address fs-13 mtb3"><text class="dxi-icon dxi-icon-location-fill fs-13 pr5"></text>{{ v.address }}</view>
-				<view class="remark fs-12">起送<text class="Arial pr10">￥100</text>
-					<filterKm v-model="v.juli" v-if="v.juli"></filterKm>
-				</view> 
+					<view class="remark fs-12">起送<text class="Arial pr10">￥100</text>
+						<filterKm v-model="v.juli" v-if="v.juli"></filterKm>
+					</view> 
 				</view>
 			</view>
-			<view>
+			<view v-if="v.product.data.length">
 				<dx-products-scroll  @click="toProduct" :data="v.product.data" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100" :itemLRMargin="3"></dx-products-scroll>
 			</view>
 		</view>

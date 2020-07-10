@@ -2,6 +2,10 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="mt12 pb50" v-if="data.show">
+			<view class="block-sec">
+				<weui-input v-model="ruleform.shipping" label="配送方式" name="shipping" changeField="value" type="radio" dataKey="shippingArr"
+				 @callback="test" :row="false"></weui-input>
+			</view>
 			<view id="address" class="block-sec" v-if="ruleform.shipping == 1">
 				<block v-if="!address">
 					<!-- <view class="add_group" @click="createAddress">
@@ -15,7 +19,7 @@
 					</view>
 				</block>
 				<block v-else>
-					<view class="add-info flex-middle plr15" @click="addressLists">
+					<view class="add-info flex-middle plr15 bd-be" @click="addressLists">
 						<view class="licon pr15">
 							<span class="iconfont icon-location-c-fill fs-24 main-color"></span>
 						</view>
@@ -44,6 +48,29 @@
 					</my-picker>
 				</block>
 			</view>
+			<view class="block-sec" v-if="ruleform.shipping == 2">
+				<view v-if="teamHead.name">
+					<view class="add-info p10">
+						<view class="info pr15">
+							<view class="fs-17 fc-3 mb5 lh-24">自提地址</view>
+							<view class="add-detail fs-14 fc-3">{{teamHead.community_address}}</view>
+							<view class="fs-14 fc-9 mt3">{{teamHead.community_company_name}}- {{teamHead.phone}}</view>
+						</view>
+						<view class="group text-center pl10">
+							<image class="img" :src="teamHead.headerPic" />
+							<view class="name fs-12 fc-3 mt5">{{teamHead.name}}</view>
+							<view class="tip">店家</view>
+						</view>
+					</view>
+				</view>
+				<view v-else>
+					<view class="add-add p10">
+						<view class="add-icon dxi-icon dxi-icon-add mr10"></view>
+						<view class="add-txt fs-15">请选择自提点</view>
+						<view class="iconfont icon-right fs-12 fc-9"></view>
+					</view>
+				</view>
+			</view>
 			<view class="storePro block-sec" v-for="(merchant,index) in data.merchants">
 				<view class="storeName flex-middle">
 					<image class="img" :src="merchant.cover"></image>
@@ -51,6 +78,9 @@
 				</view>
 				<orderPro :data="merchant.data"></orderPro>
 				<view class="bd-te">
+					<weui-input v-model="ruleform.send_price" label="配送费" myclass="ptb5" type="txt" name="send_price" ></weui-input>
+					<weui-input v-model="ruleform.weigth_price" label="超重费用" myclass="ptb5" type="txt" name="weigth_price" ></weui-input>
+					<weui-input v-model="ruleform.coupon" label="优惠券" myclass="ptb5" type="txt" name="coupon" arrow></weui-input>
 				</view>
 				<view class="Scount fs-15 text-right p15 be-te">
 					共<text class="Arial">{{merchant.orderNum}}</text>件商品 合计：<text class="Arial price fs-16">￥{{merchant.orderSum}}</text>
@@ -102,16 +132,21 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				ruleform:{shipping:1},
+				ruleform:{
+					shipping:1,
+					send_price: '￥0',
+					weigth_price: '￥0',
+					coupon: '暂无'
+				},
 				vaildate:{},
 				address:{},
 				address_id:0,
 				shippingArr:[{
-					value: 0,
-					label:'自提'
-				},{
 					value: 1,
-					label: '送货上门'
+					label: '商家配送'
+				},{
+					value: 2,
+					label:'到店自提'
 				}],
 				pay_methods: [{
 					label: '微信支付',
@@ -120,7 +155,13 @@
 					label: '余额支付',
 					value: 2
 				}],
-				
+				teamHead:{
+					name:'梁先生',
+					community_address:'江门市新会区人民南路10号',
+					community_company_name:'人民南路社区',
+					phone:'13388998899',
+					headerPic:'/static/icon.png',
+				},
 			}
 		},
 		methods: {

@@ -25,7 +25,7 @@
 .markt-ad .info{position: absolute;top: 0;left: 0;width: 100%;bottom: 0;}
 .markt-ad .info .name{color: #495817;}
 .markt-ad .info .address{color: #495817;}
-.markt-ad .info .remark{color: #495817;}
+.markt-ad .info .remark{color: #495817;display: flex;align-items: baseline;}
 .markt-pro{margin-top: -60upx;}
 .markt-pro /deep/.scroll-item{background-color: #fff;border-radius: 12upx;}
 .markt-pro /deep/.scroll-item .img{border-radius: 12upx 12upx 0 0;}

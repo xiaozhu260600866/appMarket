@@ -32,16 +32,21 @@
 		<view class="tabs-num" :style="{top: (upx2px(248)+height_)+'px'}">
 			<dx-tabs :tabs="tabs" v-model="type" selectedColor="#57C734" sliderBgColor="#57C734" :nameSize="16" :height="88"></dx-tabs>
 		</view>
-		<view class="proCon" v-if="type  == 'order'">
-			<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:height+'px',top:(upx2px(248+88)+height_)+'px',}">
-				<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
-				 :data-current="key"  @click="changeClassKey(key)">
-					<text>{{item.label}}</text>
-				</view>
-			</scroll-view>
-			<scroll-view scroll-y scroll-with-animation class="right-box" :style="{top:(upx2px(248+88)+height_)+'px',}">
-				<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart"></store-pro>
-			</scroll-view>
+		<view v-if="data.productClass.length">
+			<view class="proCon" v-if="type  == 'order'">
+				<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:height+'px',top:(upx2px(248+88)+height_)+'px',}">
+					<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
+					 :data-current="key"  @click="changeClassKey(key)">
+						<text>{{item.label}}</text>
+					</view>
+				</scroll-view>
+				<scroll-view scroll-y scroll-with-animation class="right-box" :style="{top:(upx2px(248+88)+height_)+'px',}">
+					<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart"></store-pro>
+				</scroll-view>
+			</view>
+		</view>
+		<view class="proNodate" :style="{top:(upx2px(248+88)+height_)+'px',}" v-else>
+			暂无数据
 		</view>
 		<view class="store-footer flex-middle">
 			<view class="icon" @click="goto('/pages/user/cart/main',2)">
