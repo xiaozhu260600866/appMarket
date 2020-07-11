@@ -26,7 +26,7 @@
 				messageLists:[{
 					headerPic:'https://appmarket.doxinsoft.com/images/wap/logo.png',
 					name:'东风生鲜',
-					content:'您好，您需要多少呢？我们珠三角地区可以包邮的',
+					content:'你好，请问你到哪里了',
 					news_time:'14:02',
 					meassage_num: 1
 				},{

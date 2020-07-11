@@ -1,21 +1,21 @@
 <template>
 	<view class="server-place">
-		<div class="p20">
-			<view class="flex-between flex-middle">
-				<div class="fs-14">{{order.addr_address}}</div>
-				<dxButton plain type="success" round size="small" @click="close">关闭</dxButton>
-			</view>
-			<view class="flex-between flex-middle">
-				<div class="fs-14">
-					<div v-if="order.horse_take">全程{{order.space}}km</div>
-					<div v-if="order.horse_take == 0 && order.getMerchant.space">全程{{order.getMerchant.space}}</div>
-				</div>
-				<dxButton type="success" size="small" round @click="location(markers[1].latitude,markers[1].longitude,order.getMerchant.name,)">导航</dxButton>
-			</view>
-			<view class="flex fs-14 fc-gray bd-td flex-middle" style="height: 50px;">
-				请在{{order.deliver_date}}内送达目的地
-			</view>
-		</div>
+		<view class="bg-f">
+			<dx-list-msg :name="order.addr_address">
+				<view slot="con" class="fs-14 lh-24 mt10">
+					<view>
+						<view v-if="order.horse_take">全程<text class="Arial plr3">{{order.space}}</text>km</view>
+						<view v-if="order.horse_take == 0 && order.getMerchant.space">全程<text class="Arial plr3">{{order.getMerchant.space}}</text></view>
+					</view>
+					<view class="fc-9">请在<text class="Arial plr3">{{order.deliver_date}}</text>内送达目的地</view>
+				</view>
+				<view slot="right">
+					<dxButton block myclass="mb10" plain type="success" round size="small" @click="close">关闭</dxButton>
+					<dxButton block type="success" size="small" round @click="location(markers[1].latitude,markers[1].longitude,order.getMerchant.name,)">导航</dxButton>
+				</view>
+			</dx-list-msg>
+		</view>
+		
 		<map
 			id='map'
 			ref='map'
@@ -27,7 +27,14 @@
 			:markers="markers"
 			>
 		</map>
-		<view class="map-tools">
+		<view class="bg-f horse-info">
+			<dx-list-msg imgSrc="https://appmarket.doxinsoft.com/images/wap/horse-pic.png" :name="order.addr_name">
+				<view slot="right" class="flex-middle">
+					<dxButton type="success" size="small" round @click="phone(order.addr_phone)">电话</dxButton>
+				</view>
+			</dx-list-msg>
+		</view>
+		<!-- <view class="map-tools">
 			<div class="p20 flex-between flex-middle" style="height: 50px;width:100%">
 				<div class="flex flex-middle">
 					<image src="../../static/horse.png" style="width:80px;height: 80px;"></image>
@@ -37,7 +44,7 @@
 					<dxButton type="success" size="small" round @click="phone(order.addr_phone)">电话</dxButton>
 				</div>
 			</div>
-		</view>
+		</view> -->
 	</view>
 	
 </template>
@@ -48,12 +55,14 @@
 	var qqmapsdk = new QQMapWX({
 	  key: 'LXCBZ-NNIKD-UZ64F-H6AFI-UNJLH-OCFGE'
 	})
+	import dxListMsg from "doxinui/components/list-cell/list-msg"
 	import dxftButton from "doxinui/components/button/footer-button"
 	import dxButton from "doxinui/components/button/button"　
 	export default {
 		components:{
 			dxftButton,
-			dxButton
+			dxButton,
+			dxListMsg
 		},
 		props: {
 			tipText: {
@@ -373,5 +382,11 @@
 				
 			}
 		}
+	}
+	.horse-info{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
 	}
 </style>
