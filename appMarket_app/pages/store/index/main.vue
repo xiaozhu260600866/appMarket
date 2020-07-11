@@ -45,7 +45,7 @@
 				</scroll-view>
 			</view>
 		</view>
-		<view class="proNodate" :style="{top:(upx2px(248+88)+height_)+'px',}" v-else>
+		<view class="proNodate" :style="{top:(upx2px(248+88)+height_)+'px',}" v-if="data.productClass.length == 0 || type == 'evaluate' || type == 'merchant'">
 			暂无数据
 		</view>
 		<view class="store-footer flex-middle">

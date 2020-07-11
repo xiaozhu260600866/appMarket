@@ -53,7 +53,7 @@
 				getSiteName: this.getSiteName(),
 				ruleform:{},
 				login:{
-					src:'static/logo.png'
+					src:'https://appmarket.doxinsoft.com/images/wap/logo.png'
 				}
 			}
 		},

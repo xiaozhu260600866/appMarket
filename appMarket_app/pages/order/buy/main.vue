@@ -34,7 +34,6 @@
 							</view>
 						</view>
 					</view>
-				
 					<my-picker :picker-list="data.deliverData" column-num="3" @confirm="deliverCallBack" >
 						<view class="dx-cell">
 							<view class="dx-cell_hd">
@@ -63,7 +62,7 @@
 						</view>
 					</view>
 				</view>
-				<view v-else>
+				<view v-else @click="goto('/pages/order/chooseMerchant/main',1)">
 					<view class="add-add p10">
 						<view class="add-icon dxi-icon dxi-icon-add mr10"></view>
 						<view class="add-txt fs-15">请选择自提点</view>
@@ -156,7 +155,7 @@
 					value: 2
 				}],
 				teamHead:{
-					name:'梁先生',
+					name:'',
 					community_address:'江门市新会区人民南路10号',
 					community_company_name:'人民南路社区',
 					phone:'13388998899',

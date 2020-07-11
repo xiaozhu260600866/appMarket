@@ -2,6 +2,9 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="mt12 pb50" v-if="data.show">
+			<view class="block-sec">
+				<weui-input label="配送方式" v-model="ruleform.shipping" type="txt" name="shipping"></weui-input>
+			</view>
 			<view id="address" class="block-sec" >
 				<view class="add-info flex-middle plr15">
 					<view class="licon pr15">
@@ -19,6 +22,7 @@
 					</view>
 				</view>
 			</view>
+			
 			<orderPro :data="ruleform.products" myclass="block-sec"></orderPro>
 			<view id="mode" class="block-sec">
 				<weui-input v-model="ruleform.pay_method" name="pay_method" label="付款方式" changeField="value" type="select" dataKey="pay_methods"
@@ -26,6 +30,16 @@
 				<weui-input v-model="ruleform.remark" :disabled="true" label="买家留言" type="text" name="remark" placeholder=" "></weui-input>
 			</view>
 			<view id="calculation" class="block-sec">
+				<view class="list-group">
+					<view class="txt">配送费</view>
+					<view class="fs-16 price">￥{{ruleform.send_price}}</view>
+				</view><view class="list-group">
+					<view class="txt">超重费用</view>
+					<view class="fs-16 price">￥{{ruleform.weigth_price}}</view>
+				</view><view class="list-group">
+					<view class="txt">优惠券</view>
+					<view class="fs-16 price">-￥{{ruleform.coupon}}</view>
+				</view>
 				<view class="list-group">
 					<view class="txt">商品金额</view>
 					<view class="fs-16 price">￥{{ruleform.amount}}</view>
@@ -53,10 +67,11 @@
 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 3 || ruleform.status == 5">申请售后</view>
 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">申请售后</view>
 					<view class="btn-nav inbtn" @click="canReceipt" v-if="ruleform.status == 5">确认收货</view>
-					<view class="btn-nav" v-if="ruleform.status == 9 && ruleform.suggestStatus == 1">已完成</view>
+					<view class="btn-nav" v-if="ruleform.status == 9 || ruleform.suggestStatus == 1">已完成</view>
 					<view class="btn-nav inbtn" @click="goto('/pages/shop/order/evaluate/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">立即评价</view>
 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 10">售后详情</view>
 					<view class="btn-nav" v-if="ruleform.status == 0">已取消</view>
+					<view class="btn-nav inbtn" @click="goto('/pages/order/map/main?order_no='+parent.order_no,1)" v-if="location">骑手位置</view>
 				</view>
 			</view>
 			
@@ -75,19 +90,14 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				ruleform:{},
+				ruleform:{
+					shipping: '商家配送'
+				},
 				order:"",
 				wallet: 5.00,
 				amount: 0.00,
-				shippingType: 0,
 				addressShow:true,
-				shippingArr:[{
-					value: 0,
-					label:'自提'
-				},{
-					value: 1,
-					label: '送货上门'
-				}],
+				
 				pay_methods: [{
 					label: '微信支付',
 					value: 1
@@ -103,6 +113,10 @@
 				
 				}).then(msg => {
 					this.ruleform = msg.detail;
+					this.ruleform.shipping = '商家配送';
+					this.ruleform.send_price= 0;
+					this.ruleform.weigth_price= 0;
+					this.ruleform.coupon= 0;
 				});
 			}
 		},

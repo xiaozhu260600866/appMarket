@@ -171,6 +171,13 @@
 			}
 		},
 		{
+			"path": "pages/order/chooseMerchant/main",
+			"style": {
+				"navigationBarTitleText": "选择自提点",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
 			"path": "pages/order/map/main",
 			"style": {
 				"navigationBarTitleText": "地图",

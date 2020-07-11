@@ -16,8 +16,8 @@
 						</view>
 					</view>
 					<view class="state flex-middle">
-						<view class="fc-orange fs-12 pr8">{{parent.status_message}}</view>
-						<view v-if="status == 1 || status == 9 || status == 0">
+						<view class="fc-red fs-13">{{parent.status_message}}</view>
+						<view class="pl8" v-if="status == 1 || status == 9 || status == 0">
 							<view class="del-icon bg-f3 dxi-icon dxi-icon-del fs-14" @click="delOrder(parent)"></view>
 						</view>
 					</view>
@@ -35,38 +35,41 @@
 						</view>
 					</view>
 				</view>
-				
+				<!-- 
 				<view class="order_count plr10 fs-14" >总共<span class="Arial">{{parent.num}}</span>件商品
 					实付：￥<span class="Arial fs-16 fc-red">{{parent.amount}}</span>
-				</view>
+				</view> -->
 				<view class="btn-group ptb8 plr10">
-					<!-- 待支付 取消订单&去支付-->
+					<!-- 待支付 -->
 					<view class="btn-item" v-if="parent.status == 1">
 						<view class="btn-nav" @click="changeOrder(parent)">取消订单</view>
 						<view class="btn-nav" @click="goto('/pages/shop/order/buy/index?order_no='+parent.order_no,1)">去支付</view>
 					</view>
-					<!-- 待发货 申请售后&再次购买-->
+					<!-- 待接单 -->
 					<view class="btn-item" v-if="parent.status == 3">
 						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
 						<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">申请售后</view>
 					</view>
-					<!-- 待收货 申请售后&确认收货-->
+					<!-- 骑手已接单 -->
 					<view class="btn-item" v-if="parent.status == 5">
 						<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">申请售后</view>
 						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
-					
+					</view>
+					<!-- 6：骑手已取货；7：骑手已送达 -->
+					<view class="btn-item" v-if="parent.status == 6 || parent.status == 7">
+						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
 						<view class="btn-nav" @click="goto('/pages/shop/order/buy/detail?order_no='+parent.order_no,1)">确认收货</view>
 					</view>
-					<view class="btn-item" >
-						<view class="btn-nav" @click="goto('/pages/order/map/main?order_no='+parent.order_no,1)" v-if="location">查看骑手位置</view>
-					</view>
-					<!-- 待评价 申请售后&再次购买&立即评价-->
+					<!-- <view class="btn-item" >
+						<view class="btn-nav" @click="goto('/pages/order/map/main?order_no='+parent.order_no,1)" v-if="location">骑手位置</view>
+					</view> -->
+					<!-- 已完成 -->
 					<view class="btn-item" v-if="parent.status == 9">
 						<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">申请售后</view>
 						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
 						<view class="btn-nav" @click="goto('/pages/shop/order/evaluate/index?order_no='+parent.order_no,1)">{{parent.suggestStatus == 0 ? '去评价' : '已评价'}}</view>
 					</view>
-					<!-- 售后中 售后详情-->
+					<!-- 售后中-->
 					<view class="btn-item" v-if="parent.status == 10">
 						<view class="btn-nav obtn" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">售后详情</view>
 					</view>
