@@ -57,7 +57,7 @@ export default {
 			{ prop: 'idCard2', datatype: 'array', type: 'upload', label: '身份证背图', allowUpLoadNum: 1, upurl: 'merchant', column: 2 },
 			{ prop: 'company_logo', datatype: 'array', type: 'upload', label: '营业执照', allowUpLoadNum: 1, upurl: 'merchant' },
 			{ prop: 'health_logo', datatype: 'array', type: 'upload', label: '健康证', allowUpLoadNum: 1, upurl: 'merchant' },
-			{ prop: 'swiper', datatype: 'array', type: 'upload', label: '轮播图', allowUpLoadNum: 1, upurl: 'merchant' }
+			// { prop: 'swiper', datatype: 'array', type: 'upload', label: '轮播图', allowUpLoadNum: 1, upurl: 'merchant' }
 		]
 	}
 }
