@@ -1,7 +1,8 @@
 <template>
 	<view>
-		<view>
-			<shop-list :data="shopLists"></shop-list>
+		<view class="m30 text-center fs-14 fc-9">
+			<!-- <shop-list :data="shopLists"></shop-list> -->
+			暂无数据
 		</view>
 	</view>
 </template>

@@ -34,3 +34,7 @@ button::after{border: 0;}
 /* 页面 */
 .pages-search-products-main{color: #333;background: #fff!important;}
 .pages-user-login-main{background-color: #fff;}
+
+
+/* 数字调节 */
+.numbox .tui-numbox-icon{width: 52upx;line-height: 52upx;height: 52upx;background: #57C734;border-radius: 50%;padding: 0!important;color: #fff!important;text-align: center;}

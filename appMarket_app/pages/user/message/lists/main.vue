@@ -1,6 +1,14 @@
 <template>
 	<view class="bg-f" v-if="data.show">
-		<dx-list-msg :imgSrc="item.headerPic" :name="item.name" :content="item.content" v-for="(item,key) in systemLists" @click="goto('/pages/user/message/chat/main',1)">
+		<dx-list-msg :imgSrc="item.headerPic" :name="item.name" :content="item.content" v-for="(item,key) in systemLists">
+			<view slot="right">
+				<view class="right-box">
+					<view class="time fs-12 fc-9 Arial">{{item.news_time}}</view>
+					<view class="num" v-if="item.meassage_num > 0">{{item.meassage_num}}</view>
+				</view>
+			</view>
+		</dx-list-msg>
+		<dx-list-msg :imgSrc="item.headerPic" :name="item.name" :content="item.content" v-for="(item,key) in messageLists" @click="goto('/pages/user/message/chat/main',1)">
 			<view slot="right">
 				<view class="right-box">
 					<view class="time fs-12 fc-9 Arial">{{item.news_time}}</view>
@@ -23,7 +31,14 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				systemLists:[]
+				systemLists:[],
+				messageLists:[{
+					headerPic:'/static/logo.png',
+					name:'东信科技-梅',
+					content:'您好，请问有什么可帮到您！',
+					news_time:'14:02',
+					meassage_num: 3
+				}]
 			}
 		},
 		onLoad(options) {

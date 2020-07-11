@@ -29,7 +29,7 @@
 									</view>
 									<view class="w-b100 flex-between flex-middle">
 										<view class="lh-20"><dx-price v-model="item.amount" split :intSize="16" :decimalSize="12"></dx-price></view>
-										<tui-numberbox v-model="item.num"></tui-numberbox>
+										<view class="numbox"><tui-numberbox v-model="item.num"></tui-numberbox></view>
 									</view>
 									<view class="del" @click="del(item.id)">
 										<text class="iconfont icon-cart-del"></text>
@@ -61,8 +61,8 @@
 						<p class="price fs-18 font_bold"><span class="fs-14">￥</span>{{amount}}</p>
 					</view>
 				</view>
-				<view class="submit plr10 ptb5" @click="sublimt">
-					<dx-button type="primary" btnBg="#57C734" btnBd="#57C734" >提交</dx-button>
+				<view class="submit plr10" @click="sublimt">
+					<dx-button type="primary" size="small" btnBg="#57C734" btnBd="#57C734" >提交</dx-button>
 				</view>
 			</view>
 		</view>

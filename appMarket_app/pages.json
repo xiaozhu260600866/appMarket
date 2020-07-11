@@ -32,7 +32,7 @@
 		{
 			"path": "pages/user/message/lists/main",
 			"style": {
-				"navigationBarTitleText": "信息列表",
+				"navigationBarTitleText": "消息",
 				"enablePullDownRefresh": true
 			}
 		},

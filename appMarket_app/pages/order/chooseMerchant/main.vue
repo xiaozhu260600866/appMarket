@@ -4,7 +4,7 @@
 		<view v-if="data.show" class="business">
 			<view class="now-item" v-if='teamHead.name'>
 				<view class="now-box bg-f m10 p15 text-center bdr6">
-					<view class="fs-12 fc-9 mb5">当前社区</view>
+					<view class="fs-12 fc-9 mb5">当前自提点</view>
 					<view class="head">
 						<image class="img" :src="teamHead.getUser.headerPic"></image>
 					</view>
@@ -36,7 +36,6 @@
 	</view>
 </template>
 <script>
-import "./index.css";
 import filterKm from '@/components/filterKm';
 export default {
 	data() {
@@ -115,3 +114,6 @@ export default {
 	}
 }
 </script>
+<style scoped="">
+@import url('index.css');
+</style>

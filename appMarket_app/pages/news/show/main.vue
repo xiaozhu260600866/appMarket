@@ -24,7 +24,7 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				detail:{
-					content:'内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容'
+					content:'暂无信息'
 				}
 			}
 		},

@@ -154,10 +154,10 @@
 				address_id:0,
 				shippingArr:[{
 					value: 1,
-					label: '商家配送'
+					label: '送货上门'
 				},{
 					value: 2,
-					label:'到店自提'
+					label:'自提'
 				}],
 				pay_methods: [{
 					label: '微信支付',

@@ -2,15 +2,9 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="server-place" v-if="mapShow">
-			<div class="p20">
-				<view class="flex-between flex-middle">
-					<div class="fs-12">{{order.addr_address}}</div>
-					
-				</view>
-				<view class="flex fs-12 fc-gray bd-td flex-middle" style="height: 50px;">
-					请在{{order.deliver_date}}内送达目的地
-				</view>
-			</div>
+			<view class="bg-f">
+				<dx-list-msg :name="order.addr_address" myclass="bg-f" :content="'请在 '+order.deliver_date+' 内送达目的地'"></dx-list-msg>
+			</view>
 			<map
 				id='map'
 				ref='map'
@@ -23,241 +17,238 @@
 				scale="13"
 				>
 			</map>
-			<view class="map-tools">
-				<div class="p20 flex-between flex-middle" style="height: 50px;width:100%">
-					<div class="flex flex-middle">
-						<image src="/static/horse.png" style="width:80px;height: 80px;"></image>
-						<div>{{order.getHorse.name}}</div>
-					</div>
-					<div>
-						<dxButton  type="success"  size="medium" @click="phone(order.getHorse.phone)">电话</dxButton>
-					</div>
-				</div>
+			
+			<view class="bg-f horse-info">
+				<dx-list-msg imgSrc="https://appmarket.doxinsoft.com/images/wap/horse-pic.png" :name="order.getHorse.name">
+					<view slot="right" class="flex-middle">
+						<dxButton type="success" size="small" round @click="phone(order.getHorse.phone)">电话</dxButton>
+					</view>
+				</dx-list-msg>
 			</view>
 		</view>
-		<view v-else>
-			暂无该骑手信息
+		<view class="text-center fs-14 fc-9 m30" v-else>
+			暂无骑手信息
 		</view>
 	</view>
 </template>
 
 <script>
-
-	import dxftButton from "doxinui/components/button/footer-button"
-	import dxButton from "doxinui/components/button/button"　
-	export default {
-		components: {},
-		data() {
-			return {
-				formAction: '/order/detail',
-				mpType: 'page', //用来分清父和子组件
-				data: this.formatData(this),
-				mapShow:false,
-				order_no:"",
-				getSiteName: this.getSiteName(),
-				positionObj: {},
-				mapH: 0,             // 地图高度，可在initMapH()中设置高度
-				longitude: 0,        // 初始经度
-				latitude: 0,         // 初始纬度
-				myAddress: '',   	 // 初始地址信息
-				order:{},
-				name:'',
-				addressObj: {        // 地图选点信息
-					longitude: '',
-					latitude: '',
-					address: '请选择集合地点'
-				},
-				 markers: [{  
+import dxListMsg from "doxinui/components/list-cell/list-msg"
+export default {
+	components: {
+		dxListMsg
+	},
+	data() {
+		return {
+			formAction: '/order/detail',
+			mpType: 'page', //用来分清父和子组件
+			data: this.formatData(this),
+			mapShow:false,
+			order_no:"",
+			getSiteName: this.getSiteName(),
+			positionObj: {},
+			mapH: 0,             // 地图高度，可在initMapH()中设置高度
+			longitude: 0,        // 初始经度
+			latitude: 0,         // 初始纬度
+			myAddress: '',   	 // 初始地址信息
+			order:{},
+			name:'',
+			addressObj: {        // 地图选点信息
+				longitude: '',
+				latitude: '',
+				address: '请选择集合地点'
+			},
+			 markers: [{  
+					id:'1',  
+					label:{  
+						content:''  
+					},
+					 
+					latitude: 0,  
+					longitude: 0,  
+					width:10,  
+					height:10,  
+					iconPath: '/static/horse.png',
+				 },
+				 {
 						id:'1',  
 						label:{  
 							content:''  
-						},
-						 
-						latitude: 0,  
-						longitude: 0,  
+						},  
+						latitude: 22.592627,  
+						longitude: 113.079593,  
 						width:10,  
 						height:10,  
-						iconPath: '/static/horse.png',
-				     },
-					 {
-							id:'1',  
-							label:{  
-								content:''  
-							},  
-							latitude: 22.592627,  
-							longitude: 113.079593,  
-							width:10,  
-							height:10,  
-							iconPath: '/static/end.png',
-					  },
-				],  
-				controls: [           // 地图中心点图标, 可更换iconPath, 详情见官方文档关于map组件的介绍
-					{
-						iconPath: '/static/aqq.png',
-						position: { 
-							left: 175,
-							top: 210,
-							width: 30, 
-							height: 30,
-						},
-						clickable: false
-					}
-				],
-			}
+						iconPath: '/static/end.png',
+				  },
+			],  
+			controls: [           // 地图中心点图标, 可更换iconPath, 详情见官方文档关于map组件的介绍
+				{
+					iconPath: '/static/aqq.png',
+					position: { 
+						left: 175,
+						top: 210,
+						width: 30, 
+						height: 30,
+					},
+					clickable: false
+				}
+			],
+		}
+	},
+	methods: {
+		ajax2(order,name,location_x,location_y){
+			console.log("uac");
+			this.order = order;
+			this.name = name;
+			this.markers[0].latitude = location_x
+			this.markers[0].longitude = location_y
+			this.getLocation()
+		
+
+		
+			this.initMapH()
 		},
-		methods: {
-			ajax2(order,name,location_x,location_y){
-				console.log("uac");
-				this.order = order;
-				this.name = name;
-				this.markers[0].latitude = location_x
-				this.markers[0].longitude = location_y
-				this.getLocation()
+		ajax() {
+			this.getAjaxForApp(this, {order_no:this.order_no
 			
-	
-			
-				this.initMapH()
-			},
-			ajax() {
-				this.getAjaxForApp(this, {order_no:this.order_no
-				
-				}).then(msg => {
-					if(!msg.horse){
-						this.mapShow = false;
-					}else{
-						this.mapShow = true;
-						let item = msg.detail;
-						this.$nextTick(()=>{
-							this.ajax2(item,"1234",msg.horse.latitude,msg.horse.longitude);
-						})
-						
-					}
-				});
-			},
-			// 查询现在的位置
-			getLocation() {
-				this.markers[1].latitude = parseFloat(this.order.location_x);
-				this.markers[1].longitude = parseFloat(this.order.location_y)
-				this.initMap()
-				
-			},
-			
-			// 初始化我的位置
-			async initMap() {
-				this.longitude = parseFloat(this.order.location_y);
-				this.latitude = parseFloat(this.order.location_x);
-				
-			},
-			
-			// 地图选择位置后 查询地点名称
-			async checkMap(res) {
-				this.addressObj = Object.assign({}, this.addressObj,{
-					longitude: res.longitude,
-					latitude: res.latitude,
-					address: await this.getAddressName(res)
-				})
-				console.log('当前位置1:' + res.latitude + '|' + res.longitude);
-			},
-			
-			// 监听地图位置变化
-			mapChange(e) {
-				console.log(e);
-				let that = this
-				clearTimeout(this.timer)
-				this.timer = setTimeout(() => {
-					if (e.type == 'end') {
-						that.mapCtx = uni.createMapContext('map', this)
-						that.mapCtx.getCenterLocation({
-							success: res => {
-								this.checkMap(res)
-							},
-							fail: err => {
-								console.log(err);
-							}
-						})
-					}
-				}, 200)
-			},
-			// 查询地图中心点的名称
-			getAddressName(addressObj) {
-				
-				return new Promise((res) => {
-					// #ifdef APP-PLUS
-						qqmapsdk.reverseGeocoder({
-							location: {
-								latitude: addressObj.latitude,
-								longitude: addressObj.longitude
-							},
-							get_poi: 1,
-							poi_options: "page_size=1;page_index=1",
-							output: 'jsonp',
-							success: (e) => {
-								res(e.result.formatted_addresses.recommend);
-							},
-							fail: err => {
-								res(err);
-							}
-						})
-					// #endif
+			}).then(msg => {
+				if(!msg.horse){
+					this.mapShow = false;
+				}else{
+					this.mapShow = true;
+					let item = msg.detail;
+					this.$nextTick(()=>{
+						this.ajax2(item,"1234",msg.horse.latitude,msg.horse.longitude);
+					})
 					
-					// #ifndef APP-PLUS
-						// ======================== jsonp跨域 ======================== 
-						const KEY = 'LXCBZ-NNIKD-UZ64F-H6AFI-UNJLH-OCFGE'
-						let locationObj = addressObj.latitude+','+addressObj.longitude
-						let url = 'https://apis.map.qq.com/ws/geocoder/v1?coord_type=5&get_poi=1&output=jsonp&poi_options=page_size=1;page_index=1';
-						this.$jsonp(url,{
-						  key: KEY,
-						  location: locationObj
-						}).then(e => {
-							res(e.result.formatted_addresses.recommend);
-						})
-						.catch(err => {
-							res(err);
-						})
-					// #endif
-					
-					
-				})
-				
-			},
-			// 计算地图的高度
-			initMapH() {
-				// #ifdef APP-PLUS
-					this.mapH = uni.getSystemInfoSync().windowHeight - 260;
-				// #endif
-				// #ifndef APP-PLUS
-					this.mapH = uni.getSystemInfoSync().windowHeight - 170;
-				// #endif
-			},
-			// 移动到我的位置
-			toMyLocation() {
-				this.getLocation()
-			},
-			// 提交
-			submitAdress() {
-				this.controls = []
-				setTimeout(() => {
-					this.$emit('updateAddress', this.addressObj)
-				}, 100)
-			}
+				}
+			});
 		},
-		onLoad(options) {
-			this.order_no = options.order_no;
-			this.ajax();
+		// 查询现在的位置
+		getLocation() {
+			this.markers[1].latitude = parseFloat(this.order.location_x);
+			this.markers[1].longitude = parseFloat(this.order.location_y)
+			this.initMap()
 			
-		},
-		onReachBottom() {
-			this.hasMore(this);
-		},
-		onPullDownRefresh() {
-			this.data.nextPage = 1;
-			this.ajax();
-		},
-		onShareAppMessage() {
-			return this.shareSource(this, '商城');
 		},
 		
-	}
+		// 初始化我的位置
+		async initMap() {
+			this.longitude = parseFloat(this.order.location_y);
+			this.latitude = parseFloat(this.order.location_x);
+			
+		},
+		
+		// 地图选择位置后 查询地点名称
+		async checkMap(res) {
+			this.addressObj = Object.assign({}, this.addressObj,{
+				longitude: res.longitude,
+				latitude: res.latitude,
+				address: await this.getAddressName(res)
+			})
+			console.log('当前位置1:' + res.latitude + '|' + res.longitude);
+		},
+		
+		// 监听地图位置变化
+		mapChange(e) {
+			console.log(e);
+			let that = this
+			clearTimeout(this.timer)
+			this.timer = setTimeout(() => {
+				if (e.type == 'end') {
+					that.mapCtx = uni.createMapContext('map', this)
+					that.mapCtx.getCenterLocation({
+						success: res => {
+							this.checkMap(res)
+						},
+						fail: err => {
+							console.log(err);
+						}
+					})
+				}
+			}, 200)
+		},
+		// 查询地图中心点的名称
+		getAddressName(addressObj) {
+			
+			return new Promise((res) => {
+				// #ifdef APP-PLUS
+					qqmapsdk.reverseGeocoder({
+						location: {
+							latitude: addressObj.latitude,
+							longitude: addressObj.longitude
+						},
+						get_poi: 1,
+						poi_options: "page_size=1;page_index=1",
+						output: 'jsonp',
+						success: (e) => {
+							res(e.result.formatted_addresses.recommend);
+						},
+						fail: err => {
+							res(err);
+						}
+					})
+				// #endif
+				
+				// #ifndef APP-PLUS
+					// ======================== jsonp跨域 ======================== 
+					const KEY = 'LXCBZ-NNIKD-UZ64F-H6AFI-UNJLH-OCFGE'
+					let locationObj = addressObj.latitude+','+addressObj.longitude
+					let url = 'https://apis.map.qq.com/ws/geocoder/v1?coord_type=5&get_poi=1&output=jsonp&poi_options=page_size=1;page_index=1';
+					this.$jsonp(url,{
+					  key: KEY,
+					  location: locationObj
+					}).then(e => {
+						res(e.result.formatted_addresses.recommend);
+					})
+					.catch(err => {
+						res(err);
+					})
+				// #endif
+				
+				
+			})
+			
+		},
+		// 计算地图的高度
+		initMapH() {
+			// #ifdef APP-PLUS
+				this.mapH = uni.getSystemInfoSync().windowHeight - 260;
+			// #endif
+			// #ifndef APP-PLUS
+				this.mapH = uni.getSystemInfoSync().windowHeight - 170;
+			// #endif
+		},
+		// 移动到我的位置
+		toMyLocation() {
+			this.getLocation()
+		},
+		// 提交
+		submitAdress() {
+			this.controls = []
+			setTimeout(() => {
+				this.$emit('updateAddress', this.addressObj)
+			}, 100)
+		}
+	},
+	onLoad(options) {
+		this.order_no = options.order_no;
+		this.ajax();
+		
+	},
+	onReachBottom() {
+		this.hasMore(this);
+	},
+	onPullDownRefresh() {
+		this.data.nextPage = 1;
+		this.ajax();
+	},
+	onShareAppMessage() {
+		return this.shareSource(this, '商城');
+	},
+	
+}
 </script>
 <style scoped="">
 style lang="scss" scoped>
@@ -370,6 +361,10 @@ style lang="scss" scoped>
 			}
 		}
 	}
-</style>
-
+	.horse-info{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
 </style>
