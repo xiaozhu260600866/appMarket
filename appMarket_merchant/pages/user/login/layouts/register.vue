@@ -48,15 +48,15 @@
 					<view class="remark">请保持照片清晰无反光</view>
 				</view>
 				<view class="photoid">
-					<view class="item">
-						<image class="base-map img" src="https://appmarket.doxinsoft.com/images/wap/idCard-front.jpg"></image>
+					<view class="item" @click="uploadHeaderImg('idCard')">
+						<image class="base-map img" :src="ruleform.idCard ? getSiteName + '/upload/images/merchant/'+ruleform.idCard:'https://appmarket.doxinsoft.com/images/wap/idCard-front.jpg'" ></image>
 					</view>
-					<view class="item">
-						<image class="base-map img" src="https://appmarket.doxinsoft.com/images/wap/idCard-back.jpg"></image>
+					<view class="item" @click="uploadHeaderImg('idCard2')">
+						<image class="base-map img" :src="ruleform.idCard2 ? getSiteName + '/upload/images/merchant/'+ruleform.idCard2: 'https://appmarket.doxinsoft.com/images/wap/idCard-back.jpg'"></image>
 					</view>
 				</view>
 				<view class="m20 mt40 info-subBtn">
-					<dx-button block size="lg" @click="step = 3">下一步</dx-button>
+					<dx-button block size="lg" @click="next(3)">下一步</dx-button>
 				</view>
 			</view>
 			
@@ -66,11 +66,11 @@
 					<view class="remark">请保持照片清晰无反光</view>
 				</view>
 				<view class="photoid">
-					<view class="item">
-						<image class="base-map img" src="https://appmarket.doxinsoft.com/images/wap/business-license.jpg"></image>
+					<view class="item"  @click="uploadHeaderImg('company_logo')">
+						<image class="base-map img" :src="ruleform.company_logo ? getSiteName + '/upload/images/merchant/'+ruleform.company_logo:'https://appmarket.doxinsoft.com/images/wap/business-license.jpg'"></image>
 					</view>
-					<view class="item">
-						<image class="base-map img" src="https://appmarket.doxinsoft.com/images/wap/health-certificate.jpg"></image>
+					<view class="item"  @click="uploadHeaderImg('health_logo')">
+						<image class="base-map img" :src="ruleform.health_logo ? getSiteName + '/upload/images/merchant/'+ruleform.health_logo:'https://appmarket.doxinsoft.com/images/wap/health-certificate.jpg'"></image>
 					</view>
 				</view>
 				<view class="m20 mt40 info-subBtn">
@@ -95,7 +95,7 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				ruleform: {cityName:[]},
+				ruleform: {cityName:[],'idCard':''},
 				vaildate: {},
 				market:[],
 				step:1
@@ -127,6 +127,19 @@
 				//this.demos.multiColumns.columnPickedIndex = index
 				//this.demos.multiColumns.columnPicked = picked
 			},
+			uploadHeaderImg(field){
+				this.uploadImageSingle(res => {
+					this.$set(this.ruleform,field,[res]);
+					console.log(this.ruleform);
+				},"merchant");
+			},
+			next(step){
+				if(step == 3 && !this.ruleform.idCard && !this.ruleform.idCard2){
+				   this.getError("身份证还没有上传");
+					return false;
+				}
+				this.step = step;
+			},
 			submit() {
 				
 				this.vaildForm(this, res => {
@@ -138,6 +151,10 @@
 							}
 							this.step =2;
 						}else{
+							if(!this.ruleform.company_logo && !this.ruleform.health_logo){
+							   this.getError("健康证或营业热昭没上传说");
+								return false;
+							}
 							this.postAjax("/merchant/register", this.ruleform).then(msg => {
 								if (msg.data.status == 2) {
 									this.goto("/pages/user/login/main");
