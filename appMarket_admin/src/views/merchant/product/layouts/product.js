@@ -59,7 +59,7 @@ export default {
             { 'prop': '', 'minWidth': '', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '状态' },
             { 'prop': 'is_index', 'minWidth': '', 'width': '100', 'align': 'center', 'type': 'editField', 'url': '/admin/merchant/product/editField', 'label': '今天特价' },
             { 'prop': 'shell_date', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '售卖日期' },
-            { 'prop': 'created_at', 'minWidth': '', 'width': '160', 'append_table_': 0, 'label': '发布日期' }
+            { 'prop': 'created_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '发布日期' }
         ],
         'formFields': [
             { 'prop': 'name', 'datatype': 'require', 'type': 'text', 'append_form_': 0, 'label': '产品名称', column: 2 },

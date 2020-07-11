@@ -1,31 +1,32 @@
 <template>
-  <div class="login-main">
-    <div class="login-body" :style="'background:url('+bgImg+')'">
-      <div class="wrap">
-        <div class="login-side">
-          <div class="content">
-            <div class="login-form">
-              <p class="logo"><img class="img" src="../../assets/login_images/logo.png"></p>
-              <p class="form-desc">登录系统</p>
-              <el-form ref="loginForm" :model="formData">
-                <el-form-item prop="username" :rules="[{ required: true, message: '登录账号不能为空'}]">
-                  <el-input v-model="formData.username" placeholder="账号" prefix-icon="el-icon-user-solid" />
-                </el-form-item>
-                <el-form-item prop="password" :rules="[{ required: true, message: '登录密码不能为空'}]">
-                  <el-input v-model="formData.password" :type="passwordType" placeholder="密码" prefix-icon="el-icon-lock" @keyup.enter.native="handleLogin" />
-                  <span class="show-pwd" @click="showPwd"><svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" /></span>
-                </el-form-item>
-                <el-button type="primary" :loading="loading" @click.native.prevent="handleLogin">登录系统</el-button>
-              </el-form>
-            </div>
-          </div>
-          <div class="bottom">
-            <p align="center"><a href="http://www.doxincn.com" target="_blank">技术支持：江门市东信科技有限公司</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="login-main">
+		<div class="login-body" :style="'background:url('+bgImg+')'">
+			<div class="wrap">
+				<div class="login-side">
+					<div class="content">
+						<div class="login-form">
+							<p class="logo"><img class="img" src="../../assets/login_images/logo.png"></p>
+							<p class="form-desc">登录系统</p>
+							<el-form ref="loginForm" :model="formData">
+								<el-form-item prop="username" :rules="[{ required: true, message: '登录账号不能为空'}]">
+									<el-input v-model="formData.username" placeholder="账号" prefix-icon="el-icon-user-solid" />
+								</el-form-item>
+								<el-form-item prop="password" :rules="[{ required: true, message: '登录密码不能为空'}]">
+									<el-input v-model="formData.password" :type="passwordType" placeholder="密码" prefix-icon="el-icon-lock" @keyup.enter.native="handleLogin" />
+									<span class="show-pwd" @click="showPwd"><svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" /></span>
+								</el-form-item>
+								<el-button type="primary" :loading="loading" @click.native.prevent="handleLogin">登录系统</el-button>
+							</el-form>
+						</div>
+					</div>
+					<div class="bottom">
+						<p align="center"><a href="http://www.doxincn.com" target="_blank">技术支持：江门市锋云信息技术有限公司</a></p>
+						<p align="center"><a href="http://www.beian.miit.gov.cn/" target="_blank">备案编号：粤ICP备19035012号-1</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -36,17 +37,17 @@ export default {
 	name: 'Login',
 	data() {
 		return {
-    		passwordType: 'password',
-    		loading: false,
+				passwordType: 'password',
+				loading: false,
 			formData: {},
-    		bgImg: bgimg,
-      		logo: process.env.VUE_APP_BASE_URL + 'images/logo.png'
-    	}
+				bgImg: bgimg,
+					logo: process.env.VUE_APP_BASE_URL + 'images/logo.png'
+			}
 	},
 
 	methods: {
 
-	    showPwd() {
+			showPwd() {
 			if (this.passwordType === 'password') {
 				this.passwordType = ''
 			} else {
@@ -55,26 +56,26 @@ export default {
 			this.$nextTick(() => {
 				this.$refs.password.focus()
 			})
-	    },
+			},
 
-	    handleLogin() {
-	    	this.$refs.loginForm.validate(valid => {
-		        if (valid) {
-		          this.loading = true
-		          this.$store.dispatch('user/login', this.formData)
-		            .then(() => {
-		            	this.$router.push({ path: '/login' || '/', query: this.otherQuery })
-		            	this.loading = false
-		            })
-		            .catch(() => {
-		              this.loading = false
-		            })
-		        } else {
-		          console.log('error submit!!')
-		          return false
-		        }
-		    })
-	    }
+			handleLogin() {
+				this.$refs.loginForm.validate(valid => {
+						if (valid) {
+							this.loading = true
+							this.$store.dispatch('user/login', this.formData)
+								.then(() => {
+									this.$router.push({ path: '/login' || '/', query: this.otherQuery })
+									this.loading = false
+								})
+								.catch(() => {
+									this.loading = false
+								})
+						} else {
+							console.log('error submit!!')
+							return false
+						}
+				})
+			}
 	}
 }
 </script>
@@ -95,14 +96,14 @@ $dark_gray:#889aa4;
 .login-side {
 	position: fixed;right: 0;top: 0;height: 100vh;min-width: 320px;background-color: #fff;z-index: 11;
 	.content {
-	    display: flex;height: calc(100vh - 34px);padding-bottom: 105px;justify-content: center;align-items: center;
-	    .logo{
-	    	text-align: center;
-	    	img{height: 80px;display: inline-flex;border-radius: 6px;}
-	    }
-	    .login-form {
-		    width: 360px;padding:0 20px;margin: 0 auto;
-		    .form-desc{color: #8492a6;margin: 20px 0;text-align: center;}
+			display: flex;height: calc(100vh - 34px);padding-bottom: 105px;justify-content: center;align-items: center;
+			.logo{
+				text-align: center;
+				img{height: 80px;display: inline-flex;border-radius: 6px;}
+			}
+			.login-form {
+				width: 360px;padding:0 20px;margin: 0 auto;
+				.form-desc{color: #8492a6;margin: 20px 0;text-align: center;}
 			.el-input--medium .el-input__inner{height: 44px;line-height: 44px;}
 			.el-button--primary{width: 100%;height: 44px;background-color: #23C84F;border-color: #23C84F;}
 			.el-button--primary:hover{background-color: #5ed838;border-color: #5ed838;}

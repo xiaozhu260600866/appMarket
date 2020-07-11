@@ -6,11 +6,11 @@
       </div>
       <div slot="operate" slot-scope="scope">
         <div>
-          <el-button size="mini" @click="goto('/merchant/product-edit?id='+scope.row.id)">编辑</el-button>
+          <el-button type="primary" size="mini" @click="goto('/merchant/product-edit?id='+scope.row.id)">编辑</el-button>
         </div>
       </div>
       <div slot="headerR">
-        <el-button type="success" @click="goto('/merchant/product-create')">新建</el-button>
+        <el-button type="primary" @click="goto('/merchant/product-create')">新建</el-button>
       </div>
     </dx-table>
     <qrcode ref="qrcode" />
