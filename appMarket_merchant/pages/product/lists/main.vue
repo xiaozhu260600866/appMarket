@@ -30,7 +30,6 @@
 				<block v-for="(item,index) in data.productClass" :key="index">
 					<scroll-view scroll-y class="right-box pb50" :style="{height:height+'px',top:height_+'px'}" v-if="currentTab==index">
 						<productLists :data="data.productClass[selectClassKey].products.data"></productLists>
-						123
 						<hasMore :parentData="data"></hasMore>
 					</scroll-view>
 				</block>

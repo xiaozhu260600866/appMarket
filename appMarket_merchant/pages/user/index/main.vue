@@ -4,12 +4,12 @@
 			<view class="head-info utop">
 				<view class="uinfo">
 					<view class="header-img">
-						<image class="img" :src="userInfo.headerPic" />
+						<image class="img" :src="getSiteName + '/upload/images/merchant/'+data.detail.logo" />
 					</view>
 					<view class="flex-between flex-middle flex1">
 						<view class="pl15 fc-white right info" @click="goto('/pages/user/setting/layouts/info',1)">
-							<view class="fs-18">{{ userInfo.name}}</view>
-							<view class="fs-14 Arail">ID:{{ userInfo.id }}</view>
+							<view class="fs-18">{{ data.detail.name}}</view>
+							<view class="fs-14 Arail">ID:{{ data.detail.id }}</view>
 							<view class="fs-12">查看店铺详情</view>
 						</view>
 						<view class="status"><weui-input v-model="ruleform.sendType" name="sendType" changeField="value" type="select" dataKey="sendTypeArr"></weui-input></view>
@@ -72,7 +72,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 		},
 		data() {
 			return {
-				formAction: '/shop/user',
+				formAction: '/merchant/index',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -193,7 +193,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 			// 		console.log(res.screenHeight);
 			// 	}
 			// });
-			//this.ajax();
+			this.ajax();
 		},
 		onReachBottom() {
 			this.hasMore(this);

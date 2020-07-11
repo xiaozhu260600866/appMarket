@@ -16,7 +16,7 @@
 				</view>
 			</view>
 			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.service_phone" label="客服电话" type="txt" name="service_phone" myclass="service_phone"></weui-input>
+				<weui-input v-model="ruleform.phone" label="客服电话" type="txt" name="phone" myclass="service_phone"></weui-input>
 			</view>
 			<view class="bg-f mb12">
 				<view @click="goto('/pages/user/setting/layouts/loginPassword',1)">
@@ -32,13 +32,13 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/merchant/index',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform:{
 					status:'1',
-					service_phone: 133809095623,
+					service_phone: 13,
 					loginPassword: '修改密码'
 				},
 				statusArr: [{
@@ -68,12 +68,12 @@
 				this.getAjaxForApp(this, {
 				
 				}).then(msg => {
-					
+					this.ruleform = msg.detail
 				});
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

@@ -24,23 +24,11 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				messageLists:[{
-					headerPic:'/static/banner01.jpg',
+					headerPic:'https://appmarket.doxinsoft.com/images/wap/logo.png',
 					name:'东信科技-梅',
 					content:'您好，请问有什么可帮到您！',
 					news_time:'14:02',
 					meassage_num: 3
-				},{
-					headerPic:'/static/banner01.jpg',
-					name:'东信科技-梅',
-					content:'您好，请问有什么可帮到您！',
-					news_time:'14:02',
-					meassage_num: 0
-				},{
-					headerPic:'/static/banner01.jpg',
-					name:'东信科技-梅',
-					content:'您好，请问有什么可帮到您！',
-					news_time:'14:02',
-					meassage_num: 7
 				}]
 			}
 		},
