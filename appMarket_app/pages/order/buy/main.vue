@@ -85,6 +85,13 @@
 					共<text class="Arial">{{merchant.orderNum}}</text>件商品 合计：<text class="Arial price fs-16">￥{{merchant.orderSum}}</text>
 				</view>
 			</view>
+			<view class="block-sec">
+				<!-- <weui-input v-model="ruleform.emergencyFee" label="加急费" name="emergencyFee" changeField="value" type="radio" dataKey="emergencyFeeArr"
+				 @callback="test" :row="false"></weui-input> -->
+				
+				<weui-input v-model="ruleform.emergencyFee" label="加急费" name="emergencyFee" changeField="value" type="checkbox" dataKey="emergencyFeeArr"
+				  :row="true" Labelleft myclass="emFee"></weui-input>
+			</view>
 			<view id="mode" class="block-sec">
 				<weui-input v-model="ruleform.remark" label="买家留言" type="text" name="remark" placeholder="点击给卖家留言"></weui-input>
 			</view>
@@ -111,6 +118,7 @@
 		},
 		computed:{
 			amount(){
+				
 				let amount = 0;
 				if(this.data.merchants){
 					this.data.merchants.forEach(v=>{
@@ -118,6 +126,9 @@
 							 amount+= parseFloat(item.amount);
 						 });
 					})
+				}
+				if(this.ruleform.emergencyFee.length){
+					amount+=5;
 				}
 				return amount.toFixed(2);
 			}
@@ -135,7 +146,8 @@
 					shipping:1,
 					send_price: '￥0',
 					weigth_price: '￥0',
-					coupon: '暂无'
+					coupon: '暂无',
+					emergencyFee: 0,
 				},
 				vaildate:{},
 				address:{},
@@ -153,6 +165,10 @@
 				},{
 					label: '余额支付',
 					value: 2
+				}],
+				emergencyFeeArr:[{
+					label: '￥5',
+					value: 1
 				}],
 				teamHead:{
 					name:'',

@@ -5,7 +5,7 @@
 				<view class="dxi-icon dxi-icon-left" @click="goto('/pages/index/main',2)"></view>
 			</view>
 			<view class="store-header flex1 text-center" :style="{paddingTop:top+'px',}">
-				商品详情
+				{{data.detail.name}}
 			</view>
 			<view class="store-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}">
 				<view :class="['fs-20 dxi-icon lh-20 flex',data.collect == true ? 'dxi-icon-heart-fill':'dxi-icon-heart']" @click="collection"></view>

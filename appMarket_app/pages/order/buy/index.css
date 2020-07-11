@@ -52,3 +52,8 @@
 .storePro /deep/.dx-txt{text-align: right;font-size: 30upx;}
 .storeName{display: flex;align-items: center;padding: 20upx;border-bottom: 2upx #eee solid;}
 .storeName .img{width: 40upx;height: 40upx;display: flex;border-radius: 50%;margin-right: 20upx;}
+
+
+/deep/.emFee .row_group{display: flex;align-items: center;justify-content: flex-end;}
+/deep/.emFee .uni-checkbox-input{border-radius: 50%;border-color: #d1d1d1!important;width: 52upx;height: 52upx;}
+/deep/.emFee uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked{background-color: rgb(60, 197, 31)!important;color:#fff!important;border-color: rgb(60, 197, 31)!important;}
