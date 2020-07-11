@@ -24,13 +24,13 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				messageLists:[{
-					headerPic:'/static/banner01.jpg',
+					headerPic:'https://appmarket.doxinsoft.com/images/wap/logo.png',
 					name:'东风生鲜',
 					content:'您好，您需要多少呢？我们珠三角地区可以包邮的',
 					news_time:'14:02',
 					meassage_num: 1
 				},{
-					headerPic:'/static/message-send.png',
+					headerPic:'https://appmarket.doxinsoft.com/images/wap/message-send.png',
 					name:'交易物流信息',
 					content:'即将确认收货通知',
 					news_time:'10:02',

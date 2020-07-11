@@ -12,7 +12,8 @@
 				<weui-input v-model="ruleform.health_cert" label="健康证" type="upload" upurl='article' allowUpLoadNum="1" name="health_cert"
 				 datatype="require"></weui-input>
 			</view>
-			<view class="m20 info-subBtn" @click="goto('/pages/user/setting/main',2)"><dx-button block>保存</dx-button></view>
+			<view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg">保存</dx-button></view>
+			<view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg" hollow>退出</dx-button></view>
 		</view>
 	</view>
 </template>

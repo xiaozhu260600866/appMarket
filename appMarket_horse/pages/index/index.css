@@ -14,6 +14,6 @@
 .Iorder .top{display: flex;justify-content: space-between;height: 112upx;border-bottom: 1upx #eee solid;font-size: 28upx;align-items: center;padding: 0 30upx;}
 .Iorder .info{padding: 20upx 30upx;border-bottom: 1upx #eee solid;}
 .Iorder .info .icon-grop{margin: -10upx 0;}
-.Iorder .info .icon{font-size: 24upx;color: #666;background-color: #eee;width: 52upx;height: 52upx;line-height: 52upx;text-align: center;border-radius: 50%;display: block;margin: 10upx 0;}
+.Iorder .info .icon{font-size: 50upx;color: #57C734;}
 .Iorder .store{padding: 20upx 30upx;display: flex;justify-content: space-between;align-items: center;}
-.Iorder .store .icon{font-size: 24upx;color: #666;background-color: #eee;width: 52upx;height: 52upx;line-height: 52upx;text-align: center;border-radius: 50%;}
+.Iorder .store .icon{font-size: 42upx;color: #57C734;}

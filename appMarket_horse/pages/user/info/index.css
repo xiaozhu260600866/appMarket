@@ -13,7 +13,7 @@
 .info-form .address /deep/.dx-input,.info-form /deep/.nav .dx-input{padding-right: 20upx;}
 
 
-.info-subBtn /deep/.dxi-btn{border-color: #57C734;background-color: #57C734;color: #fff;}
+/* .info-subBtn /deep/.dxi-btn{border-color: #57C734;background-color: #57C734;color: #fff;} */
 
 
 /* 支付密码 */

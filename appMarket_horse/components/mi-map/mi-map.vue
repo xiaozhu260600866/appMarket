@@ -2,17 +2,17 @@
 	<view class="server-place">
 		<div class="p20">
 			<view class="flex-between flex-middle">
-				<div class="fs-12">{{order.addr_address}}</div>
-				<dxButton plain type="success" round size="medium" @click="close">关闭</dxButton>
+				<div class="fs-14">{{order.addr_address}}</div>
+				<dxButton plain type="success" round size="small" @click="close">关闭</dxButton>
 			</view>
 			<view class="flex-between flex-middle">
-				<div class="fs-12">
+				<div class="fs-14">
 					<div v-if="order.horse_take">全程{{order.space}}km</div>
-					<div v-if="order.horse_take == 0 && order.getMerchant.space">全程{{order.getMerchant.space}}km</div>
+					<div v-if="order.horse_take == 0 && order.getMerchant.space">全程{{order.getMerchant.space}}</div>
 				</div>
-				<dxButton  type="success"  size="medium" @click="location(markers[1].latitude,markers[1].longitude,order.getMerchant.name,)">导航</dxButton>
+				<dxButton type="success" size="small" round @click="location(markers[1].latitude,markers[1].longitude,order.getMerchant.name,)">导航</dxButton>
 			</view>
-			<view class="flex fs-12 fc-gray bd-td flex-middle" style="height: 50px;">
+			<view class="flex fs-14 fc-gray bd-td flex-middle" style="height: 50px;">
 				请在{{order.deliver_date}}内送达目的地
 			</view>
 		</div>
@@ -34,7 +34,7 @@
 					<div>{{order.addr_name}}</div>
 				</div>
 				<div>
-					<dxButton  type="success"  size="medium" @click="phone(order.addr_phone)">电话</dxButton>
+					<dxButton type="success" size="small" round @click="phone(order.addr_phone)">电话</dxButton>
 				</div>
 			</div>
 		</view>

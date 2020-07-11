@@ -47,12 +47,12 @@
 					<!-- 待取货 -->
 					 <view class="store"  v-if="item.horse_take == 0">
 						<view class="">距离商家<text class="Arial">{{spaceMerchant(item)}}</text></view>
-						<view class="icon dxi-icon dxi-icon-location-fill" @click="toMerchant(item)"></view>
+						<view class="icon iconfont icon-location-c-fill" @click="toMerchant(item)"></view>
 					</view>
 					<!-- 已取货 -->
 					 <view class="store" v-if="item.horse_take == 1">
 						<view class="">距离用户<text class="Arial">{{spaceUser(item)}}</text></view>
-						<view class="icon dxi-icon dxi-icon-location-fill" @click="toUser(item)"></view>
+						<view class="icon iconfont icon-location-c-fill" @click="toUser(item)"></view>
 					</view>
 					<view class="ptb10 text-center">
 						<dx-button round size="medium" type="success" myclass="plr70" @click="horseTake(item,1)" v-if="item.horse_take == 0">取货出发</dx-button>
@@ -77,25 +77,22 @@
 								<view class="name lh-24">{{ item.addr_name }}<text class="Arial pl10">{{ item.addr_phone }}</text></view>
 								<view class="address fs-16">{{ item.addr_address}}</view>
 							</view>
-							<view class="icon-grop">
-								<view class="icon dxi-icon dxi-icon-tel-fill"></view>
-							</view>
+							<!-- <view class="icon-grop">
+								<view class="icon iconfont icon-location-c-fill"></view>
+							</view> -->
 						</view>
 					</view>
 					<view class="store">
 						<view class="">距离用户<text class="Arial">{{spaceUser(item)}}</text></view>
-						<view class="icon dxi-icon dxi-icon-location-fill" @click="toUser(item)"></view>
+						<view class="icon iconfont icon-location-c-fill" @click="toUser(item)"></view>
 					</view>
 					<view class="ptb10 text-center">
 						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,9)">用户已收货</dx-button>
 					</view>
 				</view>
 			</view>
-			<mi-map
-			    v-if="mapShow"
-			    ref="miMap"
-			>
-			</mi-map>
+			<mi-map v-if="mapShow" ref="miMap"></mi-map>
+			<hasMore :parentData="data"></hasMore>
 		</view>
 	</view>
 </template>

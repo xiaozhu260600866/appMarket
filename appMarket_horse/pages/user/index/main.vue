@@ -35,7 +35,7 @@
 			
 			<view class="ugorup-box bg-f mb8">
 				<dx-title name="常用工具" nameBold="bold" :nameSize="15" :height="40"></dx-title>
-				<dx-nav-class :data="applyArray" myclass="bdr12" num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5"></dx-nav-class>
+				<dx-nav-class :data="applyArray"  @click="checkAuth" myclass="bdr12" num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5"></dx-nav-class>
 			</view>
 			
 		</view>
@@ -66,7 +66,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 					couponNum:0
 				},
 				userInfo:{
-					headerPic:'/static/icon.png',
+					headerPic:'https://appmarket.doxinsoft.com/images/nouser01.png',
 					name:'东信科技-梅'
 				},
 				applyArray:[
@@ -102,6 +102,10 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 			}
 		},
 		methods: {
+			checkAuth(v){
+				console.log(v);
+				return this.goto(v.url,v.type);
+			},
 			ajax() {
 				this.getAjaxForApp(this, {
 				
