@@ -12,7 +12,7 @@ export default {
 		'searchFields': [
 			{ 'prop': 'name', 'type': 'text', 'label': '商家名称' },
 			{ 'prop': 'phone', 'type': 'text', 'label': '商家电话' },
-			{ 'prop': 'phone', 'type': 'text', 'label': '所属市场' }
+			{ 'prop': 'market_id', 'type': 'select', 'label': '所属市场', datakey: 'markets' }
 		],
 		'tarbars': {
 			'prop': 'status',
@@ -56,7 +56,7 @@ export default {
 			{ prop: 'idCard', datatype: 'array', type: 'upload', label: '身份证正图', allowUpLoadNum: 1, upurl: 'merchant' },
 			{ prop: 'idCard2', datatype: 'array', type: 'upload', label: '身份证背图', allowUpLoadNum: 1, upurl: 'merchant', column: 2 },
 			{ prop: 'company_logo', datatype: 'array', type: 'upload', label: '营业执照', allowUpLoadNum: 1, upurl: 'merchant' },
-			{ prop: 'health_logo', datatype: 'array', type: 'upload', label: '健康证', allowUpLoadNum: 1, upurl: 'merchant' },
+			{ prop: 'health_logo', datatype: 'array', type: 'upload', label: '健康证', allowUpLoadNum: 1, upurl: 'merchant' }
 			// { prop: 'swiper', datatype: 'array', type: 'upload', label: '轮播图', allowUpLoadNum: 1, upurl: 'merchant' }
 		]
 	}

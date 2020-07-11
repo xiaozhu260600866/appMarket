@@ -19,6 +19,7 @@
 			:longitude="longitude"
 			@regionchange='mapChange'
 			:markers="markers"
+			scale="4"
 			>
 		</map>
 		<view class="map-tools">
@@ -52,7 +53,7 @@
 		props: {
 			tipText: {
 				type: String,
-				default: '选择位置'
+				default: '选择位置1'
 			},
 			descText: {
 				type: String,

@@ -20,6 +20,7 @@
 				:longitude="longitude"
 				@regionchange='mapChange'
 				:markers="markers"
+				scale="13"
 				>
 			</map>
 			<view class="map-tools">

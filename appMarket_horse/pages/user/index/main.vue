@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view>
+		<view v-if="data.show">
 			<view class="head-info utop">
 				<view class="uinfo">
 					<view class="header-img">
@@ -8,8 +8,8 @@
 					</view>
 					<view class="flex-between flex-middle flex1">
 						<view class="pl15 fc-white right info" @click="goto('/pages/user/setting/layouts/info',1)">
-							<view class="fs-18">{{ userInfo.name}}</view>
-							<view class="fs-16 Arial">ID:782</view>
+							<view class="fs-18">{{ data.detail.name}}</view>
+							<view class="fs-16 Arial">ID:{{data.detail.id}}</view>
 						</view>
 						<view class="status"><weui-input v-model="ruleform.sendType" name="sendType" changeField="value" type="select" dataKey="sendTypeArr"></weui-input></view>
 					</view>
@@ -19,15 +19,15 @@
 			<view class="ugorup-box bg-f mb8 count">
 				<view class="head-count">
 					<view class="c-item" @click="goto('/pages/user/wallet/index/main',1)">
-						<view class="num fs-18 fc-3">{{count.amount}}<text class="fs-14">元</text></view>
+						<view class="num fs-18 fc-3">0<text class="fs-14">元</text></view>
 						<view class="name fs-13 fc-6">今日收入</view>
 					</view>
 					<view class="c-item">
-						<view class="num fs-18 fc-3">{{count.integral}}<text class="fs-14">单</text></view>
+						<view class="num fs-18 fc-3">0<text class="fs-14">单</text></view>
 						<view class="name fs-13 fc-6">今日完成订单</view>
 					</view>
 					<view class="c-item">
-						<view class="num fs-18 fc-3">{{ count.couponNum }}<text class="fs-14">分</text></view>
+						<view class="num fs-18 fc-3">0<text class="fs-14">分</text></view>
 						<view class="name fs-13 fc-6">综合评价</view>
 					</view>
 				</view>
@@ -52,7 +52,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 		},
 		data() {
 			return {
-				formAction: '/shop/user',
+				formAction: '/horse/index',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -115,7 +115,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 			}
 		},
 		onLoad(options) {
-			
+			this.ajax();
 			// uni.getSystemInfo({
 			// 	success:res=> {
 			// 		this.getError(res.screenHeight+'');

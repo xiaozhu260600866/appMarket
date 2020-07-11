@@ -71,7 +71,7 @@
 					<view class="btn-nav inbtn" @click="goto('/pages/shop/order/evaluate/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">立即评价</view>
 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 10">售后详情</view>
 					<view class="btn-nav" v-if="ruleform.status == 0">已取消</view>
-					<view class="btn-nav inbtn" @click="goto('/pages/order/map/main?order_no='+parent.order_no,1)" v-if="location">骑手位置</view>
+					<view class="btn-nav inbtn" @click="goto('/pages/order/map/main?order_no='+ruleform.order_no,1)" v-if="location">骑手位置</view>
 				</view>
 			</view>
 			

@@ -91,22 +91,27 @@
             },
             "icons" : {
                 "android" : {
-                    "hdpi" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                    "xhdpi" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                    "xxhdpi" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                    "xxxhdpi" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png"
+                    "hdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/72.png",
+                    "xhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/96.png",
+                    "xxhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/144.png",
+                    "xxxhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/192.png"
                 },
                 "ios" : {
                     "iphone" : {
-                        "app@2x" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                        "app@3x" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                        "spotlight@2x" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                        "spotlight@3x" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                        "settings@2x" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                        "settings@3x" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                        "notification@2x" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png",
-                        "notification@3x" : "C:/Users/doxin/Desktop/045cb989130006235f97cbe1f0efdfe.png"
+                        "app@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/120.png",
+                        "app@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/180.png",
+                        "spotlight@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/80.png",
+                        "spotlight@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/120.png",
+                        "settings@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/58.png",
+                        "settings@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/87.png",
+                        "notification@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/40.png",
+                        "notification@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/60.png"
                     }
+                }
+            },
+            "splashscreen" : {
+                "android" : {
+                    "hdpi" : ""
                 }
             }
         },
