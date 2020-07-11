@@ -20,15 +20,15 @@
 					<view class="remark">请保持照片清晰无反光</view>
 				</view>
 				<view class="photoid">
-					<view class="item">
-						<image class="base-map img" src="https://appmarket.doxinsoft.com/images/wap/idCard-front.jpg"></image>
+					<view class="item" @click="uploadHeaderImg('idCard')">
+						<image class="base-map img" :src="ruleform.idCard ? getSiteName + '/upload/images/horse/'+ruleform.idCard:'https://appmarket.doxinsoft.com/images/wap/idCard-front.jpg'" ></image>
 					</view>
-					<view class="item">
-						<image class="base-map img" src="https://appmarket.doxinsoft.com/images/wap/idCard-back.jpg"></image>
+					<view class="item" @click="uploadHeaderImg('idCard2')">
+						<image class="base-map img" :src="ruleform.idCard2 ? getSiteName + '/upload/images/horse/'+ruleform.idCard2: 'https://appmarket.doxinsoft.com/images/wap/idCard-back.jpg'"></image>
 					</view>
 				</view>
 				<view class="m20 mt40 info-subBtn">
-					<dx-button block size="lg" @click="step = 3">下一步</dx-button>
+					<dx-button block size="lg" @click="next(3)">下一步</dx-button>
 				</view>
 			</view>
 			
@@ -38,8 +38,8 @@
 					<view class="remark">请保持照片清晰无反光</view>
 				</view>
 				<view class="photoid">
-					<view class="item">
-						<image class="base-map img" src="https://appmarket.doxinsoft.com/images/wap/health-certificate.jpg"></image>
+					<view class="item"  @click="uploadHeaderImg('health_logo')">
+						<image class="base-map img" :src="ruleform.health_logo ? getSiteName + '/upload/images/horse/'+ruleform.health_logo:'https://appmarket.doxinsoft.com/images/wap/health-certificate.jpg'"></image>
 					</view>
 				</view>
 				<view class="m20 mt40 info-subBtn">
@@ -47,9 +47,9 @@
 				</view>
 			</view>
 			<!-- <view class="bg-f" v-if="step == 2">
-				<weui-input v-model="ruleform.idCard" label="身份证人像面" type="upload" upurl='merchant' allowUpLoadNum="1" name="idCard"
+				<weui-input v-model="ruleform.idCard" label="身份证人像面" type="upload" upurl='horse' allowUpLoadNum="1" name="idCard"
 				 datatype="require"></weui-input>
-				<weui-input v-model="ruleform.idCard2" label="身份证人像面" type="upload" upurl='merchant' allowUpLoadNum="1" name="idCard2"
+				<weui-input v-model="ruleform.idCard2" label="身份证人像面" type="upload" upurl='horse' allowUpLoadNum="1" name="idCard2"
 				 datatype="require"></weui-input>
 				<view class="m20 info-subBtn">
 					<dx-button block size="lg" @click="submit">完成</dx-button>
@@ -78,10 +78,17 @@
 					{label:"是",value:1},
 					{label:"否",value:0},
 				],
-				step:3
+				step:1
 			}
 		},
 		methods: {
+			next(step){
+				if(step == 3 && !this.ruleform.idCard && !this.ruleform.idCard2){
+				   this.getError("身份证还没有上传");
+					return false;
+				}
+				this.step = step;
+			},
 			checkboxChange(e) {
 				let value = e.mp.detail.value.length;
 				this.ruleform.agress = value;
@@ -103,6 +110,12 @@
 				//this.demos.multiColumns.columnPickedIndex = index
 				//this.demos.multiColumns.columnPicked = picked
 			},
+			uploadHeaderImg(field){
+				this.uploadImageSingle(res => {
+					this.$set(this.ruleform,field,[res]);
+					console.log(this.ruleform);
+				},"horse");
+			},
 			submit() {
 				
 				this.vaildForm(this, res => {
@@ -114,6 +127,10 @@
 							}
 							this.step =2;
 						}else{
+							if( !this.ruleform.health_logo){
+							   this.getError("健康证没上传");
+								return false;
+							}
 							this.postAjax("/horse/register", this.ruleform).then(msg => {
 								if (msg.data.status == 2) {
 									this.goto("/pages/user/login/main");
