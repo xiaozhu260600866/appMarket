@@ -3,7 +3,7 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
 			<view class="order_no">订单编号<span>{{ruleform.order_no}}</span></view>
-			<view id="pay_price"><span class="fs-20">￥</span>{{ ruleform.amount }}</view>
+			<view id="pay_price"><span class="fs-20">￥</span>{{ parseFloat(ruleform.amount) + parseFloat(ruleform.quick_price) }}</view>
 			<!-- <view class="fs-15 fc-6 text-center">支付剩余<text class="Arial">14</text>分<text class="Arial">32</text>秒</view> -->
 			<view class="payRadio bg-f mlr20 plr5 bdr6">
 				<view class="fs-16 p15 pb0">支付方式</view>

@@ -152,7 +152,7 @@
 							this.step =2;
 						}else{
 							if(!this.ruleform.company_logo && !this.ruleform.health_logo){
-							   this.getError("健康证或营业热昭没上传说");
+							   this.getError("请上传营业执照或健康书");
 								return false;
 							}
 							this.postAjax("/merchant/register", this.ruleform).then(msg => {

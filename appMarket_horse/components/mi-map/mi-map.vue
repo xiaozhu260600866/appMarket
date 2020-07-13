@@ -11,7 +11,8 @@
 				</view>
 				<view slot="right">
 					<dxButton block myclass="mb10" plain type="success" round size="small" @click="close">关闭</dxButton>
-					<dxButton block type="success" size="small" round @click="location(markers[1].latitude,markers[1].longitude,order.getMerchant.name,)">导航</dxButton>
+					<dxButton block type="success" size="small" round @click="location(markers[1].latitude,markers[1].longitude,order.getMerchant.name,)"  v-if="order.horse_take == 0">导航</dxButton>
+					<dxButton block type="success" size="small" round @click="location(markers[1].latitude,markers[1].longitude,order.addr_name)"  v-else>导航</dxButton>
 				</view>
 			</dx-list-msg>
 		</view>

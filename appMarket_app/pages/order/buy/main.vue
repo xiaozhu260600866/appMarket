@@ -89,7 +89,7 @@
 				<!-- <weui-input v-model="ruleform.emergencyFee" label="加急费" name="emergencyFee" changeField="value" type="radio" dataKey="emergencyFeeArr"
 				 @callback="test" :row="false"></weui-input> -->
 				
-				<weui-input v-model="ruleform.emergencyFee" label="加急费" name="emergencyFee" changeField="value" type="checkbox" dataKey="emergencyFeeArr"
+				<weui-input v-model="ruleform.quick_price" label="加急费" name="quick_price" changeField="value" type="checkbox" dataKey="emergencyFeeArr"
 				  :row="true" Labelleft myclass="emFee"></weui-input>
 			</view>
 			<view id="mode" class="block-sec">
@@ -127,7 +127,7 @@
 						 });
 					})
 				}
-				if(this.ruleform.emergencyFee.length){
+				if(this.ruleform.quick_price.length){
 					amount+=5;
 				}
 				return amount.toFixed(2);
@@ -147,7 +147,7 @@
 					send_price: '￥0',
 					weigth_price: '￥0',
 					coupon: '暂无',
-					emergencyFee: 0,
+					quick_price: 0,
 				},
 				vaildate:{},
 				address:{},

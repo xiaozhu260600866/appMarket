@@ -35,7 +35,7 @@
 						</view>
 						<view class="emergency_fee flex-between plr15 ptb10 bd-be mb10">
 							<view class="txt">加急费</view>
-							<view class="Arial">￥5</view>
+							<view class="Arial">￥{{item.quick_price}}</view>
 						</view>
 						<view class="count flex-between p15 pt5">
 							<view class="txt">本单预计收入</view>
