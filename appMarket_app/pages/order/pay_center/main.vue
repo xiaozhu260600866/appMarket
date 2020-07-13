@@ -21,7 +21,7 @@
 				</weui-input>
 			</view>
 			<view class="m20">
-				<dx-button type="success" icon="icon-time-o" size="lg" block @click="submit">立即支付</dx-button>
+				<dx-button type="success" size="lg" block @click="submit">立即支付</dx-button>
 			</view>
 		</view>
 	</view>

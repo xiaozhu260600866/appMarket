@@ -11,7 +11,7 @@
 					 @click="goto('/pages/index/main',2)"></view>
 				</view>
 			</view>
-			<myswiper :data="data.silders" :lrPadding="0" :tbPadding="0" :bdR="0"></myswiper>
+			<myswiper :data="data.silders" :TBpadding="0" :LRpadding="0" :bdR="0"></myswiper>
 			<view class="pro_infor bg-f">
 				<view class="flex-between">
 					<view class="pro_name fs-16 pt10 plr15 flex1">{{data.detail.name}}</view>
@@ -26,7 +26,7 @@
 				</view>
 				<view class="buy-num plr15 ptb10 flex-between bd-te">
 					<view class="fs-15 lh-30 fc-3">选购数量</view>
-					<tui-numberbox v-model="num"></tui-numberbox>
+					<view class="numbox"><tui-numberbox v-model="num"></tui-numberbox></view>
 				</view>
 			</view>
 			<view class="pro_type bg-f mtb12">
@@ -78,7 +78,11 @@
 				<view class="left plr8">
 					<button class="btn-item share" hover-class="none" @click="goto('/pages/index/main',2)">
 						<view class="iconfont icon-pro-shop"></view>
-						<view class="txt">首页</view>
+						<view class="txt">店铺</view>
+					</button>
+					<button class="btn-item share" hover-class="none" @click="phone('0750-3229010')">
+						<view class="iconfont icon-pro-service-o"></view>
+						<view class="txt">客服</view>
 					</button>
 					<button class="btn-item cart" hover-class="none" @click="goto('/pages/user/cart/main',2)">
 						<view class="iconfont icon-pro-cart"></view>
@@ -90,10 +94,7 @@
 				</view>
 				<view class="right flex1 w-b100 pr5">
 					<view class="r-nav">
-						<view class="r-item r-item-yellow"><span class="r-opacity" @click="addCart">加入购物车</span></view>
-					</view>
-					<view class="r-nav">
-						<view class="r-item r-item-red"><span class="r-opacity" @click="gotoOrder">立即购买</span></view>
+						<view class="r-item r-item-yellow main-bg"><span class="r-opacity" @click="addCart">加入购物车</span></view>
 					</view>
 				</view>
 			</view>

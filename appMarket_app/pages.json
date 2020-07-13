@@ -46,7 +46,7 @@
 		{
 			"path": "pages/user/login/main",
 			"style": {
-				"navigationBarTitleText": "用户登陆",
+				"navigationBarTitleText": "用户登录",
 				"enablePullDownRefresh": true
 			}
 		},

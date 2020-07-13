@@ -46,11 +46,11 @@
 					</dx-title>
 				</view>
 				<dx-nav-class :data="[
-					{url:'/pages/order/lists/main',	type: 1,cover:'/static/order-icon01.png',name:'待付款',number:data.order1},
-					{url:'/pages/order/lists/main',	type: 1,cover:'/static/order-icon02.png',name:'待发货',number:data.order3},
-					{url:'/pages/order/lists/main',	type: 1,cover:'/static/order-icon03.png',name:'待收货',number:data.order5},
-					{url:'/pages/order/lists/main',	type: 1,cover:'/static/order-icon04.png',name:'待评价',number:data.order9},
-					{url:'/pages/order/lists/main',	type: 1,cover:'/static/order-icon05.png',name:'售后',number:data.order10}
+					{url:'/pages/order/lists/main?status=1',type: 1,cover:'/static/order-icon01.png',name:'待付款',number:data.order1},
+					{url:'/pages/order/lists/main?status=3',type: 1,cover:'/static/order-icon02.png',name:'待发货',number:data.order3},
+					{url:'/pages/order/lists/main?status=5',type: 1,cover:'/static/order-icon03.png',name:'待收货',number:data.order5},
+					{url:'/pages/order/lists/main?status=9',type: 1,cover:'/static/order-icon04.png',name:'待评价',number:data.order9},
+					{url:'/pages/order/lists/main?status=10',type: 1,cover:'/static/order-icon05.png',name:'售后',number:data.order10}
 				]" @click="checkAuth" isAuth myclass="bdr12" :num="5" :imgWidth="30" :imgHeight="30" :imgR="0" :nameSize="12" :namePTop="5" numBg="#ff721f"></dx-nav-class>
 			</view>
 			<view class="ugorup-box bg-f mb8">

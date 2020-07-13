@@ -101,10 +101,10 @@
 					name: "全部"
 				}, {
 					value:3,
-					name: "备货中"
+					name: "待发货"
 				},{
 					value:5,
-					name: "待取货"
+					name: "待收货"
 				},{
 					value:9,
 					name: "待评价"
