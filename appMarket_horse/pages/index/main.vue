@@ -8,7 +8,7 @@
 				<!-- 新任务状态 -->
 				<view class="Iorder_item" v-for="(item,index) in data.lists.data" >
 					<view class="time-info">
-						<view class="left">预计<text class="Arial plr2">{{ item.payed_date }} {{ item.order_time }}</text>送达</view>
+						<view class="left">预计<text class="Arial plr2">{{ item.deliver_date }} {{ item.order_time }}</text>送达</view>
 						<view class="right price">￥{{ item.amount }}</view>
 					</view>
 					<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
@@ -21,7 +21,7 @@
 						</view>
 					</view>
 					<view class="ptb10 text-center">
-						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,5)">抢单</dx-button>
+						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,5)">抢单1</dx-button>
 					</view>
 				</view>
 			</view>
@@ -31,7 +31,7 @@
 					<view class="top">
 						<view>
 							<view class="left">顾客已等<text class="Arial">2</text>小时<text class="Arial">26</text>分钟</view>
-							<view class="left fs-14">(<text class="Arial plr2">{{ item.payed_date }} </text>送达)</view>
+							<view class="left fs-14">(<text class="Arial plr2">{{ item.deliver_date }} </text>送达)</view>
 						</view>
 						<view class="right price">￥{{ item.amount }}</view>
 					</view>
@@ -122,7 +122,7 @@ import miMap from '@/components/mi-map/mi-map.vue'
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			//this.ajax();
+			this.ajax();
 		},
 		onShareAppMessage() {
 			return this.shareSource(this, '商城');
@@ -170,7 +170,7 @@ import miMap from '@/components/mi-map/mi-map.vue'
 				});
 			},
 			order(item,status){
-				this.getConfirm("是否确认操作",msg=>{
+				this.getConfirm("是否确认操作1",msg=>{
 					this.postAjax("/horse/order-change",{status:status,id:item.id}).then(msg=>{
 						if(msg.data.status == 2){
 							this.ajax();
