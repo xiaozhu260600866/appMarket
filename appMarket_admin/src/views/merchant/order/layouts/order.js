@@ -70,6 +70,8 @@ export default {
             { 'prop': 'addr_name', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '购买者' },
             { 'prop': 'addr_phone', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '购买者手机号码' },
             { 'prop': 'addr_address', 'minWidth': '120', 'width': '', 'append_table_': 0, 'label': '购买者地址' },
+            { 'prop': 'merchant_at', 'minWidth': '120', 'width': '', 'append_table_': 0, 'label': '商家接单时间' },
+            { 'prop': 'horse_at', 'minWidth': '120', 'width': '', 'append_table_': 0, 'label': '骑手接单时间' },
             { 'prop': 'payed_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '支付日期' }
 
         ],
