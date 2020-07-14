@@ -37,21 +37,21 @@
 					 console.log(plus.os.name);
 					 if (plus.os.name == 'iOS') { //如果是IOS
 						 if (msg.type == "receive") {   
-							plus.push.createMessage(v.content, v.content, {title: v.content}); 
+							//plus.push.createMessage(v.content, v.content, {title: v.content}); 
 						 }
 					 }else{
 						 plus.push.createMessage(v.content, v.content, {title: v.content});
 					 }  
 				}
 				if(msg.aps && msg.aps.category ){
-					console.log("进来这里2");
+					console.log("进来这里3");
 					 var v = JSON.parse(msg.aps.category);
 				     let bgAudioMannager = uni.getBackgroundAudioManager();
 				     bgAudioMannager.src =v.voice;
 				     bgAudioMannager.play()
 					 if (plus.os.name == 'iOS') { //如果是IOS
 						 if ( msg.type == "receive") {   
-							plus.push.createMessage(v.content, v.content, {title: v.content}); 
+							//plus.push.createMessage(v.content, v.content, {title: v.content}); 
 						 }
 					 }else{
 					 	plus.push.createMessage(v.content, v.content, {title: v.content});

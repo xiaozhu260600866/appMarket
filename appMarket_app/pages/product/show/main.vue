@@ -76,7 +76,7 @@
 			</view>
 			<view id="show_footer">
 				<view class="left plr8">
-					<button class="btn-item share" hover-class="none" @click="goto('/pages/index/main',2)">
+					<button class="btn-item share" hover-class="none" @click="goto('/pages/store/index/main?merchant_id='+data.detail.merchant_id,1)">
 						<view class="iconfont icon-pro-shop"></view>
 						<view class="txt">店铺</view>
 					</button>

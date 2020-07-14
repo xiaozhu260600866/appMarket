@@ -2,8 +2,10 @@
 	<view class="login-body">
 		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="zindex2">
-			<view class="logo">
+		<div ><myHeader name="用户登录" icon="1" iconName="left"></myHeader></div>
+		<view class="zindex2" >
+			
+			<view class="logo" >
 				<img class="img" :src="login.src">
 			</view>
 			<view class="mlr30">
@@ -41,9 +43,10 @@
 
 <script>
 	import dxDivider from "doxinui/components/divider/divider"
+	import myHeader from "doxinui/components/header/header";
 	export default {
 		components:{
-			dxDivider
+			dxDivider,myHeader
 		},
 		data() {
 			return {

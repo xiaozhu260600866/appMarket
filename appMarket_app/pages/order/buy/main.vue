@@ -37,7 +37,7 @@
 					<my-picker :picker-list="data.deliverData" column-num="3" @confirm="deliverCallBack" >
 						<view class="dx-cell">
 							<view class="dx-cell_hd">
-								<view class="dx-label main-color" style="width: 200rpx;">选择送达时间</view>
+								<view class="dx-label main-color fw-bold" style="width: 200rpx;">选择送达时间</view>
 							</view>
 							<view class="dx-cell_bd text-right">
 								<view >{{ruleform.deliver_date || ''}}</view>

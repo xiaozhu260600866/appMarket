@@ -21,7 +21,7 @@ myfun.install = (Vue, options) => {
 				    title: '请先登录',
 				    duration: 2000
 				});
-				return Vue.prototype.goto("/pages/user/login/main");
+				return Vue.prototype.goto("/pages/user/login/main?shareSource=1");
 			}
 	}
 	Vue.prototype.wechatLogin = () => {

@@ -2,7 +2,7 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
-			<dx-tabs :tabs="tabs" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
+			<dx-tabs :tabs="tabs" @change="ajax" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
 			<view class="pro_info mb10" v-for="(parent,key) in data.lists.data">
 				<view class="order_date plr10 bd-be">
 					<view class="time fs-14">
@@ -120,7 +120,7 @@
 			},
 			ajax() {
 				
-				this.getAjaxForApp(this).then(msg => {
+				this.getAjaxForApp(this,{status:this.status}).then(msg => {
 					  
 				});
 			}
