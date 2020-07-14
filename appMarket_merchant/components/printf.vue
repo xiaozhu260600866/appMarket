@@ -133,15 +133,22 @@
 				line={};
 				line.text="姓名:"+this.order.addr_name;
 				line.center="left";
-				line.font="bold";
-				line.bottom="2";
+				line.font="normal";
+				line.bottom="1";
+				data.push(line);
+				
+				line={};
+				line.text="联系电话："+this.order.addr_phone;
+				line.center="left";
+				line.font="normal";
+				line.bottom="1";
 				data.push(line);
 				
 				line={};  
 				line.text="地址:"+this.order.addr_address;
 				line.center="left";
-				line.font="bold";
-				line.bottom="2";
+				line.font="normal";
+				line.bottom="1";
 				data.push(line);
 				
 				line={};  
@@ -157,12 +164,16 @@
 				line.font="normal";
 				line.bottom="1";
 				data.push(line);
+				
+				
 				line={};
-				line.text="联系电话："+this.order.addr_phone;
+				line.text="------------------------------";
 				line.center="left";
 				line.font="normal";
 				line.bottom="1";
 				data.push(line);
+				
+				
 				
 				//商品列表，示例
 				for(let i=0;i<this.order.products.length;i++)
@@ -197,17 +208,8 @@
 				line.text="数量："+this.order.num+" ,金额：￥"+this.order.amount;
 				line.center="left";
 				line.font="bold";
-				line.bottom="1";
+				line.bottom="5";
 				data.push(line);
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 				// //加入条型码
 				// line={};

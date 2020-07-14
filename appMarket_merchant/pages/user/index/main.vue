@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view v-if="data.show">
 		<view>
 			<view class="head-info utop">
 				<view class="uinfo">

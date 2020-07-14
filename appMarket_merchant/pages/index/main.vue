@@ -77,6 +77,9 @@
 					value: 4,
 					name: "待处理"
 				}, {
+					value: 5,
+					name: "已完成"
+				},{
 					value: 0,
 					name: "取消订单"
 				}, {
@@ -90,7 +93,7 @@
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			//this.ajax();
+			this.ajax();
 		},
 		onShareAppMessage() {
 			return this.shareSource(this, '商城');
