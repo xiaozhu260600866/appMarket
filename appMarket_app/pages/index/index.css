@@ -13,6 +13,16 @@
 .ibanner .banner-bg-right{right: 0;transform: skewY(-8deg);}
 
 
+/* 今日特价 */
+.iSale /deep/.dxi-product-scroll .image{padding: 0 20upx;}
+.iSale /deep/.dxi-product-scroll .image .img{width: 200upx!important;}
+
+
+/* 市场 */
+.markt-group /deep/.dxi-product-scroll .image{padding: 10upx;}
+.markt-group /deep/.dxi-product-scroll .image .img{width: 180upx!important;}
+
+
 /* 广告位 */
 .iad-img{margin: 12px;}
 .iad-img .img{width: 100%;display: flex;}

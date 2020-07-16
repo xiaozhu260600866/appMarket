@@ -11,7 +11,7 @@
 				<view class="p content">支付失败</view>
 			</view>
 			<view class="button" @click="goto('/pages/index/main',2)">
-				<dx-button type="success" icon="icon-time-o" size="lg" block>返回</dx-button>
+				<dx-button :type="detail.payed_at?'success':'danger'" size="lg" block>返回</dx-button>
 			</view>
 		</view>
 	</view>

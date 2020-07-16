@@ -201,7 +201,7 @@
 		{
 			"path": "pages/order/payed/main",
 			"style": {
-				"navigationBarTitleText": "支付完成",
+				"navigationBarTitleText": "支付结果",
 				"enablePullDownRefresh": true
 			}
 		},

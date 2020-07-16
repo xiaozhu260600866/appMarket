@@ -30,7 +30,7 @@
 					<view class="fs-13 fc-9">更多</view>
 				</view>
 			</dx-title>
-			<dx-products-scroll @click="toProduct" :data="data.isindexLists.data" :itemWidth="120" bgColor="transparent" :itemLRMargin="5" imgHeight="172rpx" imgR="12rpx"></dx-products-scroll>
+			<dx-products-scroll @click="toProduct" :data="data.isindexLists.data" :itemWidth="120" bgColor="transparent" :itemLRMargin="5" imgHeight="200rpx" imgR="12rpx"></dx-products-scroll>
 		</view>
 		<view class="iad-img">
 			<image src="../../static/Iad02.jpg" mode="widthFix" class="img"></image>
@@ -52,7 +52,7 @@
 				</view>
 			</view>
 			<view v-if="v.product.data.length">
-				<dx-products-scroll  @click="toProduct" :data="v.product.data" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100" :itemLRMargin="3"></dx-products-scroll>
+				<dx-products-scroll  @click="toProduct" :data="v.product.data" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100"imgHeight="180rpx" :itemLRMargin="3"></dx-products-scroll>
 			</view>
 		</view>
 		<!-- 市场列表 -->
