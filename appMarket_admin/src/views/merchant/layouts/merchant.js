@@ -34,10 +34,10 @@ export default {
 			{ 'prop': 'user_id', 'width': '80', 'append_table_': 0, 'label': '编号' },
 			{ 'prop': 'name', 'minWidth': '100', 'append_table_': 0, 'label': '商家名称' },
 			{ 'prop': 'phone', 'width': '110', 'append_table_': 0, 'label': '商家电话' },
-			{ 'prop': 'phone', 'width': '110', 'append_table_': 0, 'label': '所属市场' },
+			{ 'prop': 'marketName', 'width': '110', 'append_table_': 0, 'label': '所属市场' },
 			{ 'prop': 'hour_time', 'width': '110', 'append_table_': 0, 'label': '营业时间' },
 			{ 'prop': 'address', 'minWidth': '180', 'append_table_': 0, 'label': '商家地址' },
-			{ 'prop': 'getStatus', 'width': '80', 'append_table_': 0, 'label': '营业状态' },
+			{ 'prop': 'working', 'width': '80', 'append_table_': 0, 'label': '营业状态' },
 			{ 'prop': 'getStatus', 'width': '80', 'append_table_': 0, 'label': '审核状态' },
 			{ 'prop': 'created_at', 'width': '160', 'append_table_': 0, 'label': '注册时间' }
 		],

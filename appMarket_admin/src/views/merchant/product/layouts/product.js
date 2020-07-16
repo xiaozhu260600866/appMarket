@@ -55,8 +55,8 @@ export default {
             { 'prop': 'price', 'minWidth': '', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '单价' },
             { 'prop': 'specs', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '规格' },
             { 'prop': 'num', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '库存' },
-            { 'prop': '', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '销量' },
-            { 'prop': '', 'minWidth': '', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '状态' },
+            // { 'prop': '', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '销量' },
+            // { 'prop': '', 'minWidth': '', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '状态' },
             { 'prop': 'is_index', 'minWidth': '', 'width': '100', 'align': 'center', 'type': 'editField', 'url': '/admin/merchant/product/editField', 'label': '今天特价' },
             { 'prop': 'shell_date', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '售卖日期' },
             { 'prop': 'created_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '发布日期' }

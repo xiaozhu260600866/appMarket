@@ -21,9 +21,9 @@ export default {
         tableFields: [
             { prop: 'id', label: '编号', width: '80' },
             { prop: 'name', label: '姓名', minwidth: '100' },
-            { prop: '', label: '头像', width: '100' },
+            { prop: 'headerPic', label: '头像', append_table_headerPic: 'true', width: '100' },
             { prop: 'phone', label: '手机号码', width: '120' },
-            { prop: '', label: '余额', width: '120' },
+            { prop: 'amount', label: '余额', width: '120' },
             { prop: 'updated_at', label: '最后一次登录', width: '160' },
             { prop: 'created_at', label: '注册时间', width: '160' }
         ],

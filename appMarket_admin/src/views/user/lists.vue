@@ -6,6 +6,11 @@
           <el-button size="mini" @click="goto('/article/edit?id='+scope.row.id)">编辑</el-button>
         </div>
       </div>
+      <div slot="append_table_headerPic" slot-scope="scope">
+        <div>
+          <img :src="scope.row.headerPic" alt="">
+        </div>
+      </div>
     </dx-table>
     <qrcode ref="qrcode" />
   </div>
