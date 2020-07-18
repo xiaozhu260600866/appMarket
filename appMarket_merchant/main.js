@@ -103,7 +103,7 @@ uni.removeStorageSync('jsdk');
 uni.removeStorageSync('distribution');
 uni.removeStorageSync('ztd');
 uni.removeStorageSync('proid');
-
+uni.removeStorageSync('unionid')
 
 
 //uni.setStorageSync('openid', 'ohOO94sLnnf0bzJpqFqigfNxLSto');
