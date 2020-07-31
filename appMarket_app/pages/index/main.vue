@@ -22,9 +22,9 @@
 		<dx-nav-class :data="data.location.data" num="5" pageNum="10" :imgWidth="44" :imgHeight="44" :namePTop="0" :isturnpage="false" @click="navGo"></dx-nav-class>
 		<!-- 今日特价 -->
 		<view class="iSale bg-f m12 bdr6">
-			<dx-title name="今日特价" :nameSize="14" nameBold="bold" arrow :noborder="true">
+			<dx-title name="今日特价" :nameSize="14" nameBold="bold" arrow :noborder="true" @click="goto('/pages/special/main',1)">
 				<view slot="left">
-					<view class="iconfont icon-index-star-c fc-red fs-18 mr10 pt3"></view>
+					<view class="iconfont icon-index-star-c fc-red fs-18 mr10"></view>
 				</view>
 				<view slot="right">
 					<view class="fs-13 fc-9">更多</view>
@@ -37,7 +37,7 @@
 		</view>
 		<!-- 附近的市场 -->
 		<view class="markt-group" v-for="v in data.market">
-			<view class="markt-ad">
+			<view class="markt-ad" @click="goto('/pages/store/lists/main',1)">
 				<image class="flex img" :src="v.getPic" mode="widthFix"></image>
 				<view class="info plr15 pt10">
 					<view class="name flex-middle">
@@ -96,144 +96,12 @@ import filterKm from '@/components/filterKm';
 				otherData:{
 					city:"江门市"
 				},
-				saleLists: [{
-					pic:'/static/pro01.jpg',
-					name:'新鲜甜橙',
-					price:8.90,
-					factory: 9.9,
-					self_num_:169
-				},{
-					pic:'/static/pro02.jpg',
-					name:'金煌芒',
-					price:7.80,
-					factory: 8.80,
-					self_num_:169
-				},{
-					pic:'/static/pro03.jpg',
-					name:'库乐勒香梨',
-					price:6.80,
-					factory: 7.80,
-					self_num_:169
-				},{
-					pic:'/static/pro01.jpg',
-					name:'新鲜甜橙',
-					price:8.90,
-					factory: 9.9,
-					self_num_:169
-				},{
-					pic:'/static/pro02.jpg',
-					name:'金煌芒',
-					price:7.80,
-					factory: 8.80,
-					self_num_:169
-				},{
-					pic:'/static/pro03.jpg',
-					name:'库乐勒香梨',
-					price:6.80,
-					factory: 7.80,
-					self_num_:169
-				}],
 				tabs: [{
 					name: "价格最低"
 				}, {
 					name: "销量最高"
 				}, {
 					name: "距离最近"
-				}],
-				marktGroup:[{
-					adCover: '/static/market-ad.jpg',
-					markt:{
-						name: '贯溪市场',
-						address: '江门市蓬江区杜阮镇贯溪村',
-						send_price: 30,
-						location: 3.25,
-						current: 4,
-						score: 35
-					},
-					productsLists: [{
-						pic:'/static/pro01.jpg',
-						name:'新鲜甜橙',
-						price:8.90,
-						factory: 9.9,
-						self_num_:169
-					},{
-						pic:'/static/pro02.jpg',
-						name:'金煌芒',
-						price:7.80,
-						factory: 8.80,
-						self_num_:169
-					},{
-						pic:'/static/pro03.jpg',
-						name:'库乐勒香梨',
-						price:6.80,
-						factory: 7.80,
-						self_num_:169
-					},{
-						pic:'/static/pro01.jpg',
-						name:'新鲜甜橙',
-						price:8.90,
-						factory: 9.9,
-						self_num_:169
-					},{
-						pic:'/static/pro02.jpg',
-						name:'金煌芒',
-						price:7.80,
-						factory: 8.80,
-						self_num_:169
-					},{
-						pic:'/static/pro03.jpg',
-						name:'库乐勒香1',
-						price:6.80,
-						factory: 7.80,
-						self_num_:169
-					}],
-				},{
-					adCover: '/static/market-ad.jpg',
-					markt:{
-						name: '北郊市场',
-						address: '江门市蓬江区建设二路北郊',
-						send_price: 20,
-						location: 0.35,
-						current: 4,
-						score: 25
-					},
-					productsLists: [{
-						pic:'/static/pro01.jpg',
-						name:'新鲜甜橙',
-						price:8.90,
-						factory: 9.9,
-						self_num_:169
-					},{
-						pic:'/static/pro02.jpg',
-						name:'金煌芒',
-						price:7.80,
-						factory: 8.80,
-						self_num_:169
-					},{
-						pic:'/static/pro03.jpg',
-						name:'库乐勒香梨',
-						price:6.80,
-						factory: 7.80,
-						self_num_:169
-					},{
-						pic:'/static/pro01.jpg',
-						name:'新鲜甜橙',
-						price:8.90,
-						factory: 9.9,
-						self_num_:169
-					},{
-						pic:'/static/pro02.jpg',
-						name:'金煌芒',
-						price:7.80,
-						factory: 8.80,
-						self_num_:169
-					},{
-						pic:'/static/pro03.jpg',
-						name:'库乐勒香梨',
-						price:6.80,
-						factory: 7.80,
-						self_num_:169
-					}],
 				}]
 			}
 		},

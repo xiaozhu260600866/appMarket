@@ -2,7 +2,7 @@
 	<view class="login-body">
 		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<div ><myHeader name="用户登录" icon="1" iconName="left"></myHeader></div>
+		<!-- <div ><myHeader name="用户登录" icon="1" iconName="left"></myHeader></div> -->
 		<view class="zindex2" >
 			
 			<view class="logo" >

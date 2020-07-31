@@ -27,11 +27,11 @@
 					<p class="num fs-18 fc-3">{{user ? user.amount:0}}</p>
 					<p class="name fs-13 fc-6">余额</p>
 				</view>
-				<view class="c-item">
+				<view class="c-item" @click="checkLogin('/pages/user/integral/lists/main',1)">
 					<p class="num fs-18 fc-3">{{user? user.integral :0}}</p>
 					<p class="name fs-13 fc-6">积分</p>
 				</view>
-				<view class="c-item">
+				<view class="c-item" @click="checkLogin('/pages/user/coupon/lists/main',1)">
 					<p class="num fs-18 fc-3">0</p>
 					<p class="name fs-13 fc-6">优惠券</p>
 				</view>
@@ -51,7 +51,7 @@
 					{url:'/pages/order/lists/main?status=5',type: 1,cover:'/static/order-icon03.png',name:'待收货',number:data.order5},
 					{url:'/pages/order/lists/main?status=9',type: 1,cover:'/static/order-icon04.png',name:'待评价',number:data.order9},
 					{url:'/pages/order/lists/main?status=10',type: 1,cover:'/static/order-icon05.png',name:'售后',number:data.order10}
-				]" @click="checkAuth" isAuth myclass="bdr12" :num="5" :imgWidth="30" :imgHeight="30" :imgR="0" :nameSize="12" :namePTop="5" numBg="#ff721f"></dx-nav-class>
+				]" @click="checkAuth" isAuth myclass="bdr12" :num="5" :imgWidth="30" :imgHeight="30" :imgR="0" :nameSize="12" :namePTop="5"></dx-nav-class>
 			</view>
 			<view class="ugorup-box bg-f mb8">
 				<dx-title name="常用工具" nameBold="bold" :nameSize="15" :height="40"></dx-title>

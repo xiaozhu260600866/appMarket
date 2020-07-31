@@ -19,7 +19,8 @@
 			"path": "pages/user/index/main",
 			"style": {
 				"navigationBarTitleText": "我的",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -145,7 +146,7 @@
 		{
 			"path": "pages/store/lists/main",
 			"style": {
-				"navigationBarTitleText": "时鲜蔬菜",
+				"navigationBarTitleText": "北郊市场",
 				"enablePullDownRefresh": true
 			}
 		},
@@ -269,6 +270,13 @@
 			}
 		},
 		{
+			"path": "pages/user/integral/lists/main",
+			"style": {
+				"navigationBarTitleText": "积分明细",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/user/integral/shop/lists/main",
 			"style": {
 				"navigationBarTitleText": "积分商城",
@@ -301,6 +309,14 @@
 			"style": {
 				"navigationBarTitleText": "专属人群",
 				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/special/main",
+			"style": {
+				"navigationBarTitleText": "今日特价",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
 			}
 		}
 	],
