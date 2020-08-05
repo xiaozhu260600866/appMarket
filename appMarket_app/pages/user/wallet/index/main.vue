@@ -1,10 +1,10 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
+		<view v-if="data.show">
 			<view class="count-header main-bg mb12">
 				<view class="name fs-18 fc-white">我的钱包（元）</view>
-				<view class="count-num Arial"><text class="fs-30">￥</text>{{amount}}</view>
+				<view class="count-num Arial"><text class="fs-30">￥</text>{{data.price}}</view>
 				<view @click="goto('/pages/user/wallet/lists/main',1)">
 					<dx-button btnBg="transparent" btnBd="#fff" size="mini" round myclass="record fc-white">明细</dx-button>
 				</view>
@@ -16,9 +16,9 @@
 				<!-- <view>
 					<dx-list-cell arrow name="银行卡" iconName="bankCard-fill" iconSize="20" iconColor="#ff721f"></dx-list-cell>
 				</view> -->
-				<view>
+				<!-- <view>
 					<dx-list-cell arrow name="提现" iconName="order1-fill" iconSize="20" iconColor="#79d70f"></dx-list-cell>
-				</view>
+				</view> -->
 			</view>
 		</view>
 	</view>
@@ -32,7 +32,7 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/user/doMoney',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -48,8 +48,11 @@
 				});
 			}
 		},
+		onShow(){
+			this.ajax();
+		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

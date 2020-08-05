@@ -36,7 +36,12 @@
 		},
 		methods: {
 			submitHandle(e){
-				console.log(e);
+				this.ruleform.pay_password = e.value;
+				this.postAjax("/user/info",this.ruleform).then(msg=>{
+					if(msg.data.status == 2){
+						this.back();
+					}
+				});
 			},
 			next(){
 				this.vaildForm(this,res=>{

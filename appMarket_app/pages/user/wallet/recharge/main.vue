@@ -25,9 +25,9 @@
 			<view class="bg-f text-center fs-14 fc-6 p10">
 				<view>充200送10、充500送100、充1000送200</view>
 			</view>
-			<view class="fs-14 m10 mt20">选择方式</view>
+			<!-- <view class="fs-14 m10 mt20">选择方式</view> -->
 			<view class="bg-f">
-				<dx-list-cell name="微信支付" iconName="wechat" iconSize="20" iconColor="#4CB202" :slotLeft="true">
+				<!-- <dx-list-cell name="微信支付" iconName="wechat" iconSize="20" iconColor="#4CB202" :slotLeft="true">
 					<view slot="left" class="mr15 reRadio">
 						<radio class="flex"></radio>
 					</view>
@@ -36,9 +36,10 @@
 					<view slot="left" class="mr15 reRadio">
 						<radio class="flex"></radio>
 					</view>
-				</dx-list-cell>
+				</dx-list-cell> -->
+				<weui-input v-model="ruleform.pay_method" label="选择方式" name="pay_method" changeField="value" type="radio" dataKey="payMethodArr" :row="true" Labelleft></weui-input>
 			</view>
-			<view class="m20">
+			<view class="m20" @click="rechage">
 				<dx-button type="primary" btnBg="#57C734" btnBd="#57C734" block>充值</dx-button>
 			</view>
 		</view>
@@ -57,9 +58,15 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
+				payMethodArr:[
+					{label:'支付宝',value:1},
+					{label:'微信',value:2}
+					
+				],
 				ruleform:{
 					amount: 100,
-					radio: ''
+					radio: '',
+					pay_method:2
 				},
 				amountData: [100, 200, 300, 500, 1000],
 				sendTypeArr: [{
@@ -72,6 +79,43 @@
 			}
 		},
 		methods: {
+			wxPay() {
+				let orderInfo = this.config
+				console.log(orderInfo);
+				uni.requestPayment({
+					provider: 'wxpay',
+					orderInfo: orderInfo, //微信、支付宝订单数据
+					success: res => {
+						this.back();
+						console.log('success:' + JSON.stringify(res));
+					},
+					fail: err => {
+						this.getError("支付失败");
+						console.log('fail:' + JSON.stringify(err));
+					}
+				});
+			
+			},
+			changePrice(price) {
+				if (price == "其他") this.ruleform.amount = 0;
+				else this.ruleform.amount = price;
+			},
+			rechage(){
+				if(!this.ruleform.amount){
+					this.getError("您还没有选择价格");
+					return false;
+				}
+				if(!this.ruleform.pay_method){
+					this.getError("您还没有选择支付方式");
+					return false;
+				}
+				this.postAjax("/user/ready-recharge", this.ruleform).then(msg => {
+					if (msg.data.status == 2) {
+						this.config = msg.data.config;
+						this.wxPay();
+					}
+				});
+			},
 			ajax() {
 				this.getAjaxForApp(this, {
 				

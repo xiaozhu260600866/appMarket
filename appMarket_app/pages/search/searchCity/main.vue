@@ -31,19 +31,19 @@
 				</view>
 			</view>
 			<view v-if="!inputVal">
-				<view class="current-city">
+				<!-- <view class="current-city">
 					<view class="title">定位城市</view>
 					<view class="city-name">
 						<tui-icon name="position-fill" color="#5677fc" :size="18"></tui-icon>
 						{{localCity}}
 					</view>
-				</view>
+				</view> -->
 				<view class="hot-city">
-					<view class="title">热门城市</view>
+					<view class="title">已开通城市</view>
 					<view class="city-names">
-						<view class="city-name-item" v-for="(item,index) in hotCity" :key="index" hover-class="tap-city" :hover-stay-time="150"
-						 @tap="selectCity" :data-name="item">
-							{{item}}
+						<view class="city-name-item" v-for="(item,index) in data.city" :key="index" hover-class="tap-city" :hover-stay-time="150"
+						 @tap="selectCity" :data-name="item.name">
+							{{item.name}}
 						</view>
 					</view>
 				</view>
@@ -83,6 +83,10 @@
 		},
 		data() {
 			return {
+				formAction: '/city',
+				data: this.formatData(this),
+				getSiteName: this.getSiteName(),
+				mpType: 'page', //用来分清父和子组件
 				lists: [],
 				touchmove: false, // 是否在索引表上滑动
 				touchmoveIndex: -1,
@@ -114,8 +118,16 @@
 					}
 				})
 			}, 50)
+			this.ajax();
 		},
 		methods: {
+			ajax() {
+				this.getAjaxForApp(this, {
+				
+				}).then(msg => {
+					
+				});
+			},
 			showInput() {
 				this.inputShowed = true
 			},
@@ -145,10 +157,11 @@
 			selectCity(e) {
 				let cityName = e.currentTarget.dataset.name;
 				//返回并刷新上一页面
-				this.$eventHub.$emit('emit', cityName)
-				uni.navigateBack({
-					delta: 1
-				})
+				console.log(cityName);
+				// this.$eventHub.$emit('emit', cityName)
+				// uni.navigateBack({
+				// 	delta: 1
+				// })
 			},
 			touchStart(e) {
 				this.touchmove = true
