@@ -1,0 +1,17 @@
+page{padding-bottom: 10px!important;}
+/* 头部 */
+.order-classify {display: flex;}
+.order-classify .nav-tab {height: 44px;line-height: 44px;text-align: center;font-size: 14px;color: #333;width: 100%;}
+
+.selected {color: #f97;border-bottom: 2px solid #f97;}
+
+.time-date{top: 92px;}
+
+
+.order-list .title{display: flex;align-items: center;}
+.order-list .title .head{width: 30px;height: 30px;border-radius: 50%;display: flex;}
+.order-list .title .name{flex: 1;overflow: hidden;width: 100%;}
+.order-list .pro-info .infob{display: flex;justify-content: space-between;}
+
+
+.order-list .order_count{height: 40px;line-height: 40px;display: flex;justify-content: flex-end;}

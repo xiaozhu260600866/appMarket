@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="m50 text-center fs-14 fc-9">暂无数据</view>
+		<view>123</view>
 	</view>
 </template>
 

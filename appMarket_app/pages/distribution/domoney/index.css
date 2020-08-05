@@ -1,0 +1,13 @@
+
+
+.m-input .dx-cell{padding: 0;border: 0!important;}
+.m-input .dx-input{font-size: 40upx;}
+
+.bankcard .weui-cell{padding: 10px 0;}
+.bankcard .weui-input{height: 30px;min-height: 30px;line-height: 30px;font-size: 16px;}
+.bankcard .weui-label{color: #666;font-size: 16px;}
+.bankcard ._picker{text-align: left;height: 30px;min-height: 30px;line-height: 30px;font-size: 16px;}
+.bankcard .picker{color: #333;font-size: 16px;}
+
+
+.radioType .weui-check__label .weui-cell__bd{font-size: 16px;}

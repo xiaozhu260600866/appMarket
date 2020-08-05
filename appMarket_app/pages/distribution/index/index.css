@@ -1,0 +1,16 @@
+
+
+/* 头部 */
+.Uinfo{width: 100%;display: flex;align-items: center;position: relative;}
+.Uinfo .header-img .img{width: 70px;height: 70px;border-radius: 50%;display: flex;}
+.Uinfo .info{flex: 1;overflow: hidden;}
+.Uinfo .htag{display: flex;align-items: center;}
+.Uinfo .htag .tab{background-color: rgba(0,0,0,0.5);color: #fff;padding: 0 5px;margin-right: 16upx;}
+
+
+/* 统计 */
+.head-count{display: flex;border-bottom: 1upx #f2f2f2 solid;}
+.head-count .like{width: 100%;}
+.head-count .c-item{text-align: center;padding: 30upx 0;}
+.head-count .num{line-height: 60upx;font-size: 40upx;margin-bottom: 16upx;color: #000;}
+.head-count .name{line-height: 36upx;font-size: 28upx;color: #333;}

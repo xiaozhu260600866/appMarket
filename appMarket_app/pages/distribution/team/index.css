@@ -1,0 +1,25 @@
+page{}
+
+.list-tab {display: flex;}
+.list-tab .btn-group {width: 100%;border-right: 1px #eee solid;}
+.list-tab .btn-group:last-child {border-right: 0;}
+.list-tab .btn-group .btn {padding: 12px 0;text-align: center;}
+.list-tab .btn-group .a {color: #333;}
+.list-tab .btn-group .btn-noact {border-bottom: #eee 1px solid;}
+.list-tab .btn-group .btn-act {border-bottom: #FA4444 3px solid;padding: 12px 0 8px;}
+
+
+/* 头部 */
+.order-classify {display: flex;}
+.order-classify .nav-tab {height: 44px;line-height: 44px;text-align: center;font-size: 14px;color: #333;width: 100%;}
+
+.selected {color: #ff721f;border-bottom: 2px solid #ff721f;}
+
+
+.team-header{display: flex;justify-content: space-between;}
+
+
+.order-list .tInfo{display: flex;}
+.order-list .tInfo .img image{width: 40px;height: 40px;border-radius: 6px;display: flex;}
+.order-list .rInfo{flex: 1;overflow: hidden;width: 100%;}
+.order-list .rInfo .group{display: flex;justify-content: space-between;line-height: 20px;}

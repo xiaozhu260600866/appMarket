@@ -284,13 +284,6 @@
 			}
 		},
 		{
-			"path": "pages/user/distribution/add/lists/main",
-			"style": {
-				"navigationBarTitleText": "邀请返利",
-				"enablePullDownRefresh": true
-			}
-		},
-		{
 			"path": "pages/user/address/lists/main",
 			"style": {
 				"navigationBarTitleText": "地址管理",
@@ -317,6 +310,76 @@
 				"navigationBarTitleText": "今日特价",
 				"enablePullDownRefresh": true,
 				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/distribution/add/main",
+			"style": {
+				"navigationBarTitleText": "分享达人",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+		},{
+			"path": "pages/distribution/index/main",
+			"style": {
+				"navigationBarTitleText": "分享达人",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+		},{
+			"path": "pages/distribution/index/poster",
+			"style": {
+				"navigationBarTitleText": "分享海报",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+		},{
+			"path": "pages/distribution/order-list/main",
+			"style": {
+				"navigationBarTitleText": "收支明细",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/distribution/count/main",
+			"style": {
+				"navigationBarTitleText": "业绩统计",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/distribution/record-list/main",
+			"style": {
+				"navigationBarTitleText": "提现记录",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/distribution/qrcode/main",
+			"style": {
+				"navigationBarTitleText": "我的二维码",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/distribution/qrcode/main",
+			"style": {
+				"navigationBarTitleText": "我的二维码",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/distribution/team/main",
+			"style": {
+				"navigationBarTitleText": "我的团队",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/distribution/client/main",
+			"style": {
+				"navigationBarTitleText": "我的客户",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/distribution/domoney/main",
+			"style": {
+				"navigationBarTitleText": "提现",
+				"enablePullDownRefresh": true
 			}
 		}
 	],

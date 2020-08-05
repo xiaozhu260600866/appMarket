@@ -1,0 +1,30 @@
+.count-box{margin-top: 118upx;}
+
+
+.count-sec{padding: 0 20upx;}
+.count-row{padding: 20upx 0;display: flex;border-bottom: 1upx #f2f2f2 solid;}
+.count-row:last-child{border-bottom: 0;}
+.count-row .row-item{border-right: 1upx #f2f2f2 solid;width: 100%;flex: 1;padding: 20upx;}
+.count-row .row-item:last-child{border: 0;}
+.count-row .row-item .num{font-size: 46upx;line-height: 60upx;color: #000000;}
+.count-row .row-item .name{font-size: 26upx;line-height: 48upx;color: #888;}
+.count-row .row-item .remark{font-size: 26upx;line-height: 48upx;color: #333;}
+.count-row .row-item .remark .Arial{color: #000;}
+
+
+/* 其他时间 */
+.other-time{display: flex;align-items: center;padding: 24upx;}
+.other-time>uni-view{flex: 1;width: 100%;}
+.other-time .and{width: 60upx;flex: 0;margin: 0 20upx;color: #999;}
+.other-time /deep/.dx-cell{padding: 0 20upx;background-color: #fff;border-radius: 12upx;border: 2upx #e1e1e1 solid;}
+.other-time /deep/.dx-cell .picker{border-radius: 12upx;text-align: center!important;}
+.other-time /deep/.dx-cell .dx_ft-access{display: none;}
+
+
+.Dorder{margin: 0 24upx;}
+.Dorder .title{padding: 20upx 30upx;background-color: #fff;border-radius: 12upx;font-size: 32upx;color: #333;margin-bottom: 10upx;}
+.order-list .title{display: flex;align-items: center;}
+.order-list .title .head{width: 30px;height: 30px;border-radius: 50%;display: flex;}
+.order-list .title .name{flex: 1;overflow: hidden;width: 100%;}
+.order-list .pro-info .infob{display: flex;justify-content: space-between;}
+.order-list .order_count{height: 40px;line-height: 40px;display: flex;justify-content: flex-end;}

@@ -17,6 +17,7 @@ button::after{border: 0;}
 .main-border{border-color: #57C734!important;}
 .dx-btn-green{background: #57C734;border-radius: 8upx;color: #fff;}
 .dx-btn-green-o{border: 2upx #57C734 solid;background: #fff;border-radius: 8upx;color: #57C734;}
+.block-sec{margin: 24upx;border-radius: 12upx;background-color: #fff;}
 
 
 /* #ifdef APP-PLUS || MP-ALIPAY */
