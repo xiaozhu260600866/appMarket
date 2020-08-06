@@ -1,11 +1,15 @@
-.coupon-list .list_item{display: flex;position: relative;}
-.coupon-list .list_item .item_left{background: url('https://456.doxinsoft.com/images/app/coupon-limg.png') no-repeat;background-size: 100% 100%;width: 35%;height: 110px;text-align: center;}
-.coupon-list .list_item .item_right{width: 65%;display: flex;flex-wrap: wrap;align-content: space-between;position: relative;z-index: 2;}
-.coupon-list .list_item .ir-bottom{align-items: center;}
-.coupon-list .list_item .ir-bottom .time{font-family: Calibri;}
-.coupon-list .list_item .item_right .state{border: 1px #6481DC solid;border-radius: 20px;color: #6481DC;width: 160upx;text-align: center;}
-.coupon-list .list_item .item_right .gouser{border-color: #ff721f;color: #ff721f;}
-.coupon-list .list_item .item_right .yesuser{border-color: #aaa;color: #999;}
+.coupon-list .list_item{display: flex;position: relative;padding: 20upx 0;border-radius: 12upx;overflow: hidden;}
+.coupon-list .item_left{background-size: 100% 100%;width: 200upx;height: 140upx;text-align: center;}
+.coupon-list .item_right{width: 65%;display: flex;flex-wrap: wrap;align-content: space-between;position: relative;z-index: 2;}
+.coupon-list .ir-bottom{align-items: center;}
+.coupon-list .ir-bottom .time{font-family: Calibri;}
+.coupon-list .item_right .state{border-radius: 20px;color: #6481DC;width: 160upx;text-align: center;}
+.coupon-list .item_right .gouser{border-color: #ff721f;color: #ff721f;}
+.coupon-list .item_right .yesuser{border-color: #aaa;color: #999;}
+.coupon-list .status{position: absolute;top: 0;right: 0;height: 100%;}
+.coupon-list .status .nav{font-size: 28upx;padding: 0 22upx;width: 72upx;line-height: 1.2;display: flex;align-items: center;color: #fff;height: 100%;}
+.coupon-list .status .yes{background-color: #57C734;}
+.coupon-list .status .no{background-color: #ccc;}
 
 .completed{position: absolute;top: 0;right: 0;z-index: 1;}
 .completed .img{width: 60px;height: 60px;}

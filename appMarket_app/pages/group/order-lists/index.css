@@ -1,0 +1,19 @@
+
+/* 头部 */
+.order-classify {display: flex;justify-content: center;}
+.order-classify .nav-tab {height: 28px;line-height: 26px;text-align: center;font-size: 12px;color: #ff4444;width: 120px;border: 1px #ff4444 solid;background: #fff;}
+
+.order-classify .selected {color: #fff;background: #FF4444;}
+
+
+/* 列表 */
+.pro_info{background: #fff;}
+.pro_info .order_date{height: 36px;line-height: 36px;display: flex;justify-content: space-between;}
+.pro_info .order_info{display: flex;}
+.pro_info .order_info .pro_img .img{width: 40px;height: 40px;display: flex;}
+.pro_info .order_info .txt{height: 40px;line-height: 20px;padding-left: 10px;flex: 1;overflow: hidden;}
+.pro_info .order_info .txt .price{color: #999;}
+.pro_info .order_count{height: 40px;line-height: 40px;display: flex;justify-content: flex-end;}
+
+.pro_info .btn-group{display: flex;justify-content: flex-end;}
+.pro_info .btn-item .btn-nav{width: 80px;height: 30px;line-height: 28px;border: 1px #ddd solid;border-radius: 30px;color: #555;font-size: 12px;text-align: center;margin-left: 10px;display: inline-block;}

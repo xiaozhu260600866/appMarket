@@ -27,6 +27,7 @@
 					<view class="city pr5">{{ store.city }}</view> -->
 					<view class="address flex1 nowrap w-b100">{{ merchant.address }}</view>
 				</view>
+				<view class="coupon_num">3个优惠</view>
 			</dx-products-pic>
 		</view>
 		<view class="tabs-num" :style="{top: (upx2px(220)+height_)+'px'}">
@@ -56,6 +57,26 @@
 			</view>
 			<dx-price v-model="data.cartData.amount" split :intSize="20" :decimalSize="12"></dx-price>
 		</view>
+		<dx-diag :open="true" title="优惠活动" :titSize="16" titColor="#333" width="94%">
+			<view class="diag-coupon mt15">
+				<view class="list_item bg-f2 bdr6 ptb10 mb10" v-for="v in couponArray">
+					<view class="item_left fc-3" v-if="v.type == 1">
+						<view class="price fs-26 fc-red discount">{{v.discount}}<span class="fs-14 pl3">折</span></view>
+					</view>
+					<view class="item_left fc-3" v-else>
+						<view class="price fs-26 fc-red lh-36 h-36"><span class="fs-14">￥</span>{{v.amount}}</view>
+						<view class="condition fs-12">满{{v.full_amount}}元可用</view>
+					</view>
+					<view class="item_right bd-le plr12">
+						<view class="w-b100 coupon-title fs-15 lh-20 nowrap fw-bold">{{ v.name }}</view>
+						<view class="w-b100 ir-bottom flex-between">
+							<view class="time fs-14 fc-9 lh-16">{{ v.start_date }} ~ {{ v.end_date }}</view>
+						</view>
+					</view>
+					<view class="getNav" :class="[v.status == 0 ? 'no' : 'yes']">{{v.status == 0 ? '立即领取':'已领取'}}</view>
+				</view>
+			</view>
+		</dx-diag>
 	</view>
 </template>
 
@@ -64,12 +85,14 @@ import dxProductsPic from 'doxinui/components/products/pic'
 import dxTabs from "doxinui/components/tabs/tabs"
 import storePro from '@/components/store_pro'
 import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
+import dxDiag from "doxinui/components/diag/diag"
 	export default {
 		components:{
 			dxProductsPic,
 			dxTabs,
 			storePro,
-			tuiRate
+			tuiRate,
+			dxDiag
 		},
 		data() {
 			return {
@@ -95,6 +118,34 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 					value:'merchant'
 				}],
 				scrollTop: 0 ,//tab标题的滚动条位置
+				couponArray:[{
+					amount: 50,
+					discount: '',
+					full_amount: 300,
+					type: 3,
+					name: '满减活动',
+					start_date: '2020-08-01',
+					end_date: '2020-08-30',
+					status: 0
+				},{
+					amount: 7,
+					discount: '',
+					full_amount: 77,
+					type: 3,
+					name: '七夕优惠',
+					start_date: '2020-08-01',
+					end_date: '2020-08-30',
+					status: 1
+				},{
+					amount: 20,
+					discount: '',
+					full_amount: 100,
+					type: 3,
+					name: '优惠券',
+					start_date: '2020-08-01',
+					end_date: '2020-08-30',
+					status: 0
+				}]
 			}
 		},
 		onLoad: function(options) {
