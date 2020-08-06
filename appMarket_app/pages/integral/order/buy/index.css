@@ -1,0 +1,41 @@
+/* 选择地址 */
+.add_group{display: flex;justify-content: space-between;align-items: center;padding: 0 30upx;height: 106upx;line-height: 40upx;font-size: 30upx;}
+.add_group .left_txt{flex: 1;padding-right: 30upx;}
+.add-add{display: flex;justify-content: space-between;align-items: center;}
+.add-add .add-icon{background: #57C734;width: 40px;height: 40px;text-align: center;line-height: 40px;color: #fff;font-size: 18px;border-radius: 6px;}
+.add-add .add-txt{flex: 1;overflow: hidden;}
+
+
+/* 地址信息 */
+.add-info{display: flex;justify-content: space-between;align-items: center;}
+.add-info .info{flex: 1;overflow: hidden;}
+.add-info .info .name{line-height: 48upx;}
+.add-info .info .add-detail{display: flex;}
+.add-info .info .add-detail .label{width: 90upx;line-height: 40upx;}
+.add-info .info .add-detail .name{flex: 1;overflow: hidden;line-height: 40upx;}
+
+
+
+/* 商品信息 */
+.pro-info .cart-tb {display: flex;}
+.pro-info .cart-tb .pro-img .img{width: 120upx;height: 120upx;display: flex;border-radius: 6upx;}
+.pro-info .pro-name {flex: 1;overflow: hidden;}
+.pro-info .pro-name .name{height: 80upx;margin: 0;overflow: hidden;text-overflow: ellipsis;}
+.pro-info .pro-price {text-align: right;position: absolute;bottom: 20upx;right: 20upx;width: 150upx;margin-left: 10upx;color: #FF4422;}
+
+
+/* 付款方式 */
+#mode .weui-cell_input{padding: 10px 15px;}
+
+
+/* 计算与优惠信息 */
+#calculation .list-group {padding: 10px 15px;line-height: 30px;display: flex;justify-content: space-between;}
+
+
+/* 结算脚部 */
+#buy_footer {height: 100upx;line-height: 100upx;position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;display: flex;align-items: center;z-index: 1;border-top: 1upx solid #f7f7f7;}
+#buy_footer .f_left{color: #FF4351;flex: 1;overflow: hidden;}
+#buy_footer>section{flex: 1;overflow: hidden;}
+#buy_footer .f_right .txt{font-size: 30upx;}
+#buy_footer .f_right .nav{color: #fff;background: #57C734;font-size: 30upx;border-radius: 40upx;line-height: 80upx;padding: 0 50upx!important;margin: 0 10upx;}
+#buy_footer .f_right .nav-o{color: #232325;font-size: 30upx;border-radius: 40upx;line-height: 78upx;padding: 0 50upx!important;margin: 0 10upx;border: 1upx solid #8c8c8c;}

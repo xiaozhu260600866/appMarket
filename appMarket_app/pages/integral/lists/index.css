@@ -1,0 +1,16 @@
+/* 头部 */
+.info-header {width: 100%;display: flex;}
+.info-header .ih-item {width: 100%;text-align: center;}
+.info-header .ih-item .num{}
+.info-header .ih-item .name {color: #333;}
+
+
+/* 商品列表 */
+.pro-list .porducts{padding: 16upx 16upx 14upx 14upx;display: flex;flex-wrap: wrap;}
+.pro-list .pro-div{position: relative;width: 50%;box-sizing:border-box;padding: 14upx 14upx 16upx 16upx;}
+.pro-list .pro-box{background: #fff;border-radius: 12upx;overflow: hidden;}
+.pro-list .cms_cover .image{width: 100%;height: 330upx;display: flex;}
+.pro-list .cms_title {margin: 0 auto;padding: 6px 8px 0;color: #373737;}
+.pro-list .cms_title .Aname{overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp: 2;line-height: 40upx;margin-bottom: 6upx;}
+.pro-list .cms_mark{line-height: 40upx;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp: 2;text-align: justify;}
+.pro-list .cms_price{padding: 0 16upx 8upx;display: flex;justify-content: space-between;}

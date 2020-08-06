@@ -58,7 +58,7 @@
 				<dx-nav-class :data="[
 					{url:'/pages/user/coupon/lists/main',type: 1,icon:'iconfont icon-user-coupon',name:'优惠券'},
 					{url:'/pages/distribution/index/main',type: 1,icon:'iconfont icon-user-fxdr',name:'邀请返利'},
-					{url:'/pages/user/integral/shop/lists/main',type: 1,icon:'iconfont icon-user-integral',name:'积分商城'},
+					{url:'/pages/integral/lists/main',type: 1,icon:'iconfont icon-user-integral',name:'积分商城'},
 					{url:'/pages/user/collection/main',type: 1,icon:'iconfont icon-user-collection',name:'我的收藏'},
 					{url:'/pages/news/show/main',type: 1,icon:'iconfont icon-user-joinin',name:'加盟'},
 					{url:'/pages/user/address/lists/main',type: 1,icon:'iconfont icon-user-address',name:'地址管理'

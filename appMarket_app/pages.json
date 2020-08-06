@@ -277,9 +277,16 @@
 			}
 		},
 		{
-			"path": "pages/user/integral/shop/lists/main",
+			"path": "pages/user/integral/count/main",
 			"style": {
-				"navigationBarTitleText": "积分商城",
+				"navigationBarTitleText": "积分管理",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/integral/order/lists/main",
+			"style": {
+				"navigationBarTitleText": "积分订单",
 				"enablePullDownRefresh": true
 			}
 		},
@@ -379,6 +386,27 @@
 			"path": "pages/distribution/domoney/main",
 			"style": {
 				"navigationBarTitleText": "提现",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/integral/lists/main",
+			"style": {
+				"navigationBarTitleText": "积分商城",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/integral/order/buy/main",
+			"style": {
+				"navigationBarTitleText": "订单提交",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/integral/show/main",
+			"style": {
+				"navigationBarTitleText": "商品详情",
 				"enablePullDownRefresh": true
 			}
 		}
