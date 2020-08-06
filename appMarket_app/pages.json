@@ -409,6 +409,34 @@
 				"navigationBarTitleText": "商品详情",
 				"enablePullDownRefresh": true
 			}
+		},
+		{
+			"path": "pages/group/show/main",
+			"style": {
+				"navigationBarTitleText": "商品团购",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/group/group/main",
+			"style": {
+				"navigationBarTitleText": "团购详情",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/group/lists/main",
+			"style": {
+				"navigationBarTitleText": "精选拼团",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/group/order-lists/main",
+			"style": {
+				"navigationBarTitleText": "我的拼团",
+				"enablePullDownRefresh": true
+			}
 		}
 	],
 	"permission": {

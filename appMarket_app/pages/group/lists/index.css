@@ -1,0 +1,10 @@
+
+.weui-cells:after,.weui-cell:before{border: 0;}
+.ass-pro{background: transparent;}
+.proItem {position: relative;}
+.proItem .weui-cell{align-items: stretch;border-radius: 6px;padding: 12px!important;}
+.proItem .proImg .img{width: 110px;height: 110px;display: flex;border-radius: 3px;}
+.proItem .proInfo .title{overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;line-height: 20px;height: 40px;}
+.proItem .proInfo .count{display: flex;justify-content: space-between;align-items: center;}
+.proItem .proInfo .count button{border-radius: 34px;}
+.proItem .people{position: absolute;top: 26px;left: 0;background: #FF4244;font-size: 12px;color: #fff;height: 24px;line-height: 24px;padding: 0 12px 0 8px;border-radius: 0 12px 12px 0;z-index: 1;}
