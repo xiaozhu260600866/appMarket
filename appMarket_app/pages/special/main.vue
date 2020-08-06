@@ -7,7 +7,7 @@
 				<image src="../../static/Iad02.jpg" mode="aspectFill" class="img"></image>
 			</view>
 			<view class="special">
-				<view class="special-item" v-for="(v,key) in data.isindexLists.data">
+				<view class="special-item" v-for="(v,key) in data.lists.data" @click="goto('/pages/product/show/main?id='+v.id,1)">
 					<view class="pimg">
 						<image class="img" :src="v.firstCover" mode="aspectFill"></image>
 					</view>
@@ -25,7 +25,7 @@
 	export default {
 		data() {
 			return {
-				formAction: '/wapindex',
+				formAction: '/product/lists?id_index=1',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -41,10 +41,10 @@
 			}
 		},
 		onLoad(options) {
-		this.ajax();
-			
+			this.ajax();
 		},
 		onReachBottom() {
+			console.log(1);
 			this.hasMore(this);
 		},
 		onPullDownRefresh() {

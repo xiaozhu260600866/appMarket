@@ -37,7 +37,7 @@
 		</view>
 		<!-- 附近的市场 -->
 		<view class="markt-group" v-for="v in data.market">
-			<view class="markt-ad" @click="goto('/pages/store/lists/main',1)">
+			<view class="markt-ad" @click="goto('/pages/store/lists/main?market_id='+v.id,1)">
 				<image class="flex img" :src="v.getPic" mode="widthFix"></image>
 				<view class="info plr15 pt10">
 					<view class="name flex-middle">
@@ -46,7 +46,7 @@
 						<view class="fs-12 pl5 lh-24">5分</view>
 					</view>
 					<view class="address fs-13 mtb3"><text class="dxi-icon dxi-icon-location-fill fs-13 pr5"></text>{{ v.address }}</view>
-					<view class="remark fs-12">起送<text class="Arial pr10">￥100</text>
+					<view class="remark fs-12">起送<text class="Arial pr10">￥{{v.deliver_price}}</text>
 						<filterKm v-model="v.juli" v-if="v.juli"></filterKm>
 					</view> 
 				</view>
@@ -113,6 +113,9 @@ import filterKm from '@/components/filterKm';
 			//this.ajax();
 		},
 		onShow(){
+			 if(uni.getStorageSync('city')){
+				 this.otherData.city = uni.getStorageSync('city');
+			 }
 			this.onShow(this);
 		},
 		onShareAppMessage() {
@@ -123,7 +126,12 @@ import filterKm from '@/components/filterKm';
 			// bgAudioMannager.stop();  
 			// bgAudioMannager.src = 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3';  
 			// bgAudioMannager.play(); 
-			console.log(5)
+			if(!uni.getStorageSync('city')){
+				uni.setStorageSync('city','江门市');
+			}
+			if(uni.getStorageSync('city')){
+				this.otherData.city = uni.getStorageSync('city');
+			}
 			let obj = {};
 			// #ifdef MP-WEIXIN
 			obj = wx.getMenuButtonBoundingClientRect();

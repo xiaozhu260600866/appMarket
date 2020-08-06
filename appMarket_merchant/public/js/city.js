@@ -558,7 +558,7 @@ module.exports = {
                     "keyword":"吉安JIAN"
                 },
                 {
-                    "cityName":"江门",
+                    "cityName":"江门市",
                     "keyword":"江门JIANGMEN"
                 },
                 {
