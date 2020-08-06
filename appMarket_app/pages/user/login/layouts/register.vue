@@ -7,7 +7,7 @@
 				<weui-input v-model="ruleform.phone" label="手机号" type="number" name="phone" datatype="require|phone" ></weui-input>
 				<weui-input v-model="ruleform.code" label="验证码" datatype="require" type="sms" name="sms" :phone="ruleform.phone" action="/sendSms.html"></weui-input>
 				<weui-input v-model="ruleform.password" label="密码" datatype="require"  type="password" name="password"></weui-input>
-				<weui-input v-model="ruleform.invitation_code" label="邀请码"   type="number" name="invitation_code"></weui-input>
+				<weui-input v-model="ruleform.share_code" label="邀请码"   type="number" name="share_code"></weui-input>
 			</view>
 			<view class="agreement mlr20 mt15 flex-middle fs-13 fc-6">
 				<checkbox-group @change="checkboxChange"><checkbox :value="1"/></checkbox-group>

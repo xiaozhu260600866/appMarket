@@ -23,7 +23,7 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/dis/come-out-infos',
+				formAction: '/user/share/come-out-infos?type=1',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -43,13 +43,13 @@
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			//this.ajax();
+			this.ajax();
 		},
 		onShareAppMessage() {
 			this.shareSource(this, '商城');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
 			ajax() {

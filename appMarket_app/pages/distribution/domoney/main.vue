@@ -32,7 +32,7 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/dis/do-money',
+				formAction: '/user/share/do-money',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),

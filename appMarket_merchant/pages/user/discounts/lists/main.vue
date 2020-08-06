@@ -20,7 +20,7 @@
 			</view>
 			<view @click="openActionSheet(4)"><dxftButton type="success">新增优惠</dxftButton></view>
 			<tui-actionsheet :show="showActionSheet" :tips="tips" :item-list="itemList" :mask-closable="maskClosable"
-			 :color="color" :size="size" :is-cancel="isCancel" @click="goto(v.edit_url,1)" @cancel="closeActionSheet"></tui-actionsheet>
+			 :color="color" :size="size" :is-cancel="isCancel" @click="toCreate" @cancel="closeActionSheet"></tui-actionsheet>
 		</view>
 	</view>
 </template>
@@ -67,6 +67,15 @@ import tuiActionsheet from "xiaozhu/uniapp/thorui/components/actionsheet/actions
 			}
 		},
 		methods: {
+			toCreate(item){
+				if(item.index == "0"){
+					this.goto("/pages/user/discounts/create_edit/full");
+				}else if(item.index == "1"){
+					this.goto("/pages/user/discounts/create_edit/discounts");
+				}else if(item.index == "2"){
+					this.goto("/pages/user/discounts/create_edit/coupon");
+				}
+			},
 			closeActionSheet: function() {
 				this.showActionSheet = false
 			},

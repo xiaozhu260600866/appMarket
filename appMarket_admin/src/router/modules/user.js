@@ -7,13 +7,28 @@ const userRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'User',
-    meta: {title: '会员管理', icon: 'dx-vip-user'},
-    children: [{
+    meta: { title: '会员管理', icon: 'dx-vip-user' },
+    children: [
+      {
         path: 'lists',
         component: () => import('@/views/user/lists'),
         name: 'UserLists',
         meta: { title: '会员列表', icon: 'dx-vip-user' }
-    } //{
+    },
+    {
+        path: 'comeIn',
+        component: () => import('@/views/user/come_in'),
+        name: 'comeIn',
+        meta: { title: '佣金收入', icon: 'dx-vip-user' }
+    },
+    {
+        path: 'comeOut',
+        component: () => import('@/views/user/come_out'),
+        name: 'comeOut',
+        meta: { title: '佣金提现', icon: 'dx-vip-user' }
+    }
+
+    // {
       //     path: 'show',
       //     component: () => import('@/views/user/show'),
       //     name: 'UserShow',
