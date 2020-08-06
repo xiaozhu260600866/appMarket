@@ -31,13 +31,13 @@
 				</view>
 			</view>
 			<view v-if="!inputVal">
-				<!-- <view class="current-city">
-					<view class="title">定位城市</view>
+				<view class="current-city" v-if="localCity">
+					<view class="title">当前城市</view>
 					<view class="city-name">
 						<tui-icon name="position-fill" color="#5677fc" :size="18"></tui-icon>
 						{{localCity}}
 					</view>
-				</view> -->
+				</view>
 				<view class="hot-city">
 					<view class="title">已开通城市</view>
 					<view class="city-names">
@@ -104,7 +104,7 @@
 		},
 		onLoad: function(options) {
 			const that = this;
-			that.localCity = options.currentCity || "深圳";
+			that.localCity = uni.getStorageSync('city');;
 			setTimeout(() => {
 				uni.getSystemInfo({
 					success: function(res) {
@@ -157,7 +157,19 @@
 			selectCity(e) {
 				let cityName = e.currentTarget.dataset.name;
 				//返回并刷新上一页面
-				console.log(cityName);
+				let canPush = false;
+				this.data.city.forEach(msg=>{
+					if(msg.name == cityName){
+						canPush = true;
+					}
+				});
+				if(!canPush){
+					this.getError("该城市还没有开通");
+					return false;
+				}
+				 uni.setStorageSync('city', cityName);
+				 this.updateHistory();
+				 this.back();
 				// this.$eventHub.$emit('emit', cityName)
 				// uni.navigateBack({
 				// 	delta: 1
