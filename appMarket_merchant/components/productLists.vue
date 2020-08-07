@@ -16,7 +16,12 @@
 				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>
 				<dx-button size="mini">下架</dx-button>
 			</view>
-			<view class="del-icon"><text class="dxi-icon dxi-icon-del" @click="del(item)"></text></view>
+			<view class="select-icon" v-if="select">
+				<checkbox-group>
+					<checkbox></checkbox>
+				</checkbox-group>
+			</view>
+			<view class="del-icon" v-else><text class="dxi-icon dxi-icon-del" @click="del(item)"></text></view>
 		</dx-products-pic>
 	</view>
 </template>
@@ -25,6 +30,11 @@ import dxProductsPic from "doxinui/components/products/pic"
 	export default {
 		components:{
 			dxProductsPic
+		},
+		data(){
+			return{
+				select: true,
+			}
 		},
 		methods:{
 			del(item) {
@@ -42,7 +52,7 @@ import dxProductsPic from "doxinui/components/products/pic"
 								}
 							});
 						}
-					}
+					},
 				})
 			},
 		},
@@ -70,4 +80,8 @@ import dxProductsPic from "doxinui/components/products/pic"
 /deep/.dxi_pic-lists{position: relative;}
 .dxi-icon{position: absolute;top: 0;right: 0;width: 80upx;height: 80upx;text-align: center;line-height: 80upx;}
 
+.select-icon{position: absolute;top: 0;right: 0;width: 80upx;height: 80upx;text-align: center;line-height: 80upx;}
+.select-icon /deep/.uni-checkbox-input{zoom: 90%;}
+.select-icon /deep/.uni-checkbox-input.uni-checkbox-input-checked{background-color: #57C734!important;color: #fff!important;border-color: #57C734;}
+.select-icon /deep/.uni-checkbox-input:hover{border-color: #57C734;color: #fff!important;}
 </style>

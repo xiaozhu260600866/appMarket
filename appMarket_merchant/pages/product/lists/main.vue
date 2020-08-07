@@ -28,13 +28,14 @@
 					</view>
 				</scroll-view>
 				<block v-for="(item,index) in data.productClass" :key="index">
-					<scroll-view scroll-y class="right-box pb50" :style="{height:height+'px',top:height_+'px'}" v-if="currentTab==index">
+					<scroll-view scroll-y class="right-box pb60" :style="{height:height+'px',top:height_+'px'}" v-if="currentTab==index">
 						<productLists :data="data.productClass[selectClassKey].products.data"></productLists>
 						<div v-if="!data.productClass[selectClassKey].products.data.length">
 							暂无数据
 						</div>
 					</scroll-view>
 				</block>
+				<dxftButton type="success" size="lg">确认</dxftButton>
 			</view>
 		</view>
 	</view>
@@ -43,10 +44,12 @@
 <script>
 import dxProductsPic from 'doxinui/components/products/pic'
 import productLists from "@/components/productLists.vue"
+import dxftButton from "doxinui/components/button/footer-button"
 	export default {
 		components: {
 			dxProductsPic,
-			productLists
+			productLists,
+			dxftButton
 		},
 		data() {
 			return {
