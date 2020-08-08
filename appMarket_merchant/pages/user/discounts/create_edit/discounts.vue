@@ -42,7 +42,8 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				ruleform:{}
+				ruleform:{},
+				vaildate:{}
 			}
 		},
 		methods: {
@@ -74,7 +75,7 @@
 		onLoad(options) {
 			if(options.product_name){
 				this.ruleform.product_name = options.product_name;
-				this.ruleform.product_id = options.product_id;
+				this.ruleform.product_str = options.product_str;
 			}
 			if(options.id){
 				this.id = options.id;

@@ -86,7 +86,7 @@ import dxftButton from "doxinui/components/button/footer-button"
 						 product_id+=v.id;
 					 }
 				});
-				this.goto("/pages/user/discounts/create_edit/discounts?product_id="+product_id+"&product_name="+product_name);
+				this.goto("/pages/user/discounts/create_edit/discounts?product_str="+product_id+"&product_name="+product_name);
 			},
 			changeClassKey(key){
 				this.selectClassKey = key;
