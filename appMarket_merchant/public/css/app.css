@@ -57,3 +57,7 @@ button::after{border: 0;}
 
 /* 数字调节 */
 .numbox .tui-numbox-icon{width: 52upx;line-height: 52upx;height: 52upx;background: #57C734;border-radius: 50%;padding: 0!important;color: #fff!important;text-align: center;}
+
+
+/* 星星 */
+.tui-rate-box .tui-icon{line-height: 1.1;}

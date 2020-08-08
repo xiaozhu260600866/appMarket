@@ -1,13 +1,14 @@
 /* 头部 */
-.head-info{background-image: linear-gradient(to bottom, #57C734, #5ed938);}
-.utop{width: 100%;padding: 60upx 40upx 120upx;}
+.head-info{background-image: linear-gradient(to bottom, #57C734, #5ed938);position: relative;}
+.utop{width: 100%;padding: 60upx 40upx 80upx;}
 .utop .uinfo{display: flex;align-items: center;position: relative;}
 .utop .uinfo .header-img .img{width: 120upx;height: 120upx;border-radius: 50%;border: 4upx #fff solid;display: flex;}
 .utop .uinfo .right{flex: 1;overflow: hidden;}
 .utop .uinfo .info{}
 .utop .uinfo .gosign{height: 60upx;line-height: 60upx;border: 1upx #fff solid;border-radius: 40upx;text-align: center;padding: 0 30upx;}
 .utop .login-nav{background-color: rgba(0,0,0,0.25);border-radius: 30upx;}
-
+.utop .message-icon{position: absolute;top: 0;right: 0;width: 80upx;display: flex;justify-content: center;align-items: center;}
+.utop .message-icon{font-size: 40upx;color: #fff;}
 
 .status /deep/.dx-cell{padding: 0 30upx;border: 0;background-color: rgba(0,0,0,0.3);color: #fff;border-radius: 40upx;}
 

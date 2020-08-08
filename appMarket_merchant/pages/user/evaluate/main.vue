@@ -3,10 +3,10 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view>
 			<view class="mb12">
-				<dx-tabs :tabs="navbar" :currentTab="currentTab" selectedColor="#57C734" sliderBgColor="#57C734" @change="change"></dx-tabs>
+				<dx-tabs :tabs="navbar" v-model="replyStatus" selectedColor="#57C734" sliderBgColor="#57C734" @change="change"></dx-tabs>
 			</view>
 			<view class="bd-be">
-				<dx-tabs :tabs="tabs" :height="88" :currentTab="currentTab" :sliderWidth="150" :sliderHeight="60" bottom="50%" color="#888" selectedColor="#fff" :bold="true" sliderBgColor="#57C734" @change="change"></dx-tabs>
+				<dx-tabs :tabs="tabs" :height="88" :sliderWidth="150" :sliderHeight="60" bottom="50%" color="#888" selectedColor="#fff" :bold="true" sliderBgColor="#57C734" @change="change" v-model="evaluteStatus"></dx-tabs>
 			</view>
 			
 			<view class="evalute">
@@ -18,7 +18,7 @@
 							</view>
 							<view class="u-name pl10">
 								<view class="name lh-20 fs-14">{{ v.nickname }}</view>
-								<tui-rate :value="v.quote" :disabled="true"></tui-rate>
+								<view class="lh-20"><tui-rate :value="v.quote" :disabled="true" :size="16"></tui-rate></view>
 							</view>
 							<view class="r-time Arial fs-13 fc-9 pl10">{{ v.created_at }}</view>
 						</view>
@@ -58,22 +58,30 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				currentTab: 0,
+				replyStatus: 0,
 				navbar: [{
-					name: "全部"
+					name: "全部",
+					value: 0
 				}, {
-					name: "待回复"
+					name: "待回复",
+					value: 1
 				}],
+				evaluteStatus: 0,
 				tabs: [{
-					name: "全部"
+					name: "全部",
+					value: 0
 				}, {
-					name: "最新"
+					name: "最新",
+					value: 1
 				}, {
-					name: "好评"
+					name: "好评",
+					value: 2
 				}, {
-					name: "中评"
+					name: "中评",
+					value: 3
 				}, {
-					name: "差评"
+					name: "差评",
+					value: 4
 				}],
 				suggestLists:[{
 					headimgurl:'/static/banner01.jpg',

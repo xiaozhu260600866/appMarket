@@ -37,7 +37,7 @@ page,scroll-view{height: 100%;}
 /* 评价 */
 .evalute .u-info .u-info-box{display: flex;}
 .evalute .u-info .u-img .img{width: 40px;height: 40px;border-radius: 40px;display: flex;}
-.evalute .u-info .u-name{width: 100%;}
+.evalute .u-info .u-name{width: 100%;flex: 1;}
 .evalute .u-info .u-name ._p{line-height: 20px;}
 .evalute .u-info .r-time{line-height: 40px;width: 110px;text-align: right;}
 .evalute .u-con .p{font-size: 14px;line-height: 22px;}
@@ -64,7 +64,7 @@ page,scroll-view{height: 100%;}
 
 
 /* 产品底部 */
-#footer{height: 50px;position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;z-index: 10;display: flex;}
+#footer{height: 50px;position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;z-index: 999;display: flex;}
 #footer:before{content: '';position: absolute;top: 0;right: 0;left: 0;border-top: 0.5px solid #eaeef1;-webkit-transform: scaleY(0.5);-ms-transform: scaleY(0.5);transform: scaleY(0.5);}
 #footer .left{display: flex;}
 #footer .left .btn-item{padding: 0;margin: 0;width: 40px;text-align: center;background: transparent;}

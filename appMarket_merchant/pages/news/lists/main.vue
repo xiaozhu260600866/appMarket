@@ -9,9 +9,9 @@
 						<view class="lh-20 wrap2 mt3">{{ v.content }}</view>
 					</view>
 				</dx-list-msg>
-				<view class="flex-right flex-middle mt8 mr15">
-					<dx-button type="success" size="small" myclass="mr15" @click="goto('/pages/news/create_edit/main',1)">编辑</dx-button>
-					<dx-button size="small">删除</dx-button>
+				<view class="flex-right flex-middle ptb5 mr15">
+					<dx-button round type="success" size="mini" myclass="plr20 mr15" @click="goto('/pages/news/create_edit/main',1)">编辑</dx-button>
+					<dx-button round size="mini" myclass="plr20">删除</dx-button>
 				</view>
 			</view>
 			<view @click="goto('/pages/news/create_edit/main',1)"><dxftButton type="success">发布公告</dxftButton></view>

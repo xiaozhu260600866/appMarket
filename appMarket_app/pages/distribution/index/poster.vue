@@ -40,7 +40,7 @@ export default {
 			
 			//标题背景
 			ctx.setFillStyle('#fff')
-			ctx.fillRect(0, 0, 0, 60)
+			ctx.fillRect(0, 0, viewWidth, 60)
 			
 			//标题
 			ctx.setFontSize(16)
@@ -48,20 +48,20 @@ export default {
 			ctx.fillText(this.title, viewWidth/2-this.title.length*8, 35)
 			
 			//广告图
-			ctx.drawImage('../../../static/pro02.jpg', 0, 60, viewWidth, viewHeight)
+			ctx.drawImage('../../../static/fx-poster.jpg', 0, 60, viewWidth, viewHeight)
 			
 			//脚部背景
 			ctx.setFillStyle('#fff')
 			ctx.fillRect(0, viewHeight+60, viewWidth, 170)
 			
 			// 头像
-			ctx.drawImage('../../../static/logo.png', 50, viewHeight+85, 70, 70)
+			ctx.drawImage(this.data.distribution.heder_img, 50, viewHeight+85, 70, 70)
 			ctx.drawImage('../../../static/prohead-bg.png', 50, viewHeight+85, 70, 70)
 			
 			//昵称
 			ctx.setFontSize(16)
 			ctx.setFillStyle('#333')
-			ctx.fillText(this.username, 170/2-this.username.length*8, viewHeight+180)
+			ctx.fillText(this.data.distribution.name, 170/2-this.data.distribution.name.length*8, viewHeight+180)
 			
 			//备注
 			ctx.setFontSize(12)
@@ -69,7 +69,11 @@ export default {
 			ctx.fillText(this.remark, 170/2-this.remark.length*6, viewHeight+202)
 			
 			//二维码
-			ctx.drawImage('../../../static/qrcode-k.jpg', viewWidth-150, viewHeight+80, 110, 110)
+			ctx.drawImage(this.data.disQrcode, viewWidth-150, viewHeight+80, 110, 110)
+			
+			//脚部背景
+			ctx.setFillStyle('#f5f5f5')
+			ctx.fillRect(0, viewHeight+230, viewWidth, 60)
 			
 			//指纹
 			ctx.drawImage('../../../static/fingerprint.png', viewWidth/2-this.reminder.length*9-30, viewHeight+250, 20, 20)
