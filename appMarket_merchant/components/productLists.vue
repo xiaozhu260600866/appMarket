@@ -12,13 +12,13 @@
 			<view class="flex-between">
 				<dx-price v-model="item.price" split :intSize="16" :decimalSize="12"></dx-price>
 			</view>
-			<view class="edit-nav flex-right">
+			<view class="edit-nav flex-right" v-if="!type">
 				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>
 				<dx-button size="mini">下架</dx-button>
 			</view>
-			<view class="select-icon" v-if="select">
-				<checkbox-group>
-					<checkbox></checkbox>
+			<view class="select-icon" v-if="type">
+				<checkbox-group @change="checkboxChange" :data-id="item.id" :data-name="item.name">
+					<checkbox :value="item.id" ></checkbox>
 				</checkbox-group>
 			</view>
 			<view class="del-icon" v-else><text class="dxi-icon dxi-icon-del" @click="del(item)"></text></view>
@@ -33,10 +33,39 @@ import dxProductsPic from "doxinui/components/products/pic"
 		},
 		data(){
 			return{
-				select: true,
+				chooseData: [],
+				
+				
 			}
 		},
 		methods:{
+			in_array(value, arr) {
+				let res = false;
+				if (!arr) return false;
+				arr.forEach((v) => {
+					if (v == value) {
+						res = true;
+					}
+				});
+				return res;
+			},
+			checkboxChange(e){
+				console.log(e);
+				let chooseArr = e.mp.detail.value[0];
+				let name = e.mp.target.dataset.name;
+				if(chooseArr && !this.in_array(chooseArr,this.chooseData)){
+					this.chooseData.push({id:chooseArr,name:name});
+				}else{
+					let id = e.mp.target.dataset.id;
+					for (let i = 0; i < this.chooseData.length; i++) {
+						if(this.chooseData[i].id == id){
+							this.chooseData.splice(i,1)
+						}
+					}
+				}
+				console.log(this.chooseData);
+
+			},
 			del(item) {
 				uni.showModal({
 					title: '提示',
@@ -56,7 +85,7 @@ import dxProductsPic from "doxinui/components/products/pic"
 				})
 			},
 		},
-		props: ["data"]
+		props: ["data","type"]
 	}
 </script>
 <style scoped>

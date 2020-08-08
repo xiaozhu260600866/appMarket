@@ -2,7 +2,7 @@
 	<view>
 		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction" Fbottom="bottom: 180upx">
-			<view slot="floatBtn">
+			<view slot="floatBtn" v-if="!type">
 				<view @click="goto('/pages/product/create_edit/main',1)">
 					<floatBtn type="2" icon="icon-count-plus" myclass="float-nav-green topFloat" iSize="fs-22" nSize="fs-13" title="新增"></floatBtn>
 				</view>
@@ -16,7 +16,7 @@
 				<view class="pro-header flex1 text-center" :style="{paddingTop:top+'px',paddingLeft:40*2+'rpx'}">
 					商品管理
 				</view>
-				<view class="pro-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}">
+				<view class="pro-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}" v-if="!type">
 					<view class="dxi-icon dxi-icon-zoom-in" @click="goto('/pages/search/products/main',1)"></view>
 				</view>
 			</view>
@@ -29,13 +29,13 @@
 				</scroll-view>
 				<block v-for="(item,index) in data.productClass" :key="index">
 					<scroll-view scroll-y class="right-box pb60" :style="{height:height+'px',top:height_+'px'}" v-if="currentTab==index">
-						<productLists :data="data.productClass[selectClassKey].products.data"></productLists>
+						<productLists :data="data.productClass[selectClassKey].products.data" :type="type" ref="productLists"></productLists>
 						<div v-if="!data.productClass[selectClassKey].products.data.length">
 							暂无数据
 						</div>
 					</scroll-view>
 				</block>
-				<dxftButton type="success" size="lg">确认</dxftButton>
+				<dxftButton type="success" size="lg" v-if="type" @click="confirm">确认</dxftButton>
 			</view>
 		</view>
 	</view>
@@ -60,14 +60,35 @@ import dxftButton from "doxinui/components/button/footer-button"
 				height_:64,
 				top: 0,
 				top_: 0,
+				type:'',
+				chooseData:[],
 				selectClassKey:0,
 				currentTab: 0, //预设当前项的值
 				scrollTop: 0 ,//tab标题的滚动条位置
 			}
 		},
 		methods: {
+			confirm(){
+				
+				if(this.$refs.productLists[0].chooseData.length == 0){
+					this.getError("您还没有选择");
+					return false;
+				}
+				this.chooseData  = this.$refs.productLists[0].chooseData;
+				let product_name = "";
+				let product_id = "";
+				this.chooseData.forEach((v,index)=>{
+					 if(index != this.chooseData.length-1){
+						 product_name+=v.name+",";
+						 product_id+=v.id+",";
+					 }else{
+						 product_name+=v.name;
+						 product_id+=v.id;
+					 }
+				});
+				this.goto("/pages/user/discounts/create_edit/discounts?product_id="+product_id+"&product_name="+product_name);
+			},
 			changeClassKey(key){
-				console.log(0);
 				this.selectClassKey = key;
 			},
 			ajax() {
@@ -101,6 +122,9 @@ import dxftButton from "doxinui/components/button/footer-button"
 			},
 		},
 		onLoad(options) {
+			if(options.type){
+				this.type = options.type;
+			}
 			this.data.show = true
 			let obj = {};
 			// #ifdef MP-WEIXIN

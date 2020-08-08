@@ -1,23 +1,23 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="pb50">
-			<view class="discounts_item mb12 bg-f" v-for="(v,index) in newsLists">
-				<dx-list-msg :name="v.title">
+		<view class="pb50" v-if="data.show">
+			<view class="discounts_item mb12 bg-f" v-for="(v,index) in data.lists.data">
+				<dx-list-msg :name="v.name">
 					<view slot="left">
-						<view class="type type-full" v-if="v.type == 1">减</view>
-						<view class="type type-dis" v-if="v.type == 2">折</view>
-						<view class="type type-coupon" v-if="v.type == 3">券</view>
+						<view class="type type-dis" v-if="v.type == 1">折</view>
+						<view class="type type-coupon" v-if="v.type == 0">券</view>
 					</view>
 					<view slot="con" class="fs-13 fc-9">
 						<view class="Arial mt8">发布时间：{{ v.created_at }}</view>
 					</view>
 					<view slot="right" class="edit_icon">
-						<view class="icon" @click="goto(v.edit_url,1)"><text class="dxi-icon dxi-icon-edit"></text></view>
-						<view class="icon"><text class="dxi-icon dxi-icon-del"></text></view>
+						<view class="icon" @click="goto(v.type == 0 ? '/pages/user/discounts/create_edit/coupon?id='+v.id : '/pages/user/discounts/create_edit/discounts?id='+v.id,1)"><text class="dxi-icon dxi-icon-edit"></text></view>
+						<view class="icon"><text class="dxi-icon dxi-icon-del" @click="del(v)"></text></view>
 					</view>
 				</dx-list-msg>
 			</view>
+			<hasMore :parentData="data"></hasMore>
 			<view @click="openActionSheet(4)"><dxftButton type="success">新增优惠</dxftButton></view>
 			<tui-actionsheet :show="showActionSheet" :tips="tips" :item-list="itemList" :mask-closable="maskClosable"
 			 :color="color" :size="size" :is-cancel="isCancel" @click="toCreate" @cancel="closeActionSheet"></tui-actionsheet>
@@ -35,7 +35,7 @@ import tuiActionsheet from "xiaozhu/uniapp/thorui/components/actionsheet/actions
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/merchant/coupon/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -67,12 +67,30 @@ import tuiActionsheet from "xiaozhu/uniapp/thorui/components/actionsheet/actions
 			}
 		},
 		methods: {
+			del(item) {
+				uni.showModal({
+					title: '提示',
+					content: '您确定要删除这个产品吗',
+					success: res => {
+						if (res.confirm) {
+							this.postAjax('/ajax/mydel', {
+								id: item.id,
+								tablename: 'coupons'
+							}).then(msg=>{
+								if (msg.data.status == 2) {
+									this.ajax();
+								}
+							});
+						}
+					}
+				})
+			},
 			toCreate(item){
-				if(item.index == "0"){
+				if(item.index == "3"){
 					this.goto("/pages/user/discounts/create_edit/full");
-				}else if(item.index == "1"){
+				}else if(item.index == "0"){
 					this.goto("/pages/user/discounts/create_edit/discounts");
-				}else if(item.index == "2"){
+				}else if(item.index == "1"){
 					this.goto("/pages/user/discounts/create_edit/coupon");
 				}
 			},
@@ -93,10 +111,7 @@ import tuiActionsheet from "xiaozhu/uniapp/thorui/components/actionsheet/actions
 				switch (type) {
 					case 4:
 						tips = "";
-						itemList = [{
-							text: "满减活动",
-							color: "#1a1a1a"
-						}, {
+						itemList = [ {
 							text: "折扣商品",
 							color: "#1a1a1a"
 						}, {
@@ -124,8 +139,11 @@ import tuiActionsheet from "xiaozhu/uniapp/thorui/components/actionsheet/actions
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
+		},
+		onShow(){
+			this.ajax();
 		},
 		onReachBottom() {
 			this.hasMore(this);
