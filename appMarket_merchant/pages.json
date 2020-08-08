@@ -226,6 +226,20 @@
 			}
 		},
 		{
+			"path": "pages/user/notice/lists/main",
+			"style": {
+				"navigationBarTitleText": "消息",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/notice/show/main",
+			"style": {
+				"navigationBarTitleText": "通知",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/news/lists/main",
 			"style": {
 				"navigationBarTitleText": "列表",
