@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import bgimg from '@/assets/login_images/logo.png'
 export default {
   name: 'SidebarLogo',
   props: {
@@ -26,7 +25,7 @@ export default {
   data() {
     return {
       title: '后台管理',
-      logo: bgimg
+      logo: process.env.VUE_APP_BASE_URL + 'images/logo.png'
     }
   }
 }
@@ -60,7 +59,6 @@ export default {
       height: 32px;
       vertical-align: middle;
       margin-right: 12px;
-      border-radius: 3px;
     }
 
     & .sidebar-title {
