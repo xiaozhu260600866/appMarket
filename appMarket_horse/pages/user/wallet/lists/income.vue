@@ -8,7 +8,7 @@
 					<view class="fc-3">￥{{ amount }}</view>
 				</view>
 				<view>
-					<text class="iconfont icon-date fs-17" @click="dateShow = true"></text>
+					<text class="iconfont icon-date fs-17" @click="$refs.dateShow.date = true"></text>
 				</view>
 			</view>
 			<view class="bg-f wallet-order">
@@ -18,7 +18,7 @@
 					</view>
 				</dx-list-msg>
 			</view>
-			<dx-date :insert="true" :start-date="'1900-01-01'" :end-date="'2099-12-30'" @change="change" v-if="dateShow"></dx-date>
+			<dx-date :insert="true" :start-date="'1900-01-01'" :end-date="'2099-12-30'" @change="change" ref="dateShow"></dx-date>
 		</view>
 	</view>
 </template>
@@ -37,7 +37,7 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				dateShow: false,
+				
 				amount: 20.00,
 				orderLists:[{
 					store_name:'东风生鲜',
@@ -59,6 +59,7 @@
 			}
 		},
 		methods: {
+			
 			ajax() {
 				this.getAjaxForApp(this, {
 				
