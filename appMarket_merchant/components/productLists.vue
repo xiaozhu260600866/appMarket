@@ -16,7 +16,8 @@
 				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>
 				<dx-button size="mini">下架</dx-button>
 			</view>
-			<view class="select-icon" v-if="type">
+			<!-- 下架及优惠活动选择产品都使用这个选择 -->
+			<view class="select-icon" v-if="type || operation">
 				<checkbox-group @change="checkboxChange" :data-id="item.id" :data-name="item.name">
 					<checkbox :value="item.id" ></checkbox>
 				</checkbox-group>

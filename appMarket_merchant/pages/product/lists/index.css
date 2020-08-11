@@ -27,3 +27,7 @@
 
 .edit-nav /deep/span{display: flex;}
 .edit-nav /deep/.dxi-btn{margin: 20upx 0 0 20upx;}
+
+.ope-btn{position: fixed;bottom: 0;left: 0;width: 100%;z-index: 100;}
+.ope-btn /deep/.form:first-child{flex: 3}
+.ope-btn /deep/.form:last-child{flex: 5}

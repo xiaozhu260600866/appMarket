@@ -1,13 +1,7 @@
 <template>
 	<view>
 		<view class="bg-white"></view>
-		<page :parentData="data" :formAction="formAction" Fbottom="bottom: 180upx">
-			<view slot="floatBtn" v-if="!type">
-				<view @click="goto('/pages/product/create_edit/main',1)">
-					<floatBtn type="2" icon="icon-count-plus" myclass="float-nav-green topFloat" iSize="fs-22" nSize="fs-13" title="新增"></floatBtn>
-				</view>
-			</view>
-		</page>
+		<page :parentData="data" :formAction="formAction"></page>
 		<view class="zindex2">
 			<view class="pro-header-box main-bg flex-middle fc-white plr10" :style="{height:height_+'px'}">
 				<view class="pro-header-icon lh-24" :style="{paddingTop:top+'px'}">
@@ -47,6 +41,14 @@
 					</scroll-view>
 				</block>
 				<dxftButton type="success" size="lg" v-if="type" @click="confirm">确认</dxftButton>
+				<view class="flex ope-btn" v-if="!operation">
+					<dx-button type="info" size="lg" myclass="bdr0" block @click="operation">批量操作</dx-button>
+					<dx-button type="success" size="lg" myclass="bdr0" block @click="goto('/pages/product/create_edit/main',1)">新增商品</dx-button>
+				</view>
+				<!-- 点击批量操作后显示以下按钮 -->
+				<view class="flex ope-btn" v-else>
+					<dx-button type="success" size="lg" myclass="bdr0" block>下架</dx-button>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -77,6 +79,7 @@ import dxftButton from "doxinui/components/button/footer-button"
 				selectClassKey:0,
 				currentTab: 0, //预设当前项的值
 				scrollTop: 0 ,//tab标题的滚动条位置
+				operation: ''
 			}
 		},
 		methods: {
@@ -144,6 +147,9 @@ import dxftButton from "doxinui/components/button/footer-button"
 			}
 			if(options.coupon_id){
 				this.coupon_id = options.coupon_id;
+			}
+			if(options.operation){
+				this.operation = options.operation;
 			}
 			this.data.show = true
 			let obj = {};
