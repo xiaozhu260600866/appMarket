@@ -21,7 +21,7 @@
 				<weui-input  v-if="ruleform.auto_group" v-model="ruleform.group_num" label="拼团人数" placeholder="0" type="number" name="group_num" datatype="require"></weui-input>
 			</view>
 			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.is_index" label="店家推荐" type="switch" name="is_index" ></weui-input>
+				<weui-input v-model="ruleform.recommend" label="店家推荐" type="switch" name="recommend" ></weui-input>
 				<weui-input v-model="ruleform.auto_putaway" label="自动上架" type="switch" name="auto_putaway" ></weui-input>
 				<weui-input v-if="ruleform.auto_putaway" v-model="ruleform.putaway_date" label="售买时间" type="date" name="putaway_date"></weui-input>
 			</view>

@@ -43,6 +43,6 @@
 .diag-coupon .list_item .ir-bottom{align-items: center;}
 .diag-coupon .list_item .ir-bottom .time{font-family: Calibri;}
 .diag-coupon .discount{line-height: 110upx;}
-.diag-coupon .getNav{font-size: 28upx;padding: 0 22upx;width: 72upx;line-height: 1.2;position: absolute;top: 0;right: 0;border-radius: 0 12upx 12upx 0;height: 150upx;display: flex;align-items: center;color: #fff;}
+.diag-coupon .getNav{z-index:100;font-size: 28upx;padding: 0 22upx;width: 72upx;line-height: 1.2;position: absolute;top: 0;right: 0;border-radius: 0 12upx 12upx 0;height: 150upx;display: flex;align-items: center;color: #fff;}
 .diag-coupon .getNav.no{background-color: #57C734;}
 .diag-coupon .getNav.yes{background-color: #ccc;}
