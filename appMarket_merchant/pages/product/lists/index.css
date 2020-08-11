@@ -16,6 +16,8 @@
 .tab-bar-item {width: 180upx;height: 110upx;background: #f6f6f6;box-sizing: border-box;display: flex;align-items: center;justify-content: center;font-size: 28upx;color: #444;font-weight: 400;}
 .active {position: relative;color: #000;font-size: 30upx;font-weight: 600;background: #fcfcfc;}
 .active::before {content: "";position: absolute;border-left: 8upx solid #57C734;height: 30upx;left: 0;}
+.tab-bar-item .iconfont{font-size: 37upx;padding-right: 10upx;display: flex;color: #FF4136;}
+.tab-bar-item text{display: inline-block;line-height: 10upx;}
 /* 左侧导航布局 end*/
 
 

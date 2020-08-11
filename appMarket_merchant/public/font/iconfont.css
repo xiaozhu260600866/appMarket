@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'iconfont';  /* project id 1369426 */
-  src: url('//at.alicdn.com/t/font_1369426_b1yjpgnfc8g.eot');
-  src: url('//at.alicdn.com/t/font_1369426_b1yjpgnfc8g.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1369426_b1yjpgnfc8g.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1369426_b1yjpgnfc8g.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1369426_b1yjpgnfc8g.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1369426_b1yjpgnfc8g.svg#iconfont') format('svg');
+  src: url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.eot');
+  src: url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.woff2') format('woff2'),
+  url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.svg#iconfont') format('svg');
 }
 
 /* 商城图标 */
@@ -43,6 +43,8 @@
 .icon-pro-class-top:before{content: "\ff9c";}/* 向上 */
 .icon-pro-class-bottom:before{content: "\ff8c";}/* 向下 */
 .icon-pro-shop:before{content: "\f311";}/* 商城 */
+.icon-pro-hot:before{content: "\f64a";}/* 热销 */
+.icon-pro-discount:before{content: "\f70b";}/* 折扣 */
 
 
 .icon-count-plus:before{content: "\f906";}/* 加号 */
