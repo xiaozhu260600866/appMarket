@@ -184,7 +184,12 @@ import dxDiag from "doxinui/components/diag/diag"
 			draw(item){
 				this.checkLogin().then(msg=>{
 					if(item.status == 0){
-						
+						this.postAjax("/user/couponAdd",{coupon_id:item.id,merchant_id:this.data.detail.id}).then(msg=>{
+							if(msg.data.status  == 2){
+								this.$refs.coupon.thisDiag = false;
+								this.ajax();
+							}
+						});
 					}else{
 						this.getError("您已经领取");
 					}
