@@ -3,7 +3,7 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="pb50" v-if="data.show">
 			<view class="discounts_item mb12 bg-f" v-for="(v,index) in data.lists.data">
-				<dx-list-msg :name="v.name">
+				<dx-list-msg :name="getName(v)">
 					<view slot="left">
 						<view class="type type-dis" v-if="v.type == 1">折</view>
 						<view class="type type-coupon" v-if="v.type == 0">券</view>
@@ -67,6 +67,13 @@ import tuiActionsheet from "xiaozhu/uniapp/thorui/components/actionsheet/actions
 			}
 		},
 		methods: {
+			getName(item){
+				if(item.type == 0){
+					return item.name;
+				}else{
+					return item.product_name+item.discount+'折优惠'
+				}
+			},
 			del(item) {
 				uni.showModal({
 					title: '提示',

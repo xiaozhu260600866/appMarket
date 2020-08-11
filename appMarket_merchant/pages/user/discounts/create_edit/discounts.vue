@@ -7,7 +7,7 @@
 					<weui-input v-model="ruleform.end_date"  datatype="require" label="结束日期" type="date" name="end_date" :startDate="ruleform.start_date"></weui-input>
 				
 			</view>
-			<view class="bg-f mb12" @click="goto('/pages/product/lists/main?type=select',1)">
+			<view class="bg-f mb12" @click="goto('/pages/product/lists/main?type=select&coupon_id='+id,1)">
 				<weui-input v-model="ruleform.product_name" label="商品" type="txt" name="product_name" arrow ></weui-input>
 			</view>
 			<view class="bg-f mb12">
@@ -68,6 +68,15 @@
 				this.getAjaxForApp(this, {
 				
 				}).then(msg => {
+					if(this.ruleform.product_name){
+						for (let key in msg.detail) {
+							if(key !='product_str' && key !='product_id'){
+								this.ruleform[key] = msg.detail[key];
+							}
+						}
+					}else{
+						this.ruleform = msg.detail;
+					}
 					
 				});
 			}

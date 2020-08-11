@@ -61,6 +61,7 @@ import dxftButton from "doxinui/components/button/footer-button"
 				top: 0,
 				top_: 0,
 				type:'',
+				coupon_id:"",
 				chooseData:[],
 				selectClassKey:0,
 				currentTab: 0, //预设当前项的值
@@ -86,7 +87,12 @@ import dxftButton from "doxinui/components/button/footer-button"
 						 product_id+=v.id;
 					 }
 				});
-				this.goto("/pages/user/discounts/create_edit/discounts?product_str="+product_id+"&product_name="+product_name);
+				if(this.coupon_id){
+					this.goto("/pages/user/discounts/create_edit/discounts?product_str="+product_id+"&product_name="+product_name+'&id='+this.coupon_id);
+				}else{
+					this.goto("/pages/user/discounts/create_edit/discounts?product_str="+product_id+"&product_name="+product_name);
+				}
+				
 			},
 			changeClassKey(key){
 				this.selectClassKey = key;
@@ -124,6 +130,9 @@ import dxftButton from "doxinui/components/button/footer-button"
 		onLoad(options) {
 			if(options.type){
 				this.type = options.type;
+			}
+			if(options.coupon_id){
+				this.coupon_id = options.coupon_id;
 			}
 			this.data.show = true
 			let obj = {};
