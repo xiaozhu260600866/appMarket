@@ -27,7 +27,7 @@
 					<view class="city pr5">{{ store.city }}</view> -->
 					<view class="address flex1 nowrap w-b100">{{ merchant.address }}</view>
 				</view>
-				<view class="coupon_num" @click="$refs.coupon.thisDiag = true">{{data.coupons.length}}个优惠</view>
+				<view class="coupon_num" @click="$refs.coupon.thisDiag = true" v-if="data.coupons.length">{{data.coupons.length}}个优惠</view>
 			</dx-products-pic>
 		</view>
 		<view class="tabs-num" :style="{top: (upx2px(220)+height_)+'px'}">

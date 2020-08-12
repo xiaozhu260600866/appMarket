@@ -34,13 +34,13 @@
 							</view>
 						</view>
 					</view>
-					<my-picker :picker-list="data.deliverData" column-num="3" @confirm="deliverCallBack" >
+					<my-picker :picker-list="data.deliverData" column-num="3" @confirm="deliverCallBack">
 						<view class="dx-cell">
 							<view class="dx-cell_hd">
 								<view class="dx-label main-color fw-bold" style="width: 200rpx;">选择送达时间</view>
 							</view>
 							<view class="dx-cell_bd text-right">
-								<view >{{ruleform.deliver_date || ''}}</view>
+								<view>{{ruleform.deliver_date || ''}}</view>
 							</view>
 							<view class="dx-cell_ft dx_ft-access"></view>
 						</view>
@@ -77,22 +77,43 @@
 				</view>
 				<orderPro :data="merchant.data"></orderPro>
 				<view class="bd-te">
-					<weui-input v-model="ruleform.send_price" label="配送费" myclass="ptb5" type="txt" name="send_price" ></weui-input>
-					<weui-input v-model="ruleform.weigth_price" label="超重费用" myclass="ptb5" type="txt" name="weigth_price" ></weui-input>
-					<view @click="couponShow = true">
-						<weui-input v-model="ruleform.coupon" label="优惠券" myclass="ptb5" type="txt" name="coupon" arrow></weui-input>
+					<weui-input v-model="ruleform.send_price" label="配送费" myclass="ptb5" type="txt" name="send_price"></weui-input>
+					<weui-input v-model="ruleform.weigth_price" label="超重费用" myclass="ptb5" type="txt" name="weigth_price"></weui-input>
+					<view @click="showCoupon(index)">
+						<view :class="['dx-cell','dx-dateTime']">
+							<view class="dx-cell_hd">
+								<slot name="left" />
+								<view class="dx-label">优惠券</view>
+							</view>
+							<view class="dx-cell_bd">
+								<view v-if="merchant.couponOrders.length == 0">
+									无可用优惠券
+								</view>
+								<view v-if="merchant.couponOrders.length > 0">
+									<view v-if="merchant.chooseCoupon">
+										 -{{merchant.chooseCoupon.amount}}
+									</view>
+									<view v-else>
+										请选择优惠券
+									</view>
+								</view>
+							</view>
+							<view class="dx-cell_ft dx_ft-access"></view>
+							<slot name="right" />
+						</view>
 					</view>
+					<coupon-diag :data="merchant.couponOrders" :ref="'coupon'+index" @callBack="couponCallBack($event,index)"></coupon-diag>
 				</view>
 				<view class="Scount fs-15 text-right p15 be-te">
-					共<text class="Arial">{{merchant.orderNum}}</text>件商品 合计：<text class="Arial price fs-16">￥{{merchant.orderSum}}</text>
+					共<text class="Arial">{{merchant.orderNum}}</text>件商品 合计：<text class="Arial price fs-16">￥{{merchant.chooseCoupon ?  merchant.orderSum - merchant.chooseCoupon.amount : merchant.orderSum}}</text>
 				</view>
 			</view>
 			<view class="block-sec">
 				<!-- <weui-input v-model="ruleform.emergencyFee" label="加急费" name="emergencyFee" changeField="value" type="radio" dataKey="emergencyFeeArr"
 				 @callback="test" :row="false"></weui-input> -->
-				
-				<weui-input v-model="ruleform.quick_price" label="加急费" name="quick_price" changeField="value" type="checkbox" dataKey="emergencyFeeArr"
-				  :row="true" Labelleft myclass="emFee"></weui-input>
+
+				<weui-input v-model="ruleform.quick_price" label="加急费" name="quick_price" changeField="value" type="checkbox"
+				 dataKey="emergencyFeeArr" :row="true" Labelleft myclass="emFee"></weui-input>
 			</view>
 			<view id="mode" class="block-sec">
 				<weui-input v-model="ruleform.remark" label="买家留言" type="text" name="remark" placeholder="点击给卖家留言"></weui-input>
@@ -101,135 +122,139 @@
 				<view class="f_left price fs-18 plr10">￥
 					<text class="txt fs-24">{{amount}}</text>
 				</view>
-				<view class="f_right" >
+				<view class="f_right">
 					<button class="nav" @click="formSubmit">提交订单</button>
-				
+
 				</view>
 			</view>
-			<coupon-diag :data="couponArray" :couponShow="couponShow"></coupon-diag>
+
 		</view>
 	</view>
 </template>
 
 <script>
 	import orderPro from "@/components/orderPro";
-    import myPicker from "@/components/myPicker/picker.vue";
+	import myPicker from "@/components/myPicker/picker.vue";
 	import couponDiag from '@/components/couponDiag';
 	export default {
-		components:{
+		components: {
 			orderPro,
 			myPicker,
 			couponDiag
 		},
-		computed:{
-			amount(){
-				
+		computed: {
+			amount() {
+
 				let amount = 0;
-				if(this.data.merchants){
-					this.data.merchants.forEach(v=>{
-						 v.data.forEach(item=>{
-							 amount+= parseFloat(item.amount);
-						 });
+				let coupon_amount = 0;
+				if (this.data.merchants) {
+					this.data.merchants.forEach(v => {
+						v.data.forEach(item => {
+							amount += parseFloat(item.amount);
+						});
+						if(v.chooseCoupon){
+							coupon_amount+=parseFloat(v.chooseCoupon.amount);
+						}
 					})
 				}
-				if(this.ruleform.quick_price.length){
-					amount+=5;
+				if (this.ruleform.quick_price.length) {
+					amount += 5;
 				}
-				return amount.toFixed(2);
+				let newAmount = amount-coupon_amount;
+				return newAmount.toFixed(2);
 			}
 		},
 		data() {
 			return {
-				deliverData:[
-				],
-				
+				deliverData: [],
+
 				formAction: '/order/buy',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				ruleform:{
-					shipping:1,
+				ruleform: {
+					shipping: 1,
 					send_price: '￥0',
 					weigth_price: '￥0',
 					coupon: '暂无',
 					quick_price: 0,
 				},
 				couponShow: false,
-				vaildate:{},
-				address:{},
-				address_id:0,
-				shippingArr:[{
+				vaildate: {},
+				address: {},
+				address_id: 0,
+				shippingArr: [{
 					value: 1,
 					label: '送货上门'
-				},{
+				}, {
 					value: 2,
-					label:'自提'
+					label: '自提'
 				}],
 				pay_methods: [{
 					label: '微信支付',
 					value: 1
-				},{
+				}, {
 					label: '余额支付',
 					value: 2
 				}],
-				emergencyFeeArr:[{
+				emergencyFeeArr: [{
 					label: '￥5',
 					value: 1
 				}],
-				teamHead:{
-					name:'',
-					community_address:'江门市新会区人民南路10号',
-					community_company_name:'人民南路社区',
-					phone:'13388998899',
-					headerPic:'/static/icon.png',
+				teamHead: {
+					name: '',
+					community_address: '江门市新会区人民南路10号',
+					community_company_name: '人民南路社区',
+					phone: '13388998899',
+					headerPic: '/static/icon.png',
 				},
-				couponArray:[{
+				couponArray: [{
 					amount: 50,
 					discount: '',
 					full_amount: 300,
 					type: 3,
 					name: '满减活动',
-					storeName:'顺丰生鲜',
+					storeName: '顺丰生鲜',
 					start_date: '2020-08-01',
 					end_date: '2020-08-30',
 					status: 0
-				},{
+				}, {
 					amount: 7,
 					discount: '',
 					full_amount: 77,
 					type: 3,
 					name: '七夕优惠',
-					storeName:'北郊商行',
+					storeName: '北郊商行',
 					start_date: '2020-08-01',
 					end_date: '2020-08-30',
 					status: 1
-				},{
+				}, {
 					amount: 20,
 					discount: '',
 					full_amount: 100,
 					type: 3,
 					name: '优惠券',
-					storeName:'达记生鲜配送中心',
+					storeName: '达记生鲜配送中心',
 					start_date: '2020-08-01',
 					end_date: '2020-08-30',
 					status: 0
-				},{
+				}, {
 					amount: 20,
 					discount: '',
 					full_amount: 100,
 					type: 3,
 					name: '优惠券',
-					storeName:'顺丰生鲜',
+					storeName: '顺丰生鲜',
 					start_date: '2020-08-01',
 					end_date: '2020-08-30',
 					status: 0
-				},{
+				}, {
 					amount: 20,
 					discount: '',
 					full_amount: 100,
 					type: 3,
 					name: '优惠券',
-					storeName:'顺丰生鲜',
+					storeName: '顺丰生鲜',
 					start_date: '2020-08-01',
 					end_date: '2020-08-30',
 					status: 0
@@ -237,32 +262,41 @@
 			}
 		},
 		methods: {
-			deliverCallBack(picked){
+			couponCallBack(item, index) {
+				this.$set(this.data.merchants[index],"chooseCoupon",item[0]);
+			},
+			showCoupon(index) {
+				console.log(this.$refs);
+				this.$refs['coupon'+index][0].thisDiag = true;
+			},
+			deliverCallBack(picked) {
 				console.log(picked.values[2]);
 				console.log(new Date('2020/07/01 18:00:00'));
 				console.log(new Date(picked.values[1]));
-				if(new Date(picked.values[2]).getTime() <= new Date(picked.values[1]).getTime()){
+				if (new Date(picked.values[2]).getTime() <= new Date(picked.values[1]).getTime()) {
 					this.getError("开始时间不能大于结束时间");
 					return false;
 				}
-				let month = new Date(picked.values[0]).getMonth() +1;
-				this.$set(this.ruleform,"deliver_date",month +'/'+new Date(picked.values[0]).getDate()+' '+ picked.labels[1] + '-' + picked.labels[2]);
-				
-				
+				let month = new Date(picked.values[0]).getMonth() + 1;
+				this.$set(this.ruleform, "deliver_date", month + '/' + new Date(picked.values[0]).getDate() + ' ' + picked.labels[1] +
+					'-' + picked.labels[2]);
+
+
 			},
-			formSubmit(){
-				this.vaildForm(this,res=>{
-					if(res){
-						if(!this.address){
+			formSubmit() {
+				this.vaildForm(this, res => {
+					if (res) {
+						if (!this.address) {
 							this.getError("请添加联系地址");
 							this.createAddress();
 							return false;
 						}
 						this.ruleform.merchants = this.data.merchants;
 						this.ruleform.address = this.address;
-						this.postAjax(this.formAction,this.ruleform).then(msg=>{
-							if(msg.data.status == 2){
-								return this.goto("/pages/order/pay_center/main?order_no="+msg.data.order_no)
+						
+						this.postAjax(this.formAction, this.ruleform).then(msg => {
+							if (msg.data.status == 2) {
+								return this.goto("/pages/order/pay_center/main?order_no=" + msg.data.order_no)
 							}
 						});
 					}
@@ -272,23 +306,24 @@
 				if (this.ruleform.status >= 3) {
 					return false;
 				}
-				uni.setStorageSync('order',1);
-				this.goto('/pages/user/address/lists/main?order=1' );
+				uni.setStorageSync('order', 1);
+				this.goto('/pages/user/address/lists/main?order=1');
 			},
 			createAddress() {
-				uni.setStorageSync('order',1);
+				uni.setStorageSync('order', 1);
 				this.goto("/pages/user/address/creat_edit/main", 1);
 			},
 			ajax() {
-				this.getAjaxForApp(this, {address_id:this.address_id
-				
+				this.getAjaxForApp(this, {
+					address_id: this.address_id
+
 				}).then(msg => {
-					this.address  = msg.address;
+					this.address = msg.address;
 				});
 			}
 		},
 		onLoad(options) {
-			if(options.address_id){
+			if (options.address_id) {
 				this.address_id = options.address_id
 			}
 			// var day2 = new Date();
@@ -301,20 +336,20 @@
 			// 	{label:'今天',value:s2},
 			// 	{label:'明天',value:s3},
 			// )
-			
+
 			// var s4 = new Date().getHours()+''+new Date().getMinutes();
 			// if(parseInt(s4) < parseInt(new Date().getHours() + '' + "30")){
 			// 	var toDayhourTime = new Date().getHours() + ":30";
 			// }else{
 			// 	var toDayhourTime = new Date().getHours() +1 + ":00";
 			// }
-			
+
 			// let start_date = new Date(day2.getFullYear()+'/' + s2+' '+toDayhourTime).getTime();
 			// console.log(start_date);
 			// let end_date = 
-			
+
 			// for (var i = 0; i < 1200; i+=30) {
-				
+
 			// }
 			// console.log(this.deliverData);
 			this.ajax();
@@ -329,10 +364,10 @@
 		onShareAppMessage() {
 			return this.shareSource(this, '商城');
 		},
-		
+
 	}
 </script>
 <style scoped="">
-@import url('index.css');
-@import url("xiaozhu/css/dx-input")
+	@import url('index.css');
+	@import url("xiaozhu/css/dx-input")
 </style>
