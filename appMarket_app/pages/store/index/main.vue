@@ -27,7 +27,7 @@
 					<view class="city pr5">{{ store.city }}</view> -->
 					<view class="address flex1 nowrap w-b100">{{ merchant.address }}</view>
 				</view>
-				<view class="coupon_num">3个优惠</view>
+				<view class="coupon_num" @click="$refs.coupon.thisDiag = true">{{data.coupons.length}}个优惠</view>
 			</dx-products-pic>
 		</view>
 		<view class="tabs-num" :style="{top: (upx2px(220)+height_)+'px'}">
@@ -57,13 +57,10 @@
 			</view>
 			<dx-price v-model="data.cartData.amount" split :intSize="20" :decimalSize="12"></dx-price>
 		</view>
-		<dx-diag :open="true" title="优惠活动" :titSize="16" titColor="#333" width="94%">
+		<dx-diag :open="false" title="优惠活动" :titSize="16" titColor="#333" width="94%" ref="coupon">
 			<view class="diag-coupon mt15">
-				<view class="list_item bg-f2 bdr6 ptb10 mb10" v-for="v in couponArray">
-					<view class="item_left fc-3" v-if="v.type == 1">
-						<view class="price fs-26 fc-red discount">{{v.discount}}<span class="fs-14 pl3">折</span></view>
-					</view>
-					<view class="item_left fc-3" v-else>
+				<view class="list_item bg-f2 bdr6 ptb10 mb10" v-for="v in data.coupons">
+					<view class="item_left fc-3">
 						<view class="price fs-26 fc-red lh-36 h-36"><span class="fs-14">￥</span>{{v.amount}}</view>
 						<view class="condition fs-12">满{{v.full_amount}}元可用</view>
 					</view>
@@ -73,7 +70,7 @@
 							<view class="time fs-14 fc-9 lh-16">{{ v.start_date }} ~ {{ v.end_date }}</view>
 						</view>
 					</view>
-					<view class="getNav" :class="[v.status == 0 ? 'no' : 'yes']">{{v.status == 0 ? '立即领取':'已领取'}}</view>
+					<view class="getNav" :class="[v.status == 0 ? 'no' : 'yes']" @click="draw(v)">{{v.status == 0 ? '立即领取':'已领取'}}</view>
 				</view>
 			</view>
 		</dx-diag>
@@ -184,6 +181,20 @@ import dxDiag from "doxinui/components/diag/diag"
 		
 		},
 		methods: {
+			draw(item){
+				this.checkLogin().then(msg=>{
+					if(item.status == 0){
+						this.postAjax("/user/couponAdd",{coupon_id:item.id,merchant_id:this.data.detail.id}).then(msg=>{
+							if(msg.data.status  == 2){
+								this.$refs.coupon.thisDiag = false;
+								this.ajax();
+							}
+						});
+					}else{
+						this.getError("您已经领取");
+					}
+				});
+			},
 			collection(){
 				this.data.collect = !this.data.collect;
 				this.postAjax("/user/collectionAdd",{merchant_id:this.merchant.id,collect:this.data.collect}).then(msg=>{

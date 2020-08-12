@@ -16,19 +16,15 @@
 			</view>
 			<view>
 				<scroll-view scroll-y scroll-with-animation class="tab-view pb50" :scroll-top="scrollTop" :style="{height:height+'px',top:height_+'px'}">
-					<view class="tab-bar-item flex-baseline" :class="['折扣' ? 'active' : '']" @click="'折扣'">
+					<!-- <view class="tab-bar-item flex-baseline" :class="['折扣' ? 'active' : '']" @click="'折扣'">
 						<text class="iconfont icon-pro-discount"></text>
 						<text>折扣</text>
-					</view>
-					<view class="tab-bar-item flex-baseline" :class="['热销' ? 'active' : '']" @click="'热销'">
-						<text class="iconfont icon-pro-hot"></text>
-						<text>热销</text>
-					</view>
-					<view class="tab-bar-item flex-baseline" :class="['商家推荐' ? 'active' : '']" @click="'商家推荐'">
-						<text>商家推荐</text>
-					</view>
+					</view> -->
+					
 					<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
 					 :data-current="index" @click="changeClassKey(key)">
+					    <text class="iconfont icon-pro-discount" v-if="item.value == 'discount'"></text>
+					    <text class="iconfont icon-pro-hot" v-if="item.value == 'hot'"></text>
 						<text>{{item.label}}</text>
 					</view>
 				</scroll-view>
