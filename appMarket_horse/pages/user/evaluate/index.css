@@ -2,6 +2,7 @@
 .evalute .u-info .u-info-box{display: flex;align-items: center;}
 .evalute .u-info .u-img .img{width: 80upx;height: 80upx;border-radius: 80upx;display: flex;}
 .evalute .u-info .u-name{width: 100%;flex: 1;overflow: hidden;}
+.evalute .u-info .u-name .tui-rate-class{display: flex;line-height: 32upx;}
 .evalute .u-info .tui-icon{height: 48upx;line-height: 48upx;font-size: 36upx!important;}
 .evalute .u-con .p{font-size: 26upx;line-height: 44upx;}
 .evalute .u-con .image-group{display: flex;margin: 0 -8upx;flex-wrap: wrap;}

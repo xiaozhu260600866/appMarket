@@ -14,7 +14,7 @@
 							</view>
 							<view class="u-name pl10">
 								<view class="name lh-20 fs-14">{{ v.nickname }}</view>
-								<tui-rate :value="v.quote" :disabled="true"></tui-rate>
+								<tui-rate :value="v.quote" :disabled="true" :size="14"></tui-rate>
 							</view>
 							<view class="r-time Arial fs-13 fc-9 pl10">{{ v.created_at }}</view>
 						</view>
