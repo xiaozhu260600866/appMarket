@@ -10,8 +10,11 @@
 				<view class="pro-header flex1 text-center" :style="{paddingTop:top+'px',paddingLeft:40*2+'rpx'}">
 					商品管理
 				</view>
-				<view class="pro-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}" v-if="!type">
+				<view class="pro-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}" v-if="!type && !operation">
 					<view class="dxi-icon dxi-icon-zoom-in" @click="goto('/pages/search/products/main',1)"></view>
+				</view>
+				<view class="pro-header-icon text-center" :style="{paddingTop:top+'px',width:40*2+'rpx'}" v-if="!type && operation" @click="operation = false">
+					<view class="fs-14 fc-white">取消</view>
 				</view>
 			</view>
 			<view>
@@ -30,19 +33,19 @@
 				</scroll-view>
 				<block v-for="(item,index) in data.productClass" :key="index">
 					<scroll-view scroll-y class="right-box pb60" :style="{height:height+'px',top:height_+'px'}" v-if="currentTab==index">
-						<productLists :data="data.productClass[selectClassKey].products.data" :type="type" ref="productLists"></productLists>
+						<productLists :data="data.productClass[selectClassKey].products.data" :type="type" ref="productLists" :operation="operation"></productLists>
 						<div v-if="!data.productClass[selectClassKey].products.data.length">
 							暂无数据
 						</div>
 					</scroll-view>
 				</block>
 				<dxftButton type="success" size="lg" v-if="type" @click="confirm">确认</dxftButton>
-				<view class="flex ope-btn" v-if="!operation">
-					<dx-button type="info" size="lg" myclass="bdr0" block @click="operation">批量操作</dx-button>
+				<view class="flex ope-btn" v-if="!operation && !type">
+					<dx-button type="info" size="lg" myclass="bdr0" block @click="operation = true">批量操作</dx-button>
 					<dx-button type="success" size="lg" myclass="bdr0" block @click="goto('/pages/product/create_edit/main',1)">新增商品</dx-button>
 				</view>
 				<!-- 点击批量操作后显示以下按钮 -->
-				<view class="flex ope-btn" v-else>
+				<view class="flex ope-btn" v-if="operation && !type">
 					<dx-button type="success" size="lg" myclass="bdr0" block>下架</dx-button>
 				</view>
 			</view>

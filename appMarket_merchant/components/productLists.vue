@@ -16,13 +16,20 @@
 				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>
 				<dx-button size="mini">下架</dx-button>
 			</view>
-			<!-- 下架及优惠活动选择产品都使用这个选择 -->
-			<view class="select-icon" v-if="type || operation">
+			<!-- 优惠活动选择 -->
+			<view class="select-icon" v-if="type && !operation">
 				<checkbox-group @change="checkboxChange" :data-id="item.id" :data-name="item.name">
 					<checkbox :value="item.id" ></checkbox>
 				</checkbox-group>
 			</view>
-			<view class="del-icon" v-else><text class="dxi-icon dxi-icon-del" @click="del(item)"></text></view>
+			<!-- 下架选择 -->
+			<view class="select-icon" v-if="!type && operation">
+				<checkbox-group @change="checkboxChange" :data-id="item.id" :data-name="item.name">
+					<checkbox :value="item.id" ></checkbox>
+				</checkbox-group>
+			</view>
+			<!-- 其他状态 -->
+			<view class="del-icon" v-if="!type && !operation"><text class="dxi-icon dxi-icon-del" @click="del(item)"></text></view>
 		</dx-products-pic>
 	</view>
 </template>
@@ -86,7 +93,7 @@ import dxProductsPic from "doxinui/components/products/pic"
 				})
 			},
 		},
-		props: ["data","type"]
+		props: ["data","type","operation"]
 	}
 </script>
 <style scoped>
