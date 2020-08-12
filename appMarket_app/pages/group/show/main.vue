@@ -41,7 +41,7 @@
 					</view>
 				</dx-list-msg>
 			</view>
-			<view class="ass-group bg-f mb12" v-if="data.orderGroup.length">
+			<!-- <view class="ass-group bg-f mb12" v-if="data.orderGroup.length">
 				<view class="lh-40 fs-14 plr15">以下小伙伴正在发起拼团，你可以直接参与</view>
 				<view class="bd-te">
 					<dx-list-msg :imgSrc="v.getUser.headerPic" :imgWidth="40" :imgHeight="40" :name="v.getUser.nickname" :nameSize="14"
@@ -55,9 +55,9 @@
 							<dx-button type="danger" size="mini" hollow  @click="goto('/pages/group/group/main?order_no='+v.order_no)">去拼团</dx-button>
 						</view>
 					</dx-list-msg>
-					<view class="lh-40 fs-13 fc-6 plr15">支付开团邀请多.人参团，人数不足自动退款</view>
+					<view class="lh-40 fs-13 fc-6 plr15">支付开团邀请多人参团，人数不足自动退款</view>
 				</view>
-			</view>
+			</view> -->
 			<dx-tabs :tabs="tabs" v-model="Sstatus" selectedColor="#57C734" sliderBgColor="#57C734" :nameSize="17" :height="100"></dx-tabs>
 			<view class="pro-content" v-if="Sstatus == 0">
 				<view class="pro-con-main bg-f p10 fs-15 lh-22">
@@ -97,28 +97,28 @@
 						<p class="iconfont icon-pro-shop"></p>
 						<p class="txt">商城</p>
 					</button>
-					<button class="btn-item share bdr0" hover-class="none" open-type="share">
+					<!-- <button class="btn-item share bdr0" hover-class="none" open-type="share">
 						<p class="iconfont icon-pro-share"></p>
 						<p class="txt">分享</p>
-					</button>
+					</button> -->
 				</view>
 				<view class="right">
 					<view class="r-nav">
-						<myform title="加入购物车" :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(0,0)">
+						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(0,0)">
 							<view slot="content">
 								<view class="r-item r-item-yellow">
-									<text class="fs-12">￥</text><text class="Arial">{{ data.product.price }}</text>
-									<text class="fs-15 pl3">单买</text>
+									<view class="num"><text class="fs-12">￥</text><text class="Arial">{{ data.product.price }}</text></view>
+									<view class="name">单买</view>
 								</view>
 							</view>
 						</myform>
 					</view>
 					<view class="r-nav">
-						<myform title="加入购物车" :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(0,1)">
+						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(0,1)">
 							<view slot="content">
 								<view class="r-item r-item-red">
-									<text class="fs-12">￥</text><text class="Arial">{{ data.product.group_price }}</text>
-									<text class="fs-15 pl3">开团</text>
+									<view class="num"><text class="fs-12">￥</text><text class="Arial">{{ data.product.group_price }}</text></view>
+									<view class="name">参团</view>
 								</view>
 							</view>
 						</myform>

@@ -29,6 +29,38 @@
 					<view>剩余：<text class="Arial">{{ data.product.num }}</text></view>
 				</view>
 			</view>
+			
+			<view class="group bg-f plr15 ptb12 mt12">
+				<view class="group-box ptb20">
+					<!-- 拼团未结束时客户进入显示 -->
+					<view class="con" v-if="data.detail.group.leftNum && data.detail.group.canGorupBuy">
+						<view class="ass-state"><text class="Arial num"> {{ data.detail.group.leftNum }} </text>人正在拼</view>
+						<view class="ass-disc">剩余 <text class="Arial time">
+							<leftTime v-model="data.detail.group.end_date" type="0"></leftTime>
+						</text> 结束</view>
+					</view>
+			
+					<!-- 拼团未结束时已参团人员显示 -->
+					<view class="con" v-if="data.detail.group.leftNum == 0 && data.detail.isMy">
+						<view class="ass-state">拼团成功</view>
+						<view class="ass-disc">恭喜您，商家尽快发货</view>
+					</view>
+					<!-- 超过10个人，用以下状态显示，不懂再问我 -->
+					<view class="people">
+						<view class="people-list" v-for="(v,key) in groupArray">
+							<view class="p-item second">
+								<image class="img" :src="v.headerPic ? v.headerPic :'https://boss.doxinsoft.com/images/wap/group-who.png'" />
+							</view>
+						</view>
+						<view class="lh-40 fc-9">•••••</view>
+						<view class="people-list" v-for="(v,key) in groupArray2">
+							<view class="p-item second">
+								<image class="img" :src="v.headerPic ? v.headerPic :'https://boss.doxinsoft.com/images/wap/group-who.png'" />
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
 			<view class="pro_type bg-f mtb12">
 				<dx-list-msg name="新鲜度" content="新鲜库越高，菜品越新鲜" :nameSize="15">
 					<view slot="right">
@@ -41,76 +73,6 @@
 					</view>
 				</dx-list-msg>
 			</view>
-			
-			<view class="ass-rule mt12 bg-f plr15">
-				<view class="title ptb8">
-					<view class="fs-16">拼团说明</view>
-				</view>
-				<view class="process pt5 pb10">
-					<view class="item">
-						<text class="iconfont icon-float-feedback"></text>
-						<text class="name">开团/参团</text>
-					</view>
-					<view class="item">
-						<text class="iconfont icon-float-feedback"></text>
-						<text class="name">邀友参团</text>
-					</view>
-					<view class="item">
-						<text class="iconfont icon-float-feedback"></text>
-						<text class="name">人满成团</text>
-					</view>
-				</view>
-				<view class="rule-con pb15">
-					<view class="fs-14">支付开团或参团，邀请好友参团，在有效时间内达到成团人数则拼团成功，进行发货；若超时未达到拼团人数则拼团失败，系统将自动退款。</view>
-				</view>
-			</view>
-			<view class="group bg-f plr15 ptb12">
-				<view class="group-box p20">
-					<!-- 拼团未完成时团主及他人都显示 -->
-					<view class="con" v-if="data.detail.group.leftNum && data.detail.group.canGorupBuy">
-						<view class="ass-state">还差<text class="Arial num"> {{ data.detail.group.leftNum }} </text>人成团</view>
-						<view class="ass-disc">剩余 <text class="Arial time">
-							<leftTime v-model="data.detail.group.end_date" type="0"></leftTime>
-						</text> 结束</view>
-					</view>
-			
-					<!-- 自己进入时满员显示 -->
-					<view class="con" v-if="data.detail.group.leftNum == 0 && data.detail.isMy">
-						<view class="ass-state">拼团成功</view>
-						<view class="ass-disc">恭喜您，商家尽快发货</view>
-					</view>
-			
-					<!-- 别人进入时满员显示 -->
-					<view class="con" v-if="data.detail.group.leftNum == 0 && !data.detail.isMy">
-						<view class="ass-state">此团已满员</view>
-					</view>
-			
-					<!-- 拼团失败时显示 -->
-					<view class="con" v-if="data.detail.group.leftNum && !data.detail.group.canGorupBuy">
-						<view class="ass-state">拼团失败</view>
-						<view class="ass-disc" style="display:none">系统将自动退款</view>
-					</view>
-			
-					<!-- 拼团成功时显示 -->
-					<view class="con" v-if="data.detail.group.leftNum == 0 && !data.detail.group.canGorupBuy">
-						<view class="ass-state">拼团成功</view>
-						<view class="ass-disc" style="display:none">系统将自动退款</view>
-					</view>
-			
-					<view class="people">
-						<view class="people-list" v-for="(v,key) in data.detail.group.group_num">
-							<view :class="['p-item',  'main']" v-if="key == 0 && data.groupInfo[0]">
-								<image class="img" :src="data.groupInfo[0].getUser.headerPic" /> 
-								<view class="tab">团长</view>
-							</view>
-							<view class="p-item second" v-if="key>0">
-								<image class="img" :src="data.groupInfo[key] ? data.groupInfo[key].getUser.headerPic :'https://boss.doxinsoft.com/images/wap/group-who.png'" />
-							</view>
-						</view>
-			
-					</view>
-				</view>
-			</view>
 			<view id="footer">
 				<view class="left plr8">
 					<button class="btn-item" hover-class="none" @click="toIndex">
@@ -119,69 +81,23 @@
 					</button>
 				</view>
 			
-				<!-- 拼团未完成时团主或已参团人员显示 -->
+				<!-- 拼团未结束时已参团人员显示 -->
 				<view class="right" v-if="data.detail.isMy && data.detail.group.leftNum > 0">
 					<view class="r-nav">
 						<view class="r-item cart r-item-yellow" @click="goto('/pages/shop/order/buy/detail?order_no='+data.detail.order_no,1)">查看订单</view>
 					</view>
-					<view class="r-nav">
-						<button class="r-item buy r-item-red" open-type="share">邀请好友参团</button>
-					</view>
 				</view>
-				<!-- 拼团未完成时其他人进入显示 -->
+				<!-- 拼团未结束时客户进入显示 -->
 				<view class="right" v-if="!data.detail.isMy && data.detail.group.leftNum > 0">
-					<view class="r-nav">
-						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(0,1)">
-							<view slot="content">
-								<view class="r-item cart r-item-yellow">我来开新团</view>
-							</view>
-						</myform>
-					</view>
 					<view class="r-nav">
 						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(data.detail.group.id,1)">
 							<view slot="content">
-								<view class="r-item buy r-item-red" @click="toBuy(data.detail.group.id,1)">立即参与</view>
+								<view class="r-item buy r-item-red" @click="toBuy(data.detail.group.id,1)">立即拼</view>
 							</view>
 						</myform>
 					</view>
-			
-				</view>
-			
-				<!-- 拼团完成时其人进入显示 -->
-				<view class="right" v-if="data.detail.group.leftNum <= 0 && !data.detail.isMy">
-					<view class="r-nav">
-						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(0,1)">
-							<view slot="content">
-								<view class="r-item buy o-btn r-item-red" @click="toBuy(0,1)">我来开新团</view>
-							</view>
-						</myform>
-					</view>
-				</view>
-			
-				<!-- 拼团成功时显示 -->
-				<view class="right" v-if="data.detail.group.leftNum <= 0 && data.detail.isMy">
-					<view class="r-nav">
-						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="goto('/pages/shop/order/buy/detail?order_no='+data.detail.order_no,1)">
-							<view slot="content">
-								<view class="r-item cart r-item-yellow">查看订单</view>
-							</view>
-						</myform>
-					</view>
-					<view class="r-nav">
-						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="goto('/pages/shop/index/index',2)">
-							<view slot="content">
-								<view class="r-item buy r-item-red" @click="goto('/pages/shop/index/index',2)">更多拼团</view>
-							</view>
-						</myform>
-					</view>
-				</view>
-			
-				<!-- 拼团失败显示 -->
-				<view class="right" style="display: none;">
-					<view class="r-item buy o-btn r-item-red" @click="toBuy(0,1)">重新开团</view>
 				</view>
 			</view>
-			
 		</view>
 		<info :productInfo="data.productInfo" @callback="infoCallBack" ref="productInfo"></info>
 	</view>
@@ -193,7 +109,7 @@
 	import uParse from '@/components/gaoyia-parse/parse.vue'
 	import dxListMsg from "doxinui/components/list-cell/list-msg"
 	export default {
-		components: {leftTime,uParse,info,dxListMsg},
+		components: {leftTime,uParse,info,dxListMsg,},
 		data() {
 			return {
 				formAction: '/shop/order/group',
@@ -234,8 +150,22 @@
 							end_date: '2020-08-08',
 
 						}
-					}
+					},
 				},
+				groupArray:[
+					{headerPic: '/static/logo.png'},
+					{headerPic: '/static/pro01.jpg'},
+					{headerPic: '/static/pro02.jpg'},
+					{headerPic: '/static/logo.png'},
+					{headerPic: '/static/pro01.jpg'},
+					{headerPic: '/static/pro02.jpg'},
+					{headerPic: '/static/logo.png'},
+					{headerPic: '/static/pro01.jpg'},
+					{headerPic: '/static/pro02.jpg'},
+				],
+				groupArray2:[
+					{headerPic: '/static/logo.png'},
+				],
 				proDetail:{
 					fresh: 9,
 					apply: '全部',
