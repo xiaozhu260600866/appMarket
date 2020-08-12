@@ -16,12 +16,12 @@
 						<view class="flex-between flex-middle">
 							<view class="flex1">
 								<view class="name lh-24">{{ item.addr_name }}<text class="Arial pl10">{{ item.addr_phone }}</text></view>
-								<view class="address fs-16">{{ item.addr_phone }}</view>
+								<view class="address fs-16">{{ item.addr_address }}</view>
 							</view>
 						</view>
 					</view>
 					<view class="ptb10 text-center">
-						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,5)">抢单1</dx-button>
+						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,5)">抢单</dx-button>
 					</view>
 				</view>
 			</view>

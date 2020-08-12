@@ -2,7 +2,7 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view>
-			<dx-date :insert="true" :start-date="'1900-01-01'" :end-date="'2099-12-30'" @change="change" v-if="dataShow"></dx-date>
+			<dx-date :insert="true" :lunar="false" :start-date="'1900-01-01'" :end-date="'2099-12-30'" @change="change" v-if="dataShow"></dx-date>
 			<view class="order-count main-bg fc-white">
 				<view class="c-item">
 					<view class="num fs-24">{{count.order}}<text class="fs-14">单</text></view>
