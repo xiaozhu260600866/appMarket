@@ -79,7 +79,9 @@
 				<view class="bd-te">
 					<weui-input v-model="ruleform.send_price" label="配送费" myclass="ptb5" type="txt" name="send_price" ></weui-input>
 					<weui-input v-model="ruleform.weigth_price" label="超重费用" myclass="ptb5" type="txt" name="weigth_price" ></weui-input>
-					<weui-input v-model="ruleform.coupon" label="优惠券" myclass="ptb5" type="txt" name="coupon" arrow></weui-input>
+					<view @click="couponShow = true">
+						<weui-input v-model="ruleform.coupon" label="优惠券" myclass="ptb5" type="txt" name="coupon" arrow></weui-input>
+					</view>
 				</view>
 				<view class="Scount fs-15 text-right p15 be-te">
 					共<text class="Arial">{{merchant.orderNum}}</text>件商品 合计：<text class="Arial price fs-16">￥{{merchant.orderSum}}</text>
@@ -104,6 +106,7 @@
 				
 				</view>
 			</view>
+			<coupon-diag :data="couponArray" :couponShow="couponShow"></coupon-diag>
 		</view>
 	</view>
 </template>
@@ -111,10 +114,12 @@
 <script>
 	import orderPro from "@/components/orderPro";
     import myPicker from "@/components/myPicker/picker.vue";
+	import couponDiag from '@/components/couponDiag';
 	export default {
 		components:{
 			orderPro,
-			myPicker
+			myPicker,
+			couponDiag
 		},
 		computed:{
 			amount(){
@@ -149,6 +154,7 @@
 					coupon: '暂无',
 					quick_price: 0,
 				},
+				couponShow: false,
 				vaildate:{},
 				address:{},
 				address_id:0,
@@ -177,6 +183,57 @@
 					phone:'13388998899',
 					headerPic:'/static/icon.png',
 				},
+				couponArray:[{
+					amount: 50,
+					discount: '',
+					full_amount: 300,
+					type: 3,
+					name: '满减活动',
+					storeName:'顺丰生鲜',
+					start_date: '2020-08-01',
+					end_date: '2020-08-30',
+					status: 0
+				},{
+					amount: 7,
+					discount: '',
+					full_amount: 77,
+					type: 3,
+					name: '七夕优惠',
+					storeName:'北郊商行',
+					start_date: '2020-08-01',
+					end_date: '2020-08-30',
+					status: 1
+				},{
+					amount: 20,
+					discount: '',
+					full_amount: 100,
+					type: 3,
+					name: '优惠券',
+					storeName:'达记生鲜配送中心',
+					start_date: '2020-08-01',
+					end_date: '2020-08-30',
+					status: 0
+				},{
+					amount: 20,
+					discount: '',
+					full_amount: 100,
+					type: 3,
+					name: '优惠券',
+					storeName:'顺丰生鲜',
+					start_date: '2020-08-01',
+					end_date: '2020-08-30',
+					status: 0
+				},{
+					amount: 20,
+					discount: '',
+					full_amount: 100,
+					type: 3,
+					name: '优惠券',
+					storeName:'顺丰生鲜',
+					start_date: '2020-08-01',
+					end_date: '2020-08-30',
+					status: 0
+				}]
 			}
 		},
 		methods: {
