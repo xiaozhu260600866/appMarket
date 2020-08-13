@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'iconfont';  /* project id 1369426 */
-  src: url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.eot');
-  src: url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.eot?#iefix') format('embedded-opentype'),
-  url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.woff2') format('woff2'),
-  url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.woff') format('woff'),
-  url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.ttf') format('truetype'),
-  url('https://at.alicdn.com/t/font_1369426_yqtylgkac4.svg#iconfont') format('svg');
+  src: url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.eot');
+  src: url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.woff2') format('woff2'),
+  url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.svg#iconfont') format('svg');
 }
 
 /* 商城图标 */
@@ -26,8 +26,9 @@
 
 .icon-user-qrcode:before{content: "\e603";}/* 二维码 */
 .icon-shop-wechat:before{content: "\f678";}/* 微信 */
-.icon-email:before{content: "\f6e7";}/* 信封 */
-.icon-notice:before{content: "\f693";}/* 公告 */
+.icon-message-email:before{content: "\f695";}/* 信封 */
+.icon-message-notice:before{content: "\f689";}/* 公告 */
+.icon-message-send:before{content: "\f694";}/* 公告 */
 
 
 .icon-login-userName:before{content: "\f612";}/* 登录账号 */

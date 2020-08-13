@@ -1,22 +1,31 @@
 <template>
 	<view>
+		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="info-form">
-			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.IDcard_front" label="身份证人像面" type="upload" upurl='article' allowUpLoadNum="1" name="IDcard_front"
-				 datatype="require"></weui-input>
-				<weui-input v-model="ruleform.IDcard_behind" label="身份证国徽面" type="upload" upurl='article' allowUpLoadNum="1" name="IDcard_behind"
-				 datatype="require"></weui-input>
+		<view class="info-form zindex2">
+			<view class="flex-wrap pic_group">
+				<view class="pic_row">
+					<view class="name">身份证人像面</view>
+					<weui-input v-model="ruleform.IDcard_front" type="upload" upurl='article' name="IDcard_front" disabled="disabled"
+					 datatype="require"></weui-input>
+				</view>
+				<view class="pic_row">
+					<view class="name">身份证国徽面</view>
+					<weui-input v-model="ruleform.IDcard_behind" type="upload" upurl='article' name="IDcard_behind" disabled="disabled"
+					 datatype="require"></weui-input>
+				</view>
+				<view class="pic_row">
+					<view class="name">营业执照</view>
+					<weui-input v-model="ruleform.business_license" type="upload" upurl='article' name="business_license" disabled="disabled"
+					 datatype="require"></weui-input>
+				</view>
+				<view class="pic_row">
+					<view class="name">健康证</view>
+					<weui-input v-model="ruleform.health_logo" type="upload" upurl='article' name="health_logo" disabled="disabled"
+					 datatype="require"></weui-input>
+				</view>
 			</view>
-			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.business_license" label="营业执照" type="upload" upurl='article' allowUpLoadNum="1" name="business_license"
-				 datatype="require"></weui-input>
-			</view>
-			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.health_logo" label="健康证" type="upload" upurl='article' allowUpLoadNum="1" name="health_logo"
-				 datatype="require"></weui-input>
-			</view>
-			<view class="m20 info-subBtn" @click="goto('/pages/user/setting/main',2)"><dx-button block>保存</dx-button></view>
+			<view class="m20 info-subBtn" @click="goto('/pages/user/setting/main',2)"><dx-button size="lg" block>保存</dx-button></view>
 		</view>
 	</view>
 </template>
@@ -59,5 +68,5 @@
 	}
 </script>
 <style scoped="">
-@import url('../index.css')
+@import url('../index.css');
 </style>

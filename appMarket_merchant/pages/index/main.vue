@@ -2,11 +2,12 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view>
-			<dx-tabs :tabs="tabs" v-model="status" @change="ajax()" selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :size="32"
+			<dx-tabs :tabs="tabs" v-model="status" @change="ajax()" selectedColor="#57C734" sliderBgColor="#57C734" :height="92"
 			 :padding="0"></dx-tabs>
 			<view class="Iorder">
 				<view class="Iorder-list">
 					<view class="Iorder-item" v-for="(item,index) in data.lists.data">
+						<dx-tag type="danger" size="small" Rround v-if="status == 3">新</dx-tag>
 						<view class="top plr10">
 							<view>
 								<view class="time lh-18">下单时间：<text class="Arial">{{ item.payed_at }}</text></view>
@@ -57,10 +58,12 @@
 <script>
 	import dxTabs from "doxinui/components/tabs/tabs"
 	import printf from "@/components/printf.vue"
+	import dxTag from "doxinui/components/tag/tag"
 	export default {
 		components: {
 			dxTabs,
-			printf
+			printf,
+			dxTag
 		},
 		data() {
 			return {
@@ -72,19 +75,24 @@
 				status: 3,
 				tabs: [{
 					value: 3,
-					name: "新订单"
+					name: "新订单",
+					num: ''
 				}, {
 					value: 4,
-					name: "待处理"
+					name: "待处理",
+					num: ''
 				}, {
 					value: 5,
-					name: "已完成"
+					name: "已完成",
+					num: ''
 				},{
 					value: 0,
-					name: "取消订单"
+					name: "取消订单",
+					num: ''
 				}, {
 					value: 13,
-					name: "已退款"
+					name: "已退款",
+					num: ''
 				}],
 			}
 		},
@@ -113,6 +121,9 @@
 			this.ajax();
 		},
 		methods: {
+			num(item){
+				this.tabs.num = data.lists.total;
+			},
 			printf(item){
 				this.$refs.printf.openDefault(item);
 			},

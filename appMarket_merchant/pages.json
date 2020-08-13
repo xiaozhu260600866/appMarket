@@ -99,6 +99,27 @@
 			}
 		},
 		{
+			"path": "pages/message/chat/main",
+			"style": {
+				"navigationBarTitleText": "东信科技-梅",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/message/show/main",
+			"style": {
+				"navigationBarTitleText": "通知",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/message/detail/main",
+			"style": {
+				"navigationBarTitleText": "交易物流通知",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/search/products/main",
 			"style": {
 				"navigationBarTitleText": "搜索商品",
@@ -222,20 +243,6 @@
 			"path": "pages/user/finance/products",
 			"style": {
 				"navigationBarTitleText": "商品分析",
-				"enablePullDownRefresh": true
-			}
-		},
-		{
-			"path": "pages/user/notice/lists/main",
-			"style": {
-				"navigationBarTitleText": "消息",
-				"enablePullDownRefresh": true
-			}
-		},
-		{
-			"path": "pages/user/notice/show/main",
-			"style": {
-				"navigationBarTitleText": "通知",
 				"enablePullDownRefresh": true
 			}
 		},

@@ -15,7 +15,7 @@
 						<view class="status"><weui-input v-model="ruleform.sendType" name="sendType" changeField="value" type="select" dataKey="sendTypeArr"></weui-input></view>
 					</view>
 				</view>
-				<view class="message-icon" @click="goto('/pages/user/notice/lists/main',1)">
+				<view class="message-icon" @click="goto('/pages/message/lists/main',2)">
 					<text class="iconfont icon-email"></text>
 				</view>
 			</view>
