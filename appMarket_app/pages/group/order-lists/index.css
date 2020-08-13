@@ -17,3 +17,4 @@
 
 .pro_info .btn-group{display: flex;justify-content: flex-end;}
 .pro_info .btn-item .btn-nav{width: 80px;height: 30px;line-height: 28px;border: 1px #ddd solid;border-radius: 30px;color: #555;font-size: 12px;text-align: center;margin-left: 10px;display: inline-block;}
+.pro_info .btn-item:last-child .btn-nav{background-color: #ff4444;color: #fff;border-color: #FF4444;}

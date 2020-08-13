@@ -11,7 +11,7 @@
 					 @click="goto('/pages/index/main',2)"></view>
 				</view>
 			</view>
-			<myswiper :data="data.silders" :TBpadding="0" :LRpadding="0" :bdR="0"></myswiper>
+			<myswiper :data="data.silders" :tbPadding="0" :lrPadding="0" :bdR="0"></myswiper>
 			<view class="pro_infor bg-f">
 				<view class="flex-between">
 					<view class="pro_name fs-16 pt10 plr15 flex1">{{data.detail.name}}</view>

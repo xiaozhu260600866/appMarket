@@ -68,6 +68,7 @@
 .icon-user-address:before{content: "\f307";}/* 地址管理 */
 .icon-user-info:before{content: "\f501";}/* 账户信息 */
 .icon-user-service:before{content: "\f903";}/* 在线客服 */
+.icon-user-group:before{content: "\f304";}/* 我的拼团 */
 
 
 .icon-keyboard-off:before{content: "\f65f";}/* 关闭键盘 */

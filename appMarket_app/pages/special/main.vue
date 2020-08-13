@@ -13,7 +13,10 @@
 					</view>
 					<view class="info">
 						<view class="name">{{v.name}}</view>
-						<view class="price">￥{{v.price}}</view>
+						<view class="flex-baseline">
+							<view class="price">￥{{v.group_price ? v.group_price : v.price}}</view>
+							<view class="group_num" v-if="v.group_num">拼团人数：{{v.group_num}}</view>
+						</view>
 					</view>
 				</view>
 			</view>

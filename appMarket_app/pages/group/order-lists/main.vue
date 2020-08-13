@@ -1,12 +1,13 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view v-if="data.show">
-			<view class="order-classify mb10 mt5">
+		<view><!-- v-if="data.show" -->
+			<!-- <view class="order-classify mb10 mt5">
 				<view :class="['nav-tab',is_head == 1 ? 'selected' :'']" @click="changeHead(1)">我发起的</view>
 				<view :class="['nav-tab',is_head == 0 ? 'selected' :'']" @click="changeHead(0)">我参与的</view>
-			</view>
-			<view class="pro_info mb10" v-for="(parent,key) in data.lists.data">
+			</view> -->
+			<dx-tabs :tabs="tabs" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
+			<view class="pro_info block-sec" v-for="(parent,key) in orderLists">
 				<view class="order_date fs-14 plr10 bd-be">
 					<view class="time">
 						<text>下单日期：</text>
@@ -29,7 +30,6 @@
 					
 					<view class="btn-item">
 						<view class="btn-nav" @click="goto('/pages/order/buy/main?order_no='+parent.order_no,1)">订单详情</view>
-						<view class="btn-nav" @click="goto('/pages/group/group/main?order_no='+parent.order_no,1)">邀请好友</view>
 					</view>
 					<view class="btn-item" v-if="parent.status >=3">
 						<view class="btn-nav" @click="goto('/pages/order/after-sale/main?order_no='+parent.order_no,1)"
@@ -58,9 +58,11 @@
 
 <script>
 	import orderPro from "@/components/orderPro";
+	import dxTabs from "doxinui/components/tabs/tabs"
 	export default {
 		components:{
-			orderPro
+			orderPro,
+			dxTabs
 		},
 		data() {
 			return {
@@ -68,7 +70,47 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				is_head: 1,
+				status: 12,
+				tabs: [
+					{value:12,name: "全部"},
+					{value:3,name: "待发货"},
+					{value:5,name: "待收货"},
+					{value:9,name: "待评价"},
+					{value:99,name: "已完成"},
+				],
+				orderLists:[{
+					status:3,
+					getGroup:{
+						getStatus:'待发货',
+						group_num: 10,
+						leftNum: 5
+					},
+					getOrder:{
+						created_at: '2020-08-01 17:23:23',
+						products:[{
+							getProduct:{firstCover: '/static/pro02.jpg',name: '新鲜芒果'},
+							amount: 10.00,
+							num: 1
+						}],
+						amount:10.00
+					}
+				},{
+					status:3,
+					getGroup:{
+						getStatus:'待发货',
+						group_num: 10,
+						leftNum: 5
+					},
+					getOrder:{
+						created_at: '2020-08-01 17:23:23',
+						products:[{
+							getProduct:{firstCover: '/static/pro02.jpg',name: '新鲜芒果'},
+							amount: 10.00,
+							num: 1
+						}],
+						amount:10.00
+					}
+				}]
 			}
 		},
 		onReachBottom() {
@@ -76,13 +118,13 @@
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			this.ajax();
+			//this.ajax();
 		},
 		onShareAppMessage() {
 			return this.shareSource(this, '商城');
 		},
 		onLoad(options) {
-			this.ajax();
+			//this.ajax();
 		},
 		methods: {
 			changeHead(head) {

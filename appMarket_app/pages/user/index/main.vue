@@ -61,11 +61,12 @@
 					{url:'/pages/integral/lists/main',type: 1,icon:'iconfont icon-user-integral',name:'积分商城'},
 					{url:'/pages/user/collection/main',type: 1,icon:'iconfont icon-user-collection',name:'我的收藏'},
 					{url:'/pages/news/show/main',type: 1,icon:'iconfont icon-user-joinin',name:'加盟'},
-					{url:'/pages/user/address/lists/main',type: 1,icon:'iconfont icon-user-address',name:'地址管理'
-					},{url:'/pages/user/info/main',type: 1,icon:'iconfont icon-user-info',name:'账户信息'
-					}
+					{url:'/pages/user/address/lists/main',type: 1,icon:'iconfont icon-user-address',name:'地址管理'},
+					{url:'/pages/user/info/main',type: 1,icon:'iconfont icon-user-info',name:'账户信息'}
 				  ]" @click="checkAuth" isAuth myclass="bdr12" :num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5">
-					<!-- <button hover-class="none" class="ubutton item bg-f ptb10 bd-0" open-type="contact" >
+					<!-- 
+					{url:'/pages/group/order-lists/main',type: 1,icon:'iconfont icon-user-group',name:'我的拼团'},
+					<button hover-class="none" class="ubutton item bg-f ptb10 bd-0" open-type="contact" >
 						<view class="Nav_img">
 							<view class="icon iconfont icon-shop-wechat fs-22 lh-35 fc-3"></view>
 						</view>
