@@ -2,7 +2,11 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view>
-			<view class="mb12">
+			<view class="mb12 eva-top">
+				<view class="total_qoute main-bg flex-middle flex-center ptb20">
+					<tui-rate :value="total_qoute" :disabled="true" :size="18" active="#FFDC00" normal="#fff"></tui-rate>
+					<view class="fs-18 pl15 fc-yellow"><text class="Arial">{{total_qoute}}</text>分</view>
+				</view>
 				<dx-tabs :tabs="navbar" :currentTab="currentTab" selectedColor="#57C734" sliderBgColor="#57C734" @change="change"></dx-tabs>
 			</view>
 			<view class="evalute">
@@ -14,7 +18,10 @@
 							</view>
 							<view class="u-name pl10">
 								<view class="name lh-20 fs-14">{{ v.nickname }}</view>
-								<tui-rate :value="v.quote" :disabled="true" :size="14"></tui-rate>
+								<view class="flex-middle">
+									<tui-rate :value="v.quote" :disabled="true" :size="14"></tui-rate>
+									<view class="fs-12 fc-6 pl8"><text class="Arial">{{v.quote}}</text>分</view>
+								</view>
 							</view>
 							<view class="r-time Arial fs-13 fc-9 pl10">{{ v.created_at }}</view>
 						</view>
@@ -50,12 +57,13 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				currentTab: 0,
+				total_qoute: 4,
 				navbar: [{
 					name: "综合评价"
 				}, {
-					name: "好评(0)"
+					name: "好评"
 				}, {
-					name: "差评(0)"
+					name: "差评"
 				}],
 				suggestLists:[{
 					headimgurl:'/static/banner01.jpg',

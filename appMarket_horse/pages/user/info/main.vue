@@ -1,19 +1,24 @@
 <template>
 	<view>
+		<view class="bg-white"></view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="info-form" v-if="data.show">
-			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.idCard" label="身份证人像面" type="upload" upurl='horses' allowUpLoadNum="1" name="idCard"
-				 datatype="require"></weui-input>
-				<weui-input v-model="ruleform.idCard2" label="身份证国徽面" type="upload" upurl='horses' allowUpLoadNum="1" name="idCard2"
-				 datatype="require"></weui-input>
+		<view class="info-form zindex2" v-if="data.show">
+			<view class="flex-wrap pic_group">
+				<view class="pic_row">
+					<view class="name">身份证人像面</view>
+					<weui-input v-model="ruleform.idCard" type="upload" upurl='horses' name="idCard" disabled="disabled"></weui-input>
+				</view>
+				<view class="pic_row">
+					<view class="name">身份证国徽面</view>
+					<weui-input v-model="ruleform.idCard2" type="upload" upurl='horses' name="idCard2" disabled="disabled"></weui-input>
+				</view>
 			</view>
 			<!-- <view class="bg-f mb12">
 				<weui-input v-model="ruleform.health_logo" label="健康证" type="upload" upurl='horses' allowUpLoadNum="1" name="health_logo"
 				 datatype="require"></weui-input>
 			</view> -->
-			<view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg">保存</dx-button></view>
-			<view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg" hollow @click="lgout">退出</dx-button></view>
+			<!-- <view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg">保存</dx-button></view> -->
+			<view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg" hollow @click="lgout">退出登录</dx-button></view>
 		</view>
 	</view>
 </template>

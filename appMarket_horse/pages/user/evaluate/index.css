@@ -1,4 +1,7 @@
+.eva-top{position: fixed;top: 88upx;left: 0;width: 100%;z-index: 99;}
+
 /* 评价 */
+.evalute{margin: 240upx 0 40upx;}
 .evalute .u-info .u-info-box{display: flex;align-items: center;}
 .evalute .u-info .u-img .img{width: 80upx;height: 80upx;border-radius: 80upx;display: flex;}
 .evalute .u-info .u-name{width: 100%;flex: 1;overflow: hidden;}

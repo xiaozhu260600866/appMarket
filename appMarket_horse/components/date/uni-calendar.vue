@@ -83,7 +83,7 @@
 	 * @event {Function} confirm 确认选择`insert :false` 时生效
 	 * @event {Function} monthSwitch 切换月份时触发
 	 * @example <uni-calendar :insert="true":lunar="true" :start-date="'2019-3-2'":end-date="'2019-5-20'"@change="change" />
-	 */
+	  */
 	export default {
 		components: {
 			calendarItem
@@ -176,17 +176,12 @@
 				this.cale.setDate(value)
 				this.init(value)
 			},
-			/**
-			 * 初始化日期显示
-			 * @param {Object} date
-			 */
+			/*** 初始化日期显示* @param {Object} date */
 			init(date) {
 				this.weeks = this.cale.weeks
 				this.nowDate = this.calendar = this.cale.getInfo(date)
 			},
-			/**
-			 * 打开日历弹窗
-			 */
+			/*** 打开日历弹窗 */
 			open() {
 				// 弹窗模式并且清理数据
 				if (this.clearDate && !this.insert) {
@@ -201,9 +196,7 @@
 					}, 50)
 				})
 			},
-			/**
-			 * 关闭日历弹窗
-			 */
+			/*** 关闭日历弹窗 */
 			close() {
 				this.aniMaskShow = false
 				this.$nextTick(() => {
@@ -213,23 +206,17 @@
 					}, 300)
 				})
 			},
-			/**
-			 * 确认按钮
-			 */
+			/*** 确认按钮 */
 			confirm() {
 				this.setEmit('confirm')
 				this.close()
 			},
-			/**
-			 * 变化触发
-			 */
+			/*** 变化触发 */
 			change() {
 				if (!this.insert) return
 				this.setEmit('change')
 			},
-			/**
-			 * 选择月份触发
-			 */
+			/*** 选择月份触发 */
 			monthSwitch() {
 				let {
 					year,
@@ -240,19 +227,9 @@
 					month: Number(month)
 				})
 			},
-			/**
-			 * 派发事件
-			 * @param {Object} name
-			 */
+			/*** 派发事件* m {Object} name */
 			setEmit(name) {
-				let {
-					year,
-					month,
-					date,
-					fullDate,
-					lunar,
-					extraInfo
-				} = this.calendar
+				let {year,month,date,fullDate,lunar,extraInfo} = this.calendar
 				this.$emit(name, {
 					range: this.cale.multipleStatus,
 					year,
@@ -263,10 +240,7 @@
 					extraInfo: extraInfo || {}
 				})
 			},
-			/**
-			 * 选择天触发
-			 * @param {Object} weeks
-			 */
+			/*** 选择天触发* @param {Object} weeks */
 			choiceDate(weeks) {
 				if (weeks.disable) return
 				this.calendar = weeks
@@ -275,9 +249,7 @@
 				this.weeks = this.cale.weeks
 				this.change()
 			},
-			/**
-			 * 回到今天
-			 */
+			/*** 回到今天 */
 			backtoday() {
 				console.log(this.cale.getDate(new Date()).fullDate);
 				let date = this.cale.getDate(new Date()).fullDate
@@ -285,27 +257,20 @@
 				this.init(date)
 				this.change()
 			},
-			/**
-			 * 上个月
-			 */
+			/*** 上个月 */
 			pre() {
 				const preDate = this.cale.getDate(this.nowDate.fullDate, -1, 'month').fullDate
 				this.setDate(preDate)
 				this.monthSwitch()
 
 			},
-			/**
-			 * 下个月
-			 */
+			/*** 下个月 */
 			next() {
 				const nextDate = this.cale.getDate(this.nowDate.fullDate, +1, 'month').fullDate
 				this.setDate(nextDate)
 				this.monthSwitch()
 			},
-			/**
-			 * 设置日期
-			 * @param {Object} date
-			 */
+			/*** 设置日期* @param {Object} date */
 			setDate(date) {
 				this.cale.setDate(date)
 				this.weeks = this.cale.weeks
@@ -317,9 +282,9 @@
 
 <style lang="scss" scoped>
 	.uni-calendar {
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		display: flex;
-		/* #endif */
+		/* #endif  */
 		flex-direction: column;
 		position: fixed;
 		top: 0;
@@ -338,9 +303,9 @@
 		transition-property: opacity;
 		transition-duration: 0.3s;
 		opacity: 0;
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		z-index: 99;
-		/* #endif */
+		/* #endif  */
 	}
 
 	.uni-calendar--mask-show {
@@ -355,9 +320,9 @@
 		transition-property: transform;
 		transition-duration: 0.3s;
 		transform: translateY(460px);
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		z-index: 99;
-		/* #endif */
+		/* #endif  */
 	}
 
 	.uni-calendar--ani-show {
@@ -372,9 +337,9 @@
 
 	.uni-calendar__header {
 		position: relative;
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		display: flex;
-		/* #endif */
+		/* #endif  */
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
@@ -385,9 +350,9 @@
 	}
 
 	.uni-calendar--fixed-top {
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		display: flex;
-		/* #endif */
+		/* #endif  */
 		flex-direction: row;
 		justify-content: space-between;
 		border-top-color: $uni-border-color;
@@ -423,9 +388,9 @@
 	}
 
 	.uni-calendar__header-btn-box {
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		display: flex;
-		/* #endif */
+		/* #endif  */
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
@@ -455,9 +420,9 @@
 
 	.uni-calendar__weeks {
 		position: relative;
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		display: flex;
-		/* #endif */
+		/* #endif  */
 		flex-direction: row;
 	}
 
@@ -467,9 +432,9 @@
 
 	.uni-calendar__weeks-day {
 		flex: 1;
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		display: flex;
-		/* #endif */
+		/* #endif  */
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
@@ -488,9 +453,9 @@
 	}
 
 	.uni-calendar__box-bg {
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		display: flex;
-		/* #endif */
+		/* #endif  */
 		justify-content: center;
 		align-items: center;
 		position: absolute;
@@ -506,8 +471,8 @@
 		color: $uni-text-color-grey;
 		opacity: 0.1;
 		text-align: center;
-		/* #ifndef APP-NVUE */
+		/* #ifndef APP-NVUE  */
 		line-height: 1;
-		/* #endif */
+		/* #endif  */
 	}
 </style>
