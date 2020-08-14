@@ -4,7 +4,7 @@
 			<block v-for="(item,index) in data.lists.data" :key="index" v-if="(index+1)%2!=0 || isList">
 				<!-- <template is="productItem" data="{{item,index:index,isList:isList}}" /> -->
 				<!--商品列表-->
-				<myform :ruleform="{}" :append="true" :vaildate="{}" :data="item" @callBack="goto(item.is_group ? '/pages/shop/group/show/index?id='+item.id :'/pages/shop/product/show/index?id='+item.id,1)">
+				<myform :ruleform="{}" :append="true" :vaildate="{}" :data="item" @callBack="goto(item.auto_group ? '/pages/shop/group/show/index?id='+item.id :'/pages/shop/product/show/index?id='+item.id,1)">
 					<div slot="content">
 						<view class="tui-pro-item" :class="[isList?'tui-flex-list':'']" hover-class="hover" :hover-start-time="150">
 							<image :src="filterImage('300_'+item.thumb_pic,'product')" class="tui-pro-img" :class="[isList?'tui-proimg-list':'']"
@@ -30,7 +30,7 @@
 			<block v-for="(item,index) in  data.lists.data" :key="index" v-if="(index+1)%2==0">
 				<!-- <template is="productItem" data="{{item,index:index}}" /> -->
 				<!--商品列表-->
-				<myform :ruleform="{}" :append="true" :vaildate="{}" :data="item" @callBack="goto(item.is_group ? '/pages/shop/group/show/index?id='+item.id :'/pages/shop/product/show/index?id='+item.id,1)">
+				<myform :ruleform="{}" :append="true" :vaildate="{}" :data="item" @callBack="goto(item.auto_group ? '/pages/shop/group/show/index?id='+item.id :'/pages/shop/product/show/index?id='+item.id,1)">
 					<div slot="content">
 						<view class="tui-pro-item" :class="[isList?'tui-flex-list':'']" hover-class="hover" :hover-start-time="150">
 							<image :src="filterImage('300_'+item.thumb_pic,'product')" class="tui-pro-img" :class="[isList?'tui-proimg-list':'']"

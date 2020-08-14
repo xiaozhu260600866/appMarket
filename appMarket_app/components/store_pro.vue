@@ -1,8 +1,8 @@
 <template>
 	<view class="stre_pro bg-f">
-		<dx-products-pic v-for="item in data" :src="item.firstCover" :isList="true"  @click="goto('/pages/product/show/main?id='+item.id,1)">
+		<dx-products-pic v-for="item in data" :src="item.firstCover" :isList="true"  @click="toProduct(item)">
 			<view class="title fs-15" >{{ item.name }}</view>
-			<view class="grade flex-middle fc-3 fs-12 mt3" @click="goto('/pages/product/show/main?id='+item.id,1)" >
+			<view class="grade flex-middle fc-3 fs-12 mt3" @click="toProduct(item)" >
 				<view class="sales pl15" v-if="item.sales">月销 <text class="Arial">{{ item.sales }}</text></view>
 				<view class="fresh">数量：<text class="Arial">{{ item.num }}</text></view>
 			</view>

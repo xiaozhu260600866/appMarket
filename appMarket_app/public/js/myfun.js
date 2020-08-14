@@ -5,6 +5,13 @@ myfun.install = (Vue, options) => {
 			'/pages/user/cart/main', '/pages/user/index/main'
 		]);
 	}
+	Vue.prototype.toProduct = (item) => {
+		if(item.auto_group){
+			return Vue.prototype.goto("/pages/group/show/main?id="+item.id,1);
+		}else{
+			return Vue.prototype.goto("/pages/product/show/main?id="+item.id,1);
+		}
+	}
 	Vue.prototype.checkLogin=(url,type)=>{
 			let userInfo  = uni.getStorageSync('userInfo');
 			if(userInfo && userInfo.is_bing){

@@ -19,6 +19,7 @@
 				<weui-input v-model="ruleform.auto_group" label="拼团" type="switch" name="auto_group" ></weui-input>
 				<weui-input v-if="ruleform.auto_group" v-model="ruleform.group_price" label="拼团价" placeholder="￥0.00(包括包装费)" type="number" name="group_price" datatype="require"></weui-input>
 				<weui-input  v-if="ruleform.auto_group" v-model="ruleform.group_num" label="拼团人数" placeholder="0" type="number" name="group_num" datatype="require"></weui-input>
+				<weui-input  v-if="ruleform.auto_group" v-model="ruleform.group_expire_date" label="团购结束时间"  type="date" name="group_expire_date" datatype="require"></weui-input>
 			</view>
 			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.recommend" label="店家推荐" type="switch" name="recommend" ></weui-input>
