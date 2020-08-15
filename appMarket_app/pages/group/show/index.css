@@ -80,7 +80,7 @@ page,scroll-view{height: 100%;}
 #footer .right .r-item .name{line-height: 36upx;font-size: 20upx;}
 #footer .right .r-item-yellow{background-color: #ff7900;} 
 #footer .right .r-item-red{background-color: #FF4949;}
-#footer .right .r-item-default{background-color: #eee;color: #999;}
+#footer .right .r-item-default{background-color: #eee;color: #999;font-size: 32upx;line-height: 80upx;}
 #footer .right .sub-btn-big{border-radius: 0;}
 
 

@@ -87,14 +87,15 @@
 							</view>
 							<view class="dx-cell_bd">
 								<view v-if="merchant.couponOrders.length == 0">
-									无可用优惠券
+									
+									{{merchant.group ? '团购不参与优惠券':'无可用优惠券'}}
 								</view>
 								<view v-if="merchant.couponOrders.length > 0">
 									<view v-if="merchant.chooseCoupon">
 										 -{{merchant.chooseCoupon.amount}}
 									</view>
 									<view v-else>
-										请选择优惠券
+									请选择优惠券
 									</view>
 								</view>
 							</view>
@@ -167,7 +168,8 @@
 		data() {
 			return {
 				deliverData: [],
-
+				product_id:"",
+				group:'',
 				formAction: '/order/buy',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
@@ -315,7 +317,9 @@
 			},
 			ajax() {
 				this.getAjaxForApp(this, {
-					address_id: this.address_id
+					address_id: this.address_id,
+					product_id:this.product_id,
+					group:this.group
 
 				}).then(msg => {
 					this.address = msg.address;
@@ -325,6 +329,12 @@
 		onLoad(options) {
 			if (options.address_id) {
 				this.address_id = options.address_id
+			}
+			if (options.product_id) {
+				this.product_id = options.product_id
+			}
+			if (options.group) {
+				this.group = options.group
 			}
 			// var day2 = new Date();
 			// day2.setTime(day2.getTime());

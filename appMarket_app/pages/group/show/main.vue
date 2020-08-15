@@ -3,11 +3,7 @@
 		<page :parentData="data" :formAction="formAction"> </page>
 		<view>
 			<view class="show_banner bg-f">
-				<myswiper id="arrowTop" :tbPadding="0" :lrPadding="0" :bdR="0" :data="[
-					{cover: '/static/pro01.jpg'},
-					{cover: '/static/pro02.jpg'}
-				]"
-				 purl="product"></myswiper>
+					<myswiper :data="data.silders" :tbPadding="0" :lrPadding="0" :bdR="0"></myswiper>
 			</view>
 			<view class="ass-price plr15 ptb10">
 				<view class="price fs-28"><text class="fs-12">￥</text>{{ data.detail.group_price }}</view>
@@ -26,7 +22,7 @@
 					<view class="fs-15">{{ data.detail.name }}</view>
 				</view>
 				<view class="proCount fs-13 fc-9 plr15 pb10">
-				
+
 					<view>剩余：<text class="Arial">{{ data.detail.group_num }}</text></view>
 				</view>
 			</view>
@@ -42,23 +38,23 @@
 					</view>
 				</dx-list-msg>
 			</view>
-			<!-- <view class="ass-group bg-f mb12" v-if="data.orderGroup.length">
+			<view class="ass-group bg-f mb12" v-if="data.groupOrder.length">
 				<view class="lh-40 fs-14 plr15">以下小伙伴正在发起拼团，你可以直接参与</view>
 				<view class="bd-te">
-					<dx-list-msg :imgSrc="v.getUser.headerPic" :imgWidth="40" :imgHeight="40" :name="v.getUser.nickname" :nameSize="14"
-					 v-for="v in data.orderGroup" v-if="v.leftNum">
+					<dx-list-msg :imgSrc="v.getUser.userInfo.pic ?v.getUser.userInfo.pic : 'https://boss.doxinsoft.com/images/nouser01.png' " :imgWidth="40" :imgHeight="40" :name="v.getUser.nickname" :nameSize="14"
+					 v-for="v in data.groupOrder">
 						<view slot="con" class="fc-9 fs-12 mt5 flex-baseline lh-16">
-							<view>还差<text class="price plr2">{{ v.leftNum }}</text>人成团，剩余</view>
-							<view><leftTime v-model="v.end_date" type="0"></leftTime></view>
+							<view>还差<text class="price plr2">{{ data.detail.group_num - data.groupOrder.length }}</text>人成团，剩余</view>
+							<view><leftTime v-model="data.detail.group_expire_date" type="0"></leftTime></view>
 							<view>结束</view>
 						</view>
 						<view slot="right">
-							<dx-button type="danger" size="mini" hollow  @click="goto('/pages/group/group/main?order_no='+v.order_no)">去拼团</dx-button>
+							
 						</view>
 					</dx-list-msg>
 					<view class="lh-40 fs-13 fc-6 plr15">支付开团邀请多人参团，人数不足自动退款</view>
 				</view>
-			</view> -->
+			</view>
 			<dx-tabs :tabs="tabs" v-model="Sstatus" selectedColor="#57C734" sliderBgColor="#57C734" :nameSize="17" :height="100"></dx-tabs>
 			<view class="pro-content" v-if="Sstatus == 0">
 				<view class="pro-con-main bg-f p10 fs-15 lh-22">
@@ -103,26 +99,23 @@
 						<p class="txt">分享</p>
 					</button> -->
 				</view>
-				<view class="right">
+				<view class="right" v-if="data.detail.canGorupBuy">
 					<view class="r-nav">
-						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(0,0)">
-							<view slot="content">
-								<view class="r-item r-item-yellow">
-									<view class="num"><text class="fs-12">￥</text><text class="Arial">{{ data.detail.price }}</text></view>
-									<view class="name">单买</view>
-								</view>
-							</view>
-						</myform>
+						<view class="r-item r-item-yellow" @callBack="toBuy(0)">
+							<view class="num"><text class="fs-12">￥</text><text class="Arial">{{ data.detail.price }}</text></view>
+							<view class="name">单买</view>
+						</view>
 					</view>
 					<view class="r-nav">
-						<myform :append="true" :ruleform="{}" :vaildate="{}" @callBack="toBuy(0,1)">
-							<view slot="content">
-								<view class="r-item r-item-red">
-									<view class="num"><text class="fs-12">￥</text><text class="Arial">{{ data.detail.group_price }}</text></view>
-									<view class="name">参团</view>
-								</view>
-							</view>
-						</myform>
+						<view class="r-item r-item-red" @click="toBuy(1)">
+							<view class="num"><text class="fs-12">￥</text><text class="Arial">{{ data.detail.group_price }}</text></view>
+							<view class="name">参团</view>
+						</view>
+					</view>
+				</view>
+				<view class="right" v-else>
+					<view class="r-nav">
+						<view class="r-item r-item-default">活动已结束</view>
 					</view>
 				</view>
 			</view>
@@ -153,12 +146,13 @@
 		},
 		data() {
 			return {
-			formAction: '/product/show',
-			mpType: 'page', //用来分清父和子组件
-			data: this.formatData(this),
-			Sstatus:0,
-			suggestLists:[],
-			getSiteName: this.getSiteName(),
+				formAction: '/product/show',
+				mpType: 'page', //用来分清父和子组件
+				data: this.formatData(this),
+				Sstatus: 0,
+				id: "",
+				suggestLists: [],
+				getSiteName: this.getSiteName(),
 				tabs: [{
 					value: 0,
 					name: "商品详情"
@@ -179,6 +173,7 @@
 
 		onLoad(options) {
 			//this.getMyAddress(this);
+			this.id = options.id;
 			this.ajax();
 		},
 		methods: {
@@ -188,14 +183,20 @@
 				return this.dateToString(date1);
 			},
 			ajax() {
-				this.getAjaxForApp(this).then(msg => {
+				this.getAjaxForApp(this, {
+					id: this.id
+				}).then(msg => {
 
 				});
 			},
-			toBuy(group_id, is_group) {
-
+			toBuy(auto_group) {
+				console.log("|12");
+				if (auto_group) {
+					return this.goto("/pages/order/buy/main?product_id=" + this.data.detail.id + '&group=1', 1);
+				} else {
+					return this.goto("/pages/order/buy/main?product_id=" + this.data.detail.id + '&group=0', 1);
+				}
 			}
-
 		}
 	}
 </script>
