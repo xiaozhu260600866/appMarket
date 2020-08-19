@@ -12,7 +12,7 @@
 			</view>
 			<view class="bg-f mb12">
 				<view>
-					<weui-input v-model="ruleform.status" label="修改营业状态" name="status" changeField="value" type="select" dataKey="statusArr"></weui-input>
+					<weui-input v-model="ruleform.work_status" label="修改营业状态" name="work_status" changeField="value" type="select" dataKey="statusArr" @callback="selectRes"></weui-input>
 				</view>
 			</view>
 			<view class="bg-f mb12">
@@ -36,6 +36,7 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
+				market:[],
 				ruleform:{
 					status:'1',
 					service_phone: 13,
@@ -54,6 +55,13 @@
 			}
 		},
 		methods: {
+			selectRes(){
+				this.postAjax("/merchant/info",this.ruleform).then(msg=>{
+					if(msg.data.status == 2){
+						this.ajax();
+					}
+				});
+			},
 			lgout(){
 				this.getConfirm("是否确认退出登录",()=>{
 					this.postAjax("/merchant/lgout").then(msg=>{
@@ -69,6 +77,7 @@
 				
 				}).then(msg => {
 					this.ruleform = msg.detail
+					this.market = msg.market;
 				});
 			}
 		},

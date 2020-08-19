@@ -12,7 +12,7 @@
 							<view class="fs-14 Arail">ID:{{ data.detail.id }}</view>
 							<view class="fs-12">查看店铺详情</view>
 						</view>
-						<view class="status"><weui-input v-model="ruleform.sendType" name="sendType" changeField="value" type="select" dataKey="sendTypeArr"></weui-input></view>
+						<view class="status"><weui-input v-model="ruleform.work_status" name="work_status" changeField="value" type="select" dataKey="statusArr" @callback="selectRes"></weui-input></view>
 					</view>
 				</view>
 				<view class="message-icon" @click="goto('/pages/message/lists/main',2)">
@@ -80,7 +80,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform:{
-					sendType: 1
+					work_status: 1
 				},
 				userLogin: true,
 				count:{
@@ -164,7 +164,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 						name:'店铺公告'
 					}
 				],
-				sendTypeArr: [{
+				statusArr: [{
 					label: '营业中',
 					value: '1',
 				},{
@@ -177,6 +177,13 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 			}
 		},
 		methods: {
+			selectRes(){
+				this.postAjax("/merchant/info",this.ruleform).then(msg=>{
+					if(msg.data.status == 2){
+						this.ajax();
+					}
+				});
+			},
 			checkAuth(v){
 				console.log(v);
 				return this.goto(v.url,v.type);
@@ -185,7 +192,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 				this.getAjaxForApp(this, {
 				
 				}).then(msg => {
-					
+					this.ruleform.work_status = msg.detail.work_status;
 				});
 			}
 		},

@@ -2,18 +2,19 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="pb50">
-			<view class="news_item mb12 bg-f" v-for="(v,index) in newsLists">
-				<dx-list-msg :imgSrc="v.cover" :name="v.title" :imgR="3" :imgHeight="80" :imgWidth="120" @click="goto(v.url,v.type)">
+			<view class="news_item mb12 bg-f" v-for="(v,index) in data.lists.data">
+				<dx-list-msg imgSrc="/static/banner01.jpg" :name="v.title" :imgR="3" :imgHeight="80" :imgWidth="120" @click="goto(v.url,v.type)">
 					<view slot="con" class="fs-13 fc-6">
 						<view class="Arial mt8">{{ v.created_at }}</view>
 						<view class="lh-20 wrap2 mt3">{{ v.content }}</view>
 					</view>
 				</dx-list-msg>
 				<view class="flex-right flex-middle ptb5 mr15">
-					<dx-button round type="success" size="mini" myclass="plr20 mr15" @click="goto('/pages/news/create_edit/main',1)">编辑</dx-button>
-					<dx-button round size="mini" myclass="plr20">删除</dx-button>
+					<dx-button round type="success" size="mini" myclass="plr20 mr15" @click="goto('/pages/news/create_edit/main?id='+v.id,1)">编辑</dx-button>
+					<dx-button round size="mini" myclass="plr20" @click="del(v)">删除</dx-button>
 				</view>
 			</view>
+			<hasMore :parentData="data"></hasMore>
 			<view @click="goto('/pages/news/create_edit/main',1)"><dxftButton type="success">发布公告</dxftButton></view>
 		</view>
 	</view>
@@ -28,42 +29,32 @@ import dxftButton from "doxinui/components/button/footer-button"
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/merchant/article/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				newsLists:[{
-					url:'/pages/news/show/main',
-					type: 1,
-					cover: '/static/banner01.jpg',
-					title: '新鲜菜品直接送达家门口',
-					content: '使用直接送达简单、快捷、方便、卫生、方便，节省更多的时间，提高生活质量',
-					created_at: '2020-06-10'
-				},{
-					url:'/pages/news/show/main',
-					type: 1,
-					cover: '/static/banner01.jpg',
-					title: '新鲜菜品直接送达家门口',
-					content: '使用直接送达简单、快捷、方便、卫生、方便，节省更多的时间，提高生活质量',
-					created_at: '2020-06-10'
-				},{
-					url:'/pages/news/show/main',
-					type: 1,
-					cover: '/static/banner01.jpg',
-					title: '新鲜菜品直接送达家门口',
-					content: '使用直接送达简单、快捷、方便、卫生、方便，节省更多的时间，提高生活质量',
-					created_at: '2020-06-10'
-				},{
-					url:'/pages/news/show/main',
-					type: 1,
-					cover: '/static/banner01.jpg',
-					title: '新鲜菜品直接送达家门口',
-					content: '使用直接送达简单、快捷、方便、卫生、方便，节省更多的时间，提高生活质量',
-					created_at: '2020-06-10'
-				}]
+				
 			}
 		},
 		methods: {
+			del(item) {
+				uni.showModal({
+					title: '提示',
+					content: '您确定要删除这个产品吗',
+					success: res => {
+						if (res.confirm) {
+							this.postAjax('/ajax/mydel', {
+								id: item.id,
+								tablename: 'merchant_articles'
+							}).then(msg=>{
+								if (msg.data.status == 2) {
+									this.ajax();
+								}
+							});
+						}
+					},
+				})
+			},
 			ajax() {
 				this.getAjaxForApp(this, {
 				
@@ -73,8 +64,11 @@ import dxftButton from "doxinui/components/button/footer-button"
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
+		},
+		onShow(){
+			this.ajax();
 		},
 		onReachBottom() {
 			this.hasMore(this);
