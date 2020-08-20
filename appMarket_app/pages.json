@@ -151,6 +151,13 @@
 			}
 		},
 		{
+			"path": "pages/store/news/lists/main",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/product/show/main",
 			"style": {
 				"navigationBarBackgroundColor": "#fff",

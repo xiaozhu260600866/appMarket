@@ -86,7 +86,8 @@
                         "appkey_ios" : "51419937b2b145587e8112fa89c85032",
                         "appkey_android" : "51419937b2b145587e8112fa89c85032"
                     }
-                }
+                },
+                "share" : {}
             },
             "icons" : {
                 "android" : {
