@@ -3,44 +3,30 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view>
 			<view class="evaluate" v-for="v in evaluateLists">
-				<view class="order_info2">
-					<view class="pro_img">
-						<image class="img" :src="v.getProduct.firstCover" mode="aspectFill" />
-					</view>
-					<view class="pro_info">
-						<view class="Titem">
-							<view class="left">
-								<view class="name">{{v.getProduct.name}}</view>
-								<view class="specs" v-if="v.getProduct.is_info">{{v.getProduct.attribute}}</view>
-							</view>
-							<view class="right">
-								<view class="price">￥{{toFixed(v.getProduct.amount / v.getProduct.num ) }}</view>
-								<view class="num">x {{v.getProduct.num}}</view>
-							</view>
-						</view>
-						<view class="scount">小计：{{v.getProduct.amount}}</view>
-					</view>
-				</view>
 				<view class="evGroup">
-					<dx-list-cell name="描述相符" iconSize="18" iconColor="#ff721f">
+					<dx-list-cell :name="horse.name" :imgSrc="horse.headerPic" imgWidth="36" imgHeight="36" imgR="18" noborder></dx-list-cell>
+					<dx-list-cell name="评价" iconSize="18" iconColor="#ff721f" padding="0 30rpx">
 					　　<view slot="right">
 							<tui-rate v-model="v.quote1" :hollow="true" :disabled="v.suggestStatus == 1 ? true :false"></tui-rate>
 						</view>
 					</dx-list-cell>
-					<dx-list-cell name="服务态度" iconSize="18" iconColor="#ff721f">
+					<weui-input v-model="ruleform.remark" placeholder="请输入评价内容" type="textarea" name="remark" datatype="require"
+					 :disabled="v.suggestStatus == 1 ? true :false"></weui-input>
+				</view>
+				<view class="evGroup">
+					<dx-list-cell :name="store.name" :imgSrc="store.headerPic" imgWidth="36" imgHeight="36" imgR="18" noborder></dx-list-cell>
+					<dx-list-cell name="评价" iconSize="18" iconColor="#ff721f" padding="0 30rpx">
 					　　<view slot="right">
 							<tui-rate v-model="v.quote2" :hollow="true" :disabled="v.suggestStatus == 1 ? true :false"></tui-rate>
 						</view>
 					</dx-list-cell>
-				</view>
-				<view class="evGroup">
-					<weui-input v-model="ruleform.remark" placeholder="请输入备注内容" type="textarea" name="remark" datatype="require"
+					<weui-input v-model="ruleform.remark" placeholder="请输入评价内容" type="textarea" name="remark" datatype="require"
 					 :disabled="v.suggestStatus == 1 ? true :false"></weui-input>
 					<weui-input v-model="ruleform.suggestLogo" type="upload" upurl='article' allowUpLoadNum="5" name="suggestLogo" datatype="require"
 					 :disabled="v.suggestStatus == 1 ? true :false"></weui-input>
 				</view>
 				<view class="m20" @click="goto('/pages/index/main',2)">
-					<dx-button type="primary" btnBg="#57C734" btnBd="#57c734" block>提交</dx-button>
+					<dx-button type="primary" btnBg="#57C734" btnBd="#57c734" size="lg" block>提交</dx-button>
 				</view>
 			</view>
 		</view>	
@@ -63,8 +49,8 @@
 				getSiteName: this.getSiteName(),
 				ruleform: {},
 				evaluateLists:[{
-					quote1: 5,
-					quote2: 5,
+					quote1: 0,
+					quote2: 0,
 					suggestStatus: 0,
 					getProduct:{
 						is_info:true,
@@ -74,7 +60,15 @@
 						amount: 8.9,
 						num: 1
 					},
-				}]
+				}],
+				store:{
+					headerPic:'/static/pro02.jpg',
+					name: '东风生鲜'
+				},
+				horse:{
+					headerPic:'/static/pro01.jpg',
+					name: '骑手-东风'
+				}
 			}
 		},
 		methods: {

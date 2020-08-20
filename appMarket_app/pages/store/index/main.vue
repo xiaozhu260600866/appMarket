@@ -33,23 +33,79 @@
 		<view class="tabs-num" :style="{top: (upx2px(220)+height_)+'px'}">
 			<dx-tabs :tabs="tabs" v-model="type" selectedColor="#57C734" sliderBgColor="#57C734" :size="32" :height="88"></dx-tabs>
 		</view>
-		<view v-if="data.productClass.length">
-			<view class="proCon" v-if="type  == 'order'">
-				<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:height+'px',top:(upx2px(220+88)+height_)+'px',}">
-					<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
-					 :data-current="key"  @click="changeClassKey(key)">
-						<text>{{item.label}}</text>
+		<view>
+			<view v-if="data.productClass.length">
+				<view class="proCon" v-if="type  == 'order'">
+					<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop"
+					 :style="{height:(height-(upx2px(220+88+50)+height_))+'px',top:(upx2px(220+88)+height_)+'px',}">
+						<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
+						 :data-current="key"  @click="changeClassKey(key)">
+							<text>{{item.label}}</text>
+						</view>
+					</scroll-view>
+					<scroll-view scroll-y scroll-with-animation class="right-box"
+					 :style="{height:(height-(upx2px(220+88+50)+height_))+'px',top:(upx2px(220+88)+height_)+'px',}">
+						<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart"></store-pro>
+					</scroll-view>
+				</view>
+			</view>
+			
+			<scroll-view scroll-y scroll-with-animation class="evalute" v-if="type == 'evaluate'"
+			 :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
+				<view class="evalute-box">
+					<view class="evalute-item p10 bg-f bd-be" v-for="v in suggestLists">
+						<view class="u-info">
+							<view class="u-info-box">
+								<view class="u-img">
+									<image class="img" :src="v.headimgurl" />
+								</view>
+								<view class="u-name pl10">
+									<view class="name lh-20 fs-14">{{ v.nickname }}</view>
+									<tui-rate :value="v.quote" :disabled="true"></tui-rate>
+								</view>
+								<view class="r-time Arial fs-13 fc-9 pl10">{{ v.created_at }}</view>
+							</view>
+						</view>
+						<view class="u-con pt10 plr15">
+							<view class="p">{{ v.suggestContent }}</view>
+							<dx-images :data="v.getSuggestLogo"></dx-images>
+						</view>
 					</view>
-				</scroll-view>
-				<scroll-view scroll-y scroll-with-animation class="right-box" :style="{top:(upx2px(220+88)+height_)+'px',}">
-					<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart"></store-pro>
-				</scroll-view>
+				</view>
+			</scroll-view>
+			
+			<view class="store-info"  :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
+				<view class="bg-f mt12">
+					<dx-list-cell name="商家电话：" iconName="tel" :iconSize="20" iconColor="#777">
+						<view class="info-right" slot="right">
+							{{data.detail.phone}}
+						</view>
+					</dx-list-cell>
+					<dx-list-cell name="地址：" iconName="location" :iconSize="20" iconColor="#777">
+						<view class="info-right" slot="right">
+							{{data.detail.cityString}}
+						</view>
+					</dx-list-cell>
+					<dx-list-cell name="营业时间：" iconName="time2" :iconSize="18" iconColor="#777">
+						<view class="info-right" slot="right">
+							{{data.detail.hour_time}}
+						</view>
+					</dx-list-cell>
+				</view>
+				<view class="bg-f mt12">
+					<dx-list-cell name="店辅公告：" iconName="notice" :iconSize="18" iconColor="#777" arrow>
+						<view class="info-right" slot="right" @click="goto('/pages/news/lists/main',1)">
+							<view>最新优惠信息</view>
+						</view>
+					</dx-list-cell>
+				</view>
+			</view>
+			
+			<view class="proNodate" :style="{top:(upx2px(248+88)+height_)+'px',}" v-if="data.productClass.length == 0 || suggestLists.length == 0">
+				暂无数据
 			</view>
 		</view>
-		<view class="proNodate" :style="{top:(upx2px(248+88)+height_)+'px',}" v-if="data.productClass.length == 0 || type == 'evaluate' || type == 'merchant'">
-			暂无数据
-		</view>
-		<view class="store-footer flex-middle">
+		<view class="store-footer flex-middle" v-if="type  == 'order'">
 			<view class="icon" @click="goto('/pages/user/cart/main',2)">
 				<dx-icon name="cart" size="20" color="#fff"></dx-icon>
 				<view class="fs-12 fc-white lh-16">购物车</view>
@@ -83,13 +139,17 @@ import dxTabs from "doxinui/components/tabs/tabs"
 import storePro from '@/components/store_pro'
 import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 import dxDiag from "doxinui/components/diag/diag"
+import dxImages from "doxinui/components/images/images"
+import dxListCell from "doxinui/components/list-cell/list-cell"
 	export default {
 		components:{
 			dxProductsPic,
 			dxTabs,
 			storePro,
 			tuiRate,
-			dxDiag
+			dxDiag,
+			dxImages,
+			dxListCell
 		},
 		data() {
 			return {
@@ -142,6 +202,39 @@ import dxDiag from "doxinui/components/diag/diag"
 					start_date: '2020-08-01',
 					end_date: '2020-08-30',
 					status: 0
+				}],
+				suggestLists:[{
+					headimgurl:'/static/banner01.jpg',
+					nickname:'东信科技-梅',
+					quote:4,
+					created_at: '2020-06-18 11:29:32',
+					suggestContent:'非常新鲜，送货也很快，很值得购买，方便快捷，特别适合上班一族',
+					getSuggestLogo:[
+						{img:'/static/pro01.jpg'},
+						{img:'/static/pro02.jpg'},
+						{img:'/static/pro03.jpg'},
+						{img:'/static/pro02.jpg'},
+						{img:'/static/pro03.jpg'},
+						{img:'/static/pro01.jpg'},
+						{img:'/static/pro03.jpg'},
+						{img:'/static/pro01.jpg'},
+						{img:'/static/pro02.jpg'},
+					],
+				},{
+					headimgurl:'/static/banner01.jpg',
+					nickname:'东信科技-梅',
+					quote:5,
+					created_at: '2020-06-18 11:29:32',
+					suggestContent:'非常新鲜，送货也很快，很值得购买，方便快捷，特别适合上班一族',
+				},{
+					headimgurl:'/static/banner01.jpg',
+					nickname:'东信科技-梅',
+					quote:3,
+					created_at: '2020-06-18 11:29:32',
+					suggestContent:'非常新鲜，送货也很快，很值得购买，方便快捷，特别适合上班一族',
+					getSuggestLogo:[
+						{img:'/static/pro01.jpg'},
+					],
 				}]
 			}
 		},
@@ -164,7 +257,7 @@ import dxDiag from "doxinui/components/diag/diag"
 					this.top = obj.top ? (obj.top + (obj.height - 32) / 2) : (res.statusBarHeight + 6);
 					this.scrollH = res.windowWidth
 					this.width_ = res.windowWidth
-					this.height = res.windowHeight
+					//this.height = res.windowHeight
 				}
 			})
 			uni.getSystemInfo({

@@ -46,3 +46,22 @@
 .diag-coupon .getNav{z-index:100;font-size: 28upx;padding: 0 22upx;width: 72upx;line-height: 1.2;position: absolute;top: 0;right: 0;border-radius: 0 12upx 12upx 0;height: 150upx;display: flex;align-items: center;color: #fff;}
 .diag-coupon .getNav.no{background-color: #57C734;}
 .diag-coupon .getNav.yes{background-color: #ccc;}
+
+
+/* 评价 */
+.evalute {position: fixed;left: 0;width: 100%;}
+.evalute .u-info .u-info-box{display: flex;align-items: center;}
+.evalute .u-info .u-img .img{width: 80upx;height: 80upx;border-radius: 80upx;display: flex;}
+.evalute .u-info .u-name{width: 100%;flex: 1;overflow: hidden;}
+.evalute .u-info .tui-icon{height: 48upx;line-height: 48upx;font-size: 36upx!important;}
+.evalute .u-con .p{font-size: 26upx;line-height: 44upx;}
+.evalute .u-con .image-group{display: flex;margin: 0 -8upx;flex-wrap: wrap;}
+.evalute .u-con .image-group .img-item{width: 200upx;box-sizing: border-box;margin: 8upx;}
+.evalute .u-con .image-group .img-item image{width: 200upx;height: 220upx;display: flex;border-radius: 10upx;}
+.evalute .u-con .again{border-left: 8upx #FF4351 solid;line-height: 28upx;}
+
+
+/* 商家资料 */
+.store-info{position: fixed;left: 0;width: 100%;}
+.store-info /deep/.cell-name{width: 160upx;}
+.store-info /deep/.cell-right{flex: 3;font-size: 30upx;text-align: left;color: #333;}

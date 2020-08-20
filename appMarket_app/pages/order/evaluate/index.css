@@ -1,15 +1,1 @@
-.order_info2{display: flex;padding: 20upx;border-bottom: 1upx #F5F5F5 dashed;background-color: #fff;}
-.order_info2 .pro_img{padding-right: 20upx;}
-.order_info2 .pro_img .img{width: 140upx;height: 140upx;display: flex;border-radius: 6upx;}
-.order_info2 .pro_info{flex: 1;overflow: hidden;display: flex;flex-wrap: wrap;align-content: space-between;}
-.order_info2 .Titem{display: flex;justify-content: space-between;width: 100%;}
-.order_info2 .Titem .left{flex: 1;overflow: hidden;}
-.order_info2 .Titem .right{text-align: right;padding-left: 20upx;}
-.order_info2 .Titem .name{font-size: 30upx;line-height: 40upx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
-.order_info2 .Titem .specs{font-size: 28upx;line-height: 40upx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
-.order_info2 .Titem .price{font-size: 28upx;line-height: 40upx;color: #333;}
-.order_info2 .Titem .num{font-size: 28upx;line-height: 40upx;color: #666;}
-.order_info2 .scount{font-size: 28upx;line-height: 40upx;color: #333;text-align: right;width: 100%;}
-
-
 .evGroup{margin-top: 24upx;background-color: #fff;}

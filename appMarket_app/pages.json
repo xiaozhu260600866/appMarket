@@ -228,6 +228,13 @@
 			}
 		},
 		{
+			"path": "pages/order/evaluate/suggestion",
+			"style": {
+				"navigationBarTitleText": "投拆建议",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/user/wallet/index/main",
 			"style": {
 				"navigationBarTitleText": "我的钱包",
@@ -252,6 +259,13 @@
 			"path": "pages/user/wallet/withdraw/main",
 			"style": {
 				"navigationBarTitleText": "提现",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/news/lists/main",
+			"style": {
+				"navigationBarTitleText": "",
 				"enablePullDownRefresh": true
 			}
 		},
