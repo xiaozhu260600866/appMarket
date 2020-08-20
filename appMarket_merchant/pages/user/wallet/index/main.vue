@@ -5,16 +5,16 @@
 			<view class="count-header main-bg mb12 pb20">
 				<view class="group">
 					<view class="name fs-15 fc-white">总收入(元)</view>
-					<view class="count-num Arial">{{amount}}</view>
+					<view class="count-num Arial">{{data.inSum}}</view>
 				</view>
 				<view class="flex mt40">
 					<view class="group flex1">
 						<view class="name fs-15 fc-white">今日成交数(笔)</view>
-						<view class="count-num Arial">{{order_num}}</view>
+						<view class="count-num Arial">{{data.toDayInCount}}</view>
 					</view>
 					<view class="group flex1">
 						<view class="name fs-15 fc-white">今日收益(元)</view>
-						<view class="count-num Arial">{{order_price}}</view>
+						<view class="count-num Arial">{{data.toDayInSum}}</view>
 					</view>
 				</view>
 			</view>
@@ -25,7 +25,7 @@
 				<view @click="goto('/pages/user/wallet/withdraw/main',1)">
 					<dx-list-cell arrow name="提现" iconName="wallet-fill" iconSize="20" iconColor="#79d70f">
 						<view slot="right" class="fs-15 fc-3">
-							可提现余额：<text class="Arial">{{ count }}</text>元
+							可提现余额：<text class="Arial">{{ data.price }}</text>元
 						</view>
 					</dx-list-cell>
 				</view>
@@ -42,7 +42,7 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/merchant/index',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -61,8 +61,11 @@
 				});
 			}
 		},
+		onShow(){
+			this.ajax();
+		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

@@ -1,8 +1,8 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="bg-f wallet-order">
-			<dx-list-msg v-for="(item,key) in orderLists" :name="item.type==0?'收入':'提现'" :nameSize="15" :content="item.type==0?'+'+item.amount:'-'+item.amount"
+		<view class="bg-f wallet-order" v-if="data.show">
+			<dx-list-msg v-for="(item,key) in data.lists.data" :name="item.type==0?'收入':'提现'" :nameSize="15" :content="item.type==0?'+'+item.amount:'-'+item.amount"
 			 :conSize="15" conColor="#333">
 				<view slot="right">
 					<view class="right-box text-right fc-9">
@@ -23,31 +23,11 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/merchant/come-out-lists?status=1',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				orderLists:[{
-					type: 0,
-					amount: 100,
-					created_at: '2020-06-20 14:05:13',
-					getStatus: '审核中'
-				},{
-					type: 1,
-					amount: 120,
-					created_at: '2020-06-19 14:05:13',
-					getStatus: '已完成'
-				},{
-					type: 0,
-					amount: 100,
-					created_at: '2020-06-20 14:05:13',
-					getStatus: '审核中'
-				},{
-					type: 1,
-					amount: 120,
-					created_at: '2020-06-19 14:05:13',
-					getStatus: '已完成'
-				}]
+				
 			}
 		},
 		methods: {
@@ -60,7 +40,7 @@
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {
