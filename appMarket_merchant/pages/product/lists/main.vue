@@ -39,13 +39,13 @@
 						</div>
 					</scroll-view>
 				</block>
-				<dxftButton type="success" size="lg" v-if="type" @click="confirm">确认</dxftButton>
+				<dxftButton type="success" size="lg" v-if="type" @click="confirm('coupon')">确认</dxftButton>
 				<view class="flex ope-btn" v-if="!operation && !type">
 					<dx-button type="info" size="lg" myclass="bdr0" block @click="operation = true">批量操作</dx-button>
 					<dx-button type="success" size="lg" myclass="bdr0" block @click="goto('/pages/product/create_edit/main',1)">新增商品</dx-button>
 				</view>
 				<!-- 点击批量操作后显示以下按钮 -->
-				<view class="flex ope-btn" v-if="operation && !type">
+				<view class="flex ope-btn" v-if="operation && !type" @click="confirm('putaway')">
 					<dx-button type="success" size="lg" myclass="bdr0" block>下架</dx-button>
 				</view>
 			</view>
@@ -82,7 +82,7 @@ import dxftButton from "doxinui/components/button/footer-button"
 			}
 		},
 		methods: {
-			confirm(){
+			confirm(type){
 				
 				if(this.$refs.productLists[0].chooseData.length == 0){
 					this.getError("您还没有选择");
@@ -100,11 +100,21 @@ import dxftButton from "doxinui/components/button/footer-button"
 						 product_id+=v.id;
 					 }
 				});
-				if(this.coupon_id){
-					this.goto("/pages/user/discounts/create_edit/discounts?product_str="+product_id+"&product_name="+product_name+'&id='+this.coupon_id);
+				if(type == 'coupon'){
+					if(this.coupon_id){
+						this.goto("/pages/user/discounts/create_edit/discounts?product_str="+product_id+"&product_name="+product_name+'&id='+this.coupon_id);
+					}else{
+						this.goto("/pages/user/discounts/create_edit/discounts?product_str="+product_id+"&product_name="+product_name);
+					}
 				}else{
-					this.goto("/pages/user/discounts/create_edit/discounts?product_str="+product_id+"&product_name="+product_name);
+					this.postAjax("/merchant/product/putawayall",{product_id,product_id,putaway:0}).then(msg=>{
+						if(msg.data.status ==2){
+							this.ajax();
+							this.operation = "";
+						}
+					});
 				}
+				
 				
 			},
 			changeClassKey(key){

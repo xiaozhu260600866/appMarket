@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<view class="bg-f message">
-			<dx-list-msg :imgSrc="item.headerPic?item.headerPic:''" :imgWidth="44" :imgHeight="44" :name="item.type == 2?'您的订单：'+item.name:item.name"
-			 :content="item.content?item.content:'点击查看'" v-for="(item,key) in messageLists" @click="msgGo">
+		<view class="bg-f message" v-if="data.show">
+			<dx-list-msg :imgSrc="item.headerPic?item.headerPic:''" :imgWidth="44" :imgHeight="44" 
+			 :content="item.content?item.content:'点击查看'" v-for="(item,key) in data.lists.data" >
 				<view slot="left">
 					<view class="licon systemI" v-if="item.type == 1">
 						<text class="iconfont icon-message-notice"></text>
@@ -16,12 +16,13 @@
 				</view>
 				<view slot="right">
 					<view class="right-box">
-						<view class="time fs-12 fc-9 Arial">{{item.create_at}}</view>
-						<view class="num" v-if="item.meassage_num>0">{{item.meassage_num}}</view>
-						<view class="status fs-13 mt5 lh-16 main-color" v-if="item.type==2">支付成功</view>
+						<view class="time fs-12 fc-9 Arial">{{item.created_at}}</view>
+						<!-- <view class="num" v-if="item.meassage_num>0">{{item.meassage_num}}</view>
+						<view class="status fs-13 mt5 lh-16 main-color" v-if="item.type==2">支付成功</view> -->
 					</view>
 				</view>
 			</dx-list-msg>
+			<hasMore :parentData="data"></hasMore>
 		</view>
 	</view>
 </template>
@@ -34,7 +35,7 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/merchant/system-message',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -68,6 +69,9 @@
 					meassage_num: ''
 				}]
 			}
+		},
+		onLoad(){
+			this.ajax();
 		},
 		methods: {
 			msgGo(v){

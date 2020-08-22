@@ -16,12 +16,12 @@
 				<icon type="clear" :size='13' color='#bcbcbc' @tap="cleanKey" v-show="key"></icon>
 				<!-- #endif -->
 				<!-- #ifdef H5 -->
-				<view @tap="cleanKey" v-show="key">
+				<view @tap="cleanKey" v-show="key" >
 					<tui-icon name="close-fill" :size='16' color='#bcbcbc'></tui-icon>
 				</view>
 				<!-- #endif -->
 			</view>
-			<view class="tui-cancle" @tap="back">取消</view>
+			<view class="tui-cancle" @tap="search">搜索</view>
 		</view>
 
 		<view class="tui-search-history" v-if="history.length>0">
@@ -35,7 +35,7 @@
 				</block>
 			</view>
 		</view>
-
+		<productLists :data="products.data" :type="'1'" ref="productLists" :operation="true"></productLists>
 		<tui-actionsheet :show="showActionSheet" :tips="tips" @click="itemClick" @cancel="closeActionSheet"></tui-actionsheet>
 	</view>
 
@@ -45,16 +45,23 @@
 	import tuiIcon from "xiaozhu/uniapp/thorui/components/icon/icon"
 	import tuiTag from "xiaozhu/uniapp/thorui/components/tag/tag"
 	import tuiActionsheet from "xiaozhu/uniapp/thorui/components/actionsheet/actionsheet"
+	import productLists from "@/components/productLists.vue"
 	export default {
 		components: {
 			tuiIcon,
 			tuiTag,
-			tuiActionsheet
+			tuiActionsheet,
+			productLists
 		},
 		data() {
 			return {
 				history: [],
+				products:[],
+				formAction:"/merchant/product/listAll",
 				key: "",
+				mpType: 'page', //用来分清父和子组件
+				data: this.formatData(this),
+				getSiteName: this.getSiteName(),
 				showActionSheet: false,
 				tips: "确认清空搜索历史吗？"
 			}
@@ -67,46 +74,25 @@
 				}
 
 			});
+			this.ajax();
 
 		},
 		methods: {
-			 search(){
-				   let history = uni.getStorageSync('history') ? uni.getStorageSync('history') : [];
-					if (!this.cleanRepeat(history, this.key)) {
-						history.push({ name: this.key });
-						uni.setStorageSync('history', history);
-					}
-					this.goto("/pages/shop/product/lists/index?name=" + this.key,1);
-			 },
-			 cleanRepeat(arr, val) {
-				var res = false;
-				arr.forEach((v, i) => {
-					if (v.name == val) {
-						res = true;
-					}
+			ajax() {
+				this.getAjaxForApp(this, {
+				name:this.key
+				}).then(msg => {
+					this.products = msg.lists;
 				});
-				return res;
 			},
-			back: function() {
-				uni.navigateBack();
-			},
+			 search(){
+				  this.ajax();
+			 },
+			
 			cleanKey: function() {
 				this.key = ''
 			},
-			closeActionSheet: function() {
-				this.showActionSheet = false
-			},
-			openActionSheet: function() {
-				this.showActionSheet = true
-			},
-			itemClick: function(e) {
-				let index = e.index;
-				if (index == 0) {
-					this.showActionSheet = false;
-					uni.setStorageSync('history', []);
-					this.history = []
-				}
-			}
+			
 		}
 	}
 </script>

@@ -297,8 +297,8 @@
 				"selectedIconPath": "static/image/A02.png"
 			},
 			{
-				"pagePath": "pages/A/main",
-				"text": "消息1",
+				"pagePath": "pages/message/lists/main",
+				"text": "消息",
 				"iconPath": "static/image/E01.png",
 				"selectedIconPath": "static/image/E02.png"
 			},
