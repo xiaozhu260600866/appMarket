@@ -76,7 +76,9 @@
                         "appid" : "wx0ec85ae6a6f1860e",
                         "UniversalLinks" : "https://appmarkey.doxinsoft.com/app/"
                     },
-                    "alipay" : {}
+                    "alipay" : {
+                        "__platform__" : [ "ios", "android" ]
+                    }
                 },
                 "push" : {
                     "unipush" : {}
