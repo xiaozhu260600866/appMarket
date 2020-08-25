@@ -1,0 +1,242 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/main",
+			"style": {
+				"navigationBarTitleText": "同城菜场",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/printf/index",
+			"style": {
+				"navigationBarTitleText": "打打印",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/form/form",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/login/main",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/login/layouts/password",
+			"style": {
+				"navigationBarTitleText": "忘记密码",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/login/layouts/register",
+			"style": {
+				"navigationBarTitleText": "快速注册",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/user/index/main",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/setting/main",
+			"style": {
+				"navigationBarTitleText": "账户信息",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/setting/layouts/loginPassword",
+			"style": {
+				"navigationBarTitleText": "修改登录密码",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/setting/layouts/info",
+			"style": {
+				"navigationBarTitleText": "店铺信息",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/evaluate/main",
+			"style": {
+				"navigationBarTitleText": "评价管理",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/evaluate/layouts/reply",
+			"style": {
+				"navigationBarTitleText": "评价回复",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/setting/layouts/cert",
+			"style": {
+				"navigationBarTitleText": "身份确认",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/message/lists/main",
+			"style": {
+				"navigationBarTitleText": "消息",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/message/chat/main",
+			"style": {
+				"navigationBarTitleText": "东信科技-梅",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/message/show/main",
+			"style": {
+				"navigationBarTitleText": "通知",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/message/detail/main",
+			"style": {
+				"navigationBarTitleText": "交易物流通知",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/search/searchCity/main",
+			"style": {
+				"navigationBarTitleText": "城市",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/order/detail/main",
+			"style": {
+				"navigationBarTitleText": "订单详情",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/order/lists/main",
+			"style": {
+				"navigationBarTitleText": "我的订单",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/wallet/index/main",
+			"style": {
+				"navigationBarTitleText": "我的钱包",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/wallet/lists/main",
+			"style": {
+				"navigationBarTitleText": "流水明细",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/wallet/withdraw/main",
+			"style": {
+				"navigationBarTitleText": "提现",
+				"enablePullDownRefresh": true
+			}
+		},
+		
+		{
+			"path": "pages/user/finance/business",
+			"style": {
+				"navigationBarTitleText": "营业分析",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/finance/client",
+			"style": {
+				"navigationBarTitleText": "顾客分析",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/news/lists/main",
+			"style": {
+				"navigationBarTitleText": "列表",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/news/create_edit/main",
+			"style": {
+				"navigationBarTitleText": "编辑文章",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/news/show/main",
+			"style": {
+				"navigationBarTitleText": "内容",
+				"enablePullDownRefresh": true
+			}
+		}
+	],
+	"permission": {
+		"scope.userLocation": {
+			"desc": "用于记录用户之间的距离，进行近的商家搜索"
+		}
+	},
+	
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#57C734",
+		"backgroundColor": "#57C734"
+	},
+	"tabBar": {
+		"selectedColor": "#57C734",
+		"list": [
+			{
+				"pagePath": "pages/index/main",
+				"text": "订单处理",
+				"iconPath": "static/image/A01.png",
+				"selectedIconPath": "static/image/A02.png"
+			},
+			{
+				"pagePath": "pages/message/lists/main",
+				"text": "消息",
+				"iconPath": "static/image/E01.png",
+				"selectedIconPath": "static/image/E02.png"
+			},
+			{
+				"pagePath": "pages/user/index/main",
+				"text": "店铺管理",
+				"iconPath": "static/image/D01.png",
+				"selectedIconPath": "static/image/D02.png"
+			},
+			{
+				"pagePath": "pages/user/setting/main",
+				"text": "设置",
+				"iconPath": "static/image/C01.png",
+				"selectedIconPath": "static/image/C02.png"
+			}
+		]
+	}
+}
