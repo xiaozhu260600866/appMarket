@@ -92,6 +92,22 @@
 				});
 
 			},
+			ailiPay(){
+				let orderInfo = this.config
+				console.log(orderInfo);
+				uni.requestPayment({
+					provider: 'alipay',
+					orderInfo: orderInfo, //微信、支付宝订单数据
+					success: res => {
+						this.goto("/pages/order/payed/main?order_no="+this.ruleform.order_no);
+						console.log('success:' + JSON.stringify(res));
+					},
+					fail: err => {
+						this.getError("支付失败");
+						console.log('fail:' + JSON.stringify(err));
+					}
+				});
+			},
 			submit() {
 				if(this.ruleform.pay_method == 2){
 					this.$refs.paymentPassword.modalFun('show');

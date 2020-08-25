@@ -53,28 +53,28 @@
 			<scroll-view scroll-y scroll-with-animation class="evalute" v-if="type == 'evaluate'"
 			 :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
 				<view class="evalute-box">
-					<view class="evalute-item p10 bg-f bd-be" v-for="v in suggestLists">
+					<view class="evalute-item p10 bg-f bd-be" v-for="v in data.evaluateLists">
 						<view class="u-info">
 							<view class="u-info-box">
 								<view class="u-img">
-									<image class="img" :src="v.headimgurl" />
+									<image class="img" :src="v.user.headerPic" />
 								</view>
 								<view class="u-name pl10">
-									<view class="name lh-20 fs-14">{{ v.nickname }}</view>
-									<tui-rate :value="v.quote" :disabled="true"></tui-rate>
+									<view class="name lh-20 fs-14">{{ v.addr_name }}</view>
+									<tui-rate :value="v.merchant_quote" :disabled="true"></tui-rate>
 								</view>
-								<view class="r-time Arial fs-13 fc-9 pl10">{{ v.created_at }}</view>
+								<view class="r-time Arial fs-13 fc-9 pl10">{{ v.evaluate_date }}</view>
 							</view>
 						</view>
-						<view class="u-con pt10 plr15">
-							<view class="p">{{ v.suggestContent }}</view>
-							<dx-images :data="v.getSuggestLogo"></dx-images>
+						<view class="u-con pt10 plr15" v-if="v.merchant_evaluate_logo">
+							<view class="p">{{ v.merchant_evaluate }}</view>
+							 <dx-images :data="getLogo(v.merchant_evaluate_logo)"></dx-images>
 						</view>
 					</view>
 				</view>
 			</scroll-view>
 			
-			<view class="store-info"  :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
+			<view class="store-info"  :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}" v-if="type == 'merchant'">
 				<view class="bg-f mt12">
 					<dx-list-cell name="商家电话：" iconName="tel" :iconSize="20" iconColor="#777">
 						<view class="info-right" slot="right">
@@ -92,17 +92,13 @@
 						</view>
 					</dx-list-cell>
 				</view>
-				<view class="bg-f mt12">
+				<view class="bg-f mt12" v-if="data.articleLists.length">
 					<dx-list-cell name="店辅公告：" iconName="notice" :iconSize="18" iconColor="#777" arrow>
-						<view class="info-right" slot="right" @click="goto('/pages/news/lists/main',1)">
-							<view>最新优惠信息</view>
+						<view class="info-right" slot="right" @click="goto('/pages/store/news/lists/main?merchant_id='+data.detail.id,1)">
+							<view>{{data.articleLists[0].content}}</view>
 						</view>
 					</dx-list-cell>
 				</view>
-			</view>
-			
-			<view class="proNodate" :style="{top:(upx2px(248+88)+height_)+'px',}" v-if="data.productClass.length == 0 || suggestLists.length == 0">
-				暂无数据
 			</view>
 		</view>
 		<view class="store-footer flex-middle" v-if="type  == 'order'">
@@ -175,67 +171,6 @@ import dxListCell from "doxinui/components/list-cell/list-cell"
 					value:'merchant'
 				}],
 				scrollTop: 0 ,//tab标题的滚动条位置
-				couponArray:[{
-					amount: 50,
-					discount: '',
-					full_amount: 300,
-					type: 3,
-					name: '满减活动',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 0
-				},{
-					amount: 7,
-					discount: '',
-					full_amount: 77,
-					type: 3,
-					name: '七夕优惠',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 1
-				},{
-					amount: 20,
-					discount: '',
-					full_amount: 100,
-					type: 3,
-					name: '优惠券',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 0
-				}],
-				suggestLists:[{
-					headimgurl:'/static/banner01.jpg',
-					nickname:'东信科技-梅',
-					quote:4,
-					created_at: '2020-06-18 11:29:32',
-					suggestContent:'非常新鲜，送货也很快，很值得购买，方便快捷，特别适合上班一族',
-					getSuggestLogo:[
-						{img:'/static/pro01.jpg'},
-						{img:'/static/pro02.jpg'},
-						{img:'/static/pro03.jpg'},
-						{img:'/static/pro02.jpg'},
-						{img:'/static/pro03.jpg'},
-						{img:'/static/pro01.jpg'},
-						{img:'/static/pro03.jpg'},
-						{img:'/static/pro01.jpg'},
-						{img:'/static/pro02.jpg'},
-					],
-				},{
-					headimgurl:'/static/banner01.jpg',
-					nickname:'东信科技-梅',
-					quote:5,
-					created_at: '2020-06-18 11:29:32',
-					suggestContent:'非常新鲜，送货也很快，很值得购买，方便快捷，特别适合上班一族',
-				},{
-					headimgurl:'/static/banner01.jpg',
-					nickname:'东信科技-梅',
-					quote:3,
-					created_at: '2020-06-18 11:29:32',
-					suggestContent:'非常新鲜，送货也很快，很值得购买，方便快捷，特别适合上班一族',
-					getSuggestLogo:[
-						{img:'/static/pro01.jpg'},
-					],
-				}]
 			}
 		},
 		onLoad: function(options) {
@@ -274,6 +209,15 @@ import dxListCell from "doxinui/components/list-cell/list-cell"
 		
 		},
 		methods: {
+			getLogo(cover){
+				let coverArr = cover.split(",");
+				let coverArr_ = [];
+				coverArr.forEach(v=>{
+					coverArr_.push({img:this.getSiteName + '/upload/images/order/'+v});
+				});
+				console.log(coverArr_);
+				return coverArr_;
+			},
 			draw(item){
 				this.checkLogin().then(msg=>{
 					if(item.status == 0){

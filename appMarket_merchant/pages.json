@@ -22,6 +22,13 @@
 			}
 		},
 		{
+			"path": "pages/A/main",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/user/login/main",
 			"style": {
 				"navigationBarTitleText": "登录",

@@ -1,7 +1,7 @@
 <template>
 	<view class="proLists">
 		<dx-products-pic v-for="item in data" :src="item.firstCover ?item.firstCover:'/static/nopropic.png'" :isList="true">
-			<view class="title fs-16 fw-bold pr15">{{ item.name }}</view>
+			<view class="title fs-16 fw-bold pr15">{{ item.name }} {{item.putaway ? '(上架)' :'(下架)'}}</view>
 			<view class="grade flex-middle fc-3 fs-13 mt3">
 				<view class="sales pr15">销量：<text class="Arial">53{{ item.sales }}</text></view>
 				<view class="fresh">当前库存：<text class="Arial">{{ item.num  }}</text></view>
@@ -12,9 +12,10 @@
 			<view class="flex-between">
 				<dx-price v-model="item.price" split :intSize="16" :decimalSize="12"></dx-price>
 			</view>
-			<view class="edit-nav flex-right" v-if="!type">
-				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)">编辑</dx-button>
-				<dx-button size="mini">下架</dx-button>
+			<view class="edit-nav flex-right" >
+				<dx-button size="mini" @click="goto('/pages/product/create_edit/main?id='+item.id,1)" v-if="!type && !operation">编辑</dx-button>
+				<dx-button size="mini" v-if="!item.putaway" @click="putaway(item,1)">上架</dx-button>
+				<dx-button size="mini" v-if="item.putaway" @click="putaway(item,0)">下架</dx-button>
 			</view>
 			<!-- 优惠活动选择 -->
 			<view class="select-icon" v-if="type && !operation">
@@ -47,6 +48,13 @@ import dxProductsPic from "doxinui/components/products/pic"
 			}
 		},
 		methods:{
+			putaway(item,putaway){
+				this.postAjax("/merchant/product/putaway",{id:item.id,putaway:putaway}).then(msg=>{
+					if(msg.data.status ==2){
+						this.getParent(this).ajax();
+					}
+				});
+			},
 			in_array(value, arr) {
 				let res = false;
 				if (!arr) return false;

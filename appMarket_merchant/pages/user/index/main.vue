@@ -31,18 +31,18 @@
 				<view class="head-count">
 					<view class="c-item">
 						<p class="name fs-13 fc-6">今日营业额</p>
-						<p class="num fs-18 fc-3">{{count.amount}}</p>
-						<p class="name fs-13 fc-6">昨日<text class="Arial fs-14">0</text></p>
+						<p class="num fs-18 fc-3">{{data.toDayInSum}}</p>
+						<p class="name fs-13 fc-6">昨日<text class="Arial fs-14">{{data.yesterDayInSum}}</text></p>
 					</view>
 					<view class="c-item">
 						<p class="name fs-13 fc-6">今日订单</p>
-						<p class="num fs-18 fc-3">{{count.integral}}</p>
-						<p class="name fs-13 fc-6">昨日<text class="Arial fs-14">0</text></p>
+						<p class="num fs-18 fc-3">{{data.toDayInCount}}</p>
+						<p class="name fs-13 fc-6">昨日<text class="Arial fs-14">{{data.yesterDayInCount}}</text></p>
 					</view>
 					<view class="c-item">
 						<p class="name fs-13 fc-6">客单价</p>
-						<p class="num fs-18 fc-3">{{ count.couponNum }}</p>
-						<p class="name fs-13 fc-6">昨日<text class="Arial fs-14">0.00</text></p>
+						<p class="num fs-18 fc-3">{{ data.toDayInSumAvg }}</p>
+						<p class="name fs-13 fc-6">昨日<text class="Arial fs-14">{{data.yesterDayInSumAvg}}</text></p>
 					</view>
 				</view>
 			</view>

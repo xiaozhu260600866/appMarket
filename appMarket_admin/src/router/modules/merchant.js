@@ -39,6 +39,18 @@ const merchantRouter = {
             hidden: true,
             name: 'ProductEdit',
             meta: { title: '编辑商品' }
+        },
+        {
+            path: 'comeIn',
+            component: () => import('@/views/merchant/come_in'),
+            name: 'comeIn',
+            meta: { title: '商家收入', icon: 'dx-vip-user' }
+        },
+        {
+            path: 'comeOut',
+            component: () => import('@/views/merchant/come_out'),
+            name: 'comeOut',
+            meta: { title: '商家提现', icon: 'dx-vip-user' }
         }
     ]
 }

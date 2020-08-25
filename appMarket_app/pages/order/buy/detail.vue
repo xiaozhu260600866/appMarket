@@ -64,11 +64,11 @@
 					<view class="btn-nav" @click="changeOrder()" v-if="ruleform.status == 1">取消订单</view>
 					<view class="btn-nav" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">删除订单</view>
 					<view class="btn-nav inbtn" @click="goto('/pages/shop/order/buy/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 1">去支付</view>
-					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 3 || ruleform.status == 5">申请售后</view>
-					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">申请售后</view>
+<!-- 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 3 || ruleform.status == 5">申请售后</view>
+					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">申请售后</view> -->
 					<view class="btn-nav inbtn" @click="canReceipt" v-if="ruleform.status == 5">确认收货</view>
-					<view class="btn-nav" v-if="ruleform.status == 9 || ruleform.suggestStatus == 1">已完成</view>
-					<view class="btn-nav inbtn" @click="goto('/pages/shop/order/evaluate/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">立即评价</view>
+					<view class="btn-nav" v-if="ruleform.status == 9 && ruleform.suggestStatus == 1">已完成</view>
+					<view class="btn-nav inbtn" @click="goto('/pages/order/evaluate/main?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">立即评价</view>
 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 10">售后详情</view>
 					<view class="btn-nav" v-if="ruleform.status == 0">已取消</view>
 					<view class="btn-nav inbtn" @click="goto('/pages/order/map/main?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 5 ||ruleform.status == 6 ||ruleform.status == 7 || location">骑手位置</view>
