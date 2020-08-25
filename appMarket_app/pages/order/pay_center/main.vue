@@ -116,7 +116,12 @@
 				this.postAjax(this.formAction, this.ruleform).then(msg => {
 					if (msg.data.status == 2) {
 						this.config = msg.data.config;
-						this.wxPay();
+						if(this.ruleform.pay_method == 1){
+							this.wxPay();
+						}else if(this.ruleform.pay_method == 3){
+							this.ailiPay()
+						}
+						
 					}
 				});
 			},

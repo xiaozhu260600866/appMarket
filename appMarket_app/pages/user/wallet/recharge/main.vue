@@ -59,14 +59,14 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				payMethodArr:[
-					{label:'支付宝',value:1},
-					{label:'微信',value:2}
+					{label:'支付宝',value:3},
+					{label:'微信',value:1}
 					
 				],
 				ruleform:{
 					amount: 100,
 					radio: '',
-					pay_method:2
+					pay_method:1
 				},
 				amountData: [100, 200, 300, 500, 1000],
 				sendTypeArr: [{
@@ -96,6 +96,22 @@
 				});
 			
 			},
+			ailiPay(){
+				let orderInfo = this.config
+				console.log(orderInfo);
+				uni.requestPayment({
+					provider: 'alipay',
+					orderInfo: orderInfo, //微信、支付宝订单数据
+					success: res => {
+						this.back();
+						console.log('success:' + JSON.stringify(res));
+					},
+					fail: err => {
+						this.getError("支付失败");
+						console.log('fail:' + JSON.stringify(err));
+					}
+				});
+			},
 			changePrice(price) {
 				if (price == "其他") this.ruleform.amount = 0;
 				else this.ruleform.amount = price;
@@ -112,7 +128,11 @@
 				this.postAjax("/user/ready-recharge", this.ruleform).then(msg => {
 					if (msg.data.status == 2) {
 						this.config = msg.data.config;
-						this.wxPay();
+						if(this.ruleform.pay_method == 1){
+							this.wxPay();
+						}else if(this.ruleform.pay_method == 3){
+							this.ailiPay()
+						}
 					}
 				});
 			},
