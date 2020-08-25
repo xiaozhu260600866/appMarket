@@ -1,0 +1,12 @@
+
+.container {padding: 0 30upx 30upx 30upx;box-sizing: border-box;}
+.tui-searchbox {padding: 30upx 0;box-sizing: border-box;display: flex;align-items: center;}
+.tui-search-input {width: 100%;height: 66upx;border-radius: 35upx;padding: 0 30upx;box-sizing: border-box;background: #f2f2f2;display: flex;align-items: center;flex-wrap: nowrap;}
+.tui-input {flex: 1;color: #333;padding: 0 16upx;font-size: 28upx;}
+.tui-input-plholder {font-size: 28upx;color: #b2b2b2;}
+.tui-cancle {color: #888;font-size: 28upx;padding-left: 30upx;flex-shrink: 0;}
+.tui-history-header {display: flex;align-items: center;justify-content: space-between;padding: 30upx 0;}
+.tui-icon-delete {padding: 10upx;}
+.tui-search-title {font-size: 28upx;font-weight: bold;}
+.tui-hot-header {padding: 30upx 0;}
+.tui-tag-class {display: inline-block;margin-bottom: 20upx;margin-right: 20upx;font-size: 26upx !important;}

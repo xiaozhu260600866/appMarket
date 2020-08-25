@@ -1,0 +1,63 @@
+/* app.wxss */
+/* page{background: #f2f2f2;} */
+html,body{background: #f2f2f2;height: 100vh;}
+view,sroll-view,swiper,icon,text,progress,button,checkbox,form,input,label,input,picker,radio,slider,switch,action-sheet,modal,toast,loading,navigator,audio,image,video,map,canvas,div,input,p,span,li,ul,textarea,select {box-sizing: border-box;}
+button::after{border: 0;}
+
+
+/* 页面背景 */
+.pages-login-main{background-color: #fff;}
+
+
+/* 块 */
+.block-sec{background-color: #fff;margin: 24upx;border-radius: 12upx;}
+
+
+/* 遮罩层 */
+.share-overlay{position: fixed;top: 0px;right: 0;bottom: 0;left: 0;z-index: 1;width: 100%; height: 1600upx; background-color: rgba(0,0,0,0.6)}
+.bg-white{position: fixed;top: 0px;right: 0;bottom: 0;left: 0;z-index: 0;width: 100%; height: 1600upx; background-color: #fff;}
+.zindex2{z-index: 2;position: relative;}
+
+
+.main-color{color: #57C734!important;}
+.main-bg{background: #57C734!important;}
+.main-border{border-color: #57C734!important;}
+.dx-btn-green{background: #57C734;border-radius: 8upx;color: #fff;}
+.dx-btn-green-o{border: 2upx #57C734 solid;background: #fff;border-radius: 8upx;color: #57C734;}
+
+
+/* #ifdef APP-PLUS || MP-ALIPAY */
+.wx-swiper-dot{width: 8rpx!important;height: 8rpx!important;display: inline-flex;background: none;justify-content: space-between;background: rgba(255, 255, 255, 0.8)!important;border-radius: 16rpx!important;}
+.wx-swiper-dot-active {width: 16rpx!important;background: #fff!important;}
+/* #endif */
+
+
+/* #ifdef H5 */
+.uni-swiper-dot{width: 8rpx!important;height: 8rpx!important;display: inline-flex;background: none;justify-content: space-between;background: rgba(255, 255, 255, 0.8)!important;border-radius: 16rpx!important;}
+.uni-swiper-dot-active {width: 16rpx!important;background: #fff!important;}
+/* #endif */
+
+
+/* 页面 */
+.pages-search-products-main{color: #333;background: #fff!important;}
+
+
+/* 开关 */
+.uni-switch-input{background-color: #57C734!important;border-color: #fff!important;}
+
+
+/* 统计 */
+.count{display: flex;}
+.count .c-item{text-align: center;padding: 30upx 0;position: relative;width: 100%;}
+.count .c-item::before{content: '';display: flex;position: absolute;right: 0;top: 30upx;bottom: 30upx;height: calc(100% - 60upx);width: 2upx;background-color: #eee;}
+.count .c-item:last-child::before{width: 0;}
+.count .num{line-height: 68upx;font-size: 40upx;color: #333;}
+.count .name{line-height: 40upx;font-size: 28upx;color: #666;}
+
+
+/* 数字调节 */
+.numbox .tui-numbox-icon{width: 52upx;line-height: 52upx;height: 52upx;background: #57C734;border-radius: 50%;padding: 0!important;color: #fff!important;text-align: center;}
+
+
+/* 星星 */
+.tui-rate-box .tui-icon{line-height: 1.1;}

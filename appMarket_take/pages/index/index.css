@@ -1,0 +1,12 @@
+.Iorder-item{background-color: #fff;margin: 24upx 24upx 150upx;border-radius: 12upx;font-size: 30upx;position: relative;}
+.Iorder-item .top{display: flex;justify-content: space-between;height: 112upx;border-bottom: 1upx #eee solid;font-size: 26upx;align-items: center;}
+.Iorder-item .info{padding: 20upx 30upx;border-bottom: 1upx #eee solid;}
+.Iorder-item .info .icon{font-size: 24upx;color: #666;background-color: #eee;width: 52upx;height: 52upx;line-height: 52upx;text-align: center;border-radius: 50%;;}
+.Iorder-item .pro{padding: 20upx 30upx;}
+.Iorder-item .pro .reamrk{padding: 16upx 20upx;background-color: #eee;color: #57C734;font-size: 28upx;border-radius: 6upx;}
+.Iorder-item .proLists{display: flex;height: 88upx;line-height: 88upx;position: relative;border-bottom: 1upx #eee solid;}
+.Iorder-item .proLists::before{content: "";display: block;position: absolute;left: 30upx;border-bottom: 1upx #eee solid;bottom: 0;}
+.Iorder-item .proLists .td{margin: 0 20upx;}
+.Iorder-item .proLists .name{flex: 1}
+.Iorder-item .print{position: absolute;bottom: -110upx;left: 0;display: flex;justify-content: space-between;align-items: center;width: 100%;}
+.Iorder-item /deep/.dxi-tag{position: absolute;top: 0;left: 0;}
