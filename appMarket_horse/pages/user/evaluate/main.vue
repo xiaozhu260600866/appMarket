@@ -1,41 +1,42 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
+		<view v-if="data.show">
 			<view class="mb12 eva-top">
 				<view class="total_qoute main-bg flex-middle flex-center ptb20">
-					<tui-rate :value="total_qoute" :disabled="true" :size="18" active="#FFDC00" normal="#fff"></tui-rate>
-					<view class="fs-18 pl15 fc-yellow"><text class="Arial">{{total_qoute}}</text>分</view>
+					<tui-rate :value="data.quoteAvg" :disabled="true" :size="18" active="#FFDC00" normal="#fff"></tui-rate>
+					<view class="fs-18 pl15 fc-yellow"><text class="Arial">{{data.quoteAvg}}</text>分</view>
 				</view>
-				<dx-tabs :tabs="navbar" :currentTab="currentTab" selectedColor="#57C734" sliderBgColor="#57C734" @change="change"></dx-tabs>
+				<dx-tabs :tabs="navbar" v-model="quote" selectedColor="#57C734" sliderBgColor="#57C734" @change="ajax"></dx-tabs>
 			</view>
 			<view class="evalute">
-				<view class="evalute-item p10 bg-f bd-be" v-for="v in suggestLists">
+				<view class="evalute-item p10 bg-f bd-be" v-for="v in data.lists.data">
 					<view class="u-info">
 						<view class="u-info-box">
 							<view class="u-img">
-								<image class="img" :src="v.headimgurl" />
+								<image class="img" :src="v.user.headerPic"  />
 							</view>
 							<view class="u-name pl10">
-								<view class="name lh-20 fs-14">{{ v.nickname }}</view>
+								<view class="name lh-20 fs-14">{{ v.addr_name }}</view>
 								<view class="flex-middle">
-									<tui-rate :value="v.quote" :disabled="true" :size="14"></tui-rate>
-									<view class="fs-12 fc-6 pl8"><text class="Arial">{{v.quote}}</text>分</view>
+									<tui-rate :value="v.horse_quote" :disabled="true" :size="14"></tui-rate>
+									<view class="fs-12 fc-6 pl8"><text class="Arial">{{v.horse_quote}}</text>分</view>
 								</view>
 							</view>
-							<view class="r-time Arial fs-13 fc-9 pl10">{{ v.created_at }}</view>
+							<view class="r-time Arial fs-13 fc-9 pl10">{{ v.evaluate_date }}</view>
 						</view>
 					</view>
 					<view class="u-con pt10 plr15">
-						<view class="p">{{ v.suggestContent }}</view>
+						<view class="p">{{ v.horse_evaluate }}</view>
 					</view>
 					<view class="u_order fs-14 fc-6 bg-f2 plr15 ptb5 mt10">
-						<view>订单号：<text class="Arial">{{ v.order.order_no }}</text></view>
-						<view>订单日期：<text class="Arial">{{ v.order.order_date }}</text></view>
-						<view>商家：<text class="Arial">{{ v.order.store }}</text></view>
-						<view>地址：<text class="Arial">{{ v.order.address }}</text></view>
+						<view>订单号：<text class="Arial">{{ v.order_no }}</text></view>
+						<view>订单日期：<text class="Arial">{{ v.created_at }}</text></view>
+						<view>商家：<text class="Arial">{{ v.getMerchant.name }}</text></view>
+						<view>地址：<text class="Arial">{{ v.getMerchant.address }}</text></view>
 					</view>
 				</view>
+				<hasMore :parentData="data"></hasMore>
 			</view>
 			
 		</view>
@@ -52,18 +53,22 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/horse/evaluate',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				currentTab: 0,
 				total_qoute: 4,
+				quote:0,
 				navbar: [{
-					name: "综合评价"
+					name: "综合评价",
+					value: 0
 				}, {
-					name: "好评"
+					name: "好评",
+					value: 2
 				}, {
-					name: "差评"
+					name: "差评",
+					value: 4
 				}],
 				suggestLists:[{
 					headimgurl:'/static/banner01.jpg',
@@ -110,14 +115,14 @@
 			},
 			ajax() {
 				this.getAjaxForApp(this, {
-				
+				quote:this.quote
 				}).then(msg => {
 					
 				});
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

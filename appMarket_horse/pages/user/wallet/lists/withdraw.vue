@@ -1,24 +1,17 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
-			<view class="flex-middle fc-6 plr15 ptb12">
-				<view class="flex1 fs-14 Arial">
-					<view>{{ time }}</view><!-- 当选择日期时这里显示为日期 -->
-					<!-- <view class="fc-3">￥{{ amount }}</view> -->
-				</view>
-				<view>
-					<text class="iconfont icon-date fs-17" @click="dataShow = true"></text>
-				</view>
-			</view>
-			<view class="bg-f wallet-order">
-				<dx-list-msg v-for="(item,key) in orderLists" :name="item.created_at" :nameSize="15" nameColor="#666" :content="item.store_name" :conSize="15" conColor="#333">
-					<view slot="right" class="text-right">
-						<view class="price fs-16">-{{item.amount}}</view>
-						<view class="status fs-13 fc-6">{{item.status}}</view>
+		<view class="bg-f wallet-order" v-if="data.show">
+			<dx-list-msg v-for="(item,key) in data.lists.data" :name="item.type==0?'收入':'提现'" :nameSize="15" :content="item.type==0?'+'+item.amount:'-'+item.amount"
+			 :conSize="15" conColor="#333">
+				<view slot="right">
+					<view class="right-box text-right fc-9">
+						<view class="time Arial fs-13">{{item.created_at}}</view>
+						<view class="num fs-12">{{item.getStatus}}</view>
 					</view>
-				</dx-list-msg>
-			</view>
+				</view>
+			</dx-list-msg>
+			<hasMore :parentData="data"></hasMore>
 		</view>
 	</view>
 </template>
@@ -31,32 +24,10 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/horse/come-out-lists?type=1',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				amount: 20.00,
-				orderLists:[{
-					store_name:'提现',
-					amount: 100,
-					created_at: '2020-06-20',
-					status: '审核中'
-				},{
-					store_name:'提现',
-					amount: 120,
-					created_at: '2020-06-19',
-					status: '已通过'
-				},{
-					store_name:'提现',
-					amount: 10,
-					created_at: '2020-06-18',
-					status: '已通过'
-				},{
-					store_name:'提现',
-					amount: 20,
-					created_at: '2020-06-17',
-					status: '已通过'
-				}]
 			}
 		},
 		methods: {
@@ -69,7 +40,7 @@
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

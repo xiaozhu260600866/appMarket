@@ -1,31 +1,22 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
+		<view class=" bg-f" v-if="data.show">
 			<view class="recharge p10 bg-f">
 				<view class="weui-cell plr15">
 					<view class="weui-cell__hd"><label class="weui-label fc-6 fs-16">提现金额</label></view>
 					<view class="weui-cell__bd">
-						<input type="number" class="recharge-input fs-18" name="" placeholder="0" placeholder-style="color:#FE4543">
+						<weui-input v-model="ruleform.amount" myclass="input fs-20 w-b100 p0 bd-0" placeholder="请输入提现金额" type="text" name="amount" datatype="require|price"></weui-input>
 					</view>
 				</view>
-				<view class="fs-14 fc-9 mt10">可提现金额<text class="Arial pl5">{{ amount }}</text>元</view>
+				<view class="fs-14 fc-9 mt10">可提现金额<text class="Arial pl5">{{ data.price }}</text>元</view>
 			</view>
 			<view class="fs-14 m10 mt20">选择提现渠道</view>
-			<view class="bg-f">
-				<dx-list-cell name="微信支付" iconName="wechat" iconSize="20" iconColor="#4CB202" :slotLeft="true">
-					<view slot="left" class="mr15 reRadio">
-						<radio class="flex"></radio>
-					</view>
-				</dx-list-cell>
-				<dx-list-cell name="支付宝支付" iconName="alipay-fill" iconSize="20" iconColor="#1296DB" :slotLeft="true">
-					<view slot="left" class="mr15 reRadio">
-						<radio class="flex"></radio>
-					</view>
-				</dx-list-cell>
-			</view>
+			<weui-input v-model="ruleform.blank_client_name" label="姓名" placeholder="请输入姓名" type="text" name="blank_client_name" datatype="require"></weui-input>
+			<weui-input v-model="ruleform.blank_name" name="blank_name" label="选择银行" changeField="value" type="select" :dataKey="'bankTypeArr'" datatype="require"></weui-input>
+			<weui-input v-model="ruleform.blank_cardno" label="银行卡号" placeholder="请输入银行卡号" type="text" name="blank_cardno" datatype="require"></weui-input>
 			<view class="m20">
-				<dx-button type="primary" btnBg="#57C734" btnBd="#57C734" block>提现</dx-button>
+				<dx-button type="primary" btnBg="#57C734" btnBd="#57C734" block @click="submit">提现</dx-button>
 			</view>
 		</view>
 	</view>
@@ -39,14 +30,36 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/horse/index',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				amount:999.99
+				amount:999.99,
+				bankTypeArr: [{
+						label: '工商银行',
+						value: '工商银行'
+					},
+					{
+						label: '中国银行',
+						value: '中国银行'
+					},
+				],
+				ruleform:{},
+				vaildate:{}
 			}
 		},
 		methods: {
+			submit(){
+				this.vaildForm(this,res=>{
+					if(res){
+						this.postAjax("/horse/wallet",this.ruleform).then(msg=>{
+								if(msg.data.status  == 2){
+									this.ajax();
+								}
+						});
+					}
+				});
+			},
 			ajax() {
 				this.getAjaxForApp(this, {
 				
@@ -56,7 +69,7 @@
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

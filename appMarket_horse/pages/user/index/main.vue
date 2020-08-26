@@ -11,7 +11,7 @@
 							<view class="fs-18">{{ data.detail.name}}</view>
 							<view class="fs-16 Arial">ID:{{data.detail.id}}</view>
 						</view>
-						<view class="status"><weui-input v-model="ruleform.sendType" name="sendType" changeField="value" type="select" dataKey="sendTypeArr"></weui-input></view>
+							<view class="status"><weui-input v-model="ruleform.work_status" name="work_status" changeField="value" type="select" dataKey="statusArr" @callback="selectRes"></weui-input></view>
 					</view>
 				</view>
 			</view>
@@ -19,15 +19,15 @@
 			<view class="ugorup-box bg-f mb8 count">
 				<view class="head-count">
 					<view class="c-item" @click="goto('/pages/user/wallet/index/main',1)">
-						<view class="num fs-18 fc-3">0<text class="fs-14">元</text></view>
+						<view class="num fs-18 fc-3">{{data.toDayInSum}}<text class="fs-14">元</text></view>
 						<view class="name fs-13 fc-6">今日收入</view>
 					</view>
 					<view class="c-item">
-						<view class="num fs-18 fc-3">0<text class="fs-14">单</text></view>
+						<view class="num fs-18 fc-3">{{data.toDayInCount}}<text class="fs-14">单</text></view>
 						<view class="name fs-13 fc-6">今日完成订单</view>
 					</view>
 					<view class="c-item">
-						<view class="num fs-18 fc-3">0<text class="fs-14">分</text></view>
+						<view class="num fs-18 fc-3">{{data.toDayInCount}}<text class="fs-14">分</text></view>
 						<view class="name fs-13 fc-6">综合评价</view>
 					</view>
 				</view>
@@ -58,6 +58,9 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 				getSiteName: this.getSiteName(),
 				ruleform:{
 					sendType: 1
+				},
+				ruleform:{
+					work_status: 1
 				},
 				userLogin: true,
 				count:{
@@ -92,16 +95,23 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 						name:'个人信息'
 					}
 				],
-				sendTypeArr: [{
+				statusArr: [{
 					label: '开工',
 					value: '1',
 				},{
 					label: '休息',
-					value: '2',
+					value: '3',
 				}],
 			}
 		},
 		methods: {
+			selectRes(){
+				this.postAjax("/horse/info",this.ruleform).then(msg=>{
+					if(msg.data.status == 2){
+						this.ajax();
+					}
+				});
+			},
 			checkAuth(v){
 				console.log(v);
 				return this.goto(v.url,v.type);
@@ -110,7 +120,7 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 				this.getAjaxForApp(this, {
 				
 				}).then(msg => {
-					
+					this.ruleform.work_status = msg.detail.work_status;
 				});
 			}
 		},

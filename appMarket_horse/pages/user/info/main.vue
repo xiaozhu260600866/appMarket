@@ -6,11 +6,11 @@
 			<view class="flex-wrap pic_group">
 				<view class="pic_row">
 					<view class="name">身份证人像面</view>
-					<weui-input v-model="ruleform.idCard" type="upload" upurl='horses' name="idCard" disabled="disabled"></weui-input>
+					<weui-input v-model="ruleform.idCard" type="upload" upurl='horse' name="idCard" disabled="disabled"></weui-input>
 				</view>
 				<view class="pic_row">
 					<view class="name">身份证国徽面</view>
-					<weui-input v-model="ruleform.idCard2" type="upload" upurl='horses' name="idCard2" disabled="disabled"></weui-input>
+					<weui-input v-model="ruleform.idCard2" type="upload" upurl='horse' name="idCard2" disabled="disabled"></weui-input>
 				</view>
 			</view>
 			<!-- <view class="bg-f mb12">
@@ -18,7 +18,7 @@
 				 datatype="require"></weui-input>
 			</view> -->
 			<!-- <view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg">保存</dx-button></view> -->
-			<view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg" hollow @click="lgout">退出登录</dx-button></view>
+			<view class="m20" ><dx-button type="success" block size="lg" hollow @click="lgout">退出登录</dx-button></view>
 		</view>
 	</view>
 </template>

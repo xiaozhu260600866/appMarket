@@ -30,6 +30,11 @@
                           <template slot="append">%</template>
                         </el-input>
                       </el-form-item>
+                      <el-form-item label="平台对骑手比例" prop="horse_ratio" :rules="[{ required: true, message: '内容不能为空'},]">
+                        <el-input v-model="ruleForm.horse_ratio" class="CinputWidth" style="width:180px">
+                          <template slot="append">%</template>
+                        </el-input>
+                      </el-form-item>
                       <el-form-item label="公司地址" prop="address">
                         <el-input v-model="ruleForm.address" class="CinputWidth" />
                         <el-button @click.prevent="chooseLocation()">重新定位</el-button>

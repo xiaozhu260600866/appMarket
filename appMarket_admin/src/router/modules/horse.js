@@ -15,6 +15,18 @@ const horseRouter = {
           name: 'horseLists',
           meta: { title: '骑手列表', icon: 'dx-horse' }
         },
+        {
+            path: 'comeIn',
+            component: () => import('@/views/horse/come_in'),
+            name: 'comeIn',
+            meta: { title: '骑手收入', icon: 'dx-vip-user' }
+        },
+        {
+            path: 'comeOut',
+            component: () => import('@/views/horse/come_out'),
+            name: 'comeOut',
+            meta: { title: '骑手提现', icon: 'dx-vip-user' }
+        }
     ]
 }
 
