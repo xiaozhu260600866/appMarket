@@ -23,8 +23,8 @@
         "modules" : {
             "OAuth" : {},
             "Payment" : {},
-            "Push" : {},
-            "Maps" : {}
+            "Maps" : {},
+            "Push" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -65,15 +65,15 @@
             "sdkConfigs" : {
                 "oauth" : {
                     "weixin" : {
-                        "appid" : "wx0ec85ae6a6f1860e",
-                        "appsecret" : "31e7c848b4b778b1430342cdf2a1b52a",
+                        "appid" : "wx1724969aba04c9f8",
+                        "appsecret" : "ea3353a53df35cd63c8264ec9e1157e5",
                         "UniversalLinks" : "https://appmarkey.doxinsoft.com/app/"
                     }
                 },
                 "ad" : {},
                 "payment" : {
                     "weixin" : {
-                        "appid" : "wx0ec85ae6a6f1860e",
+                        "appid" : "wx1724969aba04c9f8",
                         "UniversalLinks" : "https://appmarkey.doxinsoft.com/app/"
                     },
                     "alipay" : {

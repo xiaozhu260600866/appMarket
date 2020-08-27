@@ -97,11 +97,11 @@ import filterKm from '@/components/filterKm';
 					city:"江门市"
 				},
 				tabs: [{
-					name: "价格最低"
-				}, {
-					name: "销量最高"
-				}, {
-					name: "距离最近"
+					name: "推荐",
+					value:'recommend',
+				},  {
+					name: "距离最近",
+					value:'space'
 				}]
 			}
 		},

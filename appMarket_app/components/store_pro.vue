@@ -10,7 +10,7 @@
 			<view class="flex-between">
 				<dx-price v-model="item.price" split :intSize="16" :decimalSize="12"></dx-price>
 			</view>
-			<div class="flex-right numbox" v-if="canBuy"><tui-numberbox v-model="item.buyNum" @change="addCart(item)"></tui-numberbox></div>
+			<div class="flex-right numbox" v-if="canBuy && item.shipping == 2"><tui-numberbox v-model="item.buyNum" @change="addCart(item)"></tui-numberbox></div>
 		</dx-products-pic>
 	</view>
 </template>

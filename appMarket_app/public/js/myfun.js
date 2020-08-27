@@ -44,17 +44,25 @@ myfun.install = (Vue, options) => {
 							//'custom-header': 'hello' //自定义请求头信息
 						},
 						success: (msg) => {
-							uni.setStorageSync('openid', res.authResult.openid);
-							let userInfo = {
-								nickName: msg.data.nickname,
-								unionid: res.authResult.unionid,
-								avatarUrl: msg.data.headimgurl,
-								openid: msg.data.openid,
-							}
-							uni.setStorageSync('userInfo', userInfo);
-							uni.setStorageSync('unionid', res.authResult.unionid);
+							// let userInfo = uni.getStorageSync('userInfo', userInfo);
+							// if(userInfo){
+							// 	userInfo.nickName = msg.data.nickname;
+							// 	userInfo.avatarUrl = msg.data.headimgurl;
+							// 	userInfo.openid= msg.data.openid;
+							// }else{
+							// 	let userInfo = {
+							// 		nickName: msg.data.nickname,
+							// 		//unionid: res.authResult.unionid,
+							// 		avatarUrl: msg.data.headimgurl,
+							// 		openid: msg.data.openid,
+							// 	}
+							// }
+							//uni.setStorageSync('openid', res.authResult.openid);
+							
+							//uni.setStorageSync('userInfo', userInfo);
+							//uni.setStorageSync('unionid', res.authResult.unionid);
 							uni.setStorageSync('source', 'app');
-							resolve(userInfo);
+							resolve(msg.data);
 
 						}
 					});

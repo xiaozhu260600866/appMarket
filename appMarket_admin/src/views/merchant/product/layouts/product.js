@@ -71,6 +71,11 @@ export default {
                     { prop: 'name', label: '商家名称' }
                ] },
            { 'prop': 'price', 'datatype': 'require', 'type': 'text', 'append_form_': 0, 'label': '单价', column: 2 },
+           { 'prop': 'shipping', 'datatype': 'require', 'type': 'select', 'append_form_': 0, 'label': '送货方式', data: [
+             { label: '邮寄', value: 1 },
+             { label: '骑手送货', value: 2 }
+
+           ] },
            { 'prop': 'specs', 'datatype': 'require', 'type': 'text', 'append_form_': 0, 'label': '规格' },
            { 'prop': 'num', 'datatype': 'require', 'type': 'text', 'append_form_': 0, 'label': '库存', column: 2 },
            { 'prop': 'freshness', 'datatype': 'require', 'type': 'text', 'append_form_': 0, 'label': '新鲜度' },

@@ -28,10 +28,10 @@
 					<view @click="goto('/pages/user/login/layouts/password',1)">忘记密码</view>
 					<view @click="goto('/pages/user/login/layouts/register',1)">快速注册</view>
 				</view>
-				<view class="mt15 other-type">
+				<!-- <view class="mt15 other-type">
 					<dx-divider :border="true">其它登录方式</dx-divider>
 					<view class="wechat mt10" @click="wechatAuth"><text class="dxi-icon dxi-icon-wechat"></text></view>
-				</view>
+				</view> -->
 			</view>
 			<view class="footer-agreement fc-8">
 				<view>登录即同意</view>

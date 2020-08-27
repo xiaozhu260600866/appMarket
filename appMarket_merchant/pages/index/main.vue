@@ -44,7 +44,8 @@
 						</view>
 						<view class="print">
 							<dx-button round btnBd="#fff" @click="printf(item)">打印小票</dx-button>
-							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3">接单</dx-button>
+							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3 && item.shipping ==2">接单</dx-button>
+							<dx-button round type="success" btnBd="#fff" @click="deliver(item)" v-if="status == 3 && item.shipping ==1">发货</dx-button>
 						</view>
 					</view>
 				</view>
@@ -52,6 +53,19 @@
 			<hasMore :parentData="data"></hasMore>
 		</view>
 		<printf ref="printf"></printf>
+		<diag ref="diag" top="20">
+			<div slot="content">
+				<p class="p15 fs-20 fc-black text-center">发货</p>
+				<div class="p15 pt0">
+					<weui-input v-model="ruleform.express_name" label="快递" name="express_name" changeField="value" type="select"
+					 dataKey="express"></weui-input>
+					<weui-input v-model="ruleform.express_no" label="单号" type="text" name="express_no" datatype="require"></weui-input>
+					<div class="sub-btn mt15 mb10" @click="submit">
+						<button class="dx-btn dx-btn-lg dx-btn-blue main-bg w-b100">提交</button>
+					</div>
+				</div>
+			</div>
+		</diag>
 	</view>
 </template>
 
@@ -73,6 +87,50 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				status: 3,
+				order_no: '',
+				ruleform: {},
+				vaildate: {},
+				express: [{
+						label: '自提',
+						value: '自提'
+					},
+					{
+						label: '顺丰速运',
+						value: '顺丰速运'
+					},
+					{
+						label: '韵达快递',
+						value: '韵达快递'
+					},
+					{
+						label: '圆通速递',
+						value: '圆通速递'
+					},
+					{
+						label: '中通速递',
+						value: '中通速递'
+					},
+					{
+						label: 'EMS快递',
+						value: 'EMS快递'
+					},
+					{
+						label: '天天快递',
+						value: '天天快递'
+					},
+					{
+						label: '百世快递',
+						value: '百世快递'
+					},
+					{
+						label: '全峰快递',
+						value: '全峰快递'
+					},
+					{
+						label: '其他',
+						value: '其他'
+					},
+				],
 				tabs: [{
 					value: 3,
 					name: "新订单",
@@ -85,7 +143,7 @@
 					value: 5,
 					name: "已完成",
 					num: ''
-				},{
+				}, {
 					value: 0,
 					name: "取消订单",
 					num: ''
@@ -115,16 +173,37 @@
 			console.log(info);
 			//#endif
 			//#ifdef H5
-			
+
 			//#endif
-			
+
 			this.ajax();
 		},
 		methods: {
-			num(item){
+			submit() {
+				this.vaildForm(this, res => {
+					if (res) {
+						this.ruleform.type = 2;
+						this.postAjax("/merchant/order/modify", this.ruleform).then(msg => {
+							if (msg.data.status == 2) {
+								this.getSuccess("发货成功");
+								this.$refs.diag.thisDiag = false;
+								this.ajax();
+							}
+						});
+					}
+				});
+			},
+			deliver(parent) {
+				this.ruleform = parent;
+				this.ruleform.express_name = "顺丰速运";
+				this.order_no = parent.order_no;
+				this.$refs.diag.thisDiag = true;
+
+			},
+			num(item) {
 				this.tabs.num = data.lists.total;
 			},
-			printf(item){
+			printf(item) {
 				this.$refs.printf.openDefault(item);
 			},
 			order(item) {

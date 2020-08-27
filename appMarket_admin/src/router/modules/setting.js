@@ -20,6 +20,12 @@ const settingRouter = {
         meta: { title: '媒体设置', icon: 'dx-sales-order', params: { type: 1 }}
     },
     {
+        path: 'userRechargeRole',
+        component: () => import('@/views/setting/rechargeRole/lists'),
+        name: 'SettingPoster',
+        meta: { title: '充值规则', icon: 'dx-sales-order', params: { type: 1 }}
+    },
+    {
         path: 'city',
         component: () => import('@/views/city/lists'),
         name: 'SettingPoster',

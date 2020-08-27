@@ -84,7 +84,7 @@
 						<view class="iconfont icon-pro-service-o"></view>
 						<view class="txt">客服</view>
 					</button>
-					<button class="btn-item cart" hover-class="none" @click="goto('/pages/user/cart/main',2)">
+					<button class="btn-item cart" hover-class="none" @click="goto('/pages/user/cart/main',2)" v-if="data.detail.shipping ==2">
 						<view class="iconfont icon-pro-cart"></view>
 						<view class="txt">购物车</view>
 						<block v-if="data.cartData.num >= 1">
@@ -92,9 +92,12 @@
 						</block>
 					</button>
 				</view>
-				<view class="right flex1 w-b100 pr5">
-					<view class="r-nav">
+				<view class="right flex1 w-b100 pr5" >
+					<view class="r-nav" v-if="data.detail.shipping ==2">
 						<view class="r-item r-item-yellow main-bg"><span class="r-opacity" @click="addCart">加入购物车</span></view>
+					</view>
+					<view class="r-nav" >
+						<view class="r-item r-item-yellow main-bg"><span class="r-opacity" @click="toBuy">立即购买</span></view>
 					</view>
 				</view>
 			</view>
@@ -174,6 +177,9 @@
 			}
 		},
 		methods: {
+			toBuy(){
+				return this.goto("/pages/order/buy/main?product_id=" + this.data.detail.id + '&group=0', 1);
+			},
 			addCart(){
 				this.checkLogin().then(msg=>{
 					this.data.detail.buyNum = parseInt(this.data.detail.buyNum )+ parseInt(this.num);

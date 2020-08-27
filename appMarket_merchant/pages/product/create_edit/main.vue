@@ -14,6 +14,8 @@
 				<weui-input v-model="ruleform.freshness" label="新鲜度" placeholder="0-10数字越大表示越新鲜" type="number" name="freshness" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.fclass" label="商品分类" name="fclass" changeField="value" type="select" datatype="require" dataKey="propertyArr"></weui-input>
 				<weui-input v-model="ruleform.shell_date" label="售买时间" type="date" name="date"></weui-input>
+				<weui-input v-model="ruleform.shipping" label="邮寄方式" name="radio" changeField="value" type="radio" dataKey="shippingArr" 
+							 :row="false"></weui-input>
 			</view>
 			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.auto_group" label="拼团" type="switch" name="auto_group" ></weui-input>
@@ -43,7 +45,11 @@ import dxftButton from "doxinui/components/button/footer-button"
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				ruleform:{},
+				ruleform:{shipping:2},
+				shippingArr:[
+					{label:'邮寄',value:1},
+					{label:'骑手取货',value:2},
+				],
 				vaildate:{},
 				id:0,
 				propertyArr:[]

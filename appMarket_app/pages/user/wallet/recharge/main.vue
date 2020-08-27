@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
+		<view v-if="data.show">
 			<view class="recharge p10 bg-f">
 				<view class="weui-cell plr15">
 					<view class="weui-cell__hd"><label class="weui-label fc-6 fs-16">充值金额</label></view>
@@ -23,7 +23,9 @@
 				</view>
 			</view>
 			<view class="bg-f text-center fs-14 fc-6 p10">
-				<view>充200送10、充500送100、充1000送200</view>
+				<view>
+ 					<span v-for="v in data.userRechargeRole">充{{v.amount}}送{{v.give_amount}}/</span>
+					</view>
 			</view>
 			<!-- <view class="fs-14 m10 mt20">选择方式</view> -->
 			<view class="bg-f">
@@ -54,7 +56,7 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/user/doMoney',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -145,7 +147,7 @@
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

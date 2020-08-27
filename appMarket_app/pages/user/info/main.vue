@@ -22,10 +22,10 @@
 					<weui-input v-model="ruleform.payPassword" label="支付密码" type="txt" name="payPassword"></weui-input>
 				</view>
 				<view class="info-sec-title">安全设置</view>
-				<view @click="goto('/pages/user/info/layouts/phone',1)">
+				<view >
 					<weui-input v-model="ruleform.phone" label="手机绑定" type="txt" name="phone"></weui-input>
 				</view>
-				<weui-input v-model="ruleform.wechat" label="微信绑定" type="txt" name="wechat"></weui-input>
+				<div @click="wechatAuth"><weui-input v-model="ruleform.wechat" label="微信绑定" type="txt" name="wechat" ></weui-input></div>
 				
 			</view>
 			<view class="login_out" @click="lgout">退出登录</view>
@@ -73,7 +73,15 @@
 			}
 		},
 		methods: {
+			wechatAuth(){
+				this.wechatLogin().then(msg=>{
+					this.ruleform.nickname = msg.nickname;
+					this.ruleform.pic = msg.headimgurl;
+					this.submit();
+				});
+			},
 			lgout(){
+				
 				this.getConfirm("是否确认退出登录",()=>{
 					this.postAjax("/user/lgout").then(msg=>{
 						if(msg.data.status == 2){
