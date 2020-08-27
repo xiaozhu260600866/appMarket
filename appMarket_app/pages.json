@@ -458,6 +458,13 @@
 				"navigationBarTitleText": "我的拼团",
 				"enablePullDownRefresh": true
 			}
+		},
+		{
+			"path": "pages/search/lists/main",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"enablePullDownRefresh": true
+			}
 		}
 	],
 	"permission": {

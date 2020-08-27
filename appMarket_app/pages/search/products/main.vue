@@ -45,40 +45,51 @@
 	import tuiIcon from "xiaozhu/uniapp/thorui/components/icon/icon"
 	import tuiTag from "xiaozhu/uniapp/thorui/components/tag/tag"
 	import tuiActionsheet from "xiaozhu/uniapp/thorui/components/actionsheet/actionsheet"
+	import shopList from "components/shop_list.vue"
+	import storePro from "components/store_pro.vue"
 	export default {
-		components: {
-			tuiIcon,
-			tuiTag,
-			tuiActionsheet
-		},
+		components: {tuiIcon,tuiTag,tuiActionsheet,shopList,storePro},
 		data() {
 			return {
+				formAction: '/wapindex',
+				mpType: 'page', //用来分清父和子组件
+				data: this.formatData(this),
+				getSiteName: this.getSiteName(),
 				history: [],
 				key: "",
 				showActionSheet: false,
 				tips: "确认清空搜索历史吗？"
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			uni.getStorage({
 				key: 'history',
 				success: res => {
 					this.history = res.data;
 				}
-
 			});
-
+			this.ajax();
+		},
+		onReachBottom() {
+			this.hasMore(this);
+		},
+		onPullDownRefresh() {
+			this.data.nextPage = 1;
+			this.ajax();
+		},
+		onShareAppMessage() {
+			return this.shareSource(this, '商城');
 		},
 		methods: {
-			 search(){
-				   let history = uni.getStorageSync('history') ? uni.getStorageSync('history') : [];
-					if (!this.cleanRepeat(history, this.key)) {
-						history.push({ name: this.key });
-						uni.setStorageSync('history', history);
-					}
-					this.goto("/pages/shop/product/lists/index?name=" + this.key,1);
-			 },
-			 cleanRepeat(arr, val) {
+			search(){
+				let history = uni.getStorageSync('history') ? uni.getStorageSync('history') : [];
+				if (!this.cleanRepeat(history, this.key)) {
+					history.push({ name: this.key });
+					uni.setStorageSync('history', history);
+				}
+				this.goto("/pages/shop/product/lists/index?name=" + this.key,1);
+			},
+			cleanRepeat(arr, val) {
 				var res = false;
 				arr.forEach((v, i) => {
 					if (v.name == val) {
