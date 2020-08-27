@@ -31,7 +31,7 @@
 			</view>
 			<view class="tui-history-content">
 				<block v-for="(item,index) in history" :key="index">
-					<tui-tag type="gray" shape="circle" @click="goto('/pages/shop/product/lists/index?name='+item.name,1)">{{item.name}}</tui-tag>
+					<tui-tag type="gray" shape="circle" @click="goto('/pages/search/lists/main?name='+item.name,1)">{{item.name}}</tui-tag>
 				</block>
 			</view>
 		</view>
@@ -87,7 +87,7 @@
 					history.push({ name: this.key });
 					uni.setStorageSync('history', history);
 				}
-				this.goto("/pages/shop/product/lists/index?name=" + this.key,1);
+				this.goto("/pages/search/lists/main?name=" + this.key,1);
 			},
 			cleanRepeat(arr, val) {
 				var res = false;

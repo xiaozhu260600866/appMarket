@@ -60,8 +60,8 @@
 			<image src="../../static/Iad01.png" mode="widthFix" class="img"></image>
 		</view>
 		<view>
-			<dx-tabs-scroll :tabs="tabs" height="52" borderColor="#57C734" curSize="17" curColor="#57C734" curBold="bold" nameSize="15"></dx-tabs-scroll>
-			<shop-list :data="data.lists.data"></shop-list>
+			<dx-tabs-scroll :tabs="tabs" @change="listsShow=false;ajax()" v-model="type" height="52" borderColor="#57C734" curSize="17" curColor="#57C734" curBold="bold" nameSize="15"></dx-tabs-scroll>
+			<shop-list :data="data.lists.data" v-if="listsShow"></shop-list>
 		</view>
 	</view>
 </template>
@@ -93,6 +93,8 @@ import filterKm from '@/components/filterKm';
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				top: 0, //标题图标距离顶部距离
+				type:'recommend',
+				listsShow:false,
 				otherData:{
 					city:"江门市"
 				},
@@ -176,8 +178,9 @@ import filterKm from '@/components/filterKm';
 			},
 			ajax() {
 				this.getAjaxForApp(this, {
-				
+					search:this.type
 				}).then(msg => {
+					this.listsShow = true;
 					if(this.data.isindexLists.data.length){
 						this.data.isindexLists.data.forEach(v=>{
 							this.$set(v,"pic",v.firstCover)
