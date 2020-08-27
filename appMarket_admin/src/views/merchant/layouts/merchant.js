@@ -38,6 +38,7 @@ export default {
 			{ 'prop': 'hour_time', 'width': '110', 'append_table_': 0, 'label': '营业时间' },
 			{ 'prop': 'address', 'minWidth': '180', 'append_table_': 0, 'label': '商家地址' },
 			{ 'prop': 'working', 'width': '80', 'append_table_': 0, 'label': '营业状态' },
+      { 'prop': 'recommend', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/merchant/editField', 'append_table_': 0, 'label': '推荐首页' },
 			{ 'prop': 'getStatus', 'width': '80', 'append_table_': 0, 'label': '审核状态' },
 			{ 'prop': 'created_at', 'width': '160', 'append_table_': 0, 'label': '注册时间' }
 		],
