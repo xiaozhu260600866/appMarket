@@ -1,0 +1,19 @@
+.Iorder-item{background-color: #fff;margin: 24upx 24upx 150upx;border-radius: 12upx;font-size: 30upx;position: relative;}
+.Iorder-item .pro{padding: 20upx 30upx;}
+.Iorder-item .pro .reamrk{padding: 16upx 20upx;background-color: #eee;color: #57C734;font-size: 14upx;border-radius: 6upx;}
+.Iorder-item .proLists{display: flex;height: 88upx;line-height: 88upx;position: relative;border-bottom: 1upx #eee solid;}
+.Iorder-item .proLists::before{content: "";display: block;position: absolute;left: 30upx;border-bottom: 1upx #eee solid;bottom: 0;}
+.Iorder-item .proLists .td{margin: 0 20upx;}
+.Iorder-item .proLists .name{flex: 1}
+.Iorder-item .print{position: absolute;bottom: -110upx;left: 0;}
+
+
+.Iorder{margin-bottom: 150upx;}
+.Iorder_item{background-color: #fff;margin: 24upx;border-radius: 12upx;font-size: 30upx;position: relative;}
+.Iorder .time-info{display: flex;justify-content: space-between;align-items: center;height: 88upx;border-bottom: 1upx #eee solid;font-size: 28upx;padding: 0 30upx;}
+.Iorder .top{display: flex;justify-content: space-between;height: 112upx;border-bottom: 1upx #eee solid;font-size: 28upx;align-items: center;padding: 0 30upx;}
+.Iorder .info{padding: 20upx 30upx;border-bottom: 1upx #eee solid;}
+.Iorder .info .icon-grop{margin: -10upx 0;}
+.Iorder .info .icon{font-size: 50upx;color: #57C734;}
+.Iorder .store{padding: 20upx 30upx;display: flex;justify-content: space-between;align-items: center;}
+.Iorder .store .icon{font-size: 42upx;color: #57C734;}

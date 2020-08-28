@@ -14,6 +14,7 @@ import articleRouter from './modules/article'
 // import activityRouter from './modules/activity'
 import merchantRouter from './modules/merchant'
 import horseRouter from './modules/horse'
+import deliverRouter from './modules/deliver'
 import feedbackRouter from './modules/feedback'
 import disRouter from './modules/dis'
 
@@ -102,6 +103,7 @@ export const asyncRoutes = [
   feedbackRouter,
   merchantRouter,
   horseRouter,
+  deliverRouter,
   disRouter,
   settingRouter,
   // 404 page must be placed at the end !!!

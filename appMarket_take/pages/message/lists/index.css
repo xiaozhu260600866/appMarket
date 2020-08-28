@@ -1,8 +1,0 @@
-/deep/.msg-right .right-box{text-align: right;display: flex;flex-direction: column;-webkit-box-pack: justify;-webkit-box-align: end;justify-content: space-between;align-items: flex-end;height: 80upx}
-/deep/.msg-right .right-box .num{background: #ed3f14;color: #fff;font-size: 24upx;line-height: 1;padding: 6upx 12upx;border-radius: 100upx;}
-
-.message /deep/.dxi-list-msg{align-items: flex-start;}
-.message .licon{width: 88upx;height: 88upx;border-radius: 50%;margin-right: 30upx;font-size: 44upx;color: #fff;display: flex;align-items: center;justify-content: center;}
-.message .systemI{background-color: #57C734;}
-.message .orderI{background-color: #00BFFF;}
-.message .sendI{background-color: #35C35F;}

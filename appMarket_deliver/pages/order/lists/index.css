@@ -1,0 +1,30 @@
+/* 统计 */
+.order-count{display: flex;}
+.order-count .c-item{text-align: center;padding: 10upx 0 30upx;position: relative;width: 100%;}
+.order-count .c-item::before{content: '';display: flex;position: absolute;right: 0;top: 50%;margin-top: -30upx;height: 60upx;width: 2upx;background-color: #ddd;}
+.order-count .c-item:last-child::before{width: 0;}
+.order-count .num{line-height: 68upx;}
+.order-count .name{line-height: 40upx;}
+
+
+/* 列表 */
+.orderLists{background: #fff;margin: 24upx;border-radius: 12upx;}
+.orderLists .order_date{height: 112upx;display: flex;justify-content: space-between;align-items: center;}
+
+
+/* 购买者信息 */
+.buy_info{padding: 20upx 30upx;border-bottom: 1upx #eee solid;}
+.buy_info .icon-grop{margin: -10upx 0;}
+.buy_info .icon{font-size: 24upx;color: #666;background-color: #eee;width: 52upx;height: 52upx;line-height: 52upx;text-align: center;border-radius: 50%;display: block;margin: 10upx 0;}
+
+
+/* 订单信息 */
+.order_info{padding: 20upx 30upx;border-bottom: 1upx #eee solid;}
+.order_info .p{font-size: 30upx;line-height: 60upx;}
+
+
+/* 按钮 */
+.orderLists .btn-item{display: flex;justify-content: flex-end;}
+.orderLists .btn-item .btn-nav{width: 80px;height: 30px;line-height: 28px;border: 1px #ddd solid;border-radius: 15px;color: #555;font-size: 26upx;text-align: center;margin-left: 10px;display: block;}
+.orderLists .btn-item .btn-nav:last-child{background: #FE4543;border: 0;color: #fff;line-height: 30px;}
+.orderLists .btn-item .obtn{border: 1px #ddd solid!important;background: #fff!important;color: #555!important;}

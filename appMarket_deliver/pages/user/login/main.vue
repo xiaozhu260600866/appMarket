@@ -33,7 +33,7 @@
 			</view>
 			<view class="footer-agreement fc-8">
 				<view>登录即同意</view>
-				<view class="main-color" @click="goto('/pages/news/show/main',1)">同城菜场服务条款1</view>
+				<view class="main-color" @click="goto('/pages/news/show/main',1)">同城菜场服务条款</view>
 			</view>
 		</view>
 	</view>
@@ -62,7 +62,7 @@
 			submit(){
 				this.vaildForm(this,res=>{
 					if(res){
-						this.postAjax("/horse/login",this.ruleform).then(msg=>{
+						this.postAjax("/deliver/login",this.ruleform).then(msg=>{
 							if(msg.data.status == 2){
 								 uni.setStorageSync('userInfo',msg.data.user);
 								 uni.setStorageSync('openid',msg.data.user.clientid);
@@ -98,12 +98,11 @@
 			this.ruleform.clientid = info.clientid
 			//#endif
 			//#ifdef H5
-			this.ruleform.clientid = '4f920d3bef2c004744f7cc2ddd47f790'
+			this.ruleform.clientid = '8807d204efddd5951daca31476ec8579'
 			//#endif
 			console.log(this.ruleform);
 			//this.getError(uni.getStorageSync('openid') + '1');
 			//this.ajax();
-			//this.goto("/pages/order/map/main");
 			
 		},
 		onReachBottom() {

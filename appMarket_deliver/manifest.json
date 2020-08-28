@@ -1,0 +1,150 @@
+{
+    "name" : "同城菜场(自提点)",
+    "appid" : "__UNI__CDC10E8",
+    "description" : "",
+    "versionName" : "1.0.0",
+    "versionCode" : "100",
+    "transformPx" : false,
+    /* 5+App特有相关 */
+    "app-plus" : {
+        "capabilities" : {
+            "entitlements" : {
+                "com.apple.developer.associated-domains" : [ "applinks:appmarket.doxinsoft.com" ]
+            }
+        },
+        "usingComponents" : true,
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : true,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        /* 模块配置 */
+        "modules" : {
+            "Push" : {},
+            "Maps" : {},
+            "Bluetooth" : {}
+        },
+        /* 应用发布信息 */
+        "distribute" : {
+            /* android打包配置 */
+            "android" : {
+                "permissions" : [
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ]
+            },
+            /* ios打包配置 */
+            "ios" : {
+                "UIBackgroundModes" : [ "audio" ]
+            },
+            /* SDK配置 */
+            "sdkConfigs" : {
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wx0ec85ae6a6f1860e",
+                        "appsecret" : "31e7c848b4b778b1430342cdf2a1b52a",
+                        "UniversalLinks" : "https://appmarkey.doxinsoft.com/app/"
+                    }
+                },
+                "ad" : {},
+                "payment" : {
+                    "weixin" : {
+                        "appid" : "wx0ec85ae6a6f1860e",
+                        "UniversalLinks" : "https://appmarkey.doxinsoft.com/app/"
+                    },
+                    "alipay" : {}
+                },
+                "push" : {
+                    "unipush" : {}
+                },
+                "maps" : {
+                    "amap" : {
+                        "appkey_ios" : "6de21dad0147d98f322449dbd280102c",
+                        "appkey_android" : "2d083ed0d2aaf83c3c1e3dc54475d4a4"
+                    }
+                }
+            },
+            "icons" : {
+                "android" : {
+                    "hdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/72.png",
+                    "xhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/96.png",
+                    "xxhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/144.png",
+                    "xxxhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/192.png"
+                },
+                "ios" : {
+                    "iphone" : {
+                        "app@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/120.png",
+                        "app@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/180.png",
+                        "spotlight@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/80.png",
+                        "spotlight@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/120.png",
+                        "settings@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/58.png",
+                        "settings@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/87.png",
+                        "notification@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/40.png",
+                        "notification@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/60.png"
+                    }
+                }
+            }
+        },
+        "nativePlugins" : {}
+    },
+    /* 快应用特有相关 */
+    "quickapp" : {},
+    /* 小程序特有相关 */
+    "mp-weixin" : {
+        "appid" : "wxb135e689e76457d2",
+        "setting" : {
+            "urlCheck" : false,
+            "minified" : true
+        },
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "用于记录用户之间的距离，进行近的商家搜索"
+            }
+        }
+    },
+    "mp-alipay" : {
+        "usingComponents" : true
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
+    },
+    "mp-toutiao" : {
+        "usingComponents" : true
+    },
+    "h5" : {
+        "title" : "同城菜场",
+        "domain" : "boss.doxinsoft.com",
+        "router" : {
+            "mode" : "hash",
+            "base" : "/h5/"
+        },
+        "devServer" : {
+            "https" : false
+        },
+        "template" : "C:/Users/doxin/Desktop/demo.html"
+    }
+}

@@ -1,0 +1,11 @@
+.logo{padding: 80upx 0;text-align: center;}
+.logo .img{width: 160upx;height: 160upx;border-radius: 12upx;}
+
+.other-type .wechat{text-align: center;}
+.other-type .wechat .dxi-icon{font-size: 40upx;color: #57C734;display: inline-block;width: 80upx;height: 80upx;text-align: center;line-height: 80upx;border: 1upx #57C734 solid;border-radius: 50%;}
+
+.footer-agreement{position: fixed;bottom: 60upx;text-align: center;left: 0;width: 100%;display: flex;justify-content: center;align-items: center;font-size: 28upx;}
+
+.info-subBtn /deep/.dxi-btn{border-color: #57C734;background-color: #57C734;color: #fff;}
+
+.agreement checkbox{zoom: 70%;display: flex;}
