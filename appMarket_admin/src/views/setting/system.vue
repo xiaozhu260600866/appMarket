@@ -35,6 +35,11 @@
                           <template slot="append">%</template>
                         </el-input>
                       </el-form-item>
+                      <el-form-item label="平台对自提点比例" prop="deliver_ratio" :rules="[{ required: true, message: '内容不能为空'},]">
+                        <el-input v-model="ruleForm.deliver_ratio" class="CinputWidth" style="width:180px">
+                          <template slot="append">%</template>
+                        </el-input>
+                      </el-form-item>
                       <el-form-item label="公司地址" prop="address">
                         <el-input v-model="ruleForm.address" class="CinputWidth" />
                         <el-button @click.prevent="chooseLocation()">重新定位</el-button>

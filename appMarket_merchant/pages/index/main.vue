@@ -13,7 +13,7 @@
 								<view class="time lh-18">下单时间：<text class="Arial">{{ item.payed_at }}</text></view>
 								<view class="order_no lh-18">订单编号：<text class="Arial">{{ item.order_no }}</text></view>
 							</view>
-							<view class="status main-color">{{item.status_message}}</view>
+							<view class="status main-color">{{item.status_message}} ({{item.getShipping}})</view>
 						</view>
 						<view class="info fs-15 fc-3">
 							<view class="flex-between flex-middle">
@@ -45,6 +45,9 @@
 						<view class="print">
 							<dx-button round btnBd="#fff" @click="printf(item)">打印小票</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3 && item.shipping ==2">接单</dx-button>
+							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3 && item.shipping ==4">接单</dx-button>
+							<dx-button round type="success" btnBd="#fff" @click="changeOrder(item,9)" v-if="status == 3 && item.shipping ==3">完成</dx-button>
+							<dx-button round type="success" btnBd="#fff" @click="changeOrder(item,9)" v-if="status == 5 && item.shipping == 1">完成</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="deliver(item)" v-if="status == 3 && item.shipping ==1">发货</dx-button>
 						</view>
 					</view>
@@ -179,6 +182,15 @@
 			this.ajax();
 		},
 		methods: {
+			changeOrder(item,status){
+				this.getConfirm("是否确认操作1",msg=>{
+					this.postAjax("/merchant/order/change",{status:status,id:item.id}).then(msg=>{
+						if(msg.data.status == 2){
+							this.ajax();
+						}
+					});
+				});
+			},
 			submit() {
 				this.vaildForm(this, res => {
 					if (res) {

@@ -4,9 +4,10 @@
 		<view class="mt12 pb50" v-if="data.show">
 			<view class="block-sec">
 				<weui-input v-model="ruleform.shipping" label="配送方式" name="shipping" changeField="value" type="radio" dataKey="shippingArr"
-				 @callback="test" :row="false"></weui-input>
+				 @callback="test" :row="false" v-if="ruleform.shipping == 2 || ruleform.shipping == 4"></weui-input>
 			</view>
-			<view id="address" class="block-sec" v-if="ruleform.shipping == 1">
+			<!-- 如果是骑手取货 || 邮寄astart -->
+			<view id="address" class="block-sec" v-if="ruleform.shipping == 1 || ruleform.shipping == 2">
 				<block v-if="!address">
 					<!-- <view class="add_group" @click="createAddress">
 						<view class="left_txt fc-6">收货地址：<span class="fc-3">(暂无收货地址)</span></view>
@@ -34,7 +35,7 @@
 							</view>
 						</view>
 					</view>
-					<my-picker :picker-list="data.deliverData" column-num="3" @confirm="deliverCallBack">
+					<my-picker :picker-list="data.deliverData" column-num="3" @confirm="deliverCallBack" v-if="ruleform.shipping == 2">
 						<view class="dx-cell">
 							<view class="dx-cell_hd">
 								<view class="dx-label main-color fw-bold" style="width: 200rpx;">选择送达时间</view>
@@ -47,29 +48,40 @@
 					</my-picker>
 				</block>
 			</view>
-			<view class="block-sec" v-if="ruleform.shipping == 2">
-				<view v-if="teamHead.name">
+			<!-- 如果是骑手取货end -->
+			<!-- 如果是自提点start -->
+			<view class="block-sec" v-if="ruleform.shipping == 4">
+				<view v-if="deliver.name">
 					<view class="add-info p10">
 						<view class="info pr15">
 							<view class="fs-17 fc-3 mb5 lh-24">自提地址</view>
-							<view class="add-detail fs-14 fc-3">{{teamHead.community_address}}</view>
-							<view class="fs-14 fc-9 mt3">{{teamHead.community_company_name}}- {{teamHead.phone}}</view>
+							<view class="add-detail fs-14 fc-3">{{deliver.address}}</view>
+							<view class="fs-14 fc-9 mt3">{{deliver.name}}- {{deliver.phone}}</view>
 						</view>
 						<view class="group text-center pl10">
-							<image class="img" :src="teamHead.headerPic" />
-							<view class="name fs-12 fc-3 mt5">{{teamHead.name}}</view>
+							<image class="img" :src="deliver.headerPic" />
+							<view class="name fs-12 fc-3 mt5">{{deliver.name}}</view>
 							<view class="tip">店家</view>
 						</view>
 					</view>
 				</view>
-				<view v-else @click="goto('/pages/order/chooseMerchant/main',1)">
+				<view v-else @click="goto('/pages/order/chooseDeliver/main',1)">
 					<view class="add-add p10">
 						<view class="add-icon dxi-icon dxi-icon-add mr10"></view>
 						<view class="add-txt fs-15">请选择自提点</view>
 						<view class="iconfont icon-right fs-12 fc-9"></view>
 					</view>
 				</view>
+				<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.addr_phone" label="电话" type="text" name="addr_phone" datatype="require"></weui-input>
 			</view>
+			<!-- 如果是自提点end -->
+			<!-- 如果是到店自提start -->
+			<view class="block-sec" v-if="ruleform.shipping == 3">
+				<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.addr_phone" label="电话" type="text" name="addr_phone" datatype="require"></weui-input>
+			</view>
+			<!-- 如果是到店自提end -->
 			<view class="storePro block-sec" v-for="(merchant,index) in data.merchants">
 				<view class="storeName flex-middle">
 					<image class="img" :src="merchant.cover"></image>
@@ -175,7 +187,7 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform: {
-					shipping: 1,
+					shipping: '',
 					send_price: '￥0',
 					weigth_price: '￥0',
 					coupon: '暂无',
@@ -186,10 +198,10 @@
 				address: {},
 				address_id: 0,
 				shippingArr: [{
-					value: 1,
+					value: 2,
 					label: '送货上门'
 				}, {
-					value: 2,
+					value: 4,
 					label: '自提'
 				}],
 				pay_methods: [{
@@ -203,65 +215,18 @@
 					label: '￥5',
 					value: 1
 				}],
-				teamHead: {
-					name: '',
-					community_address: '江门市新会区人民南路10号',
-					community_company_name: '人民南路社区',
-					phone: '13388998899',
-					headerPic: '/static/icon.png',
+				deliver: {
+					
 				},
-				couponArray: [{
-					amount: 50,
-					discount: '',
-					full_amount: 300,
-					type: 3,
-					name: '满减活动',
-					storeName: '顺丰生鲜',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 0
-				}, {
-					amount: 7,
-					discount: '',
-					full_amount: 77,
-					type: 3,
-					name: '七夕优惠',
-					storeName: '北郊商行',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 1
-				}, {
-					amount: 20,
-					discount: '',
-					full_amount: 100,
-					type: 3,
-					name: '优惠券',
-					storeName: '达记生鲜配送中心',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 0
-				}, {
-					amount: 20,
-					discount: '',
-					full_amount: 100,
-					type: 3,
-					name: '优惠券',
-					storeName: '顺丰生鲜',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 0
-				}, {
-					amount: 20,
-					discount: '',
-					full_amount: 100,
-					type: 3,
-					name: '优惠券',
-					storeName: '顺丰生鲜',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 0
-				}]
+				
 			}
+		},
+		onShow(){
+				let deliver = uni.getStorageSync('deliver');
+				if(deliver){
+					this.deliver = deliver;
+					this.ruleform.deliver_id = deliver.id;
+				}
 		},
 		methods: {
 			couponCallBack(item, index) {
@@ -288,10 +253,17 @@
 			formSubmit() {
 				this.vaildForm(this, res => {
 					if (res) {
-						if (!this.address) {
-							this.getError("请添加联系地址");
-							this.createAddress();
-							return false;
+						if(this.ruleform.shipping == 4){
+							if(!this.deliver.name){
+								this.getError("请添加自提点");
+								return false;
+							}
+						}else if(this.ruleform.shipping == 1 || this.ruleform.shipping  == 2){
+							if (!this.address) {
+								this.getError("请添加联系地址");
+								this.createAddress();
+								return false;
+							}
 						}
 						this.ruleform.merchants = this.data.merchants;
 						this.ruleform.address = this.address;
@@ -323,6 +295,9 @@
 
 				}).then(msg => {
 					this.address = msg.address;
+					if(!this.ruleform.shipping){
+						this.ruleform.shipping = msg.shipping;
+					}
 				});
 			}
 		},

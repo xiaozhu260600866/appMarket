@@ -179,7 +179,7 @@
 			}
 		},
 		{
-			"path": "pages/order/chooseMerchant/main",
+			"path": "pages/order/chooseDeliver/main",
 			"style": {
 				"navigationBarTitleText": "选择自提点",
 				"enablePullDownRefresh": false

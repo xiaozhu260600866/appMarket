@@ -32,6 +32,7 @@ export default {
         'tableFields': [
           { 'prop': 'name', 'minWidth': '180', 'append_table_': 0, 'label': '自提点姓名' },
           { 'prop': 'phone', 'minWidth': '180', 'append_table_': 0, 'label': '自提点电话' },
+          { 'prop': 'address', 'minWidth': '180', 'append_table_': 0, 'label': '自提地址' },
           { 'prop': 'cityString', 'minWidth': '180', 'append_table_': 0, 'label': '城市' },
 
           { 'prop': 'amount', 'minWidth': '180', 'append_table_': 0, 'label': '余额' }
@@ -41,6 +42,7 @@ export default {
          { prop: 'city', datatype: 'require', type: 'manyselect', label: '省市区', 'append_form_city': 1, column: 2 },
          { prop: 'market_id', datatype: 'require', type: 'select', label: '市场', datakey: 'market' },
           { prop: 'name', datatype: 'require', type: 'text', label: '自提点名称' },
+          { prop: 'address', datatype: 'require', type: 'location', label: '自提点地址' },
           { prop: 'phone', datatype: 'require|phone', type: 'text', label: '自提点号码' },
           { prop: 'password', datatype: 'require', type: 'password', label: '密码' },
 

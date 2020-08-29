@@ -100,6 +100,7 @@ uni.removeStorageSync('unionid')
 uni.removeStorageSync('distribution');
 uni.removeStorageSync('ztd');
 uni.removeStorageSync('proid');
+uni.removeStorageSync('deliver');
 //uni.setStorageSync('openid', 'ohOO94sLnnf0bzJpqFqigfNxLSto');
 App.mpType = 'app'
 

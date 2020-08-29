@@ -49,6 +49,8 @@ import dxftButton from "doxinui/components/button/footer-button"
 				shippingArr:[
 					{label:'邮寄',value:1},
 					{label:'骑手取货',value:2},
+					{label:'到店自提',value:3},
+				    // {label:'自提点',value:4},
 				],
 				vaildate:{},
 				id:0,

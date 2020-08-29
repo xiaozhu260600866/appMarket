@@ -45,7 +45,7 @@
 		},
 		data() {
 			return {
-				formAction: '/horse/index',
+				formAction: '/deliver/index',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),

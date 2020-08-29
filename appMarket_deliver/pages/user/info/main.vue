@@ -6,11 +6,11 @@
 			<view class="flex-wrap pic_group">
 				<view class="pic_row">
 					<view class="name">身份证人像面</view>
-					<weui-input v-model="ruleform.idCard" type="upload" upurl='horse' name="idCard" disabled="disabled"></weui-input>
+					<weui-input v-model="ruleform.idCard" type="upload" upurl='deliver' name="idCard" disabled="disabled"></weui-input>
 				</view>
 				<view class="pic_row">
 					<view class="name">身份证国徽面</view>
-					<weui-input v-model="ruleform.idCard2" type="upload" upurl='horse' name="idCard2" disabled="disabled"></weui-input>
+					<weui-input v-model="ruleform.idCard2" type="upload" upurl='deliver' name="idCard2" disabled="disabled"></weui-input>
 				</view>
 			</view>
 			<!-- <view class="bg-f mb12">
@@ -27,7 +27,7 @@
 	export default {
 		data() {
 			return {
-				formAction: '/horse/index',
+				formAction: '/deliver/index',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -37,7 +37,7 @@
 		methods: {
 			lgout(){
 				this.getConfirm("是否确认退出登录",()=>{
-					this.postAjax("/horse/lgout").then(msg=>{
+					this.postAjax("/deliver/lgout").then(msg=>{
 						if(msg.data.status == 2){
 							uni.removeStorageSync('userInfo');
 							this.goto("/pages/user/login/main");

@@ -24,7 +24,7 @@
 		},
 		data() {
 			return {
-				formAction: '/horse/come-out-lists?type=1',
+				formAction: '/deliver/come-out-lists?type=1',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),

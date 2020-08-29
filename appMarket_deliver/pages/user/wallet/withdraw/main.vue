@@ -30,7 +30,7 @@
 		},
 		data() {
 			return {
-				formAction: '/horse/index',
+				formAction: '/deliver/index',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -52,7 +52,7 @@
 			submit(){
 				this.vaildForm(this,res=>{
 					if(res){
-						this.postAjax("/horse/wallet",this.ruleform).then(msg=>{
+						this.postAjax("/deliver/wallet",this.ruleform).then(msg=>{
 								if(msg.data.status  == 2){
 									this.ajax();
 								}
