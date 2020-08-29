@@ -77,8 +77,8 @@
 <style>
 	@import url('@/public/css/app.css');
 	@import url('doxinui/css/global_upx.css');
-	@import url('doxinui/css/global_icon.css');
 	@import url('@/public/weui/weui.css');
+	@import url('doxinui/css/global_icon.css');
 	@import url('@/public/font/iconfont.css');
 
 
