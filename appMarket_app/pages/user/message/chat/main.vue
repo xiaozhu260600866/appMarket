@@ -1,23 +1,23 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
-			<view class="chat-lists" v-for="(v,key) in chatLists">
-				<view class="chat-time">{{ v.time }}</view>
-				<view class="chat-con" v-for="(item,index) in v.chatCon">
-					<view class="chat-left chat-item" v-if="item.type == 0">
-						<image class="chat-head" :src="item.chat_head"></image>
-						<view class="chatbox chatbox-left">{{ item.chat_content }}</view>
+		<view v-if="data.show">
+			<view class="chat-lists" v-for="(item,key) in data.lists.data">
+				<view class="chat-time">{{ item.created_at }}</view>
+				<view class="chat-con">
+					<view class="chat-left chat-item" v-if="data.myUser.id != item.user_id">
+						<image class="chat-head" :src="data.merchant.cover"></image>
+						<view class="chatbox chatbox-left">{{ item.content }}</view>
 					</view>
-					<view class="chat-right chat-item" v-if="item.type == 1">
-						<view class="chatbox chatbox-right">{{ item.chat_content }}</view>
-						<image class="chat-head" :src="item.chat_head"></image>
+					<view class="chat-right chat-item" v-else>
+						<view class="chatbox chatbox-right">{{ item.content }}</view>
+						<image class="chat-head" :src="item.getUser.headerPic"></image>
 					</view>
 				</view>
 			</view>
-			<view class="chat-footer">
-				<input class="chat-input" type="text" />
-				<view class="chat-nav">发送</view>
+			<view class="chat-footer" >
+				<input class="chat-input" type="text" v-model="content"/>
+				<view class="chat-nav" @click="add">发送</view>
 			</view>
 		</view>
 	</view>
@@ -27,39 +27,42 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/user/system-message?type=3&bothMessage=1',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
+				merchant_id:"",
+				to_userid:'',
 				getSiteName: this.getSiteName(),
-				chatLists:[{
-					time: '2020-07-08 17:21:13',
-					chatCon:[{
-						type: 1,
-						chat_head: '/static/pro02.jpg',
-						chat_content: '你好'
-					},{
-						type: 1,
-						chat_head: '/static/pro02.jpg',
-						chat_content: '请问这个商品包邮吗？我想买比较多，可以便宜些吗？'
-					},{
-						type: 0,
-						chat_head: '/static/pro03.jpg',
-						chat_content: '您好，您需要多少呢？我们珠三角地区可以包邮的'
-					}]
-				}]
+				content:"",
 			}
 		},
 		methods: {
-			ajax() {
-				this.getAjaxForApp(this, {
-				
-				}).then(msg => {
-					
+			add(){
+				if(!this.content){
+					return  this.getError("请输入内容");
+				}
+				this.postAjax("/user/addSystemMesaage",{to_userid:this.to_userid,content:this.content},"notloading").then(msg=>{
+					if(msg.data.status == 2){
+						this.content= "";
+						this.ajax("notLoing");
+					}
 				});
+			},
+			ajax(notLoing) {
+				this.getAjaxForApp(this, {
+					to_userid:this.to_userid,
+					merchant_id:this.merchant_id
+				}).then(msg => {
+					this.setTitle(msg.merchant.name)
+					this.data.lists.data.reverse();
+					this.toDown();
+				},"notLoing");
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.to_userid = options.to_userid;
+			this.merchant_id = options.merchant_id;
+			this.ajax();
 			
 		},
 		onReachBottom() {

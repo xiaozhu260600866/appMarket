@@ -80,7 +80,7 @@
 						<view class="iconfont icon-pro-shop"></view>
 						<view class="txt">店铺</view>
 					</button>
-					<button class="btn-item share" hover-class="none" @click="phone('0750-3229010')">
+					<button class="btn-item share" hover-class="none" @click="goto('/pages/user/message/chat/main?to_userid='+data.detail.getMerchant.user_id+'&merchant_id='+data.detail.merchant_id)">
 						<view class="iconfont icon-pro-service-o"></view>
 						<view class="txt">客服</view>
 					</button>

@@ -38,6 +38,20 @@
 			}
 		},
 		{
+			"path": "pages/user/message/show/main",
+			"style": {
+				"navigationBarTitleText": "系统信息",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/message/detail/main",
+			"style": {
+				"navigationBarTitleText": "订单信息",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/user/cart/main",
 			"style": {
 				"navigationBarTitleText": "购物车",
@@ -114,13 +128,7 @@
 				"enablePullDownRefresh": true
 			}
 		},
-		{
-			"path": "pages/message/lists/main",
-			"style": {
-				"navigationBarTitleText": "消息",
-				"enablePullDownRefresh": true
-			}
-		},
+		
 		{
 			"path": "pages/search/products/main",
 			"style": {
