@@ -101,9 +101,24 @@ uni.removeStorageSync('ztd');
 uni.removeStorageSync('proid');
 //uni.setStorageSync('openid', 'ohOO94sLnnf0bzJpqFqigfNxLSto');
 App.mpType = 'app'
-
-
-
+	setInterval(()=>{
+		uni.getLocation({
+			// type: 'gcj02', // 返回国测局坐标
+			geocode: true,
+			success: res=>{
+				uni.setStorageSync('latitude',res.latitude);
+				uni.setStorageSync('longitude',res.longitude);
+				Vue.prototype.postAjax("/horse/updateHorseLocation",{latitude:res.latitude,longitude:res.longitude},"notloing");
+			},
+			fail: function(e) {
+				// uni.showToast({
+				// 	icon: 'none',
+				// 	title: '获取地址失败, 请检查是否开启定位权限~~'
+				// })
+			}
+		})
+	},1000);
+				
 const app = new Vue({
 	...App
 })

@@ -154,7 +154,8 @@ import dxftButton from "doxinui/components/button/footer-button"
 			if(options.type){
 				this.type = options.type;
 			}
-			if(options.coupon_id){
+			if(options.coupon_id && options.coupon_id!="undefined" ){
+				
 				this.coupon_id = options.coupon_id;
 			}
 			if(options.operation){

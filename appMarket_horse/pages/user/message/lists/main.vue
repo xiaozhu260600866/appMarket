@@ -66,15 +66,12 @@
 		},
 		data() {
 			return {
-				formAction: '/user/system-message',
+				formAction: '/horse/system-message',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				}
 				
-		},
-		onLoad(){
-			this.ajax();
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
@@ -82,6 +79,9 @@
 		},
 		onReachBottom() {
 			this.hasMore(this);
+		},
+		onLoad(){
+			this.ajax();
 		},
 		methods: {
 			toMessage(item){

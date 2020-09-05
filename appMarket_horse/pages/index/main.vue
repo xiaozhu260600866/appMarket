@@ -132,6 +132,9 @@ import miMap from '@/components/mi-map/mi-map.vue'
 				this.ajax();
 			});
 		},
+		onShow(){
+			this.onShow(this);
+		},
 		methods: {
 			spaceUser(order){
 			   let location_x = uni.getStorageSync('location_x');

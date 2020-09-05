@@ -71,8 +71,12 @@ import miMap from '@/components/mi-map/mi-map.vue'
 		},
 		onLoad(options) {
 			this.getMyAddress(this, msg=>{
+				//alert("1");
 				this.ajax();
 			});
+		},
+		onShow(){
+			this.onShow(this);
 		},
 		methods: {
 			spaceMerchant(order){

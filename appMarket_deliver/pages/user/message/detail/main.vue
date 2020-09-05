@@ -1,15 +1,15 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="mdetail">
-			<view class="md-item block-sec" v-for="(v,key) in detailArray">
+		<view class="mdetail" v-if="data.show">
+			<view class="md-item block-sec" v-for="(v,key) in data.lists.data">
 				<view class="top">
 					<view class="fs-16 fc-0 fw-bold">{{ v.title }}</view>
-					<view class="Arial fs-14 fc-6">{{ v.create_at }}</view>
+					<view class="Arial fs-14 fc-6">{{ v.created_at }}</view>
 				</view>
-				<dx-products-pic :src="v.products.firstCover" :imgWidth="90" :imgHeight="90">
+				<dx-products-pic :src="v.getOrder.products[0].getProduct.firstCover" :imgWidth="90" :imgHeight="90">
 					<view class="right-box">
-						<view class="row fs-15 lh-20">{{ v.message }}</view>
+						<view class="row fs-15 lh-20">{{ v.content }}</view>
 						<view class="row"><dx-button type="danger" size="mini" hollow>查看订单详情</dx-button></view>
 					</view>
 				</dx-products-pic>
@@ -26,7 +26,7 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/deliver/system-message?type=2',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -65,7 +65,7 @@
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

@@ -43,16 +43,14 @@
 					<!-- 待支付 -->
 					<view class="btn-item" v-if="parent.status == 1">
 						<view class="btn-nav" @click="changeOrder(parent)">取消订单</view>
-						<view class="btn-nav" @click="goto('/pages/shop/order/buy/index?order_no='+parent.order_no,1)">去支付</view>
+						<view class="btn-nav" @click="goto('/pages/order/pay_center/main?order_no='+parent.order_no,1)">去支付</view>
 					</view>
 					<!-- 待接单 -->
 					<view class="btn-item" v-if="parent.status == 3">
 						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
-						<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">申请售后</view>
 					</view>
 					<!-- 骑手已接单 -->
 					<view class="btn-item" v-if="parent.status == 5">
-						<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">申请售后</view>
 						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
 					</view>
 					<!-- 6：骑手已取货；7：骑手已送达 -->
@@ -65,14 +63,12 @@
 					</view> -->
 					<!-- 已完成 -->
 					<view class="btn-item" v-if="parent.status == 9">
-						<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">申请售后</view>
+					
 						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
 						<view class="btn-nav" @click="goto('/pages/order/evaluate/main?order_no='+parent.order_no,1)">{{parent.suggestStatus == 0 ? '去评价' : '已评价'}}</view>
 					</view>
 					<!-- 售后中-->
-					<view class="btn-item" v-if="parent.status == 10">
-						<view class="btn-nav obtn" @click="goto('/pages/shop/order/after-sale/index?order_no='+parent.order_no,1)">售后详情</view>
-					</view>
+					
 				</view>
 			</view>
 			<hasMore :parentData="data"></hasMore>

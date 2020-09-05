@@ -57,19 +57,34 @@
 			}
 		},
 		{
-			"path": "pages/message/lists/main",
+			"path": "pages/user/message/chat/main",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/message/lists/main",
 			"style": {
 				"navigationBarTitleText": "消息",
 				"enablePullDownRefresh": true
 			}
 		},
 		{
-			"path": "pages/message/chat/main",
+			"path": "pages/user/message/show/main",
 			"style": {
-				"navigationBarTitleText": "东风生鲜",
+				"navigationBarTitleText": "系统信息",
 				"enablePullDownRefresh": true
 			}
 		},
+		{
+			"path": "pages/user/message/detail/main",
+			"style": {
+				"navigationBarTitleText": "订单信息",
+				"enablePullDownRefresh": true
+			}
+		},
+
 		{
 			"path": "pages/order/detail/main",
 			"style": {
@@ -149,7 +164,7 @@
 				"selectedIconPath": "static/image/A02.png"
 			},
 			{
-				"pagePath": "pages/message/lists/main",
+				"pagePath": "pages/user/message/lists/main",
 				"text": "消息",
 				"iconPath": "static/image/E01.png",
 				"selectedIconPath": "static/image/E02.png"

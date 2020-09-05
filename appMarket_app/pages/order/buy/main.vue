@@ -185,6 +185,7 @@
 				formAction: '/order/buy',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
+				order_no:"",
 				getSiteName: this.getSiteName(),
 				ruleform: {
 					shipping: '',
@@ -310,6 +311,9 @@
 			}
 			if (options.group) {
 				this.group = options.group
+			}
+			if(options.order_no){
+				this.order_no  = options.order_no;
 			}
 			// var day2 = new Date();
 			// day2.setTime(day2.getTime());

@@ -1,8 +1,8 @@
 <template>
-	<view>
+	<view v-if="data.show">
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="bg-f ndetail">
-			<dx-list-msg :name="v.title" :content="v.content"  v-for="(v,key) in detailLists" :conTop="5">
+			<dx-list-msg :name="v.title" :content="v.content"  v-for="(v,key) in data.lists.data" :conTop="5">
 				<view slot="left">
 					<view class="licon"></view>
 				</view>
@@ -22,15 +22,10 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/merchant/system-message?type=1',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
-				getSiteName: this.getSiteName(),
-				detailLists:[{
-					title: '您的账号已审核成功',
-					content: '您的账号已审核成功',
-					create_at: '06-17 16:51'
-				}]
+				getSiteName: this.getSiteName()
 			}
 		},
 		methods: {
@@ -43,7 +38,7 @@
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

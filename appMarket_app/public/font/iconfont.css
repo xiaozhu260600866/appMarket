@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'iconfont';  /* project id 1369426 */
-  src: url('https://at.alicdn.com/t/font_1369426_212ugp61qeq.eot');
-  src: url('https://at.alicdn.com/t/font_1369426_212ugp61qeq.eot?#iefix') format('embedded-opentype'),
-  url('https://at.alicdn.com/t/font_1369426_212ugp61qeq.woff2') format('woff2'),
-  url('https://at.alicdn.com/t/font_1369426_212ugp61qeq.woff') format('woff'),
-  url('https://at.alicdn.com/t/font_1369426_212ugp61qeq.ttf') format('truetype'),
-  url('https://at.alicdn.com/t/font_1369426_212ugp61qeq.svg#iconfont') format('svg');
+  src: url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.eot');
+  src: url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.woff2') format('woff2'),
+  url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_1369426_ghfwtc1tews.svg#iconfont') format('svg');
 }
 
 /* 商城图标 */
@@ -21,25 +21,19 @@
 .icon-dis-phone:before{content: "\f910";}/* 电话 */
 .icon-cart:before{content: "\f903";}/*购物车 */
 .icon-cart-del:before{content: "\f904";}/* 购物车del */
-.icon-location-c-fill:before{content: "\f6a2";}/* 定位 */
+.icon-date:before{content: "\f604";}/* 日期 */
 
-.icon-user-qrcode:before{content: "\f633";}/* 二维码 */
+
+.icon-user-qrcode:before{content: "\e603";}/* 二维码 */
 .icon-shop-wechat:before{content: "\f678";}/* 微信 */
-
-
-.icon-intergral-record:before{content: "\f309";}/* 积分记录 */
-
-
-.icon-dis-income:before{content: "\f6c8";}/*  */
-.icon-dis-record:before{content: "\f64f";}/*  */
+.icon-message-email:before{content: "\f695";}/* 信封 */
+.icon-message-notice:before{content: "\f689";}/* 公告 */
+.icon-message-send:before{content: "\f694";}/* 公告 */
 
 
 .icon-login-userName:before{content: "\f612";}/* 登录账号 */
 .icon-login-passwork:before{content: "\f611";}/* 登录密码 */
 .icon-login-phone:before{content: "\f610";}/* 登录手机 */
-
-
-.icon-index-star-c:before{content: "\e609";}/*  */
 
 
 .icon-pro-cart:before{content: "\f903";}/* 商品详情-购物车 */
@@ -50,6 +44,8 @@
 .icon-pro-class-top:before{content: "\ff9c";}/* 向上 */
 .icon-pro-class-bottom:before{content: "\ff8c";}/* 向下 */
 .icon-pro-shop:before{content: "\f311";}/* 商城 */
+.icon-pro-hot:before{content: "\f64a";}/* 热销 */
+.icon-pro-discount:before{content: "\f70b";}/* 折扣 */
 
 
 .icon-count-plus:before{content: "\f906";}/* 加号 */
@@ -60,15 +56,14 @@
 .icon-staryes:before{content: "\f908";}/* 已收藏 */
 
 
-.icon-user-coupon:before{content: "\f306";}/* 优惠券 */
-.icon-user-fxdr:before{content: "\f6c9";}/* 邀请返利 */
-.icon-user-integral:before{content: "\f302";}/* 积分商城 */
-.icon-user-collection:before{content: "\f308";}/* 我的收藏 */
-.icon-user-joinin:before{content: "\f614";}/* 加盟 */
-.icon-user-address:before{content: "\f307";}/* 地址管理 */
-.icon-user-info:before{content: "\f501";}/* 账户信息 */
-.icon-user-service:before{content: "\f903";}/* 在线客服 */
-.icon-user-group:before{content: "\f304";}/* 我的拼团 */
+.icon-user-products:before{content: "\f608";}/* 商品 */
+.icon-user-evaluate:before{content: "\f63a";}/* 评价 */
+.icon-user-wallet:before{content: "\f64c";}/* 钱包 */
+.icon-user-order:before{content: "\e63c";}/* 订单 */
+.icon-user-finance-pro:before{content: "\e6cb";}/* 菜品分析 */
+.icon-user-finance-client:before{content: "\e664";}/* 顾客分析 */
+.icon-user-coupon:before{content: "\f306";}/* 优惠活动 */
+.icon-user-news:before{content: "\f684";}/* 店铺公告 */
 
 
 .icon-keyboard-off:before{content: "\f65f";}/* 关闭键盘 */
