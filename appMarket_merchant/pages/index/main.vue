@@ -43,7 +43,7 @@
 							<view class="price">￥{{ item.amount }}</view>
 						</view>
 						<view class="print">
-							<dx-button round btnBd="#fff" @click="printf(item)">打印小票</dx-button>
+							<dx-button round btnBd="#fff" @click="printf(item)">打印小票{{item.shipping}}</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3 && item.shipping ==2">接单</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3 && item.shipping ==4">接单</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="changeOrder(item,9)" v-if="status == 3 && item.shipping ==3">完成</dx-button>

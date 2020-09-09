@@ -27,12 +27,12 @@
 					<p class="num fs-18 fc-3">{{user ? user.amount:0}}</p>
 					<p class="name fs-13 fc-6">余额</p>
 				</view>
-				<view class="c-item" @click="checkLogin('/pages/user/integral/lists/main',1)">
+				<!-- <view class="c-item" @click="checkLogin('/pages/user/integral/lists/main',1)">
 					<p class="num fs-18 fc-3">{{user? user.integral :0}}</p>
 					<p class="name fs-13 fc-6">积分</p>
-				</view>
+				</view> -->
 				<view class="c-item" @click="checkLogin('/pages/user/coupon/lists/main',1)">
-					<p class="num fs-18 fc-3">0</p>
+					<p class="num fs-18 fc-3">{{data.couponOrderNum}}</p>
 					<p class="name fs-13 fc-6">优惠券</p>
 				</view>
 			</view>
@@ -50,17 +50,17 @@
 					{url:'/pages/order/lists/main?status=3',type: 1,cover:'/static/order-icon02.png',name:'待发货',number:data.order3},
 					{url:'/pages/order/lists/main?status=5',type: 1,cover:'/static/order-icon03.png',name:'待收货',number:data.order5},
 					{url:'/pages/order/lists/main?status=9',type: 1,cover:'/static/order-icon04.png',name:'待评价',number:data.order9},
-					{url:'/pages/order/lists/main?status=10',type: 1,cover:'/static/order-icon05.png',name:'售后',number:data.order10}
-				]" @click="checkAuth" isAuth myclass="bdr12" :num="5" :imgWidth="30" :imgHeight="30" :imgR="0" :nameSize="12" :namePTop="5"></dx-nav-class>
+				
+				]" @click="checkAuth" isAuth myclass="bdr12" :num="4" :imgWidth="30" :imgHeight="30" :imgR="0" :nameSize="12" :namePTop="5"></dx-nav-class>
 			</view>
 			<view class="ugorup-box bg-f mb8">
 				<dx-title name="常用工具" nameBold="bold" :nameSize="15" :height="40"></dx-title>
 				<dx-nav-class :data="[
 					{url:'/pages/user/coupon/lists/main',type: 1,icon:'iconfont icon-user-coupon',name:'优惠券'},
 					{url:'/pages/distribution/index/main',type: 1,icon:'iconfont icon-user-fxdr',name:'邀请返利'},
-					{url:'/pages/integral/lists/main',type: 1,icon:'iconfont icon-user-integral',name:'积分商城'},
+					//{url:'/pages/integral/lists/main',type: 1,icon:'iconfont icon-user-integral',name:'积分商城'},
 					{url:'/pages/user/collection/main',type: 1,icon:'iconfont icon-user-collection',name:'我的收藏'},
-					{url:'/pages/news/show/main',type: 1,icon:'iconfont icon-user-joinin',name:'加盟'},
+					{url:'/pages/news/show/main?id=235',type: 1,icon:'iconfont icon-user-joinin',name:'加盟'},
 					{url:'/pages/user/address/lists/main',type: 1,icon:'iconfont icon-user-address',name:'地址管理'},
 					{url:'/pages/user/info/main',type: 1,icon:'iconfont icon-user-info',name:'账户信息'}
 				  ]" @click="checkAuth" isAuth myclass="bdr12" :num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5">

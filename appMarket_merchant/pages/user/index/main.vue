@@ -53,7 +53,7 @@
 					{url:'/pages/product/lists/main',type: 1,icon:'iconfont icon-user-products',name:'商品'},
 					{url:'/pages/user/evaluate/main',type: 1,icon:'iconfont icon-user-evaluate',name:'评价'},
 					{url:'/pages/user/wallet/index/main',type: 1,icon:'iconfont icon-user-wallet',name:'钱包'},
-					{url:'/pages/index/main',type: 2,icon:'iconfont icon-user-order',name:'订单'},
+					{url:'/pages/order/lists/main',type: 1,icon:'iconfont icon-user-order',name:'订单'},
 					{url:'/pages/user/finance/products',type: 1,icon:'iconfont icon-user-finance-pro',name:'商品分析'},
 					{url:'/pages/user/finance/client',type: 1,icon:'iconfont icon-user-finance-client',name:'顾客分析'},
 					{url:'/pages/user/discounts/lists/main',type: 1,icon:'iconfont icon-user-coupon',name:'优惠活动'},

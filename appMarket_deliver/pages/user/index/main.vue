@@ -74,8 +74,8 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 				},
 				applyArray:[
 					{
-						url:'/pages/index/main',
-						type: 2,
+						url:'/pages/order/lists/main',
+						type: 1,
 						icon:'iconfont icon-user-order',
 						name:'我的订单'
 					},{

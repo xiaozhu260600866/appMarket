@@ -1,43 +1,52 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
-			<dx-tabs :tabs="tabs" v-model="data.query.status" @change="change" selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
-			<view class="orderLists mb10" v-for="(parent,key) in orderLists">
-				<view class="order_date plr10 bd-be fs-15 fc-3">
-					<view class="time">
-						期望<text class="Arial">{{ parent.send_date }} {{parent.send_time}}</text>到达
-					</view>
-					<view class="state fs-14">{{parent.status_message}}</view>
+		<view v-if="data.show">
+			<view class="order-count main-bg fc-white">
+				<view class="c-item">
+					<view class="num fs-24">{{data.orderCount}}<text class="fs-14">单</text></view>
+					<view class="name fs-13">累计完成订单</view>
 				</view>
+				<view class="c-item">
+					<view class="num fs-24">{{ data.orderCancelCount }}<text class="fs-14">单</text></view>
+					<view class="name fs-13">累计取消订单</view>
+				</view>
+			</view>
+			<dx-tabs :tabs="tabs" v-model="status" @change="tabClick" selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
+			<view class="p15 flex-between flex-middle fc-6 pb0">
+			
+				<weui-input v-model="ruleform.start_date" type="date" name="start_date" v-if="dataShow"></weui-input>
+				<view class="and"  v-if="dataShow">—</view>
+				<weui-input v-model="ruleform.end_date" type="date" name="end_date" @callback="search_" v-if="dataShow"></weui-input>
+				
+				<view class="iconfont icon-date fs-17" @click="dataShow = !dataShow"></view>
+			</view>
+			<view class="orderLists mb10" v-for="(parent,key) in data.lists.data" >
+				<view class="order_date plr10 bd-be fs-15 fc-3" @click="goto('/pages/order/detail/main?order_no='+parent.order_no,1)">
+					<view class="fs-14 flex1">
+						<view class="time lh-20">下单时间：<text class="Arial">{{ parent.created_at }}</text></view>
+						<view class="order_no lh-20">订单编号：<text class="Arial">{{ parent.order_no }}</text></view>
+					</view>
+					<view class="fs-14 text-right">
+						<view class="price lh-20">￥{{parent.amount}}</view>
+						<view class="state lh-20 fs-13">{{parent.status_message}}</view>
+					</view>
+				</view>
+				<view class="pro fw-bold plr15 pt10 fs-15"><text v-for="(v,num) in parent.products">{{ v.getProduct.name }}{{ v.num }}件,</text></view>
 				<view class="buy_info fs-15">
 					<view class="flex-between flex-middle">
 						<view class="flex1">
-							<view class="name lh-24">{{ parent.getUser.name }}</view>
+							<view class="name lh-24">{{ parent.addr_name }}<text class="Arial pl10">{{ parent.addr_phone }}</text></view>
+							<view class="address mt5 fc-6">{{ parent.addr_address }}</view>
 						</view>
-						<view class="flex-middle">
-							<view class="icon dxi-icon dxi-icon-location-fill mr12"></view>
-							<view class="icon dxi-icon dxi-icon-tel-fill" @click="phone(parent.getUser.phone)"></view>
+						<view class="icon-grop">
+							<view class="icon dxi-icon dxi-icon-location-fill" @click="location(parent.location_x,parent.location_y,parent.addr_address)"></view>
+							<view class="icon dxi-icon dxi-icon-tel-fill" @click="phone(parent.addr_phone)"></view>
 						</view>
-					</view>
-					<view class="address mt5 fc-6">{{ parent.getUser.address }}</view>
-				</view>
-				<view class="order_info flex-middle" @click="goto('/pages/order/detail/main')">
-					<view class="flex1">
-						<view class="p">下单时间：<text class="Arial">{{ parent.created_at }}</text></view>
-						<view class="p">订单日期：<text class="Arial">{{ parent.order_no }}</text></view>
-						<view class="p">订单总额：<text class="price">￥{{ parent.amount }}</text></view>
-					</view>
-					<view class="dxi-icon dxi-icon-right fs-12 fc-9"></view>
-				</view>
-				<view class="btn-group ptb8 plr10">
-					<view class="btn-item">
-						<view class="btn-nav">打印小票</view>
-						<view class="btn-nav inbtn">删除</view>
 					</view>
 				</view>
 			</view>
-			<!-- <hasMore :parentData="data" source="order"></hasMore> -->
+			<hasMore :parentData="data" source="order"></hasMore>
 		</view>
 	</view>
 </template>
@@ -52,54 +61,55 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/user/order-lists',
+				formAction: '/merchant/order-count',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				status: 12,
+				ruleform:{},
+				dataShow:false,
 				tabs: [{
 					value:12,
-					name: "全部"
+					name: "历史订单"
 				}, {
-					value:3,
-					name: "进行中"
-				},{
-					value:5,
-					name: "已完成"
-				},{
 					value:9,
-					name: "已取消"
+					name: "今日完成单"
 				},{
-					value:99,
-					name: "售后退款"
+					value:0,
+					name: "今日取消单"
 				}],
-				orderLists:[{
-					status: 1,
-					created_at:'2020-06-23 10:15:39',
-					order_no: 2018020502622230,
-					send_date: '06-25',
-					send_time: '10:30-11:30',
-					status_message: '待支付',
-					amount: 0.02,
-					getUser:{
-						name:'林生',
-						phone: 13380951183,
-						address: '广东省江门市蓬江区仓后街送'
-					}
-				}]
+				
 			}
 		},
 		methods: {
+			tabClick(){
+				this.ajax();
+			},
+			search_(){
+				this.getAjaxForApp(this,
+					{created_at_start:this.ruleform.start_date,created_at_end:this.ruleform.end_date}
+				).then(msg => {
+					
+				});
+			},
 			ajax() {
-				this.getAjaxForApp(this, {
-				
-				}).then(msg => {
+				var options={};
+				if(this.status == 12){
+					options={status:9};
+				}else if(this.status == 9){
+					options={status:9,searchType:'today'};
+				}else if(this.status == 0){
+					options={status:0,searchType:'today'};
+				}
+				this.getAjaxForApp(this, 
+					options
+				).then(msg => {
 					
 				});
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		onReachBottom() {
 			this.hasMore(this);

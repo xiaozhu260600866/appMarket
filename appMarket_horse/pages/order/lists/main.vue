@@ -32,7 +32,7 @@
 						<view class="state lh-20 fs-13">{{parent.status_message}}</view>
 					</view>
 				</view>
-				<view class="pro fw-bold plr15 pt10 fs-15"><text v-for="(v,num) in parent.products.lists">{{ v.name }}{{ v.num }}斤,</text></view>
+				<view class="pro fw-bold plr15 pt10 fs-15"><text v-for="(v,num) in parent.products">{{ v.getProduct.name }}{{ v.num }}件,</text></view>
 				<view class="buy_info fs-15">
 					<view class="flex-between flex-middle">
 						<view class="flex1">

@@ -24,7 +24,7 @@
 			<view class="orderLists mb10" v-for="(parent,key) in data.lists.data" >
 				<view class="order_date plr10 bd-be fs-15 fc-3" @click="goto('/pages/order/detail/main?order_no='+parent.order_no,1)">
 					<view class="fs-14 flex1">
-						<view class="time lh-20">下单时间：<text class="Arial">{{ parent.created_at }}</text></view>
+						<view class="time lh-20">下单时间：<text class="Arial">{{ parent.created_at }} </text></view>
 						<view class="order_no lh-20">订单编号：<text class="Arial">{{ parent.order_no }}</text></view>
 					</view>
 					<view class="fs-14 text-right">
@@ -32,7 +32,7 @@
 						<view class="state lh-20 fs-13">{{parent.status_message}}</view>
 					</view>
 				</view>
-				<view class="pro fw-bold plr15 pt10 fs-15"><text v-for="(v,num) in parent.products.lists">{{ v.name }}{{ v.num }}斤,</text></view>
+					<view class="pro fw-bold plr15 pt10 fs-15"><text v-for="(v,num) in parent.products">{{ v.getProduct.name }}{{ v.num }}件,</text></view>
 				<view class="buy_info fs-15">
 					<view class="flex-between flex-middle">
 						<view class="flex1">
@@ -61,7 +61,7 @@
 		},
 		data() {
 			return {
-				formAction: '/horse/order-count',
+				formAction: '/deliver/order-count',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),

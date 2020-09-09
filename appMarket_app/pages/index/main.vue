@@ -52,7 +52,7 @@
 				</view>
 			</view>
 			<view v-if="v.product.data.length">
-				<dx-products-scroll  @click="toProduct" :data="v.product.data" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100"imgHeight="180rpx" :itemLRMargin="3"></dx-products-scroll>
+				<dx-products-scroll  @click="toProductI" :data="v.product.data" bgColor="transparent" myclass="p0 markt-pro" :itemWidth="100"imgHeight="180rpx" :itemLRMargin="3"></dx-products-scroll>
 			</view>
 		</view>
 		<!-- 市场列表 -->
@@ -112,7 +112,7 @@ import filterKm from '@/components/filterKm';
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			//this.ajax();
+			this.ajax();
 		},
 		onShow(){
 			 if(uni.getStorageSync('city')){
@@ -172,9 +172,10 @@ import filterKm from '@/components/filterKm';
 					this.userInfo = msg;
 				});
 			},
-			toProduct(item){
+			toProductI(item){
 				console.log(item);
-				return this.goto("/pages/product/show/main?id="+item.id,1);
+				return this.toProduct(item);
+				
 			},
 			ajax() {
 				this.getAjaxForApp(this, {
