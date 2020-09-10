@@ -5,14 +5,8 @@
 			<dx-list-msg  :imgWidth="44" :imgHeight="44" 
 			 :content="item.content" v-for="(item,key) in data.systemLists" @click="goto('/pages/user/message/show/main',1)">
 				<view slot="left">
-					<view class="licon systemI" v-if="item.type == 1">
+					<view class="licon systemI">
 						<text class="iconfont icon-message-notice"></text>
-					</view>
-					<view class="licon orderI" v-if="item.type == 2">
-						<text class="iconfont icon-message-email"></text>
-					</view>
-					<view class="licon sendI" v-if="item.type == 3">
-						<text class="iconfont icon-message-send"></text>
 					</view>
 				</view>
 				<view slot="right">
@@ -25,14 +19,8 @@
 			<dx-list-msg  :imgWidth="44" :imgHeight="44"
 			 :content="item.content" v-for="(item,key) in data.orderLists" @click="goto('/pages/user/message/detail/main',1)">
 				<view slot="left">
-					<view class="licon systemI" v-if="item.type == 1">
-						<text class="iconfont icon-message-notice"></text>
-					</view>
-					<view class="licon orderI" v-if="item.type == 2">
+					<view class="licon orderI">
 						<text class="iconfont icon-message-email"></text>
-					</view>
-					<view class="licon sendI" v-if="item.type == 3">
-						<text class="iconfont icon-message-send"></text>
 					</view>
 				</view>
 				<view slot="right">
