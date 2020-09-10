@@ -1,6 +1,6 @@
 /* 头部 */
 .head-info{background-image: linear-gradient(to bottom, #57C734, #5ed938);}
-.utop{width: 100%;padding: 60upx 40upx 120upx;}
+.utop{width: 100%;padding: 120upx 40upx;}
 .utop .uinfo{display: flex;align-items: center;position: relative;}
 .utop .uinfo .header-img .img{width: 120upx;height: 120upx;border-radius: 50%;border: 4upx #fff solid;display: flex;}
 .utop .uinfo .right{flex: 1;overflow: hidden;}

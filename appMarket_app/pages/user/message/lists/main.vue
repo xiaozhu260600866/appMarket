@@ -42,9 +42,8 @@
 					</view>
 				</view>
 			</dx-list-msg>
-			<dx-list-msg  :imgSrc="item.getUser.headerPic" :imgWidth="44" :imgHeight="44"
+			<dx-list-msg  :imgSrc="item.getUser.headerPic" :imgWidth="44" :imgHeight="44" :name="item.title"
 			 :content="item.content" v-for="(item,key) in data.lists.data" @click="toMessage(item)">
-		
 				<view slot="right">
 					<view class="right-box">
 						<view class="time fs-12 fc-9 Arial">{{item.created_at}}</view>
