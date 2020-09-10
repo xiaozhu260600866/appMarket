@@ -2,37 +2,25 @@
 	<view>
 		<view class="bg-f message" v-if="data.show">
 		
-			<dx-list-msg  :imgWidth="44" :imgHeight="44" 
+			<dx-list-msg  :imgWidth="44" :imgHeight="44" name="系统通知"
 			 :content="item.content" v-for="(item,key) in data.systemLists" @click="goto('/pages/user/message/show/main',1)">
 				<view slot="left">
-					<view class="licon systemI" v-if="item.type == 1">
+					<view class="licon systemI">
 						<text class="iconfont icon-message-notice"></text>
-					</view>
-					<view class="licon orderI" v-if="item.type == 2">
-						<text class="iconfont icon-message-email"></text>
-					</view>
-					<view class="licon sendI" v-if="item.type == 3">
-						<text class="iconfont icon-message-send"></text>
 					</view>
 				</view>
 				<view slot="right">
 					<view class="right-box">
 						<view class="time fs-12 fc-9 Arial">{{item.created_at}}</view>
-						 <view class="num" v-if="item.meassage_num>0">{{item.meassage_num}}</view>
+						<view class="num" v-if="item.meassage_num>0">{{item.meassage_num}}</view>
 					</view>
 				</view>
 			</dx-list-msg>
-			<dx-list-msg  :imgWidth="44" :imgHeight="44"
+			<dx-list-msg  :imgWidth="44" :imgHeight="44" :name="item.title"
 			 :content="item.content" v-for="(item,key) in data.orderLists" @click="goto('/pages/user/message/detail/main',1)">
 				<view slot="left">
-					<view class="licon systemI" v-if="item.type == 1">
-						<text class="iconfont icon-message-notice"></text>
-					</view>
-					<view class="licon orderI" v-if="item.type == 2">
+					<view class="licon orderI">
 						<text class="iconfont icon-message-email"></text>
-					</view>
-					<view class="licon sendI" v-if="item.type == 3">
-						<text class="iconfont icon-message-send"></text>
 					</view>
 				</view>
 				<view slot="right">
@@ -42,7 +30,7 @@
 					</view>
 				</view>
 			</dx-list-msg>
-			<dx-list-msg  :imgSrc="item.getUser.headerPic" :imgWidth="44" :imgHeight="44"
+			<dx-list-msg :imgSrc="item.getUser.headerPic" :imgWidth="44" :imgHeight="44" :name="item.title"
 			 :content="item.content" v-for="(item,key) in data.lists.data" @click="toMessage(item)">
 		
 				<view slot="right">
