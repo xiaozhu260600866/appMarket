@@ -2,7 +2,7 @@
 	<view>
 		<view class="bg-f message" v-if="data.show">
 		
-			<dx-list-msg  :imgWidth="44" :imgHeight="44" 
+			<dx-list-msg  :imgWidth="44" :imgHeight="44"  name="系统消息"
 			 :content="item.content" v-for="(item,key) in data.systemLists" @click="goto('/pages/user/message/show/main',1)">
 				<view slot="left">
 					<view class="licon systemI">
@@ -16,7 +16,7 @@
 					</view>
 				</view>
 			</dx-list-msg>
-			<dx-list-msg  :imgWidth="44" :imgHeight="44"
+			<dx-list-msg  :imgWidth="44" :imgHeight="44" :name="item.title"
 			 :content="item.content" v-for="(item,key) in data.orderLists" @click="goto('/pages/user/message/detail/main',1)">
 				<view slot="left">
 					<view class="licon orderI">
