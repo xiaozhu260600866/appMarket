@@ -16,7 +16,7 @@
 				</view>
 			</view>
 			
-			<view class="ugorup-box bg-f mb8 count">
+			<view class="ugorup-box bg-f mb8">
 				<view class="head-count">
 					<view class="c-item" @click="goto('/pages/user/wallet/index/main',1)">
 						<view class="num fs-18 fc-3">{{data.toDayInSum}}<text class="fs-14">元</text></view>
