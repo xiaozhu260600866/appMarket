@@ -1,10 +1,10 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
+		<view v-if="data.show">
 			<view class="count-header main-bg">
 				<view class="name fs-18 fc-white">我的积分</view>
-				<view class="count-num Arial">{{data.integral?data.integral : 0}}</view>
+				<view class="count-num Arial">{{data.user.integral?data.user.integral : 0}}</view>
 				<view @click="goto('/pages/user/integral/lists/main',1)" class="record fs-14 fc-white">明细</view>
 			</view>
 			<view class="list-group block-sec">
@@ -26,13 +26,11 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/user',
+				formAction: '/user',
 				mpType: 'page', //用来分清父和子组件
-				// data: this.formatData(this),
+				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				data:{
-					integral: 25000,
-				}
+				
 			}
 		},
 		onReachBottom() {
@@ -50,7 +48,7 @@
 		},
 		methods: {
 			ajax() {
-				this.getAjax(this).then(msg => {
+				this.getAjaxForApp(this).then(msg => {
 					console.log(this.data);
 				});
 			}

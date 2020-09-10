@@ -17,6 +17,7 @@ import horseRouter from './modules/horse'
 import deliverRouter from './modules/deliver'
 import feedbackRouter from './modules/feedback'
 import disRouter from './modules/dis'
+import integralRouter from './modules/integral'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -105,7 +106,9 @@ export const asyncRoutes = [
   horseRouter,
   deliverRouter,
   disRouter,
+  integralRouter,
   settingRouter,
+
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

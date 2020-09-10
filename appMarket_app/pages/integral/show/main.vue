@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
+		<view v-if="data.show">
 			<view class="show_banner">
 				<myswiper :lists="data.covers" purl="product"></myswiper>
 			</view>
@@ -37,22 +37,12 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/integral/show',
+				formAction: '/integral/show',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				data:{
-					covers:[
-						{cover:'/static/pro01.jpg'},
-						{cover:'/static/pro02.jpg'},
-					],
-					product:{
-						name: '新鲜芒果',
-						integral: '200',
-						content:'新鲜芒果'
-					},
-					integral:25000,
-				}
+				id:''
+				
 			}
 		},
 		onReachBottom() {
@@ -60,13 +50,14 @@
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			//this.ajax();
+			this.ajax();
 		},
 		onShareAppMessage() {
 			return this.shareSource(this, '商城');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.id = options.id;
+			this.ajax();
 		},
 		methods: {
 			toBuy() {
@@ -81,7 +72,7 @@
 				});
 			},
 			ajax() {
-				this.getAjax(this).then(msg => {
+				this.getAjaxForApp(this,{id:this.id}).then(msg => {
 					console.log(this.data);
 				});
 			}
