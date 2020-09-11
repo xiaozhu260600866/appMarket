@@ -22,6 +22,12 @@ const integralRouter = {
           meta: { title: '订单列表', icon: 'documentation', params: { status: 3 }}
         },
         {
+          path: 'order-info',
+          component: () => import('@/views/integral/order/info'),
+          name: 'integralOrderInfo',
+          meta: { title: '订单内容', icon: 'documentation', params: { status: 3 }}
+        },
+        {
             path: 'create',
             component: () => import('@/views/integral/create_edit'),
             hidden: true,

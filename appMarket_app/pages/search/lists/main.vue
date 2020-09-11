@@ -1,13 +1,14 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
+		<view v-if="data.show">
 			<view class="Lsearch">
 				<view class="flex1 pr15"><weui-input v-model="ruleform.name" placeholder="搜索内容" type="text" name="name" datatype="require"></weui-input></view>
 				<dx-button type="success" @click="ajax">搜索</dx-button>
 			</view>
-			<shop-list :data="data.merchantLists.data"></shop-list>
-			<store-pro :data="data.lists.data" :canBuy="false"></store-pro>
+			
+			 <shop-list :data="merchantLists.data"></shop-list>
+			<store-pro :data="lists.data" :canBuy="false"></store-pro>
 		</view>
 	</view>
 </template>
@@ -23,19 +24,25 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				ruleform:{}
+				lists:{data:[]},
+				merchantLists:{data:[]},
+				ruleform:{name:''}
 			}
 		},
 		methods: {
 			ajax() {
-				this.getAjaxForApp(this, {
+				console.log( this.ruleform.name);
+				this.postAjax(this.formAction, {
 					name:this.ruleform.name
 				}).then(msg => {
-					
+					this.lists = msg.data.lists;
+					this.merchantLists = msg.data.merchantLists;
+					this.data.show = true;
 				});
 			}
 		},
 		onLoad(options) {
+			console.log( options.name);
 			this.ruleform.name = options.name;
 			this.ajax();
 			
