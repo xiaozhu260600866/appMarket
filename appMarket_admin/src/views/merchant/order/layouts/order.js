@@ -62,17 +62,17 @@ export default {
            }]
        },
         'tableFields': [
-            { 'prop': 'order_no', 'minWidth': '', 'width': '120', 'append_table_cover': 0, 'label': '订单号' },
-            { 'prop': 'product_str', 'minWidth': '180', 'width': '', 'append_table_': 0, 'label': '产品名称' },
-            { 'prop': 'getMerchant.name', 'minWidth': '100', 'width': '', 'append_table_': 0, 'label': '商家名称' },
-            { 'prop': 'amount', 'minWidth': '', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '金额' },
-            { 'prop': 'num', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '数量' },
-            { 'prop': 'addr_name', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '购买者' },
-            { 'prop': 'addr_phone', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '购买者手机号码' },
-            { 'prop': 'addr_address', 'minWidth': '120', 'width': '', 'append_table_': 0, 'label': '购买者地址' },
-            { 'prop': 'merchant_at', 'minWidth': '120', 'width': '', 'append_table_': 0, 'label': '商家接单时间' },
-            { 'prop': 'horse_at', 'minWidth': '120', 'width': '', 'append_table_': 0, 'label': '骑手接单时间' },
-            { 'prop': 'payed_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '支付日期' }
+            { 'prop': 'order_no', 'width': '110', 'append_table_cover': 0, 'label': '订单号' },
+            { 'prop': 'product_str', 'minWidth': '180', 'append_table_': 0, 'label': '产品名称' },
+            { 'prop': 'getMerchant.name', 'minWidth': '80', 'append_table_': 0, 'label': '商家名称' },
+            { 'prop': 'amount', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '金额' },
+            { 'prop': 'num', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '数量' },
+            { 'prop': 'addr_name', 'width': '100', 'append_table_': 0, 'label': '购买者' },
+            { 'prop': 'addr_phone', 'width': '120', 'append_table_': 0, 'label': '购买者手机号码' },
+            { 'prop': 'addr_address', 'minWidth': '120', 'append_table_': 0, 'label': '购买者地址' },
+            { 'prop': 'merchant_at', 'width': '110', 'append_table_': 0, 'label': '商家接单时间' },
+            { 'prop': 'horse_at', 'width': '110', 'append_table_': 0, 'label': '骑手接单时间' },
+            { 'prop': 'payed_at', 'width': '100', 'append_table_': 0, 'label': '支付日期' }
 
         ],
         'formFields': [

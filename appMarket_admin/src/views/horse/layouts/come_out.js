@@ -20,11 +20,11 @@ export default {
         },
         tableFields: [
             { prop: 'id', label: '编号', width: '80' },
+            { prop: 'order_no', label: '订单号', width: '150' },
             { prop: 'getUser.userInfo.name', label: '姓名', minwidth: '100' },
             { prop: 'getHorse.name', label: '骑手名称', minwidth: '100' },
             { prop: 'amount', label: '提现金额', width: '120' },
-            { prop: 'order_no', label: '订单号', width: '120' },
-            { prop: 'created_at', label: '提现时间', width: '160' }
+            { prop: 'created_at', label: '提现时间', width: '170' }
         ],
         searchFields: [
             { prop: 'name', label: '姓名' },

@@ -99,7 +99,7 @@ $dark_gray:#889aa4;
 			display: flex;height: calc(100vh - 34px);padding-bottom: 105px;justify-content: center;align-items: center;
 			.logo{
 				text-align: center;
-				img{height: 80px;display: inline-flex;border-radius: 6px;}
+				img{height: 100px;display: inline-flex;border-radius: 6px;}
 			}
 			.login-form {
 				width: 360px;padding:0 20px;margin: 0 auto;

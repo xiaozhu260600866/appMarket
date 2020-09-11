@@ -30,12 +30,11 @@ export default {
               }]
           },
         'tableFields': [
-          { 'prop': 'name', 'minWidth': '180', 'append_table_': 0, 'label': '自提点姓名' },
-          { 'prop': 'phone', 'minWidth': '180', 'append_table_': 0, 'label': '自提点电话' },
+          { 'prop': 'name', 'width': '200', 'append_table_': 0, 'label': '自提点姓名' },
+          { 'prop': 'phone', 'width': '140', 'append_table_': 0, 'label': '自提点电话' },
           { 'prop': 'address', 'minWidth': '180', 'append_table_': 0, 'label': '自提地址' },
-          { 'prop': 'cityString', 'minWidth': '180', 'append_table_': 0, 'label': '城市' },
-
-          { 'prop': 'amount', 'minWidth': '180', 'append_table_': 0, 'label': '余额' }
+          { 'prop': 'cityString', 'width': '200', 'append_table_': 0, 'label': '城市' },
+          { 'prop': 'amount', 'width': '100', 'append_table_': 0, 'label': '余额' }
 
        ],
         'formFields': [

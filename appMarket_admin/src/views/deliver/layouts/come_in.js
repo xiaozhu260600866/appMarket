@@ -20,12 +20,12 @@ export default {
         // },
         tableFields: [
             { prop: 'id', label: '编号', width: '80' },
-            { prop: 'getUser.userInfo.name', label: '姓名', minwidth: '100' },
-               { prop: 'getDeliver.name', label: '自提点名称', minwidth: '100' },
-            { prop: 'amount', label: '佣金', width: '120' },
-            { prop: 'getOrder.product_str', label: '商品', width: '120' },
+            { prop: 'getUser.userInfo.name', label: '姓名', width: '120' },
+            { prop: 'getDeliver.name', label: '自提点名称', width: '200' },
             { prop: 'order_no', label: '订单号', width: '120' },
-            { prop: 'created_at', label: '注册时间', width: '160' }
+            { prop: 'getOrder.product_str', label: '商品', minWidth: '200' },
+            { prop: 'amount', label: '佣金', width: '100' },
+            { prop: 'created_at', label: '创建时间', width: '160' }
         ],
         searchFields: [
             { prop: 'name', label: '姓名' },

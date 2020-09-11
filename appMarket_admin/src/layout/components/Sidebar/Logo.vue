@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       title: '后台管理',
-      logo: process.env.VUE_APP_BASE_URL + 'images/logo.png'
+      logo: process.env.VUE_APP_BASE_URL + 'images/wap/logo.png'
     }
   }
 }
@@ -59,6 +59,7 @@ export default {
       height: 32px;
       vertical-align: middle;
       margin-right: 12px;
+      border-radius: 6px;
     }
 
     & .sidebar-title {

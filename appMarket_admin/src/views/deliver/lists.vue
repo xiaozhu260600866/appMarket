@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dx-table :data="data" :global-data="globalData" :operate-width="320" @createBeforeCallBack="createBeforeCallBack">
+    <dx-table :data="data" :global-data="globalData" :operate-width="260" @createBeforeCallBack="createBeforeCallBack">
       <div slot="append_form_city" slot-scope="scope">
         <el-cascader
           v-model="scope.row.city"

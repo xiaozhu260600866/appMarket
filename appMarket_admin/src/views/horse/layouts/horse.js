@@ -31,9 +31,9 @@ export default {
           },
         'tableFields': [
           { 'prop': 'name', 'minWidth': '180', 'append_table_': 0, 'label': '骑手姓名' },
-          { 'prop': 'phone', 'minWidth': '180', 'append_table_': 0, 'label': '骑手电话' },
-          { 'prop': 'getTransportation', 'minWidth': '180', 'append_table_': 0, 'label': '交通工具' },
-          { 'prop': 'amount', 'minWidth': '180', 'append_table_': 0, 'label': '余额' }
+          { 'prop': 'phone', 'width': '140', 'append_table_': 0, 'label': '骑手电话' },
+          { 'prop': 'getTransportation', 'width': '100', 'append_table_': 0, 'label': '交通工具' },
+          { 'prop': 'amount', 'width': '100', 'append_table_': 0, 'label': '余额' }
 
        ],
         'formFields': [
