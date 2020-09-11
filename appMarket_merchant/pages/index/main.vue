@@ -7,7 +7,7 @@
 			<view class="Iorder">
 				<view class="Iorder-list">
 					<view class="Iorder-item" v-for="(item,index) in data.lists.data">
-						<dx-tag type="danger" size="small" Rround v-if="status == 3">新</dx-tag>
+						<dx-tag type="danger" size="small" Lround v-if="status == 3">新</dx-tag>
 						<view class="top plr10">
 							<view>
 								<view class="time lh-18">下单时间：<text class="Arial">{{ item.payed_at }}</text></view>
@@ -43,7 +43,7 @@
 							<view class="price">￥{{ item.amount }}</view>
 						</view>
 						<view class="print">
-							<dx-button round btnBd="#fff" @click="printf(item)">打印小票{{item.shipping}}</dx-button>
+							<dx-button round btnBd="#fff" @click="printf(item)">打印小票</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3 && item.shipping ==2">接单</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3 && item.shipping ==4">接单</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="changeOrder(item,9)" v-if="status == 3 && item.shipping ==3">完成</dx-button>

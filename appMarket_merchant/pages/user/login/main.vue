@@ -33,7 +33,7 @@
 			</view>
 			<view class="footer-agreement fc-8">
 				<view>登录即同意</view>
-				<view class="main-color" @click="goto('/pages/news/show/main',1)">同城菜场服务条款</view>
+				<view class="main-color" @click="goto('/pages/news/show/main?id=236',1)">《You鲜购服务协议》</view>
 			</view>
 		</view>
 	</view>

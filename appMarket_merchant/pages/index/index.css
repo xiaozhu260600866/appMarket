@@ -9,4 +9,4 @@
 .Iorder-item .proLists .td{margin: 0 20upx;}
 .Iorder-item .proLists .name{flex: 1}
 .Iorder-item .print{position: absolute;bottom: -110upx;left: 0;display: flex;justify-content: space-between;align-items: center;width: 100%;}
-.Iorder-item /deep/.dxi-tag{position: absolute;top: 0;left: 0;}
+.Iorder-item /deep/.dxi-tag{position: absolute;top: 0;right: 0;}
