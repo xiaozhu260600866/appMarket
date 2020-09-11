@@ -2,7 +2,7 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
-			<view class="market_info">
+			<view class="market_info" v-if="data.market">
 				<dx-products-pic :src="data.market? data.market.getPic : '/static/nopropic.png'" :isList="true" myclass="main-bg fc-white"
 				 :imgWidth="110" :imgHeight="110">
 					<view class="flex-between flex-middle">
@@ -77,7 +77,12 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 				this.getAjaxForApp(this, {market_id:this.market_id
 				     	
 				}).then(msg => {
-					this.setTitle(msg.market.name);
+					if(msg.market){
+						this.setTitle(msg.market.name);
+					}else{
+						this.setTitle(msg.productClass.name);
+					}
+					
 					let res = this.space(location_x,location_y,msg.market.location_x,msg.market.location_y);
 					this.$set(this.data.market,"space",res);
 					console.log(this.data.market);
