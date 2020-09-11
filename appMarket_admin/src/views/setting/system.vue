@@ -20,6 +20,11 @@
                       <el-form-item label="公司名称" prop="web_name" :rules="[{ required: true, message: '内容不能为空'},]">
                         <el-input v-model="ruleForm.web_name" class="CinputWidth" />
                       </el-form-item>
+                      <el-form-item label="1元赠送多少积分" prop="give_integral" :rules="[{ required: true, message: '内容不能为空'},]">
+                        <el-input v-model="ruleForm.give_integral" class="CinputWidth" style="width:180px">
+                          <template slot="append">积分</template>
+                        </el-input>
+                      </el-form-item>
                       <el-form-item label="邀请返利比例" prop="share_ratio" :rules="[{ required: true, message: '内容不能为空'},]">
                         <el-input v-model="ruleForm.share_ratio" class="CinputWidth" style="width:180px">
                           <template slot="append">%</template>

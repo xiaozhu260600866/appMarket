@@ -34,28 +34,10 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/integral/lists?type=0',
+				formAction: '/integral/lists?type=0',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
-				getSiteName: this.getSiteName(),
-				data:{
-					integral:25000,
-					lists:{
-						data:[{
-							firstCover: '/static/pro02.jpg',
-							name:'新鲜芒果',
-							integral: '200'
-						},{
-							firstCover: '/static/pro02.jpg',
-							name:'新鲜芒果',
-							integral: '200'
-						},{
-							firstCover: '/static/pro02.jpg',
-							name:'新鲜芒果',
-							integral: '200'
-						}]
-					}
-				}
+				getSiteName: this.getSiteName()
 			}
 		},
 		onReachBottom() {
@@ -63,17 +45,17 @@
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			//this.ajax();
+			this.ajax();
 		},
 		onShareAppMessage() {
 			return this.shareSource(this, '商城');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
 			ajax() {
-				this.getAjax(this).then(msg => {
+				this.getAjaxForApp(this).then(msg => {
 					console.log(this.data);
 				});
 			}

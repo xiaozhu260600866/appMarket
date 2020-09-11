@@ -27,10 +27,10 @@
 					<p class="num fs-18 fc-3">{{user ? user.amount:0}}</p>
 					<p class="name fs-13 fc-6">余额</p>
 				</view>
-				<!-- <view class="c-item" @click="checkLogin('/pages/user/integral/lists/main',1)">
+				<view class="c-item" @click="checkLogin('/pages/user/integral/lists/main',1)">
 					<p class="num fs-18 fc-3">{{user? user.integral :0}}</p>
 					<p class="name fs-13 fc-6">积分</p>
-				</view> -->
+				</view>
 				<view class="c-item" @click="checkLogin('/pages/user/coupon/lists/main',1)">
 					<p class="num fs-18 fc-3">{{data.couponOrderNum}}</p>
 					<p class="name fs-13 fc-6">优惠券</p>
@@ -58,7 +58,7 @@
 				<dx-nav-class :data="[
 					{url:'/pages/user/coupon/lists/main',type: 1,icon:'iconfont icon-user-coupon',name:'优惠券'},
 					{url:'/pages/distribution/index/main',type: 1,icon:'iconfont icon-user-fxdr',name:'邀请返利'},
-					//{url:'/pages/integral/lists/main',type: 1,icon:'iconfont icon-user-integral',name:'积分商城'},
+					{url:'/pages/integral/lists/main',type: 1,icon:'iconfont icon-user-integral',name:'积分商城'},
 					{url:'/pages/user/collection/main',type: 1,icon:'iconfont icon-user-collection',name:'我的收藏'},
 					{url:'/pages/news/show/main?id=235',type: 1,icon:'iconfont icon-user-joinin',name:'加盟'},
 					{url:'/pages/user/address/lists/main',type: 1,icon:'iconfont icon-user-address',name:'地址管理'},

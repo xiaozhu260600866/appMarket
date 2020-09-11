@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<div class="integral-list plr15 ptb10 mb8 bg-f" v-for="(item,key) in integralLists">
+		<div class="integral-list plr15 ptb10 mb8 bg-f" v-for="(item,key) in data.lists.data" v-if="data.show">
 			<div class="item">
 				<div class="group">
 					<p class="fs-15">{{item.source}}</p>
@@ -18,37 +18,34 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/user/integral-lists',
+				formAction: '/user/integral-lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				integralLists:[{
-					source: '购物积分',
-					created_at:'2020-07-31 16:27:30',
-					type: 0,
-					integral: 1
-				},{
-					source: '兑换商品',
-					created_at:'2020-07-25 11:23:13',
-					type: 2,
-					integral: 1999
-				}]
+				
 			}
 		},
 		onReachBottom() {
 			this.hasMore(this);
 		},
 		onPullDownRefresh() {
-			//this.data.nextPage = 1;
-			//this.ajax();
+			this.data.nextPage = 1;
+			this.ajax();
 		},
 		onShareAppMessage() {
 			this.shareSource(this, '商城');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
+			ajax() {
+				this.getAjaxForApp(this, {
+				
+				}).then(msg => {
+					
+				});
+			}
 		}
 	}
 </script>

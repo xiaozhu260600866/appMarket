@@ -8,7 +8,7 @@
 				<view :class="['nav-tab',status == 9 ? 'selected' :'']" @click="changeStatus(9)">完成</view>
 				<view :class="['nav-tab',status == 0 ? 'selected' :'']" @click="changeStatus(0)">已取消</view>
 			</view> -->
-			<dx-tabs :tabs="navbar" @change="change" selectedColor="#57C734" sliderBgColor="#57C734"></dx-tabs>
+			<dx-tabs :tabs="navbar" v-model="status" @change="ajax" selectedColor="#57C734" sliderBgColor="#57C734"></dx-tabs>
 			<view class="pro_info block-sec" v-for="(item,key) in data.listsIntegral.data">
 				<view class="order_date fs-14 plr10 bd-be">
 					<view class="time">
@@ -29,7 +29,7 @@
 				</view>
 				<view class="btn-group ptb8 plr10">
 					<view class="btn-item">
-						<view class="btn-nav" :url="'/pages/shop/integral/order/buy/index?order_no='+item.order_no">订单详情</view>
+						<view class="btn-nav" @click="goto('/pages/integral/order/buy/main?order_no='+item.order_no,1)">订单详情</view>
 					</view>
 					<view class="btn-item" @click="changeOrder(item)" :data-id="item.id" :data-status="0" v-if="item.status!=0">
 						<view class="btn-nav">取消订单</view>
@@ -49,24 +49,12 @@
 		},
 		data() {
 			return {
-				formAction: '/shop/integral/lists',
+				formAction: '/integral/lists',
 				mpType: 'page', //用来分清父和子组件
-				// data: this.formatData(this),
+				 data: this.formatData(this),
 				status: 12,
 				getSiteName: this.getSiteName(),
-				data:{
-					listsIntegral:{
-						data:[{
-							created_at: '2020-07-02 17:22:03',
-							status_message: '已完成',
-							products:{
-								firstCover: '/static/pro02.jpg',
-								name:'新鲜芒果'
-							},
-							integral: '200'
-						}]
-					}
-				},
+				
 				navbar:[{
 					value: 12,
 					name: '全部'
@@ -90,14 +78,14 @@
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			//this.ajax();
+			this.ajax();
 		},
 		onShareAppMessage() {
 			this.shareSource(this, '商城');
 		},
 		onLoad(options) {
 			this.status = options.status;
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
 			changeStatus(status) {
@@ -107,7 +95,7 @@
 			},
 			changeOrder(item) {
 				this.getConfirm("您确认要取消订单吗？", () => {
-					this.postAjax("/shop/integral/change-integral-status", {
+					this.postAjax("/integral/change-integral-status", {
 						id: item.id,
 						status: 0
 					}).then(msg=>{
@@ -119,7 +107,7 @@
 				});
 			},
 			ajax() {
-				this.getAjax(this,{ status: this.status }).then(msg => {
+				this.getAjaxForApp(this,{ status: this.status }).then(msg => {
 					console.log(this.data);
 				});
 			}

@@ -31,6 +31,14 @@
 			<view class="block-sec no" v-if="ruleform.shipping == 2">
 				<weui-input v-model="ruleform.addr_name" label="姓名" type="text" :disabled="ruleform.status >=3 ? true :false" name="addr_name" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.addr_phone" label="电话" type="text" :disabled="ruleform.status >=3 ? true :false" name="addr_phone" datatype="require|phone"></weui-input>
+				<weui-input v-model="ruleform.shipping" name="shipping" datatype="require" label="送货方式" changeField="value" type="select"
+				 dataKey="shippingData" :disabled="ruleform.status >=3 ? true :false"></weui-input>
+				<weui-input v-model="ruleform.remark" :disabled="ruleform.status >=3 ? true :false" label="买家留言" type="text" name="remark" placeholder="点击给商家留言"></weui-input>
+			</view>
+			<view v-if="ruleform.shipping == 1">
+				<weui-input v-model="ruleform.shipping" name="shipping" datatype="require" label="送货方式" changeField="value" type="select"
+				 dataKey="shippingData" :disabled="ruleform.status >=3 ? true :false"></weui-input>
+				<weui-input v-model="ruleform.remark" :disabled="ruleform.status >=3 ? true :false" label="买家留言" type="text" name="remark" placeholder="点击给商家留言"></weui-input>
 			</view>
 
 			<view class="pro-info block-sec">
@@ -46,11 +54,7 @@
 				</view>
 			</view>
 
-			<view id="mode" class="block-sec">
-				<weui-input v-model="ruleform.shipping" name="shipping" datatype="require" label="送货方式" changeField="value" type="select"
-				 :dataKey="'shippingData'" :disabled="ruleform.status >=3 ? true :false"></weui-input>
-				<weui-input v-model="ruleform.remark" :disabled="ruleform.status >=3 ? true :false" label="买家留言" type="text" name="remark" placeholder="点击给商家留言"></weui-input>
-			</view>
+
 
 			<view id="calculation" class="block-sec">
 				<view class="list-group">
@@ -64,7 +68,7 @@
 					<text class="price fs-24 plr5">{{ruleform.integral}}</text>积分
 				</view>
 				<view class="f_right" >
-					<button class="nav" @click="formSubmit">提交订单</button>
+					<button class="nav" @click="submit">提交订单</button>
 				</view>
 			</view>
 
@@ -89,36 +93,21 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/integral/detail',
+				formAction: '/integral/detail',
+				order_no:'',
 				shippingData:[
 					{label:'邮寄',value:1},
 					{label:'自提',value:2},
 				],
 				mpType: 'page', //用来分清父和子组件
-				// data: this.formatData(this),
+			    data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				data:{
-					detail:{
-						products:{
-							firstCover: '/static/pro02.jpg',
-							name:'新鲜芒果',
-							integral: '200'
-						}
-					}
-				},
+				
 				ruleform:{
-					shipping: 2,
-					num: 1,
-					integral: 200,
-					status: 3
+					
 				},
 				address: {
-					name: '小朱',
-					phone: '13326805395',
-					province: '广东省',
-					city: '江门市',
-					area: '蓬江区',
-					address: '建设二路32号'
+					
 				},
 				vaildate:{}
 			}
@@ -129,7 +118,7 @@
 		},
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
-			//this.ajax();
+			this.ajax();
 		},
 		onShareAppMessage() {
 			this.shareSource(this, '商城');
@@ -143,7 +132,7 @@
 					this.formAction += "?order_no=" + options.order_no;
 				}
 			}
-			//this.ajax();
+			this.ajax();
 		},
 
 		methods: {
@@ -162,15 +151,9 @@
 			radioChange(event) {
 				this.ruleform.shipping = event.mp.detail.value;
 			},
-			addressLists() {
-				if (this.ruleform.status >= 3) {
-					return false;
-				}
-				uni.setStorageSync('order_no', this.ruleform.order_no);
-				this.goto('/pages/shop/user/address/lists/index?order_no=' + this.ruleform.order_no);
-			},
+			
 			ajax() {
-				this.getAjax(this).then(msg => {
+				this.getAjaxForApp(this,{order_no:this.order_no}).then(msg => {
 					this.address = msg.address;
 					this.ruleform = msg.detail;
 					if (this.address && !this.ruleform.addr_name) {
@@ -189,9 +172,9 @@
 					content: title,
 					success: res => {
 						if (res.confirm) {
-							this.postAjax("/shop/integral/change-integral-status", this.ruleform).then(msg => {
+							this.postAjax("/integral/change-integral-status", this.ruleform).then(msg => {
 								if (msg.data.status == 2) {
-									this.goto("/pages/shop/user/integral/order/lists/index?historyUrl=del&status=" + msg.data.detail.status);
+									this.goto("/pages/user/integral/order/lists/main?historyUrl=del&status=" + msg.data.detail.status);
 								}
 							});
 						} else if (res.cancel) {
@@ -200,18 +183,16 @@
 					}
 				})
 			},
-			createAddress() {
+			addressLists() {
 				if (this.ruleform.status >= 3) {
 					return false;
 				}
-				uni.setStorageSync('order_no', this.ruleform.order_no);
-				this.$refs.page.createAddress(res => {
-					if (res) {
-						this.ajax();
-					} else {
-						this.goto("/pages/shop/user/address/create_edit/index", 1);
-					}
-				});
+				uni.setStorageSync('order', 1);
+				this.goto('/pages/user/address/lists/main?order=1');
+			},
+			createAddress() {
+				uni.setStorageSync('order', 1);
+				this.goto("/pages/user/address/creat_edit/main", 1);
 			},
 		}
 	}
