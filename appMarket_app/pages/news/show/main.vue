@@ -7,7 +7,7 @@
 			<view class="con fs-15 fc-3">
 				<u-parse :content="data.detail.content" />
 			</view>
-			<view class="date fs-12 Arial fc-9 pt15">{{data.detail.created_at}}</view>
+			<!-- <view class="date fs-12 Arial fc-9 pt15">{{data.detail.created_at}}</view> -->
 		</view>
 	</view>
 </template>
