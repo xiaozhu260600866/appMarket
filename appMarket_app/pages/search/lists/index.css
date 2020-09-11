@@ -1,3 +1,8 @@
+
+/* #ifdef APP-PLUS || MP */
+
+/*  #endif  */
+
 .Lsearch{display: flex;padding: 10upx 20upx;align-items: center;background-color: #fff;margin-bottom: 24upx;}
 .Lsearch /deep/.dx-cell{flex:1;padding: 0 40upx;border-radius: 40upx;height: 80upx;line-height: 80upx;border: 2upx #ddd solid;}
 .Lsearch /deep/.dxi-btn{height: 80upx;}

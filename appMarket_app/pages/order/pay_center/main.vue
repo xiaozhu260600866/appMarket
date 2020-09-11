@@ -6,7 +6,7 @@
 			<view id="pay_price"><span class="fs-20">￥</span>{{ parseFloat(ruleform.amount) + parseFloat(ruleform.quick_price) -  parseFloat(ruleform.payed)}}</view>
 			<!-- <view class="fs-15 fc-6 text-center">支付剩余<text class="Arial">14</text>分<text class="Arial">32</text>秒</view> -->
 			<view class="payRadio bg-f mlr20 plr5 bdr6">
-				<view class="fs-16 p15 pb0">支付方式2</view>
+				<view class="fs-16 p15 pb0">支付方式</view>
 				<weui-input v-model="ruleform.pay_method" name="radio" changeField="value" type="radio" dataKey="payArr"
 				 :row="true" Labelleft>
 					<view slot="icon_0">

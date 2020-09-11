@@ -21,6 +21,12 @@
 .icon-dis-phone:before{content: "\f910";}/* 电话 */
 .icon-cart:before{content: "\f903";}/*购物车 */
 .icon-cart-del:before{content: "\f904";}/* 购物车del */
+.icon-location-c-fill:before{content: "\f6a2";}/* 定位 */
+
+.icon-intergral-record:before{content: "\f309";}/* 积分记录 */
+
+.icon-dis-income:before{content: "\f6c8";}/*  */
+.icon-dis-record:before{content: "\f64f";}/*  */
 
 .icon-user-qrcode:before{content: "\e603";}/* 二维码 */
 .icon-shop-wechat:before{content: "\f678";}/* 微信 */

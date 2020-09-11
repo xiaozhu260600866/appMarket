@@ -3,7 +3,7 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
 			<!-- <view class="m50 text-center fs-14 fc-9">暂无数据</view> -->
-			<dx-tabs :tabs="navbar" v-model="status" @change="ajax" selectedColor="#57C734" sliderBgColor="#57C734"></dx-tabs>
+			<dx-tabs :tabs="navbar" v-model="status" @change="ajax" selectedColor="#57C734" sliderBgColor="#57C734" size="30"></dx-tabs>
 			<view class="coupon-list p10">
 				<view class="list_item mb10 bg-f" v-for="v in data.lists.data">
 					<view class="item_left">

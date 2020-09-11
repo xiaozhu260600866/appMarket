@@ -7,7 +7,7 @@
 /* 充值 */
 .rechage-price{display: flex;flex-wrap: wrap;}
 .rechage-price .selectAmount{width:calc(33.33% - 10px);margin: 5px;border: 1px #e1e1e1 solid;border-radius: 4px;padding: 10px 0;text-align: center;}
-.rechage-price .selectAmount .num{text-align: center;font-size: 18px;color: #57C734;}
+.rechage-price .selectAmount .num{text-align: center;font-size: 18px;color: #666;}
 .rechage-price .selectAmount.select{background: #57C734;border-color: #57C734;}
 
 

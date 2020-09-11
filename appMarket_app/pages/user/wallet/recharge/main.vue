@@ -19,7 +19,7 @@
 					<view :class="['num',ruleform.amount == v ? 'fc-white': '']" @click="changePrice(v)">{{ v }}<text class="fs-14" v-if="v !='其他'">元</text></view>
 				</view>
 				<view :class="['selectAmount',ruleform.amount != 100 && ruleform.amount !=200 && ruleform.amount !=300 && ruleform.amount !=500 && ruleform.amount !=1000 ? 'select' :'noselect' ]">
-					<view class="num" @click="changePrice(0)">其他</view>
+					<view class="num fc-white" @click="changePrice(0)">其他</view>
 				</view>
 			</view>
 			<view class="bg-f text-center fs-14 fc-6 p10">
@@ -42,7 +42,7 @@
 				<weui-input v-model="ruleform.pay_method" label="选择方式" name="pay_method" changeField="value" type="radio" dataKey="payMethodArr" :row="true" Labelleft></weui-input>
 			</view>
 			<view class="m20" @click="rechage">
-				<dx-button type="primary" btnBg="#57C734" btnBd="#57C734" block>充值</dx-button>
+				<dx-button type="primary" size="lg" btnBg="#57C734" btnBd="#57C734" block>充值</dx-button>
 			</view>
 		</view>
 	</view>
@@ -61,9 +61,8 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				payMethodArr:[
+					{label:'微信',value:1},
 					{label:'支付宝',value:3},
-					{label:'微信',value:1}
-					
 				],
 				ruleform:{
 					amount: 100,

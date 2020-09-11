@@ -8,7 +8,7 @@
 				<weui-input v-model="ruleform.loginPassword" label="密码" type="number" name="loginPassword"></weui-input>
 			</view>
 			<view class="m20 info-subBtn"><dx-button size="lg" block>完成</dx-button></view>
-			<view class="text-center fs-13 fc-9 mt30" @click="goto('/pages/login/main')">立即登录</view>
+			<view class="text-center fs-15 fc-3 mt30" @click="goto('/pages/login/main')">立即登录</view>
 		</view>
 	</view>
 </template>

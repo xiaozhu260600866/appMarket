@@ -9,3 +9,11 @@
 .special-item .name{font-size: 16px;}
 .special-item .price{font-size: 28upx;}
 .special-item .group_num{font-size: 22upx;color: #999;padding-left: 8upx;}
+
+/* #ifdef H5 */
+.iad-img{padding-top: 112upx;}
+/*  #endif  */
+
+/* #ifdef APP-PLUS || MP */
+
+/*  #endif  */

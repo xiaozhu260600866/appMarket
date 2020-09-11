@@ -35,7 +35,7 @@
 				 dataKey="shippingData" :disabled="ruleform.status >=3 ? true :false"></weui-input>
 				<weui-input v-model="ruleform.remark" :disabled="ruleform.status >=3 ? true :false" label="买家留言" type="text" name="remark" placeholder="点击给商家留言"></weui-input>
 			</view>
-			<view v-if="ruleform.shipping == 1">
+			<view class="block-sec no" v-if="ruleform.shipping == 1">
 				<weui-input v-model="ruleform.shipping" name="shipping" datatype="require" label="送货方式" changeField="value" type="select"
 				 dataKey="shippingData" :disabled="ruleform.status >=3 ? true :false"></weui-input>
 				<weui-input v-model="ruleform.remark" :disabled="ruleform.status >=3 ? true :false" label="买家留言" type="text" name="remark" placeholder="点击给商家留言"></weui-input>
@@ -54,8 +54,6 @@
 				</view>
 			</view>
 
-
-
 			<view id="calculation" class="block-sec">
 				<view class="list-group">
 					<view class="txt fs-15">应付</view>
@@ -71,7 +69,6 @@
 					<button class="nav" @click="submit">提交订单</button>
 				</view>
 			</view>
-
 			
 			<view id="buy_footer" v-else-if="ruleform.status == 3 || ruleform.status == 5">
 				<view class="f_left price"></view>
@@ -97,18 +94,13 @@
 				order_no:'',
 				shippingData:[
 					{label:'邮寄',value:1},
-					{label:'自提',value:2},
+					// {label:'自提',value:2},
 				],
 				mpType: 'page', //用来分清父和子组件
 			    data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				
-				ruleform:{
-					
-				},
-				address: {
-					
-				},
+				ruleform:{},
+				address: {},
 				vaildate:{}
 			}
 		},

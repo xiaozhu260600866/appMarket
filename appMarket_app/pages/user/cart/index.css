@@ -33,6 +33,10 @@ checkbox{zoom: 80%;display: flex;}
 #cartfooter{bottom: 100upx;}
 /*  #endif  */
 
+/* #ifdef APP-PLUS || MP */
+
+/*  #endif  */
+
 
 .cart-empty{text-align: center;}
 .cart-empty .img{width: 100upx;height: 100upx;}

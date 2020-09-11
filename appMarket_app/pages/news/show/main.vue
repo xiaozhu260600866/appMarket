@@ -31,14 +31,14 @@
 		methods: {
 			ajax() {
 				this.getAjaxForApp(this, {
-				
+					id:this.id
 				}).then(msg => {
 					this.setTitle(msg.detail.title)
 				});
 			}
 		},
 		onLoad(options) {
-			this.id =
+			this.id =options.id;
 			this.ajax();
 			
 		},

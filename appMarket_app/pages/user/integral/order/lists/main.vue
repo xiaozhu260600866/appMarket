@@ -1,13 +1,7 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
-			<!-- <view class="order-classify bd-b bg-f">
-				<view :class="['nav-tab',status == 3 ? 'selected' :'']" @click="changeStatus(3)">待发货</view>
-				<view :class="['nav-tab',status == 5 ? 'selected' :'']" @click="changeStatus(5)">待收货</view>
-				<view :class="['nav-tab',status == 9 ? 'selected' :'']" @click="changeStatus(9)">完成</view>
-				<view :class="['nav-tab',status == 0 ? 'selected' :'']" @click="changeStatus(0)">已取消</view>
-			</view> -->
+		<view v-if="data.show">
 			<dx-tabs :tabs="navbar" v-model="status" @change="ajax" selectedColor="#57C734" sliderBgColor="#57C734"></dx-tabs>
 			<view class="pro_info block-sec" v-for="(item,key) in data.listsIntegral.data">
 				<view class="order_date fs-14 plr10 bd-be">
@@ -15,16 +9,20 @@
 						<span>下单日期：</span>
 						<span class="Arial">{{item.created_at}}</span>
 					</view>
-					<view class="state fs-color">{{item.status_message}}</view>
+					<view class="state flex-middle">
+						<view class="fc-6 fs-13">{{item.status_message}}</view>
+						<view class="pl8" v-if="item.status == 1 || item.status == 9 || item.status == 0">
+							<view class="del-icon bg-f3 dxi-icon dxi-icon-del fs-14" @click="delOrder(parent)"></view>
+						</view>
+					</view>
 				</view>
 				<view class="order_info p10 pb5" v-if="item.products">
-					<view class="pro_img pr10">
+					<view class="pro_img">
 						<image class="img" :src="item.products.firstCover" />
 					</view>
 					<view class="txt fs-14 nowrap">{{ item.products.name }}</view>
 				</view>
 				<view class="order_count fs-14 bd-be plr10 pb8">
-					共<span class="Arial">1</span>件商品 需付：
 					<span class="price">{{item.integral}}</span>积分
 				</view>
 				<view class="btn-group ptb8 plr10">
@@ -54,23 +52,13 @@
 				 data: this.formatData(this),
 				status: 12,
 				getSiteName: this.getSiteName(),
-				
-				navbar:[{
-					value: 12,
-					name: '全部'
-				},{
-					value: 3,
-					name: '待发货'
-				},{
-					value: 5,
-					name: '待收货'
-				},{
-					value: 9,
-					name: '完成'
-				},{
-					value: 0,
-					name: '已取消'
-				}]
+				navbar:[
+					{value: 12,name: '全部'},
+					{value: 3,name: '待发货'},
+					{value: 5,name: '待收货'},
+					{value: 9,name: '已完成'},
+					// {value: 0,name: '已取消'},
+				],
 			}
 		},
 		onReachBottom() {

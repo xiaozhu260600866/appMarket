@@ -62,7 +62,7 @@
 					</view>
 				</view>
 				<view class="submit plr10" @click="sublimt">
-					<dx-button type="primary" size="small" btnBg="#57C734" btnBd="#57C734" >提交</dx-button>
+					<dx-button type="primary" size="medium" btnBg="#57C734" btnBd="#57C734" round>提交</dx-button>
 				</view>
 			</view>
 		</view>

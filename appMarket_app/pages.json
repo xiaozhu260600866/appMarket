@@ -344,8 +344,7 @@
 			"path": "pages/special/main",
 			"style": {
 				"navigationBarTitleText": "今日特价",
-				"enablePullDownRefresh": true,
-				"navigationStyle": "custom"
+				"enablePullDownRefresh": true
 			}
 		},
 		{

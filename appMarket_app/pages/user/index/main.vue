@@ -27,7 +27,7 @@
 					<p class="num fs-18 fc-3">{{user ? user.amount:0}}</p>
 					<p class="name fs-13 fc-6">余额</p>
 				</view>
-				<view class="c-item" @click="checkLogin('/pages/user/integral/lists/main',1)">
+				<view class="c-item" @click="checkLogin('/pages/integral/lists/main',1)">
 					<p class="num fs-18 fc-3">{{user? user.integral :0}}</p>
 					<p class="name fs-13 fc-6">积分</p>
 				</view>

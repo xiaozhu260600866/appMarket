@@ -2,15 +2,14 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="pro-list">
-			<view class="info-header bg-f">
-				<view class="ih-item ptb8" @click="goto('/pages/user/integral/count/main')">
-					<view class="num lh-20 mb3 main-color fs-18 Arial">{{data.integral}}</view>
-					<view class="name fs-13">我的积分</view>
-				</view>
-				<view class="ih-item ptb8" @click="goto('/pages/user/integral/lists/main')">
-					<view class="num lh-20 mb3 main-color iconfont icon-intergral-record fs-20"></view>
-					<view class="name fs-13">兑换记录</view>
-				</view>
+			<view class="count-header main-bg">
+				<view class="name fs-18 fc-white">我的积分</view>
+				<view class="count-num Arial">{{data.integral}}</view>
+				<view @click="goto('/pages/user/integral/lists/main',1)" class="record fs-14 fc-white">明细</view>
+			</view>
+			<view class="list-group block-sec mb0">
+				<dx-list-cell arrow name="我的订单" imgSrc="https://boss.doxinsoft.com/images/app/orderlist.png" imgWidth="20" imgHeight="20" imgR="6"
+				 @click="goto('/pages/user/integral/order/lists/main?status=3&historyUrl=del',1)"></dx-list-cell>
 			</view>
 			<view class="porducts">
 				<view class="pro-div" v-for="item in data.lists.data">
@@ -31,7 +30,11 @@
 </template>
 
 <script>
+	import dxListCell from "doxinui/components/list-cell/list-cell"
 	export default {
+		components:{
+			dxListCell
+		},
 		data() {
 			return {
 				formAction: '/integral/lists?type=0',
