@@ -30,7 +30,7 @@
 					</view>
 				</view>
 			</dx-list-msg>
-			<dx-list-msg  :imgSrc="item.getUser.headerPic" :imgWidth="44" :imgHeight="44" :name="item.title"
+			<dx-list-msg  :imgSrc="item.getUser.headerPic" :imgWidth="44" :imgHeight="44" :name="item.merchant.name"
 			 :content="item.content" v-for="(item,key) in data.lists.data" @click="toMessage(item)">
 				<view slot="right">
 					<view class="right-box">
@@ -73,9 +73,9 @@
 		methods: {
 			toMessage(item){
 				if(item.user_id != this.data.myUser.id){
-					return this.goto('/pages/user/message/chat/main?to_userid='+item.user_id),1
+					return this.goto('/pages/user/message/chat/main?to_userid='+item.user_id,1)
 				}else{
-					return this.goto('/pages/user/message/chat/main?to_userid='+item.to_userid),1
+					return this.goto('/pages/user/message/chat/main?to_userid='+item.to_userid,1)
 				}
 			},
 			msgGo(v){
