@@ -1,16 +1,18 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="bg-f wallet-order" v-if="data.show">
-			<dx-list-msg v-for="(item,key) in data.lists.data" :name="item.type==0?'收入':'提现'" :nameSize="15" :content="item.type==0?'+'+item.amount:'-'+item.amount"
-			 :conSize="15" conColor="#333">
-				<view slot="right">
-					<view class="right-box text-right fc-9">
-						<view class="time Arial fs-13">{{item.created_at}}</view>
-						<view class="num fs-12">{{item.getStatus}}</view>
+		<view class="wallet-order" v-if="data.show">
+			<view class="bg-f">
+				<dx-list-msg v-for="(item,key) in data.lists.data" :name="item.type==0?'收入':'提现'" :nameSize="15" :content="item.type==0?'+'+item.amount:'-'+item.amount"
+				 :conSize="15" conColor="#333">
+					<view slot="right">
+						<view class="right-box text-right fc-9">
+							<view class="time Arial fs-13">{{item.created_at}}</view>
+							<view class="num fs-12">{{item.getStatus}}</view>
+						</view>
 					</view>
-				</view>
-			</dx-list-msg>
+				</dx-list-msg>
+			</view>
 			<hasMore :parentData="data"></hasMore>
 		</view>
 	</view>

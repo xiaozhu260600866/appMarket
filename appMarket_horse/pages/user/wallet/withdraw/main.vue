@@ -2,14 +2,12 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class=" bg-f" v-if="data.show">
-			<view class="recharge p10 bg-f">
-				<view class="weui-cell plr15">
-					<view class="weui-cell__hd"><label class="weui-label fc-6 fs-16">提现金额</label></view>
-					<view class="weui-cell__bd">
-						<weui-input v-model="ruleform.amount" myclass="input fs-20 w-b100 p0 bd-0" placeholder="请输入提现金额" type="text" name="amount" datatype="require|price"></weui-input>
-					</view>
+			<view class="recharge p10 bg-f mb12">
+				<view class="fs-14 fc-9 mb5">可提现金额<text class="Arial pl5">{{ data.price }}</text>元</view>
+				<view class="recharge-box">
+					<view class="box-label">提现金额</view>
+					<weui-input v-model="ruleform.amount" myclass="input" placeholder="请输入提现金额" type="text" name="amount" datatype="require|price"></weui-input>
 				</view>
-				<view class="fs-14 fc-9 mt10">可提现金额<text class="Arial pl5">{{ data.price }}</text>元</view>
 			</view>
 			<view class="fs-14 m10 mt20">选择提现渠道</view>
 			<weui-input v-model="ruleform.blank_client_name" label="姓名" placeholder="请输入姓名" type="text" name="blank_client_name" datatype="require"></weui-input>

@@ -14,8 +14,8 @@
 			</view>
 			<dx-tabs :tabs="tabs" v-model="status" @change="tabClick" selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
 			<view class="selectDate text-right">
-				<view class="flex-between flex-middle fc-6">
-					<view class="fs-14">选择订单日期 </view>
+				<view class="flex-right flex-middle fc-6">
+					<view class="fs-14 pr10">选择订单日期 </view>
 					<view class="iconfont icon-date fs-17" @click="dataShow = !dataShow"></view>
 				</view>
 				<view class="flex-between flex-middle bg-f dateGroup" v-if="dataShow">
@@ -49,7 +49,7 @@
 					</view>
 				</view>
 			</view>
-			<hasMore :parentData="data" source="order"></hasMore>
+			<hasMore :parentData="data"></hasMore>
 		</view>
 	</view>
 </template>

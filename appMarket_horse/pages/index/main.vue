@@ -176,7 +176,7 @@ import miMap from '@/components/mi-map/mi-map.vue'
 				});
 			},
 			order(item,status){
-				this.getConfirm("是否确认操作1",msg=>{
+				this.getConfirm("是否确认操作",msg=>{
 					this.postAjax("/horse/order-change",{status:status,id:item.id}).then(msg=>{
 						if(msg.data.status == 2){
 							this.ajax();
