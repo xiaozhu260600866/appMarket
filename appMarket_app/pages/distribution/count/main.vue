@@ -21,7 +21,7 @@
 				</view>
 				<view class="Dorder">
 					<view class="title">收益明细（<text class="Arial">{{ data.orderCount }}</text>笔）</view>
-					<div class="order-list mb8 bg-f" v-for="(item,key) in data.lists.data"  :key="item.id">
+					<div class="order-list mb8 bg-f" v-for="(item,key) in data.lists.data"  :key="item.id" v-if="item.getOrder">
 						<div class="title plr15 ptb10 bd-be">
 							<image class="head mr10" :src="item.getUser.userInfo.pic" />
 							<p class="name fs-15">{{item.getUser.userInfo.name ? item.getUser.userInfo.name : item.getUser.nickname}}<span v-if="data.query.status == -1">({{ item.getStatus}})</span></p>
@@ -29,7 +29,7 @@
 						</div>
 						<div class="pro-info">
 							<div class="plr5" @click="goto('/pages/product/show/index?id='+product.getProduct.id,1)">
-								<orderPro :data="item.getOrder.products"></orderPro>
+								<orderPro :data="item.getOrder.products" ></orderPro>
 							</div>
 							<div class="order_count plr15 fs-13" v-if="item.getOrder.shipping == 2">共<span class="Arial">{{item.getOrder.num}}</span>件商品
 								实付：￥<span class="Arial fs-16 fc-red">{{ toFixed(parseFloat(item.getOrder.amount) - parseFloat(item.getOrder.payed_amount))}}</span>

@@ -9,7 +9,7 @@
 			</view>
 			<view class="list-group block-sec mb0">
 				<dx-list-cell arrow name="我的订单" imgSrc="https://boss.doxinsoft.com/images/app/orderlist.png" imgWidth="20" imgHeight="20" imgR="6"
-				 @click="goto('/pages/user/integral/order/lists/main?status=3&historyUrl=del',1)"></dx-list-cell>
+				 @click="goto('/pages/user/integral/order/lists/main?status=12&historyUrl=del',1)"></dx-list-cell>
 			</view>
 			<view class="porducts">
 				<view class="pro-div" v-for="item in data.lists.data">

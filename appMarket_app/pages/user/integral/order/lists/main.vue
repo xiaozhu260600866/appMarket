@@ -12,7 +12,7 @@
 					<view class="state flex-middle">
 						<view class="fc-6 fs-13">{{item.status_message}}</view>
 						<view class="pl8" v-if="item.status == 1 || item.status == 9 || item.status == 0">
-							<view class="del-icon bg-f3 dxi-icon dxi-icon-del fs-14" @click="delOrder(parent)"></view>
+							<view class="del-icon bg-f3 dxi-icon dxi-icon-del fs-14" @click="delOrder(item)"></view>
 						</view>
 					</view>
 				</view>
@@ -42,21 +42,32 @@
 <script>
 	import dxTabs from "doxinui/components/tabs/tabs"
 	export default {
-		components:{
+		components: {
 			dxTabs
 		},
 		data() {
 			return {
 				formAction: '/integral/lists',
 				mpType: 'page', //用来分清父和子组件
-				 data: this.formatData(this),
+				data: this.formatData(this),
 				status: 12,
 				getSiteName: this.getSiteName(),
-				navbar:[
-					{value: 12,name: '全部'},
-					{value: 3,name: '待发货'},
-					{value: 5,name: '待收货'},
-					{value: 9,name: '已完成'},
+				navbar: [{
+						value: 12,
+						name: '全部'
+					},
+					{
+						value: 3,
+						name: '待发货'
+					},
+					{
+						value: 5,
+						name: '待收货'
+					},
+					{
+						value: 9,
+						name: '已完成'
+					},
 					// {value: 0,name: '已取消'},
 				],
 			}
@@ -76,6 +87,24 @@
 			this.ajax();
 		},
 		methods: {
+			delOrder(item) {
+				uni.showModal({
+					title: '提示',
+					content: '您确定要删除吗',
+					success: res => {
+						if (res.confirm) {
+							this.postAjax('/ajax/mydel', {
+								id: item.id,
+								tablename: 'integral_orders'
+							}).then(msg => {
+								if (msg.data.status == 2) {
+									this.ajax();
+								}
+							});
+						}
+					}
+				})
+			},
 			changeStatus(status) {
 				this.status = status;
 				this.data.nextPage = 1;
@@ -86,7 +115,7 @@
 					this.postAjax("/integral/change-integral-status", {
 						id: item.id,
 						status: 0
-					}).then(msg=>{
+					}).then(msg => {
 						if (msg.data.status == 2) {
 							this.data.nextPage = 1;
 							this.ajax();
@@ -95,7 +124,9 @@
 				});
 			},
 			ajax() {
-				this.getAjaxForApp(this,{ status: this.status }).then(msg => {
+				this.getAjaxForApp(this, {
+					status: this.status
+				}).then(msg => {
 					console.log(this.data);
 				});
 			}
@@ -103,5 +134,5 @@
 	}
 </script>
 <style scoped="">
-@import url('index.css');
+	@import url('index.css');
 </style>

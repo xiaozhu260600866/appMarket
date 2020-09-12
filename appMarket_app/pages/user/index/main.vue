@@ -147,9 +147,11 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 			}
 		},
 		onShow(){
+		
 			let user = uni.getStorageSync('userInfo');
 			if(!user){
-				this.user = {};
+				
+				this.user = "";
 			}
 			this.onShow(this);
 		},

@@ -51,7 +51,8 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				market_id:1,
+				market_id:'',
+				
 				tabs: [{
 					name: "价格最低"
 				}, {
@@ -59,14 +60,7 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 				}, {
 					name: "距离最近"
 				}],
-				market:{
-					cover:'/static/banner01.jpg',
-					hour_time:'9:00-19:00',
-					address:'环市街道贯溪市场',
-					juli:0.3,
-					amount: 19,
-					sendTime:0
-				}
+				
 			}
 		},
 		methods: {
@@ -74,7 +68,7 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 				let location_x = uni.getStorageSync('location_x');
 				let location_y = uni.getStorageSync('location_y');
 			
-				this.getAjaxForApp(this, {market_id:this.market_id
+				this.getAjaxForApp(this, {market_id:this.market_id,product_class:this.product_class
 				     	
 				}).then(msg => {
 					if(msg.market){
@@ -90,7 +84,13 @@ import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 			}
 		},
 		onLoad(options) {
-			this.market_id = options.market_id;
+			if(options.market_id){
+				this.market_id = options.market_id;
+			}
+			
+			if(options.product_class){
+				this.product_class = options.product_class
+			}
 			this.ajax();
 		},
 		onReachBottom() {
