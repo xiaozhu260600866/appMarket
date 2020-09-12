@@ -6,13 +6,13 @@
 			<dx-tabs :tabs="tabs" v-model="status"  @change="ajax" selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
 			<view class="news_order Iorder" v-if="status == 4">
 				<!-- 新任务状态 -->
-				<view class="Iorder_item" v-for="(item,index) in data.lists.data" v-if="item.products.getProduct">
+				<view class="Iorder_item" v-for="(item,index) in data.lists.data" >
 					<view class="time-info">
 						<view class="left">预计<text class="Arial plr2">{{ item.deliver_date }} {{ item.order_time }}</text>送达</view>
 						<view class="right price">￥{{ item.amount }}</view>
 					</view>
 					<view>
-						<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
+						<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products" v-if="v.getProduct">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
 						<view class="info">
 							<view class="flex-between flex-middle">
 								<view class="flex1">
@@ -29,7 +29,7 @@
 			</view>
 			<view class="pick_order Iorder" v-if="status == 5">
 				<!-- 待取货状态 -->
-				<view class="Iorder_item" v-for="(item,index) in  data.lists.data" v-if="item.products.getProduct">
+				<view class="Iorder_item" v-for="(item,index) in  data.lists.data" >
 					<view class="top">
 						<view>
 							<view class="left">顾客已等<text class="Arial">2</text>小时<text class="Arial">26</text>分钟</view>
@@ -37,7 +37,7 @@
 						</view>
 						<view class="right price">￥{{ item.amount }}</view>
 					</view>
-					<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
+					<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products" v-if="v.getProduct">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
 					<view class="info">
 						<view class="flex-between flex-middle">
 							<view class="flex1">
@@ -64,7 +64,7 @@
 			</view>
 			<view class="pick_order Iorder" v-if="status == 6">
 				<!-- 待送达状态 -->
-				<view class="Iorder_item" v-for="(item,index) in data.lists.data" v-if="item.products.getProduct">
+				<view class="Iorder_item" v-for="(item,index) in data.lists.data" >
 					<view class="top">
 						<view>
 							<view class="left">顾客已等<text class="Arial">2</text>小时<text class="Arial">26</text>分钟</view>
@@ -72,7 +72,7 @@
 						</view>
 						<view class="right price">￥{{ item.amount }}</view>
 					</view>
-					<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
+					<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products" v-if="v.getProduct">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
 					<view class="info">
 						<view class="flex-between flex-middle">
 							<view class="flex1">
