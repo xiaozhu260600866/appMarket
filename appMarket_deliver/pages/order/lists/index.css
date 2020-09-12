@@ -7,6 +7,13 @@
 .order-count .name{line-height: 40upx;}
 
 
+/* 选择时间 */
+.selectDate{padding: 20upx 30upx 0;}
+.selectDate .dateGroup{padding: 20upx 30upx;border-radius: 12upx;}
+.selectDate /deep/.dx-cell{padding: 0 20upx;border: 2upx #ddd solid;border-radius: 12upx;flex: 1;justify-content: center;}
+.selectDate /deep/.dx_ft-access::before{display: none;}
+
+
 /* 列表 */
 .orderLists{background: #fff;margin: 24upx;border-radius: 12upx;}
 .orderLists .order_date{height: 112upx;display: flex;justify-content: space-between;align-items: center;}

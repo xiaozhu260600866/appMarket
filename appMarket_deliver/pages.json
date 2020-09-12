@@ -15,6 +15,13 @@
 			}
 		},
 		{
+			"path": "pages/news/show/main",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/user/login/main",
 			"style": {
 				"navigationBarTitleText": "登录",
@@ -32,7 +39,7 @@
 			"path": "pages/user/login/layouts/register",
 			"style": {
 				"navigationBarTitleText": "快速注册",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": false
 			}
 		},
 		{

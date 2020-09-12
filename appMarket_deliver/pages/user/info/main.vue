@@ -1,9 +1,15 @@
 <template>
 	<view>
-		<view class="bg-white"></view>
+		<!-- <view class="bg-white"></view> -->
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="info-form zindex2" v-if="data.show">
-			<view class="flex-wrap pic_group">
+			<view class="bg-f mb12">
+				<weui-input v-model="ruleform.name" label="姓名" type="txt" name="name"></weui-input>
+				<weui-input v-model="ruleform.phone" label="电话" type="txt" name="phone"></weui-input>
+				<weui-input v-model="ruleform.cityString" label="地区" type="txt" name="cityString"></weui-input>
+				<weui-input v-model="ruleform.address" label="地点" type="txt" name="address"></weui-input>
+			</view>
+			<view class="flex-wrap pic_group bg-f">
 				<view class="pic_row">
 					<view class="name">身份证人像面</view>
 					<weui-input v-model="ruleform.idCard" type="upload" upurl='deliver' name="idCard" disabled="disabled"></weui-input>
