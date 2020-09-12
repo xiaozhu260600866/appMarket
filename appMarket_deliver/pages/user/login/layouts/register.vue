@@ -5,7 +5,7 @@
 		<view class="info-form zindex2">
 			<view class="bg-f" v-if="step == 1">
 				
-				<weui-input v-model="ruleform.name" label="自提点名称" type="text" name="name" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.name" label="自提点" type="text" name="name" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.phone" label="手机号" type="number" name="phone" datatype="require|phone"></weui-input>
 				<weui-input v-model="ruleform.code" label="验证码" datatype="require" type="sms" name="sms" :phone="ruleform.phone"
 				 action="/sendSms.html"></weui-input>
@@ -21,7 +21,6 @@
 						<view class="dx-cell_ft dx_ft-access"></view>
 					</view>
 				</my-picker>
-				<weui-input v-model="ruleform.market_id" label="市场" datatype="require" name="market_id" changeField="value" type="select" dataKey="market"></weui-input>
 				<weui-input v-model="ruleform.address" label="详细地址" type="location" name="address" datatype="require"  @callback="locationRes"></weui-input>
 				<view class="m20 info-subBtn">
 					<dx-button block size="lg" @click="submit">下一步</dx-button>

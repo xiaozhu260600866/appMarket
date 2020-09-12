@@ -1,7 +1,6 @@
 <template>
 	<view>
 		<view class="bg-f message" v-if="data.show">
-		
 			<dx-list-msg  :imgWidth="44" :imgHeight="44" name="系统通知"
 			 :content="item.content" v-for="(item,key) in data.systemLists" @click="goto('/pages/user/message/show/main',1)">
 				<view slot="left">
@@ -41,8 +40,8 @@
 					</view>
 				</view>
 			</dx-list-msg>
-
 		</view>
+		<hasMore :parentData="data"></hasMore>
 	</view>
 </template>
 
