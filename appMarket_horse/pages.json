@@ -3,12 +3,19 @@
 		{
 			"path": "pages/index/main",
 			"style": {
-				"navigationBarTitleText": "同城菜场",
+				"navigationBarTitleText": "You鲜购",
 				"enablePullDownRefresh": true
 			}
 		},
 		{
 			"path": "pages/form/form",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/news/show/main",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": true

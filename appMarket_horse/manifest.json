@@ -1,5 +1,5 @@
 {
-    "name" : "同城菜场(骑手)",
+    "name" : "You鲜购(骑手)",
     "appid" : "__UNI__F4B239B",
     "description" : "",
     "versionName" : "1.0.0",
@@ -91,21 +91,21 @@
             },
             "icons" : {
                 "android" : {
-                    "hdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/72.png",
-                    "xhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/96.png",
-                    "xxhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/144.png",
-                    "xxxhdpi" : "C:/Users/doxin/Desktop/App开发证书/app图标/安桌/192.png"
+                    "hdpi" : "D:/App开发证书/app图标/安桌/72.png",
+                    "xhdpi" : "D:/App开发证书/app图标/安桌/96.png",
+                    "xxhdpi" : "D:/App开发证书/app图标/安桌/144.png",
+                    "xxxhdpi" : "D:/App开发证书/app图标/安桌/192.png"
                 },
                 "ios" : {
                     "iphone" : {
-                        "app@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/120.png",
-                        "app@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/180.png",
-                        "spotlight@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/80.png",
-                        "spotlight@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/120.png",
-                        "settings@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/58.png",
-                        "settings@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/87.png",
-                        "notification@2x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/40.png",
-                        "notification@3x" : "C:/Users/doxin/Desktop/App开发证书/app图标/苹果/60.png"
+                        "app@2x" : "D:/App开发证书/app图标/苹果/120.png",
+                        "app@3x" : "D:/App开发证书/app图标/苹果/180.png",
+                        "spotlight@2x" : "D:/App开发证书/app图标/苹果/80.png",
+                        "spotlight@3x" : "D:/App开发证书/app图标/苹果/120.png",
+                        "settings@2x" : "D:/App开发证书/app图标/苹果/58.png",
+                        "settings@3x" : "D:/App开发证书/app图标/苹果/87.png",
+                        "notification@2x" : "D:/App开发证书/app图标/苹果/40.png",
+                        "notification@3x" : "D:/App开发证书/app图标/苹果/60.png"
                     }
                 }
             },
@@ -143,7 +143,7 @@
         "usingComponents" : true
     },
     "h5" : {
-        "title" : "同城菜场",
+        "title" : "You鲜购",
         "domain" : "boss.doxinsoft.com",
         "router" : {
             "mode" : "hash",
