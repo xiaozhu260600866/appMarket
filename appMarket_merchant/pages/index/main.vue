@@ -2,9 +2,9 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view>
-			<dx-tabs :tabs="tabs" v-model="status" @change="ajax()" selectedColor="#57C734" sliderBgColor="#57C734" :height="92"
+			<dx-tabs :tabs="tabs" v-model="status" @change="listsShow=false;ajax()" selectedColor="#57C734" sliderBgColor="#57C734" :height="92"
 			 :padding="0"></dx-tabs>
-			<view class="Iorder">
+			<view class="Iorder" v-if="listsShow">
 				<view class="Iorder-list">
 					<view class="Iorder-item" v-for="(item,index) in data.lists.data">
 						<dx-tag type="danger" size="small" Lround v-if="status == 3">新</dx-tag>
@@ -28,7 +28,7 @@
 						<view class="pro fs-14">
 							<view class="count">商品<text>({{item.products.length}})</text></view>
 							<view class="reamrk mt10">备注：{{ item.remark }}</view>
-							<view class="proLists" v-for="(v,num) in item.products">
+							<view class="proLists" v-for="(v,num) in item.products" v-if="item.getProduct">
 								<view class="td name">{{ v.getProduct.name }}</view>
 								<view class="td num">X{{ v.num }}</view>
 								<view class="td price fc-3">{{ v.price }}</view>
@@ -86,6 +86,7 @@
 			return {
 				formAction: '/merchant/order-lists',
 				userInfo: {},
+				listsShow:false,
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -260,6 +261,7 @@
 
 				}).then(msg => {
 					this.setTitle(msg.merchant.name);
+					this.listsShow = true;
 				});
 			}
 
