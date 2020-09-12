@@ -51,7 +51,7 @@
 					<view class="group left">
 						<view class="zheng">
 							<checkbox-group @change="checkboxAll">
-								<checkbox />
+								<checkbox :checked="checkAll"/>
 							</checkbox-group>
 						</view>
 						<p class="txt fs-14">全选</p>
@@ -83,7 +83,8 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				checkLength:0
+				checkLength:0,
+				checkAll:false
 			}
 		},
 		
@@ -114,7 +115,16 @@
 			this.shareSource(this, '商城');
 		},
 		onShow(){
+			this.checkAll = false
 			this.onShow(this);
+			if(this.data.merchants  && this.data.merchants.length){
+				this.data.merchants.forEach(merchant=>{
+					merchant.is_check = false;
+					merchant.data.forEach(v=>{
+						v.is_check = false
+					});
+				})
+			}
 		},
 		onLoad(options) {
 			this.ajax();
@@ -148,6 +158,7 @@
 			},
 			checkboxAll(e){
 				let isCheck = e.mp.detail.value.length > 0 ? 1 : 0;
+				this.checkAll = isCheck;
 				for (var i = 0; i < this.data.merchants.length; i++) {
 					var merchants = this.data.merchants[i];
 					this.$set(merchants,"is_check",isCheck);

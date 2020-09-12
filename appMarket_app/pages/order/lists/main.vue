@@ -111,6 +111,24 @@
 			}
 		},
 		methods: {
+			delOrder(item) {
+				uni.showModal({
+					title: '提示',
+					content: '您确定要删除吗',
+					success: res => {
+						if (res.confirm) {
+							this.postAjax('/ajax/mydel', {
+								id: item.id,
+								tablename: 'orders'
+							}).then(msg => {
+								if (msg.data.status == 2) {
+									this.ajax();
+								}
+							});
+						}
+					}
+				})
+			},
 			gotoOrder(item){
 				return this.goto("/pages/order/buy/detail?order_no="+item.order_no,1);
 			},
