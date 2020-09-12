@@ -1,74 +1,98 @@
 <template>
-	<div>
-		<div class="icount-box">
-			<div class="icount-item">
-				<div class="icount-title"><span class="name">订单概况</span></div>
-				<div class="icount-row">
-					<div class="row-item">
-						<div class="row-name">待接单</div>
-						<div class="row-num">2</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">待配送</div>
-						<div class="row-num">3</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">待退款</div>
-						<div class="row-num">0</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">待完成</div>
-						<div class="row-num">5</div>
-					</div>
-				</div>
-			</div>
-			<div class="icount-item">
-				<div class="icount-title"><span class="name">商家概况</span></div>
-				<div class="icount-row">
-					<div class="row-item">
-						<div class="row-name">全部商家</div>
-						<div class="row-num">10</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">营业中</div>
-						<div class="row-num">9</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">休息中</div>
-						<div class="row-num">1</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">预定中</div>
-						<div class="row-num">0</div>
-					</div>
-				</div>
-			</div>
-			<div class="icount-item">
-				<div class="icount-title"><span class="name">配送员概况</span></div>
-				<div class="icount-row">
-					<div class="row-item">
-						<div class="row-name">全部配送员</div>
-						<div class="row-num">7</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">接单中</div>
-						<div class="row-num">6</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">休息中</div>
-						<div class="row-num">1</div>
-					</div>
-					<div class="row-item">
-						<div class="row-name">回收站</div>
-						<div class="row-num">0</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div v-if="data.show">
+    <div class="icount-box">
+      <div class="icount-item">
+        <div class="icount-title"><span class="name">订单概况</span></div>
+        <div class="icount-row">
+          <div class="row-item">
+            <div class="row-name">待接单</div>
+            <div class="row-num">{{ data.data.count0Count }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">待配送</div>
+            <div class="row-num">{{ data.data.count4Count }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">待退款</div>
+            <div class="row-num">{{ data.data.count0Count }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">待完成</div>
+            <div class="row-num">{{ data.data.count5Count }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="icount-item">
+        <div class="icount-title"><span class="name">商家概况</span></div>
+        <div class="icount-row">
+          <div class="row-item">
+            <div class="row-name">全部商家</div>
+            <div class="row-num">{{ data.data.merchantCount }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">营业中</div>
+            <div class="row-num">{{ data.data.merchantCountWorkStatus1 }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">休息中</div>
+            <div class="row-num">{{ data.data.merchantCountWorkStatus3 }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">预定中</div>
+            <div class="row-num">{{ data.data.merchantCountWorkStatus2 }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="icount-item">
+        <div class="icount-title"><span class="name">配送员概况</span></div>
+        <div class="icount-row">
+          <div class="row-item">
+            <div class="row-name">全部配送员</div>
+            <div class="row-num">{{ data.data.horseCount }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">接单中</div>
+            <div class="row-num">{{ data.data.horseCountWorkStatus1 }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">休息中</div>
+            <div class="row-num">{{ data.data.horseCountWorkStatus3 }}</div>
+          </div>
+          <div class="row-item">
+            <div class="row-name">回收站</div>
+            <div class="row-num">{{ data.data.horseCountWorkStatus2 }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script>
+<script type="text/javascript">
+    export default {
+        data() {
+            return {
+                formAction: '/admin/user/boss-count',
+                data: this.formatData(this),
+                siteName: this.getSiteName()
+            }
+        },
+        watch: {
+            '$route': 'ajax'
+        },
+        mounted() {
+            this.ajax()
+        },
+        methods: {
+            ajax() {
+                this.getAjax(this, {}, msg => {
+                  // this.$nextTick(()=>{
+                  //   this.$refs.createEdit.ajax('',this.data,this.globalData.data.formFields);
+                  // })
+                })
+            }
+        }
+    }
 </script>
 
 <style>
