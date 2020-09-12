@@ -25,6 +25,7 @@ const integralRouter = {
           path: 'order-info',
           component: () => import('@/views/integral/order/info'),
           name: 'integralOrderInfo',
+           hidden: true,
           meta: { title: '订单内容', icon: 'documentation', params: { status: 3 }}
         },
         {
