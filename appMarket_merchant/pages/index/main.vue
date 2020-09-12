@@ -93,6 +93,7 @@
 				order_no: '',
 				ruleform: {},
 				vaildate: {},
+				timer:'',
 				express: [{
 						label: '自提',
 						value: '自提'
@@ -168,6 +169,7 @@
 			return this.shareSource(this, '商城');
 		},
 		onShow() {
+			this.autoOrder();
 			this.onShow(this);
 		},
 		onLoad(options) {
@@ -178,12 +180,35 @@
 			//#ifdef H5
 
 			//#endif
-
+			this.autoOrder();
 			this.ajax();
 		},
 		methods: {
+			autoOrder(){
+				let autoOrder = uni.getStorageSync('auto_order');
+				if(autoOrder && !this.timer){
+					this.timer = setInterval(()=>{
+						this.postAjax(this.formAction, {
+							status: 3
+						},"notloading1").then(msg => {
+							if(msg.data.lists.data.length){
+								msg.data.lists.data.forEach(v=>{
+									if(v.shipping == 2 || v.shipping == 4){
+										this.postAjax("/merchant/order-change", v).then(msg2 => {
+											if (msg2.data.status == 2) {
+												this.ajax();
+											}
+										});
+										this.printf(v);
+									}
+								})
+							}
+						});
+					},5000);
+				}
+			},
 			changeOrder(item,status){
-				this.getConfirm("是否确认操作1",msg=>{
+				this.getConfirm("是否确认操作",msg=>{
 					this.postAjax("/merchant/order/change",{status:status,id:item.id}).then(msg=>{
 						if(msg.data.status == 2){
 							this.ajax();

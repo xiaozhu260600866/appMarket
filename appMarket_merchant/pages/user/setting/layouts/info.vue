@@ -58,6 +58,11 @@
 					if (res) {
 						this.postAjax("/merchant/info", this.ruleform).then(msg => {
 							if (msg.data.status == 2) {
+								if(this.ruleform.auto_order){
+									uni.setStorageSync('auto_order', 1);
+								}else{
+									uni.removeStorageSync('auto_order');
+								}
 								this.back();
 							}
 						});
