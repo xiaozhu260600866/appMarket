@@ -13,13 +13,16 @@
 				</view>
 			</view>
 			<dx-tabs :tabs="tabs" v-model="status" @change="tabClick" selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
-			<view class="p15 flex-between flex-middle fc-6 pb0">
-			
-				<weui-input v-model="ruleform.start_date" type="date" name="start_date" v-if="dataShow"></weui-input>
-				<view class="and"  v-if="dataShow">—</view>
-				<weui-input v-model="ruleform.end_date" type="date" name="end_date" @callback="search_" v-if="dataShow"></weui-input>
-				
-				<view class="iconfont icon-date fs-17" @click="dataShow = !dataShow"></view>
+			<view class="selectDate text-right">
+				<view class="flex-right flex-middle fc-6">
+					<view class="fs-14 pr10">选择订单日期 </view>
+					<view class="iconfont icon-date fs-17" @click="dataShow = !dataShow"></view>
+				</view>
+				<view class="flex-between flex-middle bg-f dateGroup" v-if="dataShow">
+					<weui-input v-model="ruleform.start_date" type="date" name="start_date"></weui-input>
+					<view class="and">—</view>
+					<weui-input v-model="ruleform.end_date" type="date" name="end_date" @callback="search_"></weui-input>
+				</view>
 			</view>
 			<view class="orderLists mb10" v-for="(parent,key) in data.lists.data" >
 				<view class="order_date plr10 bd-be fs-15 fc-3" @click="goto('/pages/order/detail/main?order_no='+parent.order_no,1)">
