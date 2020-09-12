@@ -1,46 +1,44 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="wallet-order" v-if="data.show">
-			<view class="bg-f">
-				<dx-list-msg v-for="(item,key) in data.lists.data" :name="item.type==0?'收入':'提现'" :nameSize="15" :content="item.type==0?'+'+item.amount:'-'+item.amount" :conSize="15" conColor="#333">
-					<view slot="right">
-						<view class="right-box text-right fc-9">
-							<view class="time Arial fs-13">{{item.created_at}}</view>
-							<view class="num fs-12">{{item.getStatus}}</view>
-						</view>
-					</view>
-				</dx-list-msg>
+		<!-- 该页面的标题，根据文章标题而定 -->
+		<view class="content bg-f p15" v-if="data.show">
+			<!-- <p class="fs-18 fc-3 lh-24 p15">{{ data.detail.title }}</p> -->
+			<view class="con fs-15 fc-3">
+				<u-parse :content="data.detail.content" />
 			</view>
-			<hasMore :parentData="data"></hasMore>
+			<!-- <view class="date fs-12 Arial fc-9 pt15">{{data.detail.created_at}}</view> -->
 		</view>
 	</view>
 </template>
 
 <script>
-	import dxListMsg from "doxinui/components/list-cell/list-msg"
+	import uParse from '@/components/gaoyia-parse/parse.vue'
 	export default {
-		components:{
-			dxListMsg
+		components: {
+			uParse,
 		},
 		data() {
 			return {
-				formAction: '/deliver/come-out-lists?type=1',
+				formAction: '/newShow.html',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
+				id:'',
 				getSiteName: this.getSiteName(),
+				
 			}
 		},
 		methods: {
 			ajax() {
 				this.getAjaxForApp(this, {
-				
+					id:this.id
 				}).then(msg => {
-					
+					this.setTitle(msg.detail.title)
 				});
 			}
 		},
 		onLoad(options) {
+			this.id =options.id;
 			this.ajax();
 			
 		},

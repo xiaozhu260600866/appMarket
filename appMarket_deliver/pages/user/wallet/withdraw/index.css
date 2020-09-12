@@ -1,7 +1,7 @@
-
-.recharge-input{color: #57C734;font-size:  48upx;text-align: right;}
-.recharge-input .uni-input-placeholder,.recharge-input .uni-input-input{font-size: 48upx;}
-.recharge .weui-cell{border: 2upx #ddd solid;border-radius: 12upx;}
+.recharge-box{border: 2upx #ddd solid;border-radius: 12upx;padding: 20upx 30upx;display: flex;align-items: center;}
+.recharge-box .box-label{width: 170upx;font-size: 32upx;color: #666;line-height: 60upx;}
+.recharge /deep/.dx-cell{border-bottom: 0;padding: 0;flex: 1;}
+.recharge /deep/.uni-input-placeholder,.recharge /deep/.uni-input-input{font-size: 32upx;}
 
 
 /* 充值 */

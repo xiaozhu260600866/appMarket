@@ -30,7 +30,7 @@
 					</dx-list-cell>
 				</view>
 				<view @click="goto('/pages/user/wallet/lists/withdraw',1)">
-					<dx-list-cell arrow name="提现明细" iconName="order2-fill" iconSize="20" iconColor="#79d70f"></dx-list-cell>
+					<dx-list-cell arrow name="提现明细" iconName="order-fill2" iconSize="20" iconColor="#79d70f"></dx-list-cell>
 				</view>
 			</view>
 		</view>
