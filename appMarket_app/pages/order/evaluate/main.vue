@@ -48,6 +48,7 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform: {},
+				order_no:''
 				
 			}
 		},
@@ -74,7 +75,7 @@
 			},
 			ajax() {
 				this.getAjaxForApp(this, {
-				
+					order_no:this.order_no
 				}).then(msg => {
 					this.ruleform = msg.detail;
 					this.ruleform.merchant_evaluate_logo = this.ruleform.merchant_evaluate_logo ? this.ruleform.merchant_evaluate_logo.split(','):[]
@@ -82,6 +83,7 @@
 			}
 		},
 		onLoad(options) {
+			this.order_no = options.order_no;
 			this.ajax();
 			
 		},
