@@ -22,23 +22,16 @@
 						</view>
 					</view>
 				</view>
-				<view @click="gotoOrder(parent)">
-					<view class="bd-be" v-for="(v,index) in parent.products">
+				<view @click="gotoOrder(parent)" v-if="parent.getMerchant">
 						<view class="storeName flex-middle">
-							<image class="img" :src="v.getMerchant.cover"></image>
-							<view class="name fs-15 fc-3">{{ v.getMerchant.name }}</view>
+							<image class="img" :src="parent.getMerchant.cover"></image>
+							<view class="name fs-15 fc-3">{{ parent.getMerchant.name }}</view>
 						</view>
 						<orderPro :data="parent.products"></orderPro>
-						
-						<view class="order_count plr10 fs-13">共<span class="Arial">{{v.num}}</span>件商品
-							合计：￥<span class="Arial fs-16 fc-red">{{v.amount}}</span>
+						<view class="order_count plr10 fs-13">共<span class="Arial">{{parent.num}}</span>件商品
+							合计：￥<span class="Arial fs-16 fc-red">{{parent.amount}}</span>
 						</view>
 					</view>
-				</view>
-				<!-- 
-				<view class="order_count plr10 fs-14" >总共<span class="Arial">{{parent.num}}</span>件商品
-					实付：￥<span class="Arial fs-16 fc-red">{{parent.amount}}</span>
-				</view> -->
 				<view class="btn-group ptb8 plr10">
 					<!-- 待支付 -->
 					<view class="btn-item" v-if="parent.status == 1">
