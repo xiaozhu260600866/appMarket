@@ -61,7 +61,7 @@
 				<view class="lprice fs-14 pl10"></view>
 				<view class="rbtn">
 					<!-- 待支付（1）、待发货（3）、待收货（5）、、完成（9，售后状态为1）、完成（售后状态为0）、评价（9，售后状态为0）、售后（10） -->
-					<view class="btn-nav" @click="cancelOrder()" v-if="ruleform.status == 1">取消订单</view>
+					<view class="btn-nav" @click="cancelOrder()" v-if="ruleform.status == 1 || ruleform.status == 3">取消订单</view>
 					<!-- <view class="btn-nav" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">删除订单</view> -->
 					<view class="btn-nav inbtn" @click="goto('/pages/shop/order/buy/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 1">去支付</view>
 <!-- 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 3 || ruleform.status == 5">申请售后</view>
@@ -74,16 +74,15 @@
 					<view class="btn-nav inbtn" @click="goto('/pages/order/map/main?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 5 ||ruleform.status == 6 ||ruleform.status == 7 &&  location">骑手位置</view>
 				</view>
 			</view>
-			
+			<reasonDiag></reasonDiag>
 		</view>
 	</view>
 </template>
 <script>
 	import orderPro from "@/components/orderPro";
+	import reasonDiag from "@/components/cancelReason"
 	export default {
-		components:{
-			orderPro
-		},
+		components:{orderPro,reasonDiag},
 		data() {
 			return {
 				formAction: '/order/detail',
@@ -105,6 +104,7 @@
 					label: '余额支付',
 					value: 2
 				}],
+				
 			}
 		},
 		methods: {
