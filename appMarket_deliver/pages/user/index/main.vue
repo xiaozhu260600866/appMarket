@@ -4,7 +4,7 @@
 			<view class="head-info utop">
 				<view class="uinfo">
 					<view class="header-img">
-						<image class="img" :src="userInfo.headerPic" />
+						<image class="img" :src="data.detail.getUser.headerPic"  />
 					</view>
 					<view class="flex-between flex-middle flex1">
 						<view class="pl15 fc-white right info" @click="goto('/pages/user/setting/layouts/info',1)">

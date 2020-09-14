@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="payed-content">
+		<view class="payed-content" v-if="data.show">
 			<view class="con" v-if="detail.payed_at">
 				<view class="p"><dx-icon name="success" size="70" color="#09BB07"></dx-icon></view>
 				<view class="p content">支付成功</view>

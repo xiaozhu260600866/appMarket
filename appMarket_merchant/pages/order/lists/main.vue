@@ -31,7 +31,7 @@
 						<view class="order_no lh-20">订单编号：<text class="Arial">{{ parent.order_no }}</text></view>
 					</view>
 					<view class="fs-14 text-right">
-						<view class="price lh-20">￥{{parent.amount}}</view>
+						<view class="price lh-20">￥{{parent.amount}}结算价{{parent.merchant_price}}</view>
 						<view class="state lh-20 fs-13">{{parent.status_message}}</view>
 					</view>
 				</view>

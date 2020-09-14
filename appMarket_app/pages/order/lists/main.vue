@@ -2,7 +2,7 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
-			<dx-tabs :tabs="tabs" @change="ajax" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
+			<dx-tabs :tabs="tabs" @change="search" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
 			<view class="pro_info mb10" v-for="(parent,key) in data.lists.data">
 				<view class="order_date plr10 bd-be">
 					<view class="time fs-14">
@@ -35,7 +35,7 @@
 				<view class="btn-group ptb8 plr10">
 					<!-- 待支付 -->
 					<view class="btn-item" v-if="parent.status == 1">
-						<view class="btn-nav" @click="changeOrder(parent)">取消订单</view>
+						<view class="btn-nav" @click="delOrder(parent)">取消订单</view>
 						<view class="btn-nav" @click="goto('/pages/order/pay_center/main?order_no='+parent.order_no,1)">去支付</view>
 					</view>
 					<!-- 待接单 -->
@@ -49,7 +49,7 @@
 					<!-- 6：骑手已取货；7：骑手已送达 -->
 					<view class="btn-item" v-if="parent.status == 6 || parent.status == 7">
 						<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
-						<view class="btn-nav" @click="goto('/pages/shop/order/buy/detail?order_no='+parent.order_no,1)">确认收货</view>
+						<view class="btn-nav" @click="goto('/pages/order/buy/detail?order_no='+parent.order_no,1)">确认收货</view>
 					</view>
 					<!-- <view class="btn-item" >
 						<view class="btn-nav" @click="goto('/pages/order/map/main?order_no='+parent.order_no,1)" v-if="location">骑手位置</view>
@@ -124,6 +124,22 @@
 			},
 			gotoOrder(item){
 				return this.goto("/pages/order/buy/detail?order_no="+item.order_no,1);
+			},
+			search(){
+				if(this.status == 99){
+					this.getAjaxForApp(this,{status:9}).then(msg => {
+						  
+					});
+						
+				}else if(this.status == 9){
+					this.getAjaxForApp(this,{status:9,suggestStatus:0}).then(msg => {
+						  
+					});
+				}else{
+					this.getAjaxForApp(this,{status:this.status}).then(msg => {
+						  
+					});
+				}
 			},
 			ajax() {
 				

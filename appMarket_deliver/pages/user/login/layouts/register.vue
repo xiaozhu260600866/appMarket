@@ -21,6 +21,7 @@
 						<view class="dx-cell_ft dx_ft-access"></view>
 					</view>
 				</my-picker>
+				<weui-input v-model="ruleform.market_id" label="市场" datatype="require" name="market_id" changeField="value" type="select" dataKey="market"></weui-input>
 				<weui-input v-model="ruleform.address" label="详细地址" type="location" name="address" datatype="require"  @callback="locationRes"></weui-input>
 				<view class="m20 info-subBtn">
 					<dx-button block size="lg" @click="submit">下一步</dx-button>
@@ -55,7 +56,7 @@
 					</view>
 				</view>
 				<view class="m20 mt40 info-subBtn">
-					<dx-button block size="lg" @click="next(3)">下一步</dx-button>
+					<dx-button block size="lg" @click="submit">下一步</dx-button>
 				</view>
 			</view>
 			
@@ -150,10 +151,7 @@
 							}
 							this.step =2;
 						}else{
-							if(!this.ruleform.company_logo && !this.ruleform.health_logo){
-							   this.getError("请上传营业执照或健康书");
-								return false;
-							}
+							
 							this.postAjax("/deliver/register", this.ruleform).then(msg => {
 								if (msg.data.status == 2) {
 									this.goto("/pages/user/login/main");

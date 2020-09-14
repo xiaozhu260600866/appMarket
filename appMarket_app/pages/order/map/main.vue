@@ -1,8 +1,9 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="server-place" v-if="mapShow">
+		<view class="server-place" v-if="mapShow && order.addr_address">
 			<view class="bg-f">
+				
 				<dx-list-msg :name="order.addr_address" myclass="bg-f" :content="'请在 '+order.deliver_date+' 内送达目的地'"></dx-list-msg>
 			</view>
 			<map

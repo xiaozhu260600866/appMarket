@@ -51,7 +51,7 @@
 			<!-- 如果是骑手取货end -->
 			<!-- 如果是自提点start -->
 			<view class="block-sec" v-if="ruleform.shipping == 4">
-				<view v-if="deliver.name">
+				<view v-if="deliver.name" @click="goto('/pages/order/chooseDeliver/main',1)">
 					<view class="add-info p10">
 						<view class="info pr15">
 							<view class="fs-17 fc-3 mb5 lh-24">自提地址</view>
@@ -89,8 +89,8 @@
 				</view>
 				<orderPro :data="merchant.data"></orderPro>
 				<view class="bd-te">
-					<weui-input v-model="ruleform.send_price" label="配送费" myclass="ptb5" type="txt" name="send_price"></weui-input>
-					<weui-input v-model="ruleform.weigth_price" label="超重费用" myclass="ptb5" type="txt" name="weigth_price"></weui-input>
+					<weui-input v-model="ruleform.send_price" label="配送费" myclass="ptb5" type="txt" name="send_price" v-if="ruleform.shipping ==2"></weui-input>
+					<weui-input v-model="ruleform.weigth_price" label="超重费用" myclass="ptb5" type="txt" name="weigth_price" v-if="ruleform.shipping ==2"></weui-input>
 					<view @click="showCoupon(index)">
 						<view :class="['dx-cell','dx-dateTime']">
 							<view class="dx-cell_hd">

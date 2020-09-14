@@ -8,6 +8,7 @@ export default {
         'createAction': '/admin/merchant/product/create',
         'editAction': '/admin/merchant/product/edit',
         classAction: '/admin/merchant/product/',
+        'classUrl': '/pages/store/lists/main?product_class=',
         auditAction: '/admin/merchant/product/changeStatus',
         'checkAll': true,
         'searchFields': [

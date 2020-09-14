@@ -12,6 +12,7 @@
 						<view class="right price">￥{{ item.amount }}</view>
 					</view>
 					<view>
+						{{item.order_no}}
 						<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products" v-if="v.getProduct">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
 						<view class="info">
 							<view class="flex-between flex-middle">
@@ -32,11 +33,12 @@
 				<view class="Iorder_item" v-for="(item,index) in  data.lists.data" >
 					<view class="top">
 						<view>
-							<view class="left">顾客已等<text class="Arial">2</text>小时<text class="Arial">26</text>分钟</view>
+								<view class="left" v-if="item.waitData && item.waitData.waitTime">顾客已等<text class="Arial">{{item.waitData.waitTime}}</text>小时<text class="Arial">{{item.waitData.waitMinute}}</text>分钟</view>
 							<view class="left fs-14">(<text class="Arial plr2">{{ item.deliver_date }} </text>送达)</view>
 						</view>
 						<view class="right price">￥{{ item.amount }}</view>
 					</view>
+						{{item.order_no}}
 					<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products" v-if="v.getProduct">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
 					<view class="info">
 						<view class="flex-between flex-middle">
@@ -67,7 +69,7 @@
 				<view class="Iorder_item" v-for="(item,index) in data.lists.data" >
 					<view class="top">
 						<view>
-							<view class="left">顾客已等<text class="Arial">2</text>小时<text class="Arial">26</text>分钟</view>
+						<view class="left" v-if="item.waitData && item.waitData.waitTime">顾客已等<text class="Arial">{{item.waitData.waitTime}}</text>小时<text class="Arial">{{item.waitData.waitMinute}}</text>分钟</view>
 							<view class="left fs-14">(<text class="Arial plr2">{{ item.order_date }} {{ item.order_time }}</text>送达)</view>
 						</view>
 						<view class="right price">￥{{ item.amount }}</view>

@@ -61,17 +61,17 @@
 				<view class="lprice fs-14 pl10"></view>
 				<view class="rbtn">
 					<!-- 待支付（1）、待发货（3）、待收货（5）、、完成（9，售后状态为1）、完成（售后状态为0）、评价（9，售后状态为0）、售后（10） -->
-					<view class="btn-nav" @click="changeOrder()" v-if="ruleform.status == 1">取消订单</view>
-					<view class="btn-nav" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">删除订单</view>
+					<view class="btn-nav" @click="cancelOrder()" v-if="ruleform.status == 1">取消订单</view>
+					<!-- <view class="btn-nav" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">删除订单</view> -->
 					<view class="btn-nav inbtn" @click="goto('/pages/shop/order/buy/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 1">去支付</view>
 <!-- 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 3 || ruleform.status == 5">申请售后</view>
 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">申请售后</view> -->
-					<view class="btn-nav inbtn" @click="canReceipt" v-if="ruleform.status == 5">确认收货</view>
+					<view class="btn-nav inbtn" @click="canReceipt" v-if="ruleform.status >= 5 && ruleform.status <9">确认收货</view>
 					<view class="btn-nav" v-if="ruleform.status == 9 && ruleform.suggestStatus == 1">已完成</view>
 					<view class="btn-nav inbtn" @click="goto('/pages/order/evaluate/main?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 9 && ruleform.suggestStatus == 0">立即评价</view>
 					<view class="btn-nav" @click="goto('/pages/shop/order/after-sale/index?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 10">售后详情</view>
 					<view class="btn-nav" v-if="ruleform.status == 0">已取消</view>
-					<view class="btn-nav inbtn" @click="goto('/pages/order/map/main?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 5 ||ruleform.status == 6 ||ruleform.status == 7 || location">骑手位置</view>
+					<view class="btn-nav inbtn" @click="goto('/pages/order/map/main?order_no='+ruleform.order_no,1)" v-if="ruleform.status == 5 ||ruleform.status == 6 ||ruleform.status == 7 &&  location">骑手位置</view>
 				</view>
 			</view>
 			
@@ -108,6 +108,28 @@
 			}
 		},
 		methods: {
+			cancelOrder(){
+				this.getConfirm("是否取消订单", msg => {
+					this.postAjax("/user/change-order-status", {id:this.ruleform.id,status:0}).then(msg => {
+						if (msg.data.status == 2) {
+							this.ajax();
+						}
+					});
+				});
+			},
+			canReceipt() {
+				this.receipt("确认收货吗");
+			},
+			receipt(title) {
+				this.getConfirm(title, msg => {
+					this.postAjax("/user/change-order-status", {id:this.ruleform.id,status:9}).then(msg => {
+						if (msg.data.status == 2) {
+							this.ajax();
+						}
+					});
+				});
+			
+			},
 			ajax() {
 				this.getAjaxForApp(this, {order_no:this.order_no
 				

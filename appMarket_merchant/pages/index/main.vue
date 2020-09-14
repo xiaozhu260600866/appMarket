@@ -245,7 +245,7 @@
 				this.$refs.printf.openDefault(item);
 			},
 			order(item) {
-				this.getConfirm("是不确认此操作", () => {
+				this.getConfirm("是否确认此操作", () => {
 					this.postAjax("/merchant/order-change", item).then(msg => {
 						if (msg.data.status == 2) {
 							this.ajax();
