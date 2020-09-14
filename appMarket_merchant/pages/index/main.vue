@@ -28,7 +28,7 @@
 						<view class="pro fs-14">
 							<view class="count">商品<text>({{item.products.length}})</text></view>
 							<view class="reamrk mt10">备注：{{ item.remark }}</view>
-							<view class="proLists" v-for="(v,num) in item.products" v-if="item.getProduct">
+							<view class="proLists" v-for="(v,num) in item.products" v-if="item.products">
 								<view class="td name">{{ v.getProduct.name }}</view>
 								<view class="td num">X{{ v.num }}</view>
 								<view class="td price fc-3">{{ v.price }}</view>
