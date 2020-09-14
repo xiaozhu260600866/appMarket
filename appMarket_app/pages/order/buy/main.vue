@@ -59,7 +59,7 @@
 							<view class="fs-14 fc-9 mt3">{{deliver.name}}- {{deliver.phone}}</view>
 						</view>
 						<view class="group text-center pl10">
-							<image class="img" :src="deliver.headerPic" />
+							<image class="img" :src="deliver.getUser.headerPic" />
 							<view class="name fs-12 fc-3 mt5">{{deliver.name}}</view>
 							<view class="tip">店家</view>
 						</view>
@@ -125,7 +125,7 @@
 				<!-- <weui-input v-model="ruleform.emergencyFee" label="加急费" name="emergencyFee" changeField="value" type="radio" dataKey="emergencyFeeArr"
 				 @callback="test" :row="false"></weui-input> -->
 
-				<weui-input v-model="ruleform.quick_price" label="加急费" name="quick_price" changeField="value" type="checkbox"
+				<weui-input v-model="ruleform.quick_price" v-if="ruleform.shipping == 2" label="加急费" name="quick_price" changeField="value" type="checkbox"
 				 dataKey="emergencyFeeArr" :row="true" Labelleft myclass="emFee"></weui-input>
 			</view>
 			<view id="mode" class="block-sec">

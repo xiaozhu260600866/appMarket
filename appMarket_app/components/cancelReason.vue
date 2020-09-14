@@ -1,8 +1,8 @@
 <template>
 	<section>
-		<dx-diag :open="true" :tbPadding="0" :lrPadding="0">
+		<dx-diag  :tbPadding="0" :lrPadding="0" ref="diag">
 			<view class="reason">
-				<view class="item" v-for="v in reasonLists">{{ v.label }}</view>
+				<view class="item" v-for="v in reasonLists" @click="cancelOrder(v.label)">{{ v.label }}</view>
 			</view>
 		</dx-diag>
 	</section>
@@ -24,8 +24,18 @@
 			}
 		},
 		methods: {
-			toggleDiag() {
-				this.$parent.popDiv = !this.$parent.popDiv;
+			cancelOrder(cancel_reason){
+				this.getConfirm("是否取消订单", msg => {
+					this.postAjax("/user/change-order-status", {id:this.getParent(this).ruleform.id,status:0,cancel_reason:cancel_reason}).then(msg => {
+						if (msg.data.status == 2) {
+							this.$refs.diag.thisDiag = false;
+							this.getParent(this).ajax();
+						}
+					});
+				});
+			},
+			open() {
+				this.$refs.diag.thisDiag = true;
 			}
 		}
 	}

@@ -28,14 +28,18 @@
 							<view class="name fs-15 fc-3">{{ parent.getMerchant.name }}</view>
 						</view>
 						<orderPro :data="parent.products"></orderPro>
-						<view class="order_count plr10 fs-13">共<span class="Arial">{{parent.num}}</span>件商品
-							合计：￥<span class="Arial fs-16 fc-red">{{parent.amount}}</span>
+						<view class="order_count plr10 fs-13">
+							加急费：￥<span class="Arial fs-16 fc-red">{{parent.quick_price}}</span>
 						</view>
+						<view class="order_count plr10 fs-13">共<span class="Arial">{{parent.num}}</span>件商品
+							合计：￥<span class="Arial fs-16 fc-red">{{parseFloat(parent.amount) + parseFloat(parent.quick_price)}}</span>
+						</view>
+						
 					</view>
 				<view class="btn-group ptb8 plr10">
 					<!-- 待支付 -->
 					<view class="btn-item" v-if="parent.status == 1">
-						<view class="btn-nav" @click="delOrder(parent)">取消订单</view>
+						<!-- <view class="btn-nav" @click="delOrder(parent)">取消订单</view> -->
 						<view class="btn-nav" @click="goto('/pages/order/pay_center/main?order_no='+parent.order_no,1)">去支付</view>
 					</view>
 					<!-- 待接单 -->
