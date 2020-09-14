@@ -23,6 +23,8 @@
 .icon-cart-del:before{content: "\f904";}/* 购物车del */
 .icon-location-c-fill:before{content: "\f6a2";}/* 定位 */
 
+
+.icon-index-star-c:before{content: "\e609";}/* 今日特价 */
 .icon-intergral-record:before{content: "\f309";}/* 积分记录 */
 
 .icon-dis-income:before{content: "\f6c8";}/*  */

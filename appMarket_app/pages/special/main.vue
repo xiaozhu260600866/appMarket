@@ -13,9 +13,10 @@
 					</view>
 					<view class="info">
 						<view class="name">{{v.name}}</view>
-						<view class="flex-baseline">
+						<view class="flex-baseline flex-between">
 							<view class="price">￥{{v.auto_group ? v.group_price : v.price}}</view>
-							<view class="group_num" v-if="v.auto_group">拼团人数：{{v.group_num}}</view>
+							<view class="group_num flex1" v-if="v.auto_group">拼团人数:<text class="Arial">{{v.group_num}}</text></view>
+							<view class="sales" v-if="v.self_num_">售量:<text class="Arial">{{v.self_num_}}</text></view>
 						</view>
 					</view>
 				</view>
