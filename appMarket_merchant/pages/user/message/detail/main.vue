@@ -11,7 +11,7 @@
 					<dx-products-pic :src="product.getProduct.firstCover" :imgWidth="80" :imgHeight="80" >
 						<view class="right-box">
 							<view class="row fs-15 lh-20">{{ v.content }}</view>
-							<view class="row"><dx-button type="danger" size="mini" hollow>查看订单详情</dx-button></view>
+								<view class="row" @click="goto('/pages/order/detail/main?order_no='+v.order_no,1)"><dx-button type="danger" size="mini" hollow>查看订单详情</dx-button></view>
 						</view>
 					</dx-products-pic>
 				</view>

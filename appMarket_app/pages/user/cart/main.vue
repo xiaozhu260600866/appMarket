@@ -117,20 +117,24 @@
 		onShow(){
 			this.checkAll = false
 			this.onShow(this);
-			if(this.data.merchants  && this.data.merchants.length){
-				this.data.merchants.forEach(merchant=>{
-					merchant.is_check = false;
-					merchant.data.forEach(v=>{
-						v.is_check = false
-					});
-				})
-			}
+			this.resetData();
 		},
 		onLoad(options) {
 			this.ajax();
 			this.checkLogin();
+			this.resetData();
 		},
 		methods: {
+			resetData(){
+				if(this.data.merchants  && this.data.merchants.length){
+					this.data.merchants.forEach(merchant=>{
+						merchant.is_check = false;
+						merchant.data.forEach(v=>{
+							v.is_check = false
+						});
+					})
+				}
+			},
 			sublimt(){
 				if (this.checkLength == 0) {
 					this.getError("请勾选项目");

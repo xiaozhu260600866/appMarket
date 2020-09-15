@@ -28,7 +28,7 @@
 							<view class="name fs-15 fc-3">{{ parent.getMerchant.name }}</view>
 						</view>
 						<orderPro :data="parent.products"></orderPro>
-						<view class="order_count plr10 fs-13">
+						<view class="order_count plr10 fs-13" v-if="parent.quick_price !='0.00'">
 							加急费：￥<span class="Arial fs-16 fc-red">{{parent.quick_price}}</span>
 						</view>
 						<view class="order_count plr10 fs-13">共<span class="Arial">{{parent.num}}</span>件商品

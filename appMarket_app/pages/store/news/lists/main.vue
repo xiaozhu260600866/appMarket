@@ -18,6 +18,7 @@
 				formAction: '/merchant/show',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
+				merchant_id:'',
 				getSiteName: this.getSiteName()
 				
 			}
@@ -25,13 +26,14 @@
 		methods: {
 			ajax() {
 				this.getAjaxForApp(this, {
-				
+					merchant_id:this.merchant_id
 				}).then(msg => {
 					this.setTitle(msg.detail.name);
 				});
 			}
 		},
 		onLoad(options) {
+			this.merchant_id = options.merchant_id;
 			this.ajax();
 			
 		},
