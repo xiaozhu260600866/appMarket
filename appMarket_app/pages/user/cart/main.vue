@@ -115,6 +115,7 @@
 			this.shareSource(this, '商城');
 		},
 		onShow(){
+			
 			this.checkAll = false
 			this.onShow(this);
 			this.resetData();

@@ -61,7 +61,7 @@
 			},
 			ajax() {
 				this.getAjaxForApp(this, {
-				
+					id:this.id
 				}).then(msg => {
 					this.ruleform = msg.detail;
 				});
