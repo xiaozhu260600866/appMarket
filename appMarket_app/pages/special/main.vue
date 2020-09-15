@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="bg-white"></view>
+		<!-- <view class="bg-white"></view> -->
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="zindex2">
 			<view class="iad-img">
