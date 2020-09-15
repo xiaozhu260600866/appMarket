@@ -1,48 +1,54 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
+		<view v-if="data.show">
 			<!-- <dx-tabs :tabs="tabs" v-model="status" selectedColor="#57C734" sliderBgColor="#57C734"></dx-tabs> -->
-			<dx-tabs :tabs="tabs" v-model="status" :height="88" :sliderWidth="150" :sliderHeight="60" bottom="50%" color="#888" selectedColor="#57C734" :bold="true" sliderBgColor="rgba(87, 199, 52,0.2)">
+			<dx-tabs :tabs="tabs" v-model="category" @change="ajax" :height="88" :sliderWidth="150" :sliderHeight="60" bottom="50%" color="#888" selectedColor="#57C734" :bold="true" sliderBgColor="rgba(87, 199, 52,0.2)">
 			</dx-tabs>
-			<view class="fs-14 text-center ptb50 fc-9">暂无数据</view>
+			<store-pro :data="lists.data" :canBuy="false"></store-pro>
 		</view>
 	</view>
 </template>
 
 <script>
 	import dxTabs from "doxinui/components/tabs/tabs"
+		import storePro from "components/store_pro.vue"
 	export default {
 		components:{
-			dxTabs
+			dxTabs,storePro
 		},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/product/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				status: 0,
+				category: '正常',
+				lists:[],
 				tabs:[
-					{name:'感冒',value: 0},
-					{name:'正常',value: 1},
-					{name:'高血压',value: 2},
-					{name:'痛风',value: 3},
-					{name:'心脏病',value: 4}
+					
 				],
 			}
 		},
 		methods: {
 			ajax() {
-				this.getAjaxForApp(this, {
-				
+				this.postAjax(this.formAction, {
+				category:this.category
 				}).then(msg => {
-					
+					if(this.tabs.length == 0){
+						msg.data.tab.forEach(msg=>{
+							this.tabs.push(
+								{name:msg.label,value:msg.value}
+							);
+						});
+					}
+					this.lists = msg.data.lists;
+					this.data.show = true;
 				});
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 			
 		},
 		onReachBottom() {

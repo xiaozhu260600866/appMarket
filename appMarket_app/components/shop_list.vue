@@ -12,12 +12,12 @@
 							<view class="nav">营业时间：<text class="Arial">{{ item.hour_time }}</text></view>
 						</view>
 						<view class="grade flex-baseline mt3">
-							<tui-rate :current="4" :disabled="true" active="#FDB508" :score="'0.'+'35'" :size="14"></tui-rate>
-							<view class="fs-12 pl5 lh-24">4.35分</view>
+							<tui-rate :current="4" :disabled="true" active="#FDB508" :value="item.score" :size="14"></tui-rate>
+							<view class="fs-12 pl5 lh-24">{{item.score}}分</view>
 						</view>
 						<view class="flex-middle fs-13 fc-3 lh-20">
 							<view class="pr12">起送<text class="num">￥{{item.order_amount}}</text></view>
-							<view class="num"><text class="num">01</text>时<text class="num">15</text>分</view>
+							<!-- <view class="num"><text class="num">01</text>时<text class="num">15</text>分</view> -->
 						</view>
 					</view>
 					<view class="location fs-13 fc-9 Arial" v-if="item.juli"><filterKm v-model="item.juli" v-if="item.juli"></filterKm></view>

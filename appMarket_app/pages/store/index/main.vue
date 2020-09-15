@@ -15,8 +15,8 @@
 		<view class="topInfo" :style="{top:height_+'px',}" style="height: 220upx;">
 			<dx-products-pic :src=" merchant.cover? merchant.cover : '/static/nopropic.png'" :isList="true" myclass="main-bg fc-white" :imgWidth="80" :imgHeight="80">
 				<view class="grade flex-baseline">
-					<tui-rate :current="5" :disabled="true" active="#FDB508" :score="0" :size="14"></tui-rate>
-					<view class="num fs-15 ml5">5分</view>
+					<tui-rate :current="5" :disabled="true" active="#FDB508" :value="merchant.score" :size="14"></tui-rate>
+					<view class="num fs-15 ml5">{{merchant.score}}分</view>
 				</view>
 				<view class="flex-middle businessHours mtb5">
 					<view class="nav">营业时间：<text class="Arial">{{ merchant.hour_time }}</text></view>

@@ -59,6 +59,7 @@ export default {
             // { 'prop': '', 'minWidth': '', 'width': '60', 'align': 'center', 'append_table_': 0, 'label': '销量' },
             // { 'prop': '', 'minWidth': '', 'width': '100', 'align': 'center', 'append_table_': 0, 'label': '状态' },
             { 'prop': 'is_index', 'minWidth': '', 'width': '100', 'align': 'center', 'type': 'editField', 'url': '/admin/merchant/product/editField', 'label': '今天特价' },
+            { 'prop': 'category', 'minWidth': '', 'width': '100', 'align': 'center', 'datakey': 'productCategory', 'type': 'select', 'url': '/admin/merchant/product/editField', 'label': '专属人群' },
             { 'prop': 'shell_date', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '售卖日期' },
             { 'prop': 'created_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '发布日期' }
         ],

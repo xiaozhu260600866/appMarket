@@ -55,6 +55,9 @@
                       <my-upload upurl="product" :upload-length="1" :file-list="ruleForm.web_logo" :sizearr="300" />
                     </div>
                   </el-tab-pane>
+                  <el-tab-pane label="专属人群" name="sixth">
+                    <category :lists="data.category" action-prefix="admin/system" action-url="/admin/system" type="0" :canupload="false" :has-son="false" />
+                  </el-tab-pane>
 
                 </el-tabs>
                 <el-form-item>
@@ -90,10 +93,11 @@
 </style>
 <script>
 	import chooseLocation from 'xiaozhu/vue/components/admin/chooseLocation'
-
+  import category from 'xiaozhu/elementAdmin/components/category.vue'
 	export default {
 		components: {
-			chooseLocation
+			chooseLocation,
+      category
 
 		},
 		data() {
