@@ -8,11 +8,14 @@
 				<!-- 新任务状态 -->
 				<view class="Iorder_item" v-for="(item,index) in data.lists.data" >
 					<view class="time-info">
-						<view class="left">预计<text class="Arial plr2">{{ item.deliver_date }} {{ item.order_time }}</text>送达</view>
+						<view class="left">
+							<view class="lh-20">预计<text class="Arial plr2">{{ item.deliver_date }} {{ item.order_time }}</text>送达</view>
+							<view class="lh-20">订单编号：<text class="Arial">{{item.order_no}}</text></view>
+						</view>
 						<view class="right price">￥{{ item.amount }}</view>
 					</view>
 					<view>
-						{{item.order_no}}
+						
 						<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products" v-if="v.getProduct">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
 						<view class="info">
 							<view class="flex-between flex-middle">

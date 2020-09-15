@@ -1,9 +1,17 @@
 <template>
 	<view>
-		<view class="bg-white"></view>
+		<!-- <view class="bg-white"></view> -->
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="info-form zindex2" v-if="data.show">
-			<view class="flex-wrap pic_group">
+			<view class="bg-f mb12">
+				<weui-input v-model="ruleform.name" label="姓名" type="text" name="name"></weui-input>
+				<weui-input v-model="ruleform.phone" label="电话" type="txt" name="phone"></weui-input>
+				<weui-input v-model="ruleform.cityString" label="地区" type="txt" name="cityString"></weui-input>
+				<weui-input v-model="ruleform.address" label="地点" type="location" name="address"></weui-input>
+				<weui-input v-model="ruleform.logo" label="头像" type="upload" upurl='deliver' allowUpLoadNum="1" name="logo"
+				 ></weui-input>
+			</view>
+			<view class="flex-wrap pic_group bg-f">
 				<view class="pic_row">
 					<view class="name">身份证人像面</view>
 					<weui-input v-model="ruleform.idCard" type="upload" upurl='horse' name="idCard" disabled="disabled"></weui-input>
@@ -17,7 +25,7 @@
 				<weui-input v-model="ruleform.health_logo" label="健康证" type="upload" upurl='horses' allowUpLoadNum="1" name="health_logo"
 				 datatype="require"></weui-input>
 			</view> -->
-			<!-- <view class="m20" @click="goto('/pages/user/setting/main',2)"><dx-button type="success" block size="lg">保存</dx-button></view> -->
+			<view class="m20" @click="submit"><dx-button type="success" block size="lg">保存</dx-button></view>
 			<view class="m20" ><dx-button type="success" block size="lg" hollow @click="lgout">退出登录</dx-button></view>
 		</view>
 	</view>
