@@ -256,7 +256,7 @@
 		{
 			"path": "pages/news/lists/main",
 			"style": {
-				"navigationBarTitleText": "列表",
+				"navigationBarTitleText": "店辅公告",
 				"enablePullDownRefresh": true
 			}
 		},

@@ -13,4 +13,5 @@
 
 .full_price{text-align: right;display: inline-block;}
 .full_price /deep/.dx-cell{padding: 0;border-bottom: 0;}
+.full_price /deep/.star{display: none;}
 .full_price /deep/.dx-input{width: 200upx;text-align: center;border-bottom: 2upx #eee solid;}

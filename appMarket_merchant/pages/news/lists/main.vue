@@ -3,9 +3,9 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="pb50">
 			<view class="news_item mb12 bg-f" v-for="(v,index) in data.lists.data">
-				<dx-list-msg imgSrc="/static/banner01.jpg" :name="v.title" :imgR="3" :imgHeight="80" :imgWidth="120" @click="goto(v.url,v.type)">
+				<dx-list-msg :name="v.title" @click="goto(v.url,v.type)">
 					<view slot="con" class="fs-13 fc-6">
-						<view class="Arial mt8">{{ v.created_at }}</view>
+						<view class="Arial mt10">{{ v.created_at }}</view>
 						<view class="lh-20 wrap2 mt3">{{ v.content }}</view>
 					</view>
 				</dx-list-msg>

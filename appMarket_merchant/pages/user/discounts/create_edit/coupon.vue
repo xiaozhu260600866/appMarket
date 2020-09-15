@@ -13,9 +13,9 @@
 				</weui-input>
 			</view>
 			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.condition"   label="使用条件" type="txt" name="condition" myclass="right-input">
+				<weui-input v-model="ruleform.condition"   label="使用条件" type="txt" name="condition" myclass="right-input" datatype="require">
 					<view slot="middle" class="full_price">
-						<weui-input v-model="ruleform.full_amount"  datatype="require" label="订单满" placeholder="如：100" type="number" name="full_amount"></weui-input>
+						<weui-input v-model="ruleform.full_amount" datatype="require" label="订单满" placeholder="如：100" type="number" name="full_amount"></weui-input>
 					</view>
 					<view slot="right">元</view>
 				</weui-input>

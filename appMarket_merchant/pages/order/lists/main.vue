@@ -24,6 +24,10 @@
 					<weui-input v-model="ruleform.end_date" type="date" name="end_date" @callback="search_"></weui-input>
 				</view>
 			</view>
+			<view class="orderCount flex-between lh-20 plr15 fc-9 fs-15 pt10">
+				<view class="item">订单数<text class="Arial">({{data.orderCount}})</text></view>
+				<view class="item">收益：<text class="price">3600</text>元</view>
+			</view>
 			<view class="orderLists mb10" v-for="(parent,key) in data.lists.data" >
 				<view class="order_date plr10 bd-be fs-15 fc-3" @click="goto('/pages/order/detail/main?order_no='+parent.order_no,1)">
 					<view class="fs-14 flex1">
@@ -31,7 +35,6 @@
 						<view class="order_no lh-20">订单编号：<text class="Arial">{{ parent.order_no }}</text></view>
 					</view>
 					<view class="fs-14 text-right">
-						<view class="price lh-20">￥{{parent.amount}}结算价{{parent.merchant_price}}</view>
 						<view class="state lh-20 fs-13">{{parent.status_message}}</view>
 					</view>
 				</view>
@@ -40,16 +43,20 @@
 					<view class="flex-between flex-middle">
 						<view class="flex1">
 							<view class="name lh-24">{{ parent.addr_name }}<text class="Arial pl10">{{ parent.addr_phone }}</text></view>
-							<view class="address mt5 fc-6">{{ parent.addr_address }}</view>
+							<view class="address mt5 fc-6" v-if="parent.addr_address">{{ parent.addr_address }}</view>
 						</view>
 						<view class="icon-grop">
-							<view class="icon dxi-icon dxi-icon-location-fill" @click="location(parent.location_x,parent.location_y,parent.addr_address)"></view>
 							<view class="icon dxi-icon dxi-icon-tel-fill" @click="phone(parent.addr_phone)"></view>
+							<view class="icon dxi-icon dxi-icon-location-fill" @click="location(parent.location_x,parent.location_y,parent.addr_address)" v-if="parent.addr_address"></view>
 						</view>
 					</view>
 				</view>
+				<view class="Ocount">
+					<view class="item">共<text class="Arial">{{ parent.num }}</text>件商品，合计支付：<text class="price">￥{{parent.amount}}</text></view>
+					<view class="item">本单结算价：<text class="price">￥{{parent.merchant_price}}</text></view>
+				</view>
 			</view>
-			<hasMore :parentData="data" source="order"></hasMore>
+			<hasMore :parentData="data"></hasMore>
 		</view>
 	</view>
 </template>
