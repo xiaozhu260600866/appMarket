@@ -6,9 +6,10 @@
 
 .info-form /deep/.dx-txt{text-align: right;position: relative;min-height: 34px;color: #666;}
 .info-form /deep/.picker{color: #666;}
-.info-form /deep/.dx-label{width: 210upx!important;}
+.info-form /deep/.dx-label{width: 140upx!important;}
 .info-form /deep/.dx-input{text-align: right;}
 .service_phone /deep/.dx-txt{color: #57C734;}
+.info-form /deep/.dx-upload_img .upload-img{justify-content: flex-end;}
 
 .info-form .address /deep/.dx-input,.info-form /deep/.nav .dx-input{padding-right: 20upx;}
 

@@ -8,6 +8,8 @@
 				<weui-input v-model="ruleform.phone" label="电话" type="txt" name="phone"></weui-input>
 				<weui-input v-model="ruleform.cityString" label="地区" type="txt" name="cityString"></weui-input>
 				<weui-input v-model="ruleform.address" label="地点" type="location" name="address"></weui-input>
+				<weui-input v-model="ruleform.logo" label="头像" type="upload" upurl='deliver' allowUpLoadNum="1" name="logo"
+				 ></weui-input>
 			</view>
 			<view class="flex-wrap pic_group bg-f">
 				<view class="pic_row">
@@ -18,10 +20,6 @@
 					<view class="name">身份证国徽面</view>
 					<weui-input v-model="ruleform.idCard2" type="upload" upurl='deliver' name="idCard2" disabled="disabled"></weui-input>
 				</view>
-			</view>
-			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.logo" label="logo" type="upload" upurl='deliver' allowUpLoadNum="1" name="logo"
-				 ></weui-input>
 			</view>
 			<view class="m20" @click="submit"><dx-button type="success" block size="lg">保存</dx-button></view>
 			<view class="m20" ><dx-button type="success" block size="lg" hollow @click="lgout">退出登录</dx-button></view>

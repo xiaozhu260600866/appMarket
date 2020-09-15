@@ -7,15 +7,12 @@
 			<view class="news_order Iorder">
 				<!-- 新任务状态 -->
 				<view class="Iorder_item" v-for="(item,index) in data.lists.data" >
-					<view class="time-info">
-						<view class="left">预计<text class="Arial plr2">{{ item.deliver_date }} {{ item.order_time }}</text>送达</view>
-						<!-- <view class="right price">￥{{ item.amount }}</view> -->
-						<view class="order_count plr10 fs-13" v-if="item.quick_price !='0.00'">
-							加急费：￥<span class="Arial fs-16 fc-red">{{item.quick_price}}</span>
+					<view class="top plr10">
+						<view>
+							<view class="time lh-18">下单时间：<text class="Arial">{{ item.payed_at }}</text></view>
+							<view class="order_no lh-18">订单编号：<text class="Arial">{{ item.order_no }}</text></view>
 						</view>
-						<view class="order_count plr10 fs-13">共<span class="Arial">{{item.num}}</span>件商品
-							合计：￥<span class="Arial fs-16 fc-red">{{parseFloat(item.amount) + parseFloat(item.quick_price)}}</span>
-						</view>
+						<view class="status main-color">{{item.status_message}}</view>
 					</view>
 					<view class="pro fw-bold plr15 pt10"><text v-for="(v,num) in item.products">{{ v.getProduct.name }}{{ v.num }}斤,</text></view>
 					<view class="info">
@@ -32,9 +29,23 @@
 							</view>
 						</view>
 					</view>
+					<view class="emergency_fee flex-right plr15 ptb10 bd-be mb10" v-if="item.quick_price !='0.00'">
+						<view class="txt">加急费</view>
+						<view class="Arial">￥{{item.quick_price}}<</view>
+					</view>
+					<view class="count flex-right p15 pt5">
+						共<text class="Arial">{{item.num}}</text>件商品，合计：￥
+						<text class="Arial fs-16 fc-red">{{parseFloat(item.amount) + parseFloat(item.quick_price)}}</text>
+					</view>
+					<!-- <view class="order_count plr10 fs-13" v-if="item.quick_price !='0.00'">
+						加急费：￥<span class="Arial fs-16 fc-red">{{item.quick_price}}</span>
+					</view>
+					<view class="order_count plr10 fs-13">共<span class="Arial">{{item.num}}</span>件商品
+						合计：￥<span class="Arial fs-16 fc-red">{{parseFloat(item.amount) + parseFloat(item.quick_price)}}</span>
+					</view> -->
 					<view class="ptb10 text-center">
-						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,5)" v-if="status == 4">商家取货</dx-button>
-						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,9)" v-if="status == 5">操作完成</dx-button>
+						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,5)" v-if="status == 4">到商家取货</dx-button>
+						<dx-button round size="medium" type="success" myclass="plr70" @click="order(item,9)" v-if="status == 5">客户取货完成</dx-button>
 					</view>
 				</view>
 			</view>
