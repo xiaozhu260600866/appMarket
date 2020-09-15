@@ -6,9 +6,10 @@
 			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.name" label="姓名" type="text" name="name"></weui-input>
 				<weui-input v-model="ruleform.phone" label="电话" type="txt" name="phone"></weui-input>
-				<weui-input v-model="ruleform.cityString" label="地区" type="txt" name="cityString"></weui-input>
-				<weui-input v-model="ruleform.address" label="地点" type="location" name="address"></weui-input>
-				<weui-input v-model="ruleform.logo" label="头像" type="upload" upurl='deliver' allowUpLoadNum="1" name="logo"
+					<weui-input v-model="ruleform.address" label="地点" type="location" name="address"></weui-input>
+			<!-- 	<weui-input v-model="ruleform.cityString" label="地区" type="txt" name="cityString"></weui-input>
+			 -->
+				<weui-input v-model="ruleform.logo" label="头像" type="upload" upurl='horse' allowUpLoadNum="1" name="logo"
 				 ></weui-input>
 			</view>
 			<view class="flex-wrap pic_group bg-f">
@@ -43,6 +44,17 @@
 			}
 		},
 		methods: {
+			submit(){
+				this.vaildForm(this, res => {
+					if (res) {
+						this.postAjax("/horse/info", this.ruleform).then(msg => {
+							if (msg.data.status == 2) {
+								this.back();
+							}
+						});
+					}
+				});
+			},
 			lgout(){
 				this.getConfirm("是否确认退出登录",()=>{
 					this.postAjax("/horse/lgout").then(msg=>{
@@ -60,6 +72,7 @@
 					this.ruleform = msg.detail;
 					this.ruleform.idCard = this.ruleform.idCard ? this.ruleform.idCard.split(",") :[];
 					this.ruleform.idCard2 = this.ruleform.idCard2 ? this.ruleform.idCard2.split(",") :[];
+					this.ruleform.logo = this.ruleform.logo ? this.ruleform.logo.split(",") :[];
 					
 				});
 			}

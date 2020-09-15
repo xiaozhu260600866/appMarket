@@ -25,8 +25,8 @@
 				</view>
 			</view>
 			<view class="orderCount flex-between lh-20 plr15 fc-9 fs-15 pt10">
-				<view class="item">订单数<text class="Arial">({{data.orderCount}})</text></view>
-				<view class="item">收益：<text class="price">3600</text>元</view>
+				<view class="item">订单数<text class="Arial">({{data.orderCountTab}})</text></view>
+				<view class="item">收益：<text class="price">{{data.orderSum}}</text>元</view>
 			</view>
 			<view class="orderLists mb10" v-for="(parent,key) in data.lists.data" >
 				<view class="order_date plr10 bd-be fs-15 fc-3" @click="goto('/pages/order/detail/main?order_no='+parent.order_no,1)">

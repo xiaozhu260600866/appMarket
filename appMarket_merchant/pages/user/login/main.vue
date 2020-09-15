@@ -60,6 +60,7 @@
 		
 		methods: {
 			submit(){
+
 				this.vaildForm(this,res=>{
 					if(res){
 						this.postAjax("/merchant/login",this.ruleform).then(msg=>{
