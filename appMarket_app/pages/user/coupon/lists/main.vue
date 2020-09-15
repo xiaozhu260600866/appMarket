@@ -7,7 +7,7 @@
 			<view class="coupon-list p10">
 				<view class="list_item mb10 bg-f" v-for="v in data.lists.data">
 					<view class="item_left">
-						<view class="price fs-36 h-50 fw-bold"><span class="fs-14">￥</span>{{v.amount}}</view>
+						<view class="price fs-26 h-50 fw-bold"><span class="fs-14">￥</span>{{v.amount}}</view>
 						<view class="condition fs-12 fc-9">满<text class="Arial">{{v.full_amount}}</text>元可用</view>
 					</view>
 					<view class="item_right bd-le plr10">
@@ -41,41 +41,11 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				status: 0,
-				navbar:[{
-					value: 0,
-					name: '可用'
-				},{
-					value: 1,
-					name: '已用'
-				},{
-					value: 2,
-					name: '已过期'
-				}],
-				couponLists:[{
-					amount: 5.00,
-					type: 3,
-					full_amount: 50,
-					name: '满50元减5元券',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 0
-				},{
-					amount: 5.00,
-					type: 3,
-					full_amount: 60,
-					name: '5元优惠券',
-					start_date: '2020-08-01',
-					end_date: '2020-08-30',
-					status: 1
-				},{
-					amount: 5.00,
-					type: 3,
-					full_amount: 60,
-					name: '5元优惠券',
-					start_date: '2020-07-01',
-					end_date: '2020-07-30',
-					status: 2
-				}]
+				navbar:[
+					{value: 0,name: '可用'},
+					{value: 1,name: '已用'},
+					{value: 2,name: '已过期'},
+				]
 			}
 		},
 		methods: {

@@ -92,12 +92,11 @@
 					<weui-input v-model="ruleform.send_price" label="配送费" myclass="ptb5" type="txt" name="send_price" v-if="ruleform.shipping ==2"></weui-input>
 					<weui-input v-model="ruleform.weigth_price" label="超重费用" myclass="ptb5" type="txt" name="weigth_price" v-if="ruleform.shipping ==2"></weui-input>
 					<view @click="showCoupon(index)">
-						<view :class="['dx-cell','dx-dateTime']">
+						<view class="dx-cell dx-dateTime">
 							<view class="dx-cell_hd">
-								<slot name="left" />
 								<view class="dx-label">优惠券</view>
 							</view>
-							<view class="dx-cell_bd">
+							<view class="dx-cell_bd text-right">
 								<view v-if="merchant.couponOrders.length == 0">
 									
 									{{merchant.group ? '团购不参与优惠券':'无可用优惠券'}}
