@@ -16,7 +16,7 @@
 				</view>
 				<view class="bbtn">
 					<view class="fs-14 fc-6">{{ v.content }}</view>
-					<dx-button type="danger" size="mini" hollow>查看订单详情</dx-button>
+					<dx-button type="danger" size="mini" hollow @click="goto('/pages/order/buy/detail?order_no='+v.order_no,1)">查看订单详情</dx-button>
 				</view>
 			</view>
 			<view class="text-center ptb10 fs-15 fc-6" v-else>该产品已被删除</view>
