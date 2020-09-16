@@ -7,7 +7,7 @@ const horseRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'Horse',
-    meta: { title: '骑家管理', icon: 'dx-horse' },
+    meta: { title: '骑手管理', icon: 'dx-horse' },
     children: [
         {
           path: 'lists',

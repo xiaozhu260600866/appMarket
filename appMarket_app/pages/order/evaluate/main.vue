@@ -57,7 +57,7 @@
 				this.vaildForm(this,res=>{
 					if(res){
 						console.log(this.ruleform);
-						if(this.ruleform.horse_quote == 0){
+						if(this.ruleform.getHorse && this.ruleform.horse_quote == 0){
 							this.getError("请评价骑手");
 							return false;
 						}
