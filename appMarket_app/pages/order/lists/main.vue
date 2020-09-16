@@ -3,7 +3,7 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
 			<dx-tabs :tabs="tabs" @change="search" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
-			<view class="pro_info mb10" v-for="(parent,key) in data.lists.data">
+			<view class="pro_info mb10" v-for="(parent,key) in data.lists.data" v-if="listsShow">
 				<view class="box">
 					<view class="order_date plr10 bd-be">
 						<view class="time fs-14">
@@ -23,7 +23,7 @@
 							</view>
 						</view>
 					</view>
-					<view @click="gotoOrder(parent)" v-if="parent.getMerchant">
+					<view @click="gotoOrder(parent)" v-if="parent.getMerchant && parent.status!=1">
 						<view class="storeName flex-middle">
 							<image class="img" :src="parent.getMerchant.cover"></image>
 							<view class="name fs-15 fc-3">{{ parent.getMerchant.name }}</view>
@@ -36,6 +36,15 @@
 							合计：￥<span class="Arial fs-16 fc-red">{{parseFloat(parent.amount) + parseFloat(parent.quick_price)}}</span>
 						</view>
 						
+					</view>
+					<view @click="gotoOrder(parent)" v-if="parent.status==1">
+						<orderPro :data="parent.products"></orderPro>
+						<view class="order_count plr10 fs-13" v-if="parent.quick_price !='0.00'">
+							加急费：￥<span class="Arial fs-16 fc-red">{{parent.quick_price}}</span>
+						</view>
+						<view class="order_count plr10 fs-13">共<span class="Arial">{{parent.num}}</span>件商品
+							合计：￥<span class="Arial fs-16 fc-red">{{parseFloat(parent.amount) + parseFloat(parent.quick_price)}}</span>
+						</view>
 					</view>
 					<view class="btn-group ptb8 plr10">
 						<!-- 待支付 -->
@@ -91,6 +100,7 @@
 				location:{},
 				getSiteName: this.getSiteName(),
 				status: 12,
+				listsShow:false,
 				tabs: [{
 					value:12,
 					name: "全部"
@@ -141,25 +151,26 @@
 				return this.goto("/pages/order/buy/detail?order_no="+item.order_no,1);
 			},
 			search(){
+				this.listsShow = false;
 				if(this.status == 99){
 					this.getAjaxForApp(this,{status:9}).then(msg => {
-						  
+						  this.listsShow = true;  
 					});
 						
 				}else if(this.status == 9){
 					this.getAjaxForApp(this,{status:9,suggestStatus:0}).then(msg => {
-						  
+						   this.listsShow = true; 
 					});
 				}else{
 					this.getAjaxForApp(this,{status:this.status}).then(msg => {
-						  
+						   this.listsShow = true; 
 					});
 				}
 			},
 			ajax() {
-				
+				this.listsShow = false;
 				this.getAjaxForApp(this,{status:this.status}).then(msg => {
-					  
+					 this.listsShow = true; 
 				});
 			}
 		},

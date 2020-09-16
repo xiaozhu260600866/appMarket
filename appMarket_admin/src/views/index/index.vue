@@ -4,64 +4,64 @@
       <div class="icount-item">
         <div class="icount-title"><span class="name">订单概况</span></div>
         <div class="icount-row">
-          <div class="row-item">
+          <a class="row-item" @click="goto('/merchant/order-lists?status=3')">
             <div class="row-name">待接单</div>
             <div class="row-num">{{ data.data.count0Count }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/merchant/order-lists?status=4')">
             <div class="row-name">待配送</div>
             <div class="row-num">{{ data.data.count4Count }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/merchant/order-lists?status=0')">
             <div class="row-name">待退款</div>
             <div class="row-num">{{ data.data.count0Count }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/merchant/order-lists?status=5')">
             <div class="row-name">待完成</div>
             <div class="row-num">{{ data.data.count5Count }}</div>
-          </div>
+          </a>
         </div>
       </div>
       <div class="icount-item">
         <div class="icount-title"><span class="name">商家概况</span></div>
         <div class="icount-row">
-          <div class="row-item">
+          <a class="row-item" @click="goto('/merchant/lists?status=1')">
             <div class="row-name">全部商家</div>
             <div class="row-num">{{ data.data.merchantCount }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/merchant/lists?status=1')">
             <div class="row-name">营业中</div>
             <div class="row-num">{{ data.data.merchantCountWorkStatus1 }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/merchant/lists?status=1')">
             <div class="row-name">休息中</div>
             <div class="row-num">{{ data.data.merchantCountWorkStatus3 }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/merchant/lists?status=1')">
             <div class="row-name">预定中</div>
             <div class="row-num">{{ data.data.merchantCountWorkStatus2 }}</div>
-          </div>
+          </a>
         </div>
       </div>
       <div class="icount-item">
         <div class="icount-title"><span class="name">配送员概况</span></div>
         <div class="icount-row">
-          <div class="row-item">
+          <a class="row-item" @click="goto('/horse/lists?status=1')">
             <div class="row-name">全部配送员</div>
             <div class="row-num">{{ data.data.horseCount }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/horse/lists?status=1')">
             <div class="row-name">接单中</div>
             <div class="row-num">{{ data.data.horseCountWorkStatus1 }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/horse/lists?status=1')">
             <div class="row-name">休息中</div>
             <div class="row-num">{{ data.data.horseCountWorkStatus3 }}</div>
-          </div>
-          <div class="row-item">
+          </a>
+          <a class="row-item" @click="goto('/horse/lists?status=1')">
             <div class="row-name">回收站</div>
             <div class="row-num">{{ data.data.horseCountWorkStatus2 }}</div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

@@ -43,22 +43,27 @@ export default {
        'tarbars': {
            'prop': 'status',
            'data': [{
-               'value': '3',
+               'value': 3,
                'count': 0,
                'label': '已付款'
            }, {
-               'value': '4',
+               'value': 4,
                'count': 0,
                'label': '商家已接单'
            }, {
-               'value': '5',
+               'value': 5,
                'count': 0,
                'label': '骑手已接单'
            },
            {
-               'value': '9',
+               'value': 9,
                'count': 0,
                'label': '已完成'
+           },
+           {
+               'value': 0,
+               'count': 0,
+               'label': '已取消'
            }]
        },
         'tableFields': [
