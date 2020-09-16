@@ -88,6 +88,11 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 						type: 1,
 						icon:'iconfont icon-user-info',
 						name:'个人信息'
+					},{
+						url:'/pages/user/info/main',
+						type: 1,
+						icon:'dxi-icon dxi-icon-sweep-code',
+						name:'扫一扫'
 					}
 				],
 				statusArr: [{
