@@ -2,7 +2,8 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
-			<dx-tabs :tabs="tabs" @change="search" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs>
+			<!-- <dx-tabs :tabs="tabs" @change="search" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs> -->
+			<dx-tabs-scroll :tabs="tabs" @change="search" v-model="status" height="52" borderColor="#57C734" curColor="#57C734" nameSize="15" :height="46"></dx-tabs-scroll>
 			<view class="pro_info mb10" v-for="(parent,key) in data.lists.data" v-if="listsShow">
 				<view class="box">
 					<view class="order_date plr10 bd-be">
@@ -17,8 +18,8 @@
 							</view>
 						</view>
 						<view class="state flex-middle">
-							<view class="fc-red fs-13">{{parent.status_message}}</view>
-							<view class="pl8" v-if="status == 1 || status == 9 || status == 0">
+							<view class="fc-red fs-13" v-if="status == 9 && status == 99">{{parent.status_message}}</view>
+							<view class="pl8" v-if="status == 1 || status == 9 || status == 0 || status == 99">
 								<view class="del-icon bg-f3 dxi-icon dxi-icon-del fs-14" @click="delOrder(parent)"></view>
 							</view>
 						</view>
@@ -77,21 +78,18 @@
 						<!-- 售后中-->
 					</view>
 				</view>
-				<view class="complete-icon" v-if="status == 99"><image class="img" src="https://appmarket.doxinsoft.com/images/wap/complete-icon.png"></image></view>
+				<view class="complete-icon" v-if="status == 9 || status == 99"><image class="img" src="https://appmarket.doxinsoft.com/images/wap/complete-icon.png"></image></view>
 			</view>
-			<hasMore :parentData="data"></hasMore>
+			<hasMore :parentData="data" source='nodata'></hasMore>
 		</view>
 	</view>
 </template>
 
 <script>
 	import orderPro from "@/components/orderPro";
-	import dxTabs from "doxinui/components/tabs/tabs"
+	import dxTabsScroll from "doxinui/components/tabs/tabs_scroll"
 	export default {
-		components:{
-			orderPro,
-			dxTabs
-		},
+		components:{orderPro,dxTabsScroll},
 		data() {
 			return {
 				formAction: '/user/order-lists',
