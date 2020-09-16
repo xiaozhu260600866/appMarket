@@ -106,15 +106,30 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 		},
 		methods: {
 			selectRes(){
-				this.postAjax("/horse/info",this.ruleform).then(msg=>{
+				this.postAjax("/deliver/info",this.ruleform).then(msg=>{
 					if(msg.data.status == 2){
 						this.ajax();
 					}
 				});
 			},
 			checkAuth(v){
-				console.log(v);
-				return this.goto(v.url,v.type);
+				if(v.name == '扫一扫'){
+					uni.scanCode({
+					    success: res=> {
+					        console.log('条码内容：' + res.result);
+							this.postAjax("/deliver/orderFinish",{order_no:res.result}).then(msg=>{
+								if(msg.data.status == 2){
+								   this.getSuccess("操作成功");
+								}
+							});
+					    }
+					});
+
+				}else{
+					return this.goto(v.url,v.type);
+				}
+				
+				
 			},
 			ajax() {
 				this.getAjaxForApp(this, {
