@@ -5,7 +5,7 @@
 			<!-- <dx-tabs :tabs="tabs" v-model="status" selectedColor="#57C734" sliderBgColor="#57C734"></dx-tabs> -->
 			<dx-tabs :tabs="tabs" v-model="category" @change="ajax" :height="88" :sliderWidth="150" :sliderHeight="60" bottom="50%" color="#888" selectedColor="#57C734" :bold="true" sliderBgColor="rgba(87, 199, 52,0.2)">
 			</dx-tabs>
-			<store-pro :data="lists.data" :canBuy="false"></store-pro>
+			<store-pro :data="lists.data" :canBuy="false" :imgWidth="100" :imgHeight="100"></store-pro>
 		</view>
 	</view>
 </template>

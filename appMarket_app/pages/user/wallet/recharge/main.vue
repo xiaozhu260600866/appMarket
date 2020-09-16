@@ -12,7 +12,7 @@
 			</view>
 			<view class="fs-15 fc-3 plr10 pt15 pb5 mt12 bg-f flex-between">
 				<view>请选择充值金额</view>
-				<view @click="goto('/pages/news/show/main',1)">充值协议<text class="dxi-icon dxi-icon-right fs-13 fc-a pl5"></text></view>
+				<!-- <view @click="goto('/pages/news/show/main',1)">充值协议<text class="dxi-icon dxi-icon-right fs-13 fc-a pl5"></text></view> -->
 			</view>
 			<view class="rechage-price p5 bg-f">
 				<view :class="['selectAmount',ruleform.amount == v  ? 'select' :'noselect' ]" v-for="v in amountData">

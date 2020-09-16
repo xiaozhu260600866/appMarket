@@ -4,7 +4,8 @@
 
 
 /* 列表 */
-.pro_info{background: #fff;margin: 24upx;border-radius: 12upx;}
+.pro_info{background: #fff;margin: 24upx;border-radius: 12upx;overflow: hidden;position: relative;}
+.pro_info .box{position: relative;z-index: 2;}
 .pro_info .order_date{height: 100upx;line-height: 100upx;display: flex;justify-content: space-between;align-items: center;}
 .pro_info .order_info{display: flex;}
 .pro_info .order_info .pro_img .img{width: 160upx;height: 160upx;display: flex;border-radius: 10upx;}
@@ -23,3 +24,7 @@
 /* 产品 */
 .storeName{display: flex;align-items: center;padding: 20upx 20upx 10upx;}
 .storeName .img{width: 40upx;height: 40upx;display: flex;border-radius: 50%;margin-right: 20upx;}
+
+
+.complete-icon{position: absolute;top: -40upx;right: -40upx;z-index: 1;}
+.complete-icon .img{width: 200upx;height: 200upx;display: flex;}

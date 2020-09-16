@@ -1,14 +1,18 @@
 <template>
 	<view class="stre_pro bg-f">
-		<dx-products-pic v-for="item in data" :src="item.firstCover" :isList="true"  @click="toProduct(item)">
-			<view class="title fs-15" >{{ item.name }}</view>
-			<view class="grade flex-middle fc-3 fs-12 mt3" @click="toProduct(item)" >
-				<view class="sales pl15" v-if="item.sales">月销 <text class="Arial">{{ item.sales }}</text></view>
-				<view class="fresh">数量：<text class="Arial">{{ item.num }}</text></view>
-			</view>
-			<view class="num flex mt3"><view class="nav">新鲜度 <text class="Arial">{{ item.freshness }}</text></view></view>
-			<view class="flex-between">
-				<dx-price v-model="item.price" split :intSize="16" :decimalSize="12"></dx-price>
+		<dx-products-pic v-for="item in data" :src="item.firstCover" :imgWidth="imgWidth" :imgHeight="imgHeight" :isList="true"  @click="toProduct(item)">
+			<view class="right-box" :style="{height:imgHeight*2+'rpx'}">
+				<view class="w-b100">
+					<view class="title fs-15">{{ item.name }}</view>
+					<view class="num flex mt3"><view class="nav">新鲜度 <text class="Arial">{{ item.freshness }}</text></view></view>
+				</view>
+				<view class="flex-between w-b100">
+					<dx-price v-model="item.price" split :intSize="18" :decimalSize="12"></dx-price>
+					<view class="grade flex-middle fc-6 fs-12 mt3" @click="toProduct(item)" >
+						<view class="sales pl15" v-if="item.sales">月销 <text class="Arial">{{ item.sales }}</text></view>
+						<view class="fresh">数量：<text class="Arial">{{ item.num }}</text></view>
+					</view>
+				</view>
 			</view>
 			<div class="flex-right numbox" v-if="canBuy && item.shipping == 2"><tui-numberbox v-model="item.buyNum" @change="addCart(item)"></tui-numberbox></div>
 		</dx-products-pic>
@@ -34,6 +38,14 @@ import tuiNumberbox from "xiaozhu/uniapp/thorui/components/numberbox/numberbox"
 			default(){
 				return true;
 			}
+		},
+		imgWidth:{
+			type:Number,
+			default: 80
+		},
+		imgHeight:{
+			type:Number,
+			default: 80
 		}
 	},
 	data() {
@@ -56,4 +68,5 @@ import tuiNumberbox from "xiaozhu/uniapp/thorui/components/numberbox/numberbox"
 </script>
 <style>
 .stre_pro .num .nav{background-color: rgba(87,199,52,0.1);color: #57C734;padding: 8upx 16upx;border-radius: 6upx;font-size: 24upx;line-height: 30upx;}
+.stre_pro .right-box{display: flex;align-content: space-between;flex-wrap: wrap;}
 </style>
