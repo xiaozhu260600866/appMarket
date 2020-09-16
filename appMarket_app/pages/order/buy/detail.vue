@@ -50,6 +50,8 @@
 			<view class="block-sec no">
 				<weui-input label="订单编号" v-model="ruleform.order_no" type="txt" name="name"></weui-input>
 				<weui-input label="订单日期" v-model="ruleform.created_at" type="txt" name="name"></weui-input>
+				<image class="img w-b100 flex" :src="getSiteName+'/upload/images/order/'+ruleform.order_no+'.png'" mode="widthFix"></image>
+				<view class="text-center fs-14 fc-9 pb20">核销二维码</view>
 			</view>
 			<view class="block-sec no" v-if="ruleform.express_name">
 				<weui-input label="快递公司" v-model="ruleform.express_name" type="txt" name="name"></weui-input>
