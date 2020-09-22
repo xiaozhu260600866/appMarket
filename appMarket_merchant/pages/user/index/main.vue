@@ -168,9 +168,6 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 					label: '营业中',
 					value: '1',
 				},{
-					label: '预定中',
-					value: '2',
-				},{
 					label: '休息',
 					value: '3'
 				}],

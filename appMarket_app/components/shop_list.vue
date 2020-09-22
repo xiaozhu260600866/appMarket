@@ -4,12 +4,12 @@
 			<view @click="goto('/pages/store/index/main?merchant_id='+item.id,1)">
 				<view class="flex-between">
 					<view class="title fs-17 fw-bold">{{ item.name }}</view>
-					<view class="status fc-9 fs-14" >营业中</view>
+					<view class="status fc-9 fs-14" >{{item.working}}</view>
 				</view>
 				<view class="flex">
 					<view class="flex1">
 						<view class="flex-middle businessHours">
-							<view class="nav">营业时间：<text class="Arial">{{ item.hour_time }}</text></view>
+							<view class="nav">营业时间：<text class="Arial">{{ item.hour_time_start }} - {{item.hour_time_end}}</text></view>
 						</view>
 						<view class="grade flex-baseline mt3">
 							<tui-rate :current="4" :disabled="true" active="#FDB508" :value="item.score" :size="14"></tui-rate>

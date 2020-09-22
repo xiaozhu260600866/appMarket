@@ -15,7 +15,10 @@
 				<weui-input v-model="ruleform.address" label="店铺地址" type="location" name="address"></weui-input>
 			</view>
 			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.hour_time" label="营业时间" type="time" name="hour_time"></weui-input>
+				<weui-input v-model="ruleform.hour_time_start" label="营业开始时间" type="time" name="hour_time_start"></weui-input>
+			</view>
+			<view class="bg-f mb12">
+				<weui-input v-model="ruleform.hour_time_end" label="营业结束时间" type="time" name="hour_time_end"></weui-input>
 			</view>
 			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.order_amount" label="起订金额" type="number" name="order_amount"></weui-input>

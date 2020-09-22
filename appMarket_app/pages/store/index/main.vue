@@ -19,7 +19,7 @@
 					<view class="num fs-15 ml5">{{merchant.score}}分</view>
 				</view>
 				<view class="flex-middle businessHours mtb5">
-					<view class="nav">营业时间：<text class="Arial">{{ merchant.hour_time }}</text></view>
+					<view class="nav">营业时间：<text class="Arial" >{{ merchant.hour_time_start }} - {{merchant.hour_time_end}}</text></view>
 				</view>
 				<view class="flex-middle fs-15">
 					<dx-icon name="location" size="14" color="#fff"></dx-icon>
@@ -45,7 +45,7 @@
 					</scroll-view>
 					<scroll-view scroll-y scroll-with-animation class="right-box"
 					 :style="{height:(height-(upx2px(220+88+50)+height_))+'px',top:(upx2px(220+88)+height_)+'px',}">
-						<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart"></store-pro>
+						<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart" :merchant="merchant"></store-pro>
 					</scroll-view>
 				</view>
 			</view>

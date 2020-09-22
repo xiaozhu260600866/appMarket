@@ -177,6 +177,11 @@
 			}
 		},
 		methods: {
+			vaild(){
+				if(this.detail.getMerchant.status !='正常'){
+					return this.getError("店家已打烊、预订配送时间为明天营业时间！");
+				}
+			},
 			toBuy(){
 				return this.goto("/pages/order/buy/main?product_id=" + this.data.detail.id + '&group=0', 1);
 			},

@@ -9,6 +9,7 @@
 				<weui-input v-model="ruleform.code" label="验证码" datatype="require" type="sms" name="sms" :phone="ruleform.phone"
 				 action="/sendSms.html"></weui-input>
 				<weui-input v-model="ruleform.password" label="密码" datatype="require" type="password" name="password"></weui-input>
+				<weui-input v-model="ruleform.password_confirm" label="确认密码" datatype="require"  type="password" name="password_confirm"></weui-input>
 				<weui-input v-model="ruleform.transportation" label="交通工具" name="transportation" changeField="value" type="select" dataKey="transportationArr"></weui-input>
 				<view class="m20 info-subBtn">
 					<dx-button block size="lg" @click="submit">下一步</dx-button>
@@ -121,6 +122,9 @@
 				this.vaildForm(this, res => {
 					if (res) {
 						if(this.step == 1){
+							if(this.ruleform.password != this.ruleform.password_confirm){
+								return this.getError("确认密码与密码不一致");
+							}
 							if (this.ruleform.code != wx.getStorageSync('smsCode')) {
 								this.getError("验证码不正确");
 								return false;

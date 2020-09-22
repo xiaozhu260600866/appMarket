@@ -18,7 +18,7 @@
 							</view>
 						</view>
 						<view class="state flex-middle">
-							<view class="fc-red fs-13" v-if="status == 9 && status == 99">{{parent.status_message}}</view>
+							<view class="fc-red fs-13" >{{parent.status_message}}</view>
 							<view class="pl8" v-if="status == 1 || status == 9 || status == 0 || status == 99">
 								<view class="del-icon bg-f3 dxi-icon dxi-icon-del fs-14" @click="delOrder(parent)"></view>
 							</view>
