@@ -1,5 +1,5 @@
 {
-    "name" : "You鲜购",
+    "name" : "同城菜场",
     "appid" : "__UNI__B73D34F",
     "description" : "",
     "versionName" : "1.0.0",
@@ -139,7 +139,7 @@
         "usingComponents" : true
     },
     "h5" : {
-        "title" : "You鲜购",
+        "title" : "同城菜场",
         "domain" : "boss.doxinsoft.com",
         "router" : {
             "mode" : "hash",

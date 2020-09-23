@@ -13,7 +13,7 @@
 			<view class="agreement mlr20 mt15 flex-middle fs-13 fc-6">
 				<checkbox-group @change="checkboxChange"><checkbox :value="1"/></checkbox-group>
 				<view>我已阅读并同意</view>
-				<view class="main-color" @click="goto('/pages/news/show/main?id=236',1)">《You鲜购服务协议》</view>
+				<view class="main-color" @click="goto('/pages/news/show/main?id=236',1)">《同城菜场服务协议》</view>
 			</view>
 			<view class="m20 info-subBtn"><dx-button block size="lg" @click="submit">完成</dx-button></view>
 			<view class="m20 info-login" @click="goto('/pages/user/login/main')"><dx-button type="success" block size="lg" plain>立即登录</dx-button></view>
