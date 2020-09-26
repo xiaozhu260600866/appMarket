@@ -10,7 +10,7 @@
 /* 隐藏scroll-view滚动条*/
 ::-webkit-scrollbar {width: 0;height: 0;color: transparent;}
 
-.tab-view {width: 200upx;position: fixed;left: 0;z-index: 11;background: #f6f6f6;}
+.tab-view {width: 200upx;position: fixed;left: 0;z-index: 10;background: #f6f6f6;}
 .tab-bar-item {width: 200upx;height: 110upx;background: #f6f6f6;display: flex;align-items: center;justify-content: center;font-size: 30upx;color: #444;font-weight: 400;}
 .active {position: relative;color: #000;font-size: 32upx;font-weight: 600;background: #fcfcfc;}
 .active::before {content: "";position: absolute;border-left: 8upx solid #57C734;height: 30upx;left: 0;}

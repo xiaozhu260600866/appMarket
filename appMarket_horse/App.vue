@@ -24,7 +24,7 @@
 					
 				// });
 				if(msg.payload ){
-					console.log("进来这里12");
+					console.log("进来这里1");
 					console.log(msg.payload);
 					 if(typeof(msg.payload) == 'string'){
 						  var v = JSON.parse(msg.payload)
@@ -44,7 +44,7 @@
 					 }  
 				}
 				if(msg.aps && msg.aps.category ){
-					console.log("进来这里3");
+					console.log("进来这里231");
 					 var v = JSON.parse(msg.aps.category);
 				     let bgAudioMannager = uni.getBackgroundAudioManager();
 				     bgAudioMannager.src =v.voice;

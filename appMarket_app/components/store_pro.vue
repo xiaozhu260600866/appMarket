@@ -22,15 +22,18 @@
 				<tui-numberbox v-model="item.buyNum" @change="addCart(item)"></tui-numberbox>
 			</div>
 		</dx-products-pic>
+		<dx-prompt :open="confirmDiag" content="店家已打烊、预订配送时间为明天营业时间！" @confirmCallBack="addCart_(item)"></dx-prompt>
 	</view>
 </template>
 <script>
 	import dxProductsPic from 'doxinui/components/products/pic'
 	import tuiNumberbox from "xiaozhu/uniapp/thorui/components/numberbox/numberbox"
+	import dxPrompt from "doxinui/components/diag/prompt"
 	export default {
 		components: {
 			dxProductsPic,
-			tuiNumberbox
+			tuiNumberbox,
+			dxPrompt
 		},
 		props: {
 			data: {
@@ -62,24 +65,27 @@
 		},
 		data() {
 			return {
-				num: 0
+				num: 0,
+				item:{},
+				confirmDiag:false
 			}
 		},
 		methods: {
+			addCart_(item){
+				this.postAjax("/cart/create", item).then(msg => {
+					if (msg.data.status == 2) {
+						return this.$emit("callBack", {
+							cartData: msg.data.cartData
+						});
+					}
+				});
+			},
 			addCart(item) {
 				this.checkLogin().then(msg => {
 
 					if (this.merchant && this.merchant.working != '营业中') {
-						this.getError("店家已打烊、预订配送时间为明天营业时间！");
-						setTimeout(() => {
-							this.postAjax("/cart/create", item).then(msg => {
-								if (msg.data.status == 2) {
-									return this.$emit("callBack", {
-										cartData: msg.data.cartData
-									});
-								}
-							});
-						}, 1000);
+						this.confirmDiag = true;
+						this.item = item;
 					}else{
 						this.postAjax("/cart/create", item).then(msg => {
 							if (msg.data.status == 2) {
