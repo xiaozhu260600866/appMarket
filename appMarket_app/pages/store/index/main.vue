@@ -27,7 +27,7 @@
 					<view class="city pr5">{{ store.city }}</view> -->
 					<view class="address flex1 nowrap w-b100">{{ merchant.address }}</view>
 				</view>
-				<view class="coupon_num" @click="$refs.coupon.thisDiag = true" v-if="data.coupons.length">{{data.coupons.length}}个优惠</view>
+				<!-- <view class="coupon_num" @click="$refs.coupon.thisDiag = true" v-if="data.coupons.length">{{data.coupons.length}}个优惠</view> -->
 			</dx-products-pic>
 		</view>
 		<view class="tabs-num" :style="{top: (upx2px(220)+height_)+'px'}">
@@ -49,6 +49,29 @@
 					</scroll-view>
 				</view>
 			</view>
+			
+			<scroll-view scroll-y scroll-with-animation class="evalute" v-if="type == 'coupon'"
+			 :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
+				<view class="coupon-list p10">
+					<view class="list_item mb10 bg-f" v-for="v in data.coupons">
+						<view class="item_left">
+							<view class="price fs-26 h-50 fw-bold"><span class="fs-14">￥</span>{{v.amount}}</view>
+							<view class="condition fs-12 fc-9">满<text class="Arial">{{v.full_amount}}</text>元可用</view>
+						</view>
+						<view class="item_right bd-le plr10">
+							<view class="w-b100 coupon-title fs15 lh-20 wrap2">{{ v.name }}</view>
+							<view class="w-b100 ir-bottom">
+								<view class="time fs-12 fc-9 lh-16 Arial">{{ v.start_date }}至{{ v.end_date }}</view>
+							</view>
+						</view>
+						<view class="status" @click="draw(v)">
+							<view class="nav yes" v-if="v.status == 0">立即领取</view>
+							<view class="nav no" v-else>已领取</view>
+						</view>
+					</view>
+					<hasMore :parentData="data" source="nodata" message="暂无优惠券"></hasMore>
+				</view>
+			</scroll-view>
 			
 			<scroll-view scroll-y scroll-with-animation class="evalute" v-if="type == 'evaluate'"
 			 :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
@@ -74,32 +97,37 @@
 				</view>
 			</scroll-view>
 			
-			<view class="store-info"  :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}" v-if="type == 'merchant'">
-				<view class="bg-f mt12">
-					<dx-list-cell name="商家电话：" iconName="tel" :iconSize="20" iconColor="#777">
-						<view class="info-right" slot="right">
-							{{data.detail.phone}}
-						</view>
-					</dx-list-cell>
-					<dx-list-cell name="地址：" iconName="location" :iconSize="20" iconColor="#777">
-						<view class="info-right" slot="right">
-							{{data.detail.cityString}}
-						</view>
-					</dx-list-cell>
-					<dx-list-cell name="营业时间：" iconName="time2" :iconSize="18" iconColor="#777">
-						<view class="info-right" slot="right">
-							{{data.detail.hour_time}}
-						</view>
-					</dx-list-cell>
-				</view>
-				<view class="bg-f mt12" v-if="data.articleLists.length">
-					<dx-list-cell name="店辅公告：" iconName="notice" :iconSize="18" iconColor="#777" arrow>
-						<view class="info-right" slot="right" @click="goto('/pages/store/news/lists/main?merchant_id='+data.detail.id,1)">
-							<view>{{data.articleLists[0].content}}</view>
-						</view>
-					</dx-list-cell>
-				</view>
-			</view>
+			<scroll-view scroll-y scroll-with-animation class="store-info" v-if="type == 'merchant'"
+			 :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
+					<view class="bg-f mt12">
+						<dx-list-cell name="商家电话：" iconName="tel" :iconSize="20" iconColor="#777">
+							<view class="info-right" slot="right">
+								{{data.detail.phone}}
+							</view>
+						</dx-list-cell>
+						<dx-list-cell name="地址：" iconName="location" :iconSize="20" iconColor="#777">
+							<view class="info-right" slot="right">
+								{{data.detail.cityString}}
+							</view>
+						</dx-list-cell>
+						<dx-list-cell name="营业时间：" iconName="time2" :iconSize="18" iconColor="#777">
+							<view class="info-right" slot="right">
+								{{data.detail.hour_time}}
+							</view>
+						</dx-list-cell>
+					</view>
+					<view class="bg-f mt12" v-if="data.articleLists.length">
+						<dx-list-cell name="店辅公告：" iconName="notice" :iconSize="18" iconColor="#777" arrow>
+							<view class="info-right" slot="right" @click="goto('/pages/store/news/lists/main?merchant_id='+data.detail.id,1)">
+								<view>{{data.articleLists[0].content}}</view>
+							</view>
+						</dx-list-cell>
+					</view>
+					<view class="bg-f mt12 p15">
+						<image class="flex w-b100 mb12" src="../../../static/ad-cover.jpg" mode="widthFix"></image>
+						<image class="flex w-b100 mb12" src="../../../static/banner01.jpg" mode="widthFix"></image>
+					</view>
+			</scroll-view>
 		</view>
 		<view class="store-footer flex-middle" v-if="type  == 'order'">
 			<view class="icon" @click="goto('/pages/user/cart/main',2)">
@@ -160,16 +188,12 @@ import dxListCell from "doxinui/components/list-cell/list-cell"
 				merchant:{},
 				selectClassKey:0,
 				type:'order',
-				tabs: [{
-					name: "下单",
-					value:'order',
-				}, {
-					name: "评价",
-					value:'evaluate'
-				}, {
-					name: "商家",
-					value:'merchant'
-				}],
+				tabs: [
+					{name: "下单",value:'order',},
+					{name: "优惠券",value:'coupon'},
+					{name: "评价",value:'evaluate'},
+					{name: "商家",value:'merchant'},
+				],
 				scrollTop: 0 ,//tab标题的滚动条位置
 			}
 		},
@@ -261,5 +285,6 @@ import dxListCell from "doxinui/components/list-cell/list-cell"
 	}
 </script>
 <style scoped="">
-@import url('index.css')
+@import url('index.css');
+@import url('/pages/user/coupon/lists/index.css');
 </style>

@@ -1,0 +1,6 @@
+.sugges-lists .top{display: flex;align-items: center;justify-content: space-between;padding: 0 24upx;height: 88upx;font-size: 28upx;color: #666;border-bottom: 1upx #eee solid;}
+.sugges-lists .con{padding: 20upx 24upx;}
+.sugges-lists .con .content{font-size: 32upx;line-height: 1.6;color: #333;}
+
+
+.del-icon{border-radius: 50%;width: 26px;height: 26px;line-height: 26px;text-align: center;}
