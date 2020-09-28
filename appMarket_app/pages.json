@@ -472,6 +472,20 @@
 				"navigationBarTitleText": "搜索",
 				"enablePullDownRefresh": true
 			}
+		},
+		{
+			"path": "pages/user/feedback/lists/main",
+			"style": {
+				"navigationBarTitleText": "意见反馈",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/feedback/create_edit/main",
+			"style": {
+				"navigationBarTitleText": "意见反馈",
+				"enablePullDownRefresh": true
+			}
 		}
 	],
 	"permission": {

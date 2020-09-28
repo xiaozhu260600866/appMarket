@@ -1,0 +1,5 @@
+.sugges-write .group{background-color: #fff;margin-bottom: 24upx;padding: 0 30upx 30upx;}
+.sugges-write .g_title{font-size: 32upx;color: #333;padding: 20upx 0;line-height: 40upx;}
+.sugges-write /deep/.remark{border: 2upx #ddd solid;border-radius: 6upx;}
+.sugges-write /deep/.pic{border: 0;padding: 0;}
+.sugges-write .tips{padding: 0 30upx;font-size: 28upx;color: #666;line-height: 1.6;text-align: justify;}
