@@ -7,12 +7,12 @@ const feedbackRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'feedback',
-    meta: {title: '留言管理', icon: 'wechat'},
+    meta: { title: '留言管理', icon: 'wechat' },
     children: [{
         path: 'lists',
         component: () => import('@/views/feedback/lists'),
         name: 'feedbackLists',
-        meta: { title: '留言列表', icon: 'wechat',params:{type:1} }
+        meta: { title: '留言列表', icon: 'wechat', params: { status: 0 }}
     }]
 }
 
