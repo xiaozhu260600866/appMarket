@@ -13,17 +13,18 @@
 			</view>
 		</view>
 		<view class="topInfo" :style="{top:height_+'px',}" style="height: 220upx;">
-			<dx-products-pic :src=" merchant.cover? merchant.cover : '/static/nopropic.png'" :isList="true" myclass="main-bg fc-white" :imgWidth="80" :imgHeight="80">
+			<dx-products-pic :src=" merchant.cover? merchant.cover : '/static/nopropic.png'" :isList="true" myclass="main-bg fc-white"
+			 :imgWidth="80" :imgHeight="80">
 				<view class="grade flex-baseline">
 					<tui-rate :current="5" :disabled="true" active="#FDB508" :value="merchant.score" :size="14"></tui-rate>
 					<view class="num fs-15 ml5">{{merchant.score}}分</view>
 				</view>
 				<view class="flex-middle businessHours mtb5">
-					<view class="nav">营业时间：<text class="Arial" >{{ merchant.hour_time_start }} - {{merchant.hour_time_end}}</text></view>
+					<view class="nav">营业时间：<text class="Arial">{{ merchant.hour_time_start }} - {{merchant.hour_time_end}}</text></view>
 				</view>
 				<view class="flex-middle fs-15">
 					<dx-icon name="location" size="14" color="#fff"></dx-icon>
-				<!-- 	<view class="province plr5">{{ store.province }}</view>
+					<!-- 	<view class="province plr5">{{ store.province }}</view>
 					<view class="city pr5">{{ store.city }}</view> -->
 					<view class="address flex1 nowrap w-b100">{{ merchant.address }}</view>
 				</view>
@@ -36,22 +37,19 @@
 		<view>
 			<view v-if="data.productClass.length">
 				<view class="proCon" v-if="type  == 'order'">
-					<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop"
-					 :style="{height:(height-(upx2px(220+88+50)+height_))+'px',top:(upx2px(220+88)+height_)+'px',}">
+					<scroll-view scroll-y scroll-with-animation class="tab-view" :scroll-top="scrollTop" :style="{height:(height-(upx2px(220+88+50)+height_))+'px',top:(upx2px(220+88)+height_)+'px',}">
 						<view v-for="(item,key) in data.productClass" :key="key" class="tab-bar-item" :class="[selectClassKey==key ? 'active' : '']"
-						 :data-current="key"  @click="changeClassKey(key)">
+						 :data-current="key" @click="changeClassKey(key)">
 							<text>{{item.label}}</text>
 						</view>
 					</scroll-view>
-					<scroll-view scroll-y scroll-with-animation class="right-box"
-					 :style="{height:(height-(upx2px(220+88+50)+height_))+'px',top:(upx2px(220+88)+height_)+'px',}">
+					<scroll-view scroll-y scroll-with-animation class="right-box" :style="{height:(height-(upx2px(220+88+50)+height_))+'px',top:(upx2px(220+88)+height_)+'px',}">
 						<store-pro :data="data.productClass[selectClassKey].products.data" @callBack="changeCart" :merchant="merchant"></store-pro>
 					</scroll-view>
 				</view>
 			</view>
-			
-			<scroll-view scroll-y scroll-with-animation class="evalute" v-if="type == 'coupon'"
-			 :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
+
+			<scroll-view scroll-y scroll-with-animation class="evalute" v-if="type == 'coupon'" :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
 				<view class="coupon-list p10">
 					<view class="list_item mb10 bg-f" v-for="v in data.coupons">
 						<view class="item_left">
@@ -69,12 +67,17 @@
 							<view class="nav no" v-else>已领取</view>
 						</view>
 					</view>
-					<hasMore :parentData="data" source="nodata" message="暂无优惠券"></hasMore>
+					<uni-view class="empty" v-if="data.coupons.length == 0">
+						<uni-image class="img" style="height: 76px;">
+							<div style="background-image: url(&quot;https://boss.doxinsoft.com/images/order/cart02.png&quot;); background-size: 100% 100%; background-repeat: no-repeat;"></div><img
+							 src="https://boss.doxinsoft.com/images/order/cart02.png">
+						</uni-image>
+						<uni-view class="name ptb10 fs-14 fc-6">暂无优惠券</uni-view>
+					</uni-view>
 				</view>
 			</scroll-view>
-			
-			<scroll-view scroll-y scroll-with-animation class="evalute" v-if="type == 'evaluate'"
-			 :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
+
+			<scroll-view scroll-y scroll-with-animation class="evalute" v-if="type == 'evaluate'" :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
 				<view class="evalute-box">
 					<view class="evalute-item p10 bg-f bd-be" v-for="v in data.evaluateLists">
 						<view class="u-info">
@@ -91,42 +94,40 @@
 						</view>
 						<view class="u-con pt10 plr15" v-if="v.merchant_evaluate_logo">
 							<view class="p">{{ v.merchant_evaluate }}</view>
-							 <dx-images :data="getLogo(v.merchant_evaluate_logo)"></dx-images>
+							<dx-images :data="getLogo(v.merchant_evaluate_logo)"></dx-images>
 						</view>
 					</view>
 				</view>
 			</scroll-view>
-			
-			<scroll-view scroll-y scroll-with-animation class="store-info" v-if="type == 'merchant'"
-			 :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
-					<view class="bg-f mt12">
-						<dx-list-cell name="商家电话：" iconName="tel" :iconSize="20" iconColor="#777">
-							<view class="info-right" slot="right">
-								{{data.detail.phone}}
-							</view>
-						</dx-list-cell>
-						<dx-list-cell name="地址：" iconName="location" :iconSize="20" iconColor="#777">
-							<view class="info-right" slot="right">
-								{{data.detail.cityString}}
-							</view>
-						</dx-list-cell>
-						<dx-list-cell name="营业时间：" iconName="time2" :iconSize="18" iconColor="#777">
-							<view class="info-right" slot="right">
-								{{data.detail.hour_time}}
-							</view>
-						</dx-list-cell>
-					</view>
-					<view class="bg-f mt12" v-if="data.articleLists.length">
-						<dx-list-cell name="店辅公告：" iconName="notice" :iconSize="18" iconColor="#777" arrow>
-							<view class="info-right" slot="right" @click="goto('/pages/store/news/lists/main?merchant_id='+data.detail.id,1)">
-								<view>{{data.articleLists[0].content}}</view>
-							</view>
-						</dx-list-cell>
-					</view>
-					<view class="bg-f mt12 p15">
-						<image class="flex w-b100 mb12" src="../../../static/ad-cover.jpg" mode="widthFix"></image>
-						<image class="flex w-b100 mb12" src="../../../static/banner01.jpg" mode="widthFix"></image>
-					</view>
+
+			<scroll-view scroll-y scroll-with-animation class="store-info" v-if="type == 'merchant'" :style="{height:(height-(upx2px(220+88)+height_))+'px',top:(upx2px(220+88)+height_)+'px'}">
+				<view class="bg-f mt12">
+					<dx-list-cell name="商家电话：" iconName="tel" :iconSize="20" iconColor="#777">
+						<view class="info-right" slot="right">
+							{{data.detail.phone}}
+						</view>
+					</dx-list-cell>
+					<dx-list-cell name="地址：" iconName="location" :iconSize="20" iconColor="#777">
+						<view class="info-right" slot="right">
+							{{data.detail.cityString}}
+						</view>
+					</dx-list-cell>
+					<dx-list-cell name="营业时间：" iconName="time2" :iconSize="18" iconColor="#777">
+						<view class="info-right" slot="right">
+							{{data.detail.hour_time}}
+						</view>
+					</dx-list-cell>
+				</view>
+				<view class="bg-f mt12" v-if="data.articleLists.length">
+					<dx-list-cell name="店辅公告：" iconName="notice" :iconSize="18" iconColor="#777" arrow>
+						<view class="info-right" slot="right" @click="goto('/pages/store/news/lists/main?merchant_id='+data.detail.id,1)">
+							<view>{{data.articleLists[0].content}}</view>
+						</view>
+					</dx-list-cell>
+				</view>
+				<view class="bg-f mt12 p15" v-if="getAddressLogo(data.detail.address_logo).length">
+					<image class="flex w-b100 mb12" :src="v.img" mode="widthFix" v-for="v in getAddressLogo(data.detail.address_logo)"></image>
+				</view>
 			</scroll-view>
 		</view>
 		<view class="store-footer flex-middle" v-if="type  == 'order'">
@@ -158,15 +159,15 @@
 </template>
 
 <script>
-import dxProductsPic from 'doxinui/components/products/pic'
-import dxTabs from "doxinui/components/tabs/tabs"
-import storePro from '@/components/store_pro'
-import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
-import dxDiag from "doxinui/components/diag/diag"
-import dxImages from "doxinui/components/images/images"
-import dxListCell from "doxinui/components/list-cell/list-cell"
+	import dxProductsPic from 'doxinui/components/products/pic'
+	import dxTabs from "doxinui/components/tabs/tabs"
+	import storePro from '@/components/store_pro'
+	import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
+	import dxDiag from "doxinui/components/diag/diag"
+	import dxImages from "doxinui/components/images/images"
+	import dxListCell from "doxinui/components/list-cell/list-cell"
 	export default {
-		components:{
+		components: {
 			dxProductsPic,
 			dxTabs,
 			storePro,
@@ -181,20 +182,31 @@ import dxListCell from "doxinui/components/list-cell/list-cell"
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				height_:64,
+				height_: 64,
 				top: 0, //标题图标距离顶部距离
 				height: 0, //scroll-view高度
-				merchant_id:0,
-				merchant:{},
-				selectClassKey:0,
-				type:'order',
-				tabs: [
-					{name: "下单",value:'order',},
-					{name: "优惠券",value:'coupon'},
-					{name: "评价",value:'evaluate'},
-					{name: "商家",value:'merchant'},
+				merchant_id: 0,
+				merchant: {},
+				selectClassKey: 0,
+				type: 'order',
+				tabs: [{
+						name: "下单",
+						value: 'order',
+					},
+					{
+						name: "优惠券",
+						value: 'coupon'
+					},
+					{
+						name: "评价",
+						value: 'evaluate'
+					},
+					{
+						name: "商家",
+						value: 'merchant'
+					},
 				],
-				scrollTop: 0 ,//tab标题的滚动条位置
+				scrollTop: 0, //tab标题的滚动条位置
 			}
 		},
 		onLoad: function(options) {
@@ -221,7 +233,7 @@ import dxListCell from "doxinui/components/list-cell/list-cell"
 			})
 			uni.getSystemInfo({
 				success: (res) => {
-					
+
 					let header = 92;
 					// #ifdef H5
 					header = 0;
@@ -230,61 +242,85 @@ import dxListCell from "doxinui/components/list-cell/list-cell"
 				}
 			});
 			this.ajax();
-		
+
 		},
 		methods: {
-			getLogo(cover){
+			getAddressLogo(cover){
+			
+				let coverArr = cover ? cover.split(",") : [];
+				let coverArr_ = [];
+				if(coverArr.length){
+					coverArr.forEach(v => {
+						coverArr_.push({
+							img: this.getSiteName + '/upload/images/merchant/' + v
+						});
+					});
+				}
+				
+				console.log(coverArr_);
+				return coverArr_;
+			},
+			getLogo(cover) {
 				let coverArr = cover.split(",");
 				let coverArr_ = [];
-				coverArr.forEach(v=>{
-					coverArr_.push({img:this.getSiteName + '/upload/images/order/'+v});
+				coverArr.forEach(v => {
+					coverArr_.push({
+						img: this.getSiteName + '/upload/images/order/' + v
+					});
 				});
 				console.log(coverArr_);
 				return coverArr_;
 			},
-			draw(item){
-				this.checkLogin().then(msg=>{
-					if(item.status == 0){
-						this.postAjax("/user/couponAdd",{coupon_id:item.id,merchant_id:this.data.detail.id}).then(msg=>{
-							if(msg.data.status  == 2){
+			draw(item) {
+				this.checkLogin().then(msg => {
+					if (item.status == 0) {
+						this.postAjax("/user/couponAdd", {
+							coupon_id: item.id,
+							merchant_id: this.data.detail.id
+						}).then(msg => {
+							if (msg.data.status == 2) {
 								this.$refs.coupon.thisDiag = false;
 								this.ajax();
 							}
 						});
-					}else{
+					} else {
 						this.getError("您已经领取");
 					}
 				});
 			},
-			collection(){
+			collection() {
 				this.data.collect = !this.data.collect;
-				this.postAjax("/user/collectionAdd",{merchant_id:this.merchant.id,collect:this.data.collect}).then(msg=>{
-					
+				this.postAjax("/user/collectionAdd", {
+					merchant_id: this.merchant.id,
+					collect: this.data.collect
+				}).then(msg => {
+
 				});
 			},
-			changeCart(item){
+			changeCart(item) {
 				this.data.cartData.num = item.cartData.num;
 				this.data.cartData.amount = item.cartData.amount;
 			},
-			changeClassKey(key){
+			changeClassKey(key) {
 				console.log(0);
 				this.selectClassKey = key;
 			},
-			upx2px(val){
+			upx2px(val) {
 				return uni.upx2px(val);
 			},
 			ajax() {
-				this.getAjaxForApp(this, {merchant_id:this.merchant_id
-				
+				this.getAjaxForApp(this, {
+					merchant_id: this.merchant_id
+
 				}).then(msg => {
 					this.merchant = msg.detail;
-					
+
 				});
 			}
 		}
 	}
 </script>
 <style scoped="">
-@import url('index.css');
-@import url('/pages/user/coupon/lists/index.css');
+	@import url('index.css');
+	@import url('/pages/user/coupon/lists/index.css');
 </style>

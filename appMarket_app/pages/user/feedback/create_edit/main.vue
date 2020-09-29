@@ -14,25 +14,42 @@
 				<weui-input v-model="ruleform.phone" label="手机号码" type="text" name="phone"></weui-input>
 			</view>
 			<view class="tips">温馨提示：请详细描述系统出现的异常问题，并上传相关截图，以方便我们快速解决问题哦~</view>
-			<dxftButton type="success" size="lg">确认</dxftButton>
+			<dxftButton type="success" size="lg"  @click="submit">确认</dxftButton>
 		</view>
+		<dx-prompt :open="successDiag" content="提交成功、感谢您的反馈！" @cancelCallBack="successDiag=false" @confirmCallBack="goto('/pages/index/main',2)">
+		</dx-prompt>
 	</view>
 </template>
 
 <script>
 	import dxftButton from "doxinui/components/button/footer-button"
+	import dxPrompt from "doxinui/components/diag/prompt"
 	export default {
-		components:{dxftButton},
+		components:{dxftButton,dxPrompt},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/user/feedback/create',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
+				successDiag:false,
 				ruleform:{},
+				vaildate:{}
 			}
 		},
 		methods: {
+			submit(){
+				this.vaildForm(this,res=>{
+					if(res){
+						this.postAjax(this.formAction,this.ruleform).then(msg=>{
+							if(msg.data.status == 2){
+								this.successDiag = true;
+							}
+							
+						});
+					}
+				});
+			},
 			ajax() {
 				this.getAjaxForApp(this, {
 				

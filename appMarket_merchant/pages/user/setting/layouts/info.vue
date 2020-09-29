@@ -5,7 +5,8 @@
 			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.market_id" label="市场" name="market_id" changeField="value" type="select" dataKey="marketArr"></weui-input>
 				<weui-input v-model="ruleform.name" label="店铺名称" type="text" name="name" maxlength="30" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.logo" label="店铺照片" type="upload" upurl='merchant' allowUpLoadNum="1" name="logo" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.logo" label="商家头像" type="upload" upurl='merchant' allowUpLoadNum="1" name="logo" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.address_logo" label="店铺照片" type="upload" upurl='merchant' allowUpLoadNum="5" name="address_logo" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.remark" placeholder="请输入店铺介绍" type="textarea" name="remark" datatype="require"></weui-input>
 			</view>
 			<view class="bg-f mb12">
@@ -78,6 +79,7 @@
 				}).then(msg => {
 					this.ruleform = msg.detail;
 					this.ruleform.logo =  this.ruleform.logo ? this.ruleform.logo.split(',') :[];
+					this.ruleform.address_logo =  this.ruleform.address_logo ? this.ruleform.address_logo.split(',') :[];
 					
 				});
 			}
