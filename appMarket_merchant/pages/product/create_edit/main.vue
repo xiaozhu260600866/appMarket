@@ -11,7 +11,8 @@
 				<weui-input v-model="ruleform.price" label="单价" placeholder="￥0.00(包括包装费)" type="number" name="price" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.specs" label="规格" placeholder="0.00斤" type="number" name="specs" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.num" label="库存" placeholder="0" type="number" name="num" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.freshness" label="新鲜度" placeholder="0-10数字越大表示越新鲜" type="number" name="freshness" datatype="require"></weui-input>
+				<!-- <weui-input v-model="ruleform.freshness" label="新鲜度" placeholder="0-10数字越大表示越新鲜" type="number" name="freshness" datatype="require"></weui-input> -->
+				<weui-input v-model="ruleform.freshness" label="新鲜度" name="fclass" changeField="value" type="select" datatype="require" dataKey="freshnessArr"></weui-input>
 				<weui-input v-model="ruleform.fclass" label="商品分类" name="fclass" changeField="value" type="select" datatype="require" dataKey="propertyArr"></weui-input>
 				<weui-input v-model="ruleform.shell_date" label="售买时间" type="date" name="date"></weui-input>
 				<weui-input v-model="ruleform.shipping" label="邮寄方式" name="radio" changeField="value" type="radio" dataKey="shippingArr" 
@@ -46,6 +47,7 @@ import dxftButton from "doxinui/components/button/footer-button"
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform:{shipping:2},
+				freshnessArr:[],
 				shippingArr:[
 					{label:'邮寄',value:1},
 					{label:'骑手取货',value:2},
@@ -98,6 +100,13 @@ import dxftButton from "doxinui/components/button/footer-button"
 			}else{
 				this.formAction = "/merchant/product/create";
 			}
+			this.freshnessArr= [];
+			for (var i = 1; i <=10; i++) {
+				this.freshnessArr.push(
+					{label:i,value:i}
+				);
+			}
+			console.log(this.freshnessArr);
 			this.ajax();
 			
 		},
