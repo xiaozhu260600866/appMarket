@@ -273,6 +273,20 @@
 				"navigationBarTitleText": "内容",
 				"enablePullDownRefresh": true
 			}
+		},
+		{
+			"path": "pages/user/after-sale/detail/main",
+			"style": {
+				"navigationBarTitleText": "售后管理",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/user/after-sale/lists/main",
+			"style": {
+				"navigationBarTitleText": "售后管理",
+				"enablePullDownRefresh": true
+			}
 		}
 	],
 	"permission": {

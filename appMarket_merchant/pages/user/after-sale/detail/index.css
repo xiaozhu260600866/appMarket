@@ -1,0 +1,11 @@
+#order-footer{position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;height: 100upx;display: flex;justify-content: space-between;align-items: center;border-top: 1upx solid #f7f7f7;}
+#order-footer .rbtn{display: flex;justify-content: flex-end;height: 100upx;align-items: center;}
+#order-footer .rbtn .btn-nav{line-height: 68upx;border: 1upx #ddd solid;border-radius: 39upx;color: #555;font-size: 30upx;text-align: center;margin-right: 20upx;display: block;width: 200upx;}
+#order-footer .rbtn .inbtn{background: #57C734;border-color: #57C734;color: #fff;}
+#order-footer .rbtn .nobtn{background: #ff4353;border-color: #ff4353;color: #fff;}
+#order-footer .rbtn .gobuy{height: 100upx;line-height: 100upx;width: 280upx;font-size: 32upx;margin-right: 0;border-radius: 0;}
+#order-footer .rbtn .gobuy label{line-height: 100upx;}
+#order-footer .rbtn .obtn{border: 2upx #ddd solid!important;background: #fff!important;color: #555!important;}
+
+
+/deep/.prompt-con .dx-cell{border: 2upx #ddd solid;padding: 8upx 20upx;border-radius: 12upx;margin-top: 20upx;}

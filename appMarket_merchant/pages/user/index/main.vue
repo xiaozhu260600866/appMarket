@@ -57,7 +57,8 @@
 					{url:'/pages/user/finance/products',type: 1,icon:'iconfont icon-user-finance-pro',name:'商品分析'},
 					{url:'/pages/user/finance/client',type: 1,icon:'iconfont icon-user-finance-client',name:'顾客分析'},
 					{url:'/pages/user/discounts/lists/main',type: 1,icon:'iconfont icon-user-coupon',name:'优惠活动'},
-					{url:'/pages/news/lists/main',type: 1,icon:'iconfont icon-user-news',name:'店铺公告'}
+					{url:'/pages/news/lists/main',type: 1,icon:'iconfont icon-user-news',name:'店铺公告'},
+					{url:'/pages/user/after-sale/lists/main',type: 1,icon:'iconfont icon-user-after',name:'售后管理'}
 				]" @click="checkAuth" myclass="bdr12" num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5"></dx-nav-class>
 			</view>
 			
