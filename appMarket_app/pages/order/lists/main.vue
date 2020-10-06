@@ -76,6 +76,9 @@
 							<view class="btn-nav" @click="goto('/pages/order/evaluate/main?order_no='+parent.order_no,1)">{{parent.suggestStatus == 0 ? '去评价' : '已评价'}}</view>
 						</view>
 						<!-- 售后中-->
+						<div class="btn-item" v-if="parent.status == 10">
+							<div class="btn-nav obtn" @click="goto('/pages/order/after-sale/index?order_no='+parent.order_no,1)">售后详情</div>
+						</div>
 					</view>
 				</view>
 				<view class="complete-icon" v-if="status == 9 || status == 99"><image class="img" src="https://appmarket.doxinsoft.com/images/wap/complete-icon.png"></image></view>
