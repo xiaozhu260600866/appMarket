@@ -9,6 +9,10 @@
 			<view class="right-search fs-12 fc-9 pl15 pr25 lh-30 bdr15 bg-f" @click="goto('/pages/search/products/main',1)">
 				<span class="iconfont icon-search fs-14 fc-9 pr10"></span>搜索产品
 			</view>
+			<button class="right-contact plr15 fc-white">
+				<view class="iconfont icon-service fs-20"></view>
+				<!-- <view class="name fs-12">客服</view> -->
+			</button>
 		</view>
 		<!-- 滚动图片 -->
 		<view class="ibanner bg-f">

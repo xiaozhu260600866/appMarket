@@ -64,7 +64,8 @@
 					{url:'/pages/news/show/main?id=235',type: 1,icon:'iconfont icon-user-joinin',name:'平台加盟'},
 					{url:'/pages/user/address/lists/main',type: 1,icon:'iconfont icon-user-address',name:'地址管理'},
 					{url:'/pages/user/info/main',type: 1,icon:'iconfont icon-user-info',name:'账户信息'},
-					{url:'/pages/user/feedback/create_edit/main',type: 1,icon:'iconfont icon-user-feedback',name:'意见反馈'}
+					{url:'/pages/user/feedback/create_edit/main',type: 1,icon:'iconfont icon-user-feedback',name:'意见反馈'},
+					{url:'/pages/user/feedback/create_edit/main',type: 1,icon:'iconfont icon-service',name:'客服'}
 				  ]" @click="checkAuth" isAuth myclass="bdr12" :num="4" :imgWidth="30" :imgHeight="30" :nameSize="12" :namePTop="5">
 					<!-- 
 					{url:'/pages/group/order-lists/main',type: 1,icon:'iconfont icon-user-group',name:'我的拼团'},
