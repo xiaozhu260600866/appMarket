@@ -67,13 +67,10 @@
 							<view class="nav no" v-else>已领取</view>
 						</view>
 					</view>
-					<uni-view class="empty" v-if="data.coupons.length == 0">
-						<uni-image class="img" style="height: 76px;">
-							<div style="background-image: url(&quot;https://boss.doxinsoft.com/images/order/cart02.png&quot;); background-size: 100% 100%; background-repeat: no-repeat;"></div><img
-							 src="https://boss.doxinsoft.com/images/order/cart02.png">
-						</uni-image>
-						<uni-view class="name ptb10 fs-14 fc-6">暂无优惠券</uni-view>
-					</uni-view>
+					<view class="empty" v-if="data.coupons.length == 0">
+						<image class="img" src="https://boss.doxinsoft.com/images/order/cart02.png"></image>
+						<view class="name ptb10 fs-14 fc-6">暂无优惠券</view>
+					</view>
 				</view>
 			</scroll-view>
 
@@ -83,7 +80,7 @@
 						<view class="u-info">
 							<view class="u-info-box">
 								<view class="u-img">
-									<image class="img" :src="v.user.headerPic" />
+									<image class="img" :src="v.user?v.user.headerPic:'https://boss.doxinsoft.com/images/nouser01.png'" />
 								</view>
 								<view class="u-name pl10">
 									<view class="name lh-20 fs-14">{{ v.addr_name }}</view>
@@ -96,6 +93,10 @@
 							<view class="p">{{ v.merchant_evaluate }}</view>
 							<dx-images :data="getLogo(v.merchant_evaluate_logo)"></dx-images>
 						</view>
+					</view>
+					<view class="empty" v-if="data.evaluateLists.length == 0">
+						<image class="img" src="https://boss.doxinsoft.com/images/order/cart02.png"></image>
+						<view class="name ptb10 fs-14 fc-6">暂无评价</view>
 					</view>
 				</view>
 			</scroll-view>
