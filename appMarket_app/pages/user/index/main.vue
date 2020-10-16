@@ -135,6 +135,10 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 		},
 		methods: {
 			checkAuth(v){
+				console.log(v)
+				if(v.name == '客服'){
+					return this.phone('13172222572');
+				}
 				this.checkLogin().then(msg=>{
 					return this.goto(v.url,v.type);
 				});
