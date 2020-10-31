@@ -20,9 +20,10 @@
 
 /* 脚部 */
 .store-footer{position: fixed;left: 0;bottom: 0;width: 100%;z-index: 100;background-color: #fff;border-top: 2upx #eee solid;height: 100upx;}
-.store-footer .icon{width: 120upx;height: 120upx;border-radius: 50%;background-color: #57C734;text-align: center;margin: -40upx 60upx 0 60upx;padding-top: 10upx;position: relative;}
-.store-footer .dxi-icon{line-height: 60upx;}
-.store-footer .icon .num{position: absolute;top: -6upx;right: -10upx;background-color: #fb414a;color: #fff;font-size: 26upx;height: 44upx;line-height: 44upx;width: 44upx;border-radius: 50%;}
+.store-footer .icon{width: 100upx;height: 100upx;border-radius: 50%;background-color: #57C734;text-align: center;margin: -40upx 20upx 0 20upx;position: relative;}
+.store-footer .dxi-icon{line-height: 100upx;}
+.store-footer .icon .num{position: absolute;top: -4upx;right: -10upx;background-color: #fb414a;color: #fff;font-size: 26upx;height: 44upx;line-height: 44upx;width: 44upx;border-radius: 50%;}
+.store-footer .goBuy{background-color: #57C734;line-height: 100upx;text-align: center;width: 220upx;color: #fff;font-size: 18px;}
 
 
 /* 2020-07-07 */
