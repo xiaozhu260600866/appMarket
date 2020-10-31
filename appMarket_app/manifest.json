@@ -2,8 +2,8 @@
     "name" : "同城菜场",
     "appid" : "__UNI__B73D34F",
     "description" : "",
-    "versionName" : "1.0.0",
-    "versionCode" : "100",
+    "versionName" : "6.0.0",
+    "versionCode" : 600,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -59,8 +59,23 @@
             },
             /* ios打包配置 */
             "ios" : {
-                "UIBackgroundModes" : [ "audio" ]
+                //"UIBackgroundModes" : [ "audio" ],
+                // "plistcmds" : [
+                //     "Set :NSPhotoLibraryUsageDescription 相册访问",
+                //     "Set :NSMicrophoneUsageDescription 麦克风访问",
+                //     "Set :NSCameraUsageDescription 相机访问",
+                //     //"Set :NSContactsUsageDescription 通讯录访问",
+                //     "Set :NSLocationAlwaysUsageDescription 地理位置访问",
+                //     "Set :NSLocationWhenInUseUsageDescription 地理位置访问"
+                // ],
+                "privacyDescription" : {
+                    "NSLocationWhenInUseUsageDescription" : "获取定位信息用于为用户提供附近的商家信息",
+                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "获取定位信息用于为用户提供附近的商家信息",
+                    "NSCameraUsageDescription" : "用户申请退货后；需要上传商品图",
+                    "NSPhotoLibraryUsageDescription" : "用户申请退货后；需要上传商品图"
+                }
             },
+            //"UIBackgroundModes" : "audio"
             /* SDK配置 */
             "sdkConfigs" : {
                 "oauth" : {
@@ -108,7 +123,8 @@
                         "settings@3x" : "D:/App开发证书/app图标/苹果/87.png",
                         "notification@2x" : "D:/App开发证书/app图标/苹果/40.png",
                         "notification@3x" : "D:/App开发证书/app图标/苹果/60.png"
-                    }
+                    },
+                    "appstore" : "D:/App开发证书/app图标/苹果/1024.png"
                 }
             }
         }

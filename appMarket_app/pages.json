@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/main",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "同城菜场",
 				"enablePullDownRefresh": true,
 				"navigationStyle": "custom"
 			}
