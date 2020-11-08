@@ -509,12 +509,12 @@
 				"iconPath": "static/image/A01.png",
 				"selectedIconPath": "static/image/A02.png"
 			},
-			{
-				"pagePath": "pages/user/cart/main",
-				"text": "购物车",
-				"iconPath": "static/image/F01.png",
-				"selectedIconPath": "static/image/F02.png"
-			},
+			// {
+			// 	"pagePath": "pages/user/cart/main",
+			// 	"text": "购物车",
+			// 	"iconPath": "static/image/F01.png",
+			// 	"selectedIconPath": "static/image/F02.png"
+			// },
 			{
 				"pagePath": "pages/user/message/lists/main",
 				"text": "消息",

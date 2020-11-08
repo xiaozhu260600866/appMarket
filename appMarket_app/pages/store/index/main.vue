@@ -132,13 +132,13 @@
 			</scroll-view>
 		</view>
 		<view class="store-footer flex-between flex-middle" v-if="type  == 'order'">
-			<view class="icon" @click="goto('/pages/user/cart/main',2)">
+			<view class="icon" @click="goto('/pages/user/cart/main?merchant_id='+data.detail.id,1)">
 				<dx-icon name="cart" size="24" color="#fff"></dx-icon>
 				<!-- <view class="fs-12 fc-white lh-16">购物车</view> -->
 				<view class="num">{{data.cartData.num}}</view>
 			</view>
 			<view class="flex1"><dx-price v-model="data.cartData.amount" split :intSize="24" :decimalSize="15"></dx-price></view>
-			<view class="goBuy">去结算</view>
+			<view class="goBuy"  @click="goto('/pages/user/cart/main?merchant_id='+data.detail.id,1)">去结算</view>
 		</view>
 		<dx-diag :open="false" title="优惠活动" :titSize="16" titColor="#333" width="94%" ref="coupon">
 			<view class="diag-coupon mt15">
