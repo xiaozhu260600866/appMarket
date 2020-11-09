@@ -102,31 +102,15 @@
 				getSiteName: this.getSiteName(),
 				status: 12,
 				listsShow:false,
-				tabs: [{
-					value:12,
-					name: "全部"
-				}, 
-				{
-					value:1,
-					name: "待付款"
-				},
-				{
-					value:3,
-					name: "待发货"
-				},{
-					value:5,
-					name: "待收货"
-				},{
-					value:9,
-					name: "待评价"
-				},{
-					value:99,
-					name: "已完成"
-				},
-				{
-					value:0,
-					name: "已取消"
-				}],
+				tabs: [
+					{value:12,name: "全部"}, 
+					{value:1,name: "待付款"},
+					{value:3,name: "待发货"},
+					{value:5,name: "待收货"},
+					{value:9,name: "待评价"},
+					{value:99,name: "已完成"},
+					{value:0,name: "已取消"},
+				],
 			}
 		},
 		methods: {
