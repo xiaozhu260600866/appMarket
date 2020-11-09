@@ -184,6 +184,13 @@
 			}
 		},
 		{
+			"path": "pages/order/lists/pick",
+			"style": {
+				"navigationBarTitleText": "自提订单",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/user/wallet/index/main",
 			"style": {
 				"navigationBarTitleText": "我的钱包",

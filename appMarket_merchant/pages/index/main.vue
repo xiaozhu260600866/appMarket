@@ -42,6 +42,10 @@
 							<view class="txt">本单预计收入</view>
 							<view class="price">￥{{ item.amount }}</view>
 						</view>
+						<view class="count flex-between p15 pt5 bd-te">
+							<view class="txt">取货方式</view>
+							<view class="fc-3">{{item.shipping == 2?'送货上门':'自提'}}</view>
+						</view>
 						<view class="print">
 							<dx-button round btnBd="#fff" @click="printf(item)">打印小票</dx-button>
 							<dx-button round type="success" btnBd="#fff" @click="order(item)" v-if="status == 3 && item.shipping ==2">接单</dx-button>
