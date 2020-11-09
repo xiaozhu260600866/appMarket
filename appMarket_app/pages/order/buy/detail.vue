@@ -3,7 +3,7 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="mt10 pb50" v-if="data.show">
 			<view class="block-sec">
-				<weui-input label="配送方式" v-model="ruleform.shipping" type="txt" name="shipping"></weui-input>
+				<weui-input label="配送方式" v-model="ruleform.getShipping" type="txt" name="getShipping"></weui-input>
 			</view>
 			<view id="address" class="block-sec" >
 				<view class="add-info flex-middle plr15">

@@ -84,6 +84,7 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				checkLength:0,
+				merchant_id:'',
 				checkAll:false
 			}
 		},
@@ -121,7 +122,10 @@
 			this.resetData();
 		},
 		onLoad(options) {
+			this.merchant_id = options.merchant_id;
 			this.ajax();
+			
+			
 			this.checkLogin();
 			this.resetData();
 		},
@@ -200,7 +204,8 @@
 				
 			},
 			ajax() {
-				this.getAjaxForApp(this, {
+				
+				this.getAjaxForApp(this, {merchant_id:this.merchant_id
 				
 				}).then(msg => {
 					
