@@ -38,7 +38,7 @@
 			</view>
 			
 			<view class="ugorup-box bg-f mb8">
-				<view @click="checkLogin('/pages/order/lists/main?status=12',1)">
+				<view @click="checkLogin('/pages/order/lists/main?status=12',2)">
 					<dx-title name="全部订单" nameBold="bold" :nameSize="15" :height="40" arrow>
 						<view slot="right">
 							<view class="fs-12 fc-6">查看全部</view>
@@ -46,11 +46,11 @@
 					</dx-title>
 				</view>
 				<dx-nav-class :data="[
-					{url:'/pages/order/lists/main?status=1',type: 1,cover:'/static/order-icon01.png',name:'待付款',number:data.order1},
-					{url:'/pages/order/lists/main?status=3',type: 1,cover:'/static/order-icon02.png',name:'待发货',number:data.order3},
-					{url:'/pages/order/lists/main?status=5',type: 1,cover:'/static/order-icon03.png',name:'待收货',number:data.order5},
-					{url:'/pages/order/lists/main?status=9',type: 1,cover:'/static/order-icon04.png',name:'待评价',number:data.order9},
-					{url:'/pages/order/service/index?historyUrl=del&status=10',type: 1,cover:'/static/order-icon05.png',name:'售后',number:data.order10},
+					{url:'/pages/order/lists/main?status=1',type: 2,cover:'/static/order-icon01.png',name:'待付款',number:data.order1},
+					{url:'/pages/order/lists/main?status=3',type: 2,cover:'/static/order-icon02.png',name:'待发货',number:data.order3},
+					{url:'/pages/order/lists/main?status=5',type: 2,cover:'/static/order-icon03.png',name:'待收货',number:data.order5},
+					{url:'/pages/order/lists/main?status=9',type: 2,cover:'/static/order-icon04.png',name:'待评价',number:data.order9},
+					{url:'/pages/order/service/index?historyUrl=del&status=10',type: 2,cover:'/static/order-icon05.png',name:'售后',number:data.order10},
 				
 				]" @click="checkAuth" isAuth myclass="bdr12" :num="5" :imgWidth="30" :imgHeight="30" :imgR="0" :nameSize="12" :namePTop="5"></dx-nav-class>
 			</view>
@@ -102,35 +102,6 @@ import dxNavClass from "doxinui/components/nav-class/nav-class"
 					integral:11,
 					couponNum:0
 				},
-				orderNav:[
-					{
-						url:'/pages/order/lists/main',
-						type: 1,
-						cover:'https://boss.doxinsoft.com/images/wap/user-icon1.png',
-						name:'待付款'
-					},{
-						url:'/pages/order/lists/main',
-						type: 1,
-						cover:'https://boss.doxinsoft.com/images/wap/user-icon2.png',
-						name:'待发货'
-					},{
-						url:'/pages/order/lists/main',
-						type: 1,
-						cover:'https://boss.doxinsoft.com/images/wap/user-icon3.png',
-						name:'待收货'
-					},{
-						url:'/pages/order/lists/main',
-						type: 1,
-						cover:'https://boss.doxinsoft.com/images/wap/user-icon4.png',
-						name:'待评价'
-					},{
-						url:'/pages/order/lists/main',
-						type: 1,
-						cover:'https://boss.doxinsoft.com/images/wap/user-icon5.png',
-						name:'售后'
-					}
-				],
-				
 			}
 		},
 		methods: {

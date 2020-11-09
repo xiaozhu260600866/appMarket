@@ -522,6 +522,12 @@
 				"selectedIconPath": "static/image/G02.png"
 			},
 			{
+				"pagePath": "pages/order/lists/main",
+				"text": "订单",
+				"iconPath": "static/image/H01.png",
+				"selectedIconPath": "static/image/H02.png"
+			},
+			{
 				"pagePath": "pages/user/index/main",
 				"text": "我的",
 				"iconPath": "static/image/D01.png",
