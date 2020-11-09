@@ -2,9 +2,9 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="mt10 pb50" v-if="data.show">
-			<view class="block-sec">
+			<view class="block-sec shipping">
 				<weui-input v-model="ruleform.shipping" label="配送方式" name="shipping" changeField="value" type="radio" dataKey="shippingArr"
-				 @callback="test" :row="false" v-if="ruleform.shipping == 2 || ruleform.shipping == 4"></weui-input>
+				 @callback="test" :row="false" v-if="ruleform.shipping == 2 || ruleform.shipping == 4 || ruleform.shipping == 3"></weui-input>
 			</view>
 			<!-- 如果是骑手取货 || 邮寄astart -->
 			<view id="address" class="block-sec" v-if="ruleform.shipping == 1 || ruleform.shipping == 2">
@@ -50,8 +50,8 @@
 			</view>
 			<!-- 如果是骑手取货end -->
 			<!-- 如果是自提点start -->
-			<view class="block-sec" v-if="ruleform.shipping == 4">
-				<view v-if="deliver.name" @click="goto('/pages/order/chooseDeliver/main',1)">
+			<view v-if="ruleform.shipping == 4">
+				<view class="block-sec" v-if="deliver.name" @click="goto('/pages/order/chooseDeliver/main',1)">
 					<view class="add-info p10">
 						<view class="info pr15">
 							<view class="fs-17 fc-3 mb5 lh-24">自提地址</view>
@@ -65,15 +65,17 @@
 						</view>
 					</view>
 				</view>
-				<view v-else @click="goto('/pages/order/chooseDeliver/main',1)">
+				<view class="block-sec" v-else @click="goto('/pages/order/chooseDeliver/main',1)">
 					<view class="add-add p10">
 						<view class="add-icon dxi-icon dxi-icon-add mr10"></view>
 						<view class="add-txt fs-15">请选择自提点</view>
 						<view class="iconfont icon-right fs-12 fc-9"></view>
 					</view>
 				</view>
-				<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.addr_phone" label="电话" type="text" name="addr_phone" datatype="require"></weui-input>
+				<view class="block-sec">
+					<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
+					<weui-input v-model="ruleform.addr_phone" label="电话" type="text" name="addr_phone" datatype="require"></weui-input>
+				</view>
 			</view>
 			<!-- 如果是自提点end -->
 			<!-- 如果是到店自提start -->
@@ -120,11 +122,11 @@
 					共<text class="Arial">{{merchant.orderNum}}</text>件商品 合计：<text class="Arial price fs-16">￥{{merchant.chooseCoupon ?  merchant.orderSum - merchant.chooseCoupon.amount : merchant.orderSum}}</text>
 				</view>
 			</view>
-			<view class="block-sec">
+			<view class="block-sec" v-if="ruleform.shipping == 2">
 				<!-- <weui-input v-model="ruleform.emergencyFee" label="加急费" name="emergencyFee" changeField="value" type="radio" dataKey="emergencyFeeArr"
 				 @callback="test" :row="false"></weui-input> -->
 
-				<weui-input v-model="ruleform.quick_price" v-if="ruleform.shipping == 2" label="加急费" name="quick_price" changeField="value" type="checkbox"
+				<weui-input v-model="ruleform.quick_price" label="加急费" name="quick_price" changeField="value" type="checkbox"
 				 dataKey="emergencyFeeArr" :row="true" Labelleft myclass="emFee"></weui-input>
 			</view>
 			<view id="mode" class="block-sec">
@@ -203,28 +205,19 @@
 				vaildate: {},
 				address: {},
 				address_id: 0,
-				shippingArr: [{
-					value: 2,
-					label: '送货上门'
-				}, {
-					value: 4,
-					label: '自提'
-				}],
-				pay_methods: [{
-					label: '微信支付',
-					value: 1
-				}, {
-					label: '余额支付',
-					value: 2
-				}],
-				emergencyFeeArr: [{
-					label: '￥5',
-					value: 1
-				}],
-				deliver: {
-					
-				},
-				
+				shippingArr: [
+					{value: 2,label: '配送'},
+					{value: 4,label: '自提点'},
+					{value: 3,label: '到店自取'},
+				],
+				pay_methods: [
+					{label: '微信支付',value: 1},
+					{label: '余额支付',value: 2},
+				],
+				emergencyFeeArr: [
+					{label: '￥5',value: 1},
+				],
+				deliver: {},
 			}
 		},
 		onShow(){
