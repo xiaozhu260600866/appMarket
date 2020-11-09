@@ -1,4 +1,4 @@
-.block-sec{background: #fff;margin: 0 24upx 24upx;border-radius: 8upx;}
+.block-sec{background: #fff;margin: 0 24upx 20upx;border-radius: 12upx;}
 
 /* 选择地址 */
 .add_group{display: flex;justify-content: space-between;align-items: center;padding: 0 30upx;height: 106upx;line-height: 40upx;font-size: 30upx;}

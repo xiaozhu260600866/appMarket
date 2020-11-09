@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="mt12 pb50" v-if="data.show">
+		<view class="mt10 pb50" v-if="data.show">
 			<view class="block-sec">
 				<weui-input label="配送方式" v-model="ruleform.shipping" type="txt" name="shipping"></weui-input>
 			</view>

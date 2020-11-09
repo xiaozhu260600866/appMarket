@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="mt12 pb50" v-if="data.show">
+		<view class="mt10 pb50" v-if="data.show">
 			<view class="block-sec">
 				<weui-input v-model="ruleform.shipping" label="配送方式" name="shipping" changeField="value" type="radio" dataKey="shippingArr"
 				 @callback="test" :row="false" v-if="ruleform.shipping == 2 || ruleform.shipping == 4"></weui-input>
@@ -129,6 +129,12 @@
 			</view>
 			<view id="mode" class="block-sec">
 				<weui-input v-model="ruleform.remark" label="买家留言" type="text" name="remark" placeholder="点击给卖家留言"></weui-input>
+			</view>
+			<view class="prompt block-sec">
+				<view class="title fs-15 plr15 ptb10 main-color bd-be">温馨提示</view>
+				<view class="con plr15 ptb10 fs-15 fc-6">
+					您所购买的商品有不可分割商品、重量会有误差!
+				</view>
 			</view>
 			<view id="buy_footer">
 				<view class="f_left price fs-18 plr10">￥
