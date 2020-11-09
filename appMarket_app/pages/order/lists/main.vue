@@ -176,7 +176,10 @@
 			}
 		},
 		onLoad(options) {
-			this.status = options.status;
+			if(options.status){
+				this.status = options.status;
+			}
+			
 			let location_x = uni.getStorageSync('location_x');
 			if(location_x){
 				this.location.location_x = uni.getStorageSync('location_x');
