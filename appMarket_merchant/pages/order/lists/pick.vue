@@ -92,7 +92,7 @@
 				tabs: [
 					{value:12,name: "全部"}, 
 					{value:5,name: "待取货"},
-					{value:99,name: "已完成"},
+					{value:9,name: "已完成"},
 				],
 			}
 		},
@@ -137,7 +137,7 @@
 			},
 			ajax() {
 				this.listsShow = false;
-				this.getAjaxForApp(this,{status:this.status}).then(msg => {
+				this.getAjaxForApp(this,{status:this.status,shipping:3}).then(msg => {
 					 this.listsShow = true; 
 				});
 			}

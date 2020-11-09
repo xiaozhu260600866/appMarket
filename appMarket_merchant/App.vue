@@ -42,6 +42,16 @@
 								let bgAudioMannager = uni.getBackgroundAudioManager();
 								bgAudioMannager.src = v.voice;
 								bgAudioMannager.play()
+								setTimeout(() => {
+									let bgAudioMannager = uni.getBackgroundAudioManager();
+									bgAudioMannager.src = v.voice;
+									bgAudioMannager.play()
+									setTimeout(() => {
+										let bgAudioMannager = uni.getBackgroundAudioManager();
+										bgAudioMannager.src = v.voice;
+										bgAudioMannager.play()
+									}, 5000)
+								}, 5000)
 							}, 5000)
 						}, 5000)
 			

@@ -44,7 +44,7 @@
 						</view>
 						<view class="count flex-between p15 pt5 bd-te">
 							<view class="txt">取货方式</view>
-							<view class="fc-3">送货上门</view>
+							<view class="fc-3">{{item.getShipping}}</view>
 						</view>
 						<view class="print">
 							<dx-button round btnBd="#fff" @click="printf(item)">打印小票</dx-button>
