@@ -13,19 +13,19 @@ const userRouter = {
         path: 'lists',
         component: () => import('@/views/user/lists'),
         name: 'UserLists',
-        meta: { title: '会员列表', icon: 'dx-vip-user' }
+        meta: { title: '会员列表', icon: '' }
     },
     {
         path: 'comeIn',
         component: () => import('@/views/user/come_in'),
         name: 'comeIn',
-        meta: { title: '佣金收入', icon: 'dx-vip-user' }
+        meta: { title: '佣金收入', icon: '' }
     },
     {
         path: 'comeOut',
         component: () => import('@/views/user/come_out'),
         name: 'comeOut',
-        meta: { title: '佣金提现', icon: 'dx-vip-user' }
+        meta: { title: '佣金提现', icon: '' }
     }
 
     // {

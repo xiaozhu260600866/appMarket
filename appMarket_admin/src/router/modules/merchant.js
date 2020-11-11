@@ -13,19 +13,19 @@ const merchantRouter = {
           path: 'order-lists',
           component: () => import('@/views/merchant/order/lists'),
           name: 'merchantOrderLists',
-          meta: { title: '订单列表', icon: 'documentation', params: { status: 3 }}
+          meta: { title: '订单列表', icon: '', params: { status: 3 }}
         },
         {
           path: 'lists',
           component: () => import('@/views/merchant/lists'),
           name: 'merchantLists',
-          meta: { title: '商家列表', icon: 'documentation' }
+          meta: { title: '商家列表', icon: '' }
         },
         {
           path: 'product-lists',
           component: () => import('@/views/merchant/product/lists'),
           name: 'productLists',
-          meta: { title: '商品列表', icon: 'documentation', params: {}}
+          meta: { title: '商品列表', icon: '', params: {}}
         },
         {
             path: 'product-create',
@@ -44,13 +44,13 @@ const merchantRouter = {
             path: 'comeIn',
             component: () => import('@/views/merchant/come_in'),
             name: 'comeIn',
-            meta: { title: '商家收入', icon: 'dx-vip-user' }
+            meta: { title: '商家收入', icon: '' }
         },
         {
             path: 'comeOut',
             component: () => import('@/views/merchant/come_out'),
             name: 'comeOut',
-            meta: { title: '商家提现', icon: 'dx-vip-user' }
+            meta: { title: '商家提现', icon: '' }
         }
     ]
 }

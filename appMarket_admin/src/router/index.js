@@ -18,6 +18,7 @@ import deliverRouter from './modules/deliver'
 import feedbackRouter from './modules/feedback'
 import disRouter from './modules/dis'
 import integralRouter from './modules/integral'
+import dataCountRouter from './modules/dataCount'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -107,6 +108,7 @@ export const asyncRoutes = [
   deliverRouter,
   disRouter,
   integralRouter,
+  dataCountRouter,
   settingRouter,
 
   // 404 page must be placed at the end !!!

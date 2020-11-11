@@ -13,13 +13,13 @@ const disRouter = {
           path: 'config',
           component: () => import('@/views/dis/config'),
           name: 'disConfig',
-          meta: { title: '分销设置', icon: 'documentation' }
+          meta: { title: '分销设置', icon: '' }
         },
         {
           path: 'lists',
           component: () => import('@/views/dis/lists'),
           name: 'disLists',
-          meta: { title: '分销列表', icon: 'documentation' }
+          meta: { title: '分销列表', icon: '' }
         },
 
     ]

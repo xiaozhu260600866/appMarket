@@ -12,30 +12,30 @@ const settingRouter = {
         path: 'system',
         component: () => import('@/views/setting/system'),
         name: 'SettingSystem',
-        meta: { title: '系统配置', icon: 'dx-sales-order' }
+        meta: { title: '系统配置', icon: '' }
     }, {
         path: 'poster',
         component: () => import('@/views/poster/lists'),
         name: 'SettingPoster',
-        meta: { title: '媒体设置', icon: 'dx-sales-order', params: { type: 1 }}
+        meta: { title: '媒体设置', icon: '', params: { type: 1 }}
     },
     {
         path: 'userRechargeRole',
         component: () => import('@/views/setting/rechargeRole/lists'),
         name: 'SettingPoster',
-        meta: { title: '充值规则', icon: 'dx-sales-order', params: { type: 1 }}
+        meta: { title: '充值规则', icon: '', params: { type: 1 }}
     },
     {
         path: 'city',
         component: () => import('@/views/city/lists'),
         name: 'SettingPoster',
-        meta: { title: '地区设置', icon: 'dx-sales-order' }
+        meta: { title: '地区设置', icon: '' }
     },
     {
         path: 'market',
         component: () => import('@/views/market/lists'),
         name: 'SettingPoster',
-        meta: { title: '市场设置', icon: 'dx-sales-order' }
+        meta: { title: '市场设置', icon: '' }
     }]
 }
 

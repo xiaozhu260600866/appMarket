@@ -38,9 +38,9 @@ export default {
 			{ 'prop': 'hour_time', 'width': '110', 'append_table_': 0, 'label': '营业时间' },
 			{ 'prop': 'address', 'minWidth': '180', 'append_table_': 0, 'label': '商家地址' },
 			{ 'prop': 'working', 'width': '80', 'append_table_': 0, 'label': '营业状态' },
-      { 'prop': 'recommend', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/merchant/editField', 'append_table_': 0, 'label': '推荐首页' },
+      		{ 'prop': 'recommend', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/merchant/editField', 'append_table_': 0, 'label': '推荐首页' },
 			{ 'prop': 'getStatus', 'width': '80', 'append_table_': 0, 'label': '审核状态' },
-      { 'prop': 'sort', 'minWidth': '', 'width': '100', 'align': 'center', 'type': 'sort', 'url': '/admin/merchant/editField', 'label': '排序' },
+  			{ 'prop': 'sort', 'minWidth': '', 'width': '100', 'align': 'center', 'type': 'sort', 'url': '/admin/merchant/editField', 'label': '排序' },
 			{ 'prop': 'created_at', 'width': '160', 'append_table_': 0, 'label': '注册时间' }
 		],
 		'formFields': [
@@ -58,7 +58,8 @@ export default {
 			{ prop: 'idCard', datatype: 'array', type: 'upload', label: '身份证正图', allowUpLoadNum: 1, upurl: 'merchant' },
 			{ prop: 'idCard2', datatype: 'array', type: 'upload', label: '身份证背图', allowUpLoadNum: 1, upurl: 'merchant', column: 2 },
 			{ prop: 'company_logo', datatype: 'array', type: 'upload', label: '营业执照', allowUpLoadNum: 1, upurl: 'merchant' },
-			{ prop: 'health_logo', datatype: 'array', type: 'upload', label: '健康证', allowUpLoadNum: 1, upurl: 'merchant' }
+			{ prop: 'health_logo', datatype: 'array', type: 'upload', label: '健康证', allowUpLoadNum: 1, upurl: 'merchant' },
+			{ prop: 'shop', datatype: 'require', type: 'switch', label: '封停' },
 			// { prop: 'swiper', datatype: 'array', type: 'upload', label: '轮播图', allowUpLoadNum: 1, upurl: 'merchant' }
 		]
 	}
