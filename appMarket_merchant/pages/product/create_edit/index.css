@@ -2,3 +2,8 @@
 .pro_edit >>>.dx-input{text-align: right;}
 .pro_edit >>>.title .dx-input{text-align: left;}
 .pro_edit >>>.uni-switch-input{background-color: #57C734!important;border-color: #fff!important;}
+
+
+/* 收货方式 */
+/deep/.shipping .dx-cell_hd .dx-label{width: 140upx;}
+/deep/.shipping .col_group .dx-cell{margin-left: 20upx;}

@@ -3,26 +3,37 @@
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="pb50 pro_edit" v-if="data.show">
 			<view class="bg-f mb12">
-				<weui-input v-model="ruleform.name" placeholder="请输入产品标题" errorMessage="产品标题" type="text" name="name" datatype="require" myclass="title"></weui-input>
-				<weui-input v-model="ruleform.cover" label="上传产品图" type="upload" upurl='product' allowUpLoadNum="5" name="cover" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.name" placeholder="请输入产品标题" errorMessage="产品标题" type="text" name="name" datatype="require"
+				 myclass="title"></weui-input>
+				<weui-input v-model="ruleform.cover" label="上传产品图" type="upload" upurl='product' allowUpLoadNum="5" name="cover"
+				 datatype="require"></weui-input>
 			</view>
 			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.content" placeholder="商品简介" type="textarea" name="content" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.img" type="upload" upurl='order' allowUpLoadNum="5" name="img"
+				 datatype="require" :disabled="ruleform.img == 5 ? true :false"></weui-input>
+			</view>
+			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.price" label="单价" placeholder="￥0.00(包括包装费)" type="number" name="price" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.specs" label="规格" placeholder="0.00斤" type="number" name="specs" datatype="require"></weui-input>
 				<weui-input v-model="ruleform.num" label="库存" placeholder="0" type="number" name="num" datatype="require"></weui-input>
 				<!-- <weui-input v-model="ruleform.freshness" label="新鲜度" placeholder="0-10数字越大表示越新鲜" type="number" name="freshness" datatype="require"></weui-input> -->
-				<weui-input v-model="ruleform.freshness" label="新鲜度" name="fclass" changeField="value" type="select" datatype="require" dataKey="freshnessArr"></weui-input>
-				<weui-input v-model="ruleform.fclass" label="商品分类" name="fclass" changeField="value" type="select" datatype="require" dataKey="propertyArr"></weui-input>
+				<weui-input v-model="ruleform.freshness" label="新鲜度" name="fclass" changeField="value" type="select" datatype="require"
+				 dataKey="freshnessArr"></weui-input>
+				<weui-input v-model="ruleform.fclass" label="商品分类" name="fclass" changeField="value" type="select" datatype="require"
+				 dataKey="propertyArr"></weui-input>
 				<weui-input v-model="ruleform.shell_date" label="售买时间" type="date" name="date"></weui-input>
-				<weui-input v-model="ruleform.shipping" label="邮寄方式" name="radio" changeField="value" type="radio" dataKey="shippingArr" 
-							 :row="false"></weui-input>
+				<weui-input v-model="ruleform.shipping" myclass="shipping" label="邮寄方式" name="radio" changeField="value" type="radio"
+				 dataKey="shippingArr"  :row="false"></weui-input>
 			</view>
 			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.auto_group" label="拼团" type="switch" name="auto_group" ></weui-input>
-				<weui-input v-if="ruleform.auto_group" v-model="ruleform.group_price" label="拼团价" placeholder="￥0.00(包括包装费)" type="number" name="group_price" datatype="require"></weui-input>
-				<weui-input  v-if="ruleform.auto_group" v-model="ruleform.group_num" label="拼团人数" placeholder="0" type="number" name="group_num" datatype="require"></weui-input>
-				<weui-input  v-if="ruleform.auto_group" v-model="ruleform.group_expire_date" label="团购结束时间"  type="date" name="group_expire_date" datatype="require"></weui-input>
+				<weui-input v-if="ruleform.auto_group" v-model="ruleform.group_price" label="拼团价" placeholder="￥0.00(包括包装费)" type="number"
+				 name="group_price" datatype="require"></weui-input>
+				<weui-input  v-if="ruleform.auto_group" v-model="ruleform.group_num" label="拼团人数" placeholder="0" type="number" name="group_num"
+				 datatype="require"></weui-input>
+				<weui-input  v-if="ruleform.auto_group" v-model="ruleform.group_expire_date" label="团购结束时间"  type="date" name="group_expire_date"
+				 datatype="require"></weui-input>
 			</view>
 			<view class="bg-f mb12">
 				<weui-input v-model="ruleform.recommend" label="店家推荐" type="switch" name="recommend" ></weui-input>
