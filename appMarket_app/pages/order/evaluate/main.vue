@@ -10,20 +10,23 @@
 							<tui-rate v-model="ruleform.horse_quote" :hollow="true" :disabled="ruleform.suggestStatus == 1 ? true :false"></tui-rate>
 						</view>
 					</dx-list-cell>
-					<weui-input v-model="ruleform.house_evaluate" placeholder="请输入评价内容" type="textarea" name="house_evaluate" 
-					 :disabled="ruleform.suggestStatus == 1 ? true :false"></weui-input>
+					<weui-input v-model="ruleform.house_evaluate" placeholder="亲，您以这个骑手满意吗？您的评价会帮助我们有更好的进步哦~" type="textarea"
+					 name="house_evaluate"  :disabled="ruleform.suggestStatus == 1 ? true :false"></weui-input>
+					<weui-input v-model="ruleform.house_evaluate_logo" type="upload" upurl='order' allowUpLoadNum="5" name="house_evaluate_logo"
+					 datatype="require" :disabled="ruleform.suggestStatus == 1 ? true :false"></weui-input>
 				</view>
 				<view class="evGroup" v-if="ruleform.getMerchant">
-					<dx-list-cell :name="ruleform.getMerchant.name" :imgSrc="ruleform.getMerchant.getUser.headerPic" imgWidth="36" imgHeight="36" imgR="18" noborder></dx-list-cell>
+					<dx-list-cell :name="ruleform.getMerchant.name" :imgSrc="ruleform.getMerchant.getUser.headerPic" imgWidth="36" imgHeight="36"
+					 imgR="18" noborder></dx-list-cell>
 					<dx-list-cell name="评价" iconSize="18" iconColor="#ff721f" padding="0 30rpx">
 					　　<view slot="right">
 							<tui-rate v-model="ruleform.merchant_quote" :hollow="true" :disabled="ruleform.suggestStatus == 1 ? true :false"></tui-rate>
 						</view>
 					</dx-list-cell>
-					<weui-input v-model="ruleform.merchant_evaluate" placeholder="请输入评价内容" type="textarea" name="merchant_evaluate" 
-					 :disabled="ruleform.suggestStatus == 1 ? true :false"></weui-input>
-					<weui-input v-model="ruleform.merchant_evaluate_logo" type="upload" upurl='order' allowUpLoadNum="5" name="merchant_evaluate_logo" datatype="require"
-					 :disabled="ruleform.suggestStatus == 1 ? true :false"></weui-input>
+					<weui-input v-model="ruleform.merchant_evaluate" placeholder="亲，您以这个商品满意吗？您的评价会帮助我们选择更好的产品哦~" type="textarea"
+					 name="merchant_evaluate" :disabled="ruleform.suggestStatus == 1 ? true :false"></weui-input>
+					<weui-input v-model="ruleform.merchant_evaluate_logo" type="upload" upurl='order' allowUpLoadNum="5" name="merchant_evaluate_logo"
+					 datatype="require" :disabled="ruleform.suggestStatus == 1 ? true :false"></weui-input>
 				</view>
 				<view class="m20" @click="submit()" v-if="ruleform.suggestStatus == 0">
 					<dx-button type="primary" btnBg="#57C734" btnBd="#57c734" size="lg" block>提交</dx-button>

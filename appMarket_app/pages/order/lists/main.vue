@@ -2,8 +2,8 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
-			<!-- <dx-tabs :tabs="tabs" @change="search" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs> -->
-			<dx-tabs-scroll :tabs="tabs" @change="search" v-model="status" height="52" borderColor="#57C734" curColor="#57C734" nameSize="15" :height="46"></dx-tabs-scroll>
+		<!-- <dx-tabs :tabs="tabs" @change="search" v-model="status"  selectedColor="#57C734" sliderBgColor="#57C734" :height="92" :padding="0"></dx-tabs> -->
+			<dx-tabs-scroll :tabs="tabs" @change="search" v-model="status" borderColor="#57C734" curColor="#57C734" :nameSize="15" :height="46"></dx-tabs-scroll>
 			<view class="pro_info mb10" v-for="(parent,key) in data.lists.data" v-if="listsShow">
 				<view class="box">
 					<view class="order_date plr10 bd-be">
@@ -36,7 +36,6 @@
 						<view class="order_count plr10 fs-13">共<span class="Arial">{{parent.num}}</span>件商品
 							合计：￥<span class="Arial fs-16 fc-red">{{parseFloat(parent.amount) + parseFloat(parent.quick_price)}}</span>
 						</view>
-						
 					</view>
 					<view @click="gotoOrder(parent)" v-if="parent.status==1">
 						<orderPro :data="parent.products"></orderPro>
@@ -47,6 +46,7 @@
 							合计：￥<span class="Arial fs-16 fc-red">{{parseFloat(parent.amount) + parseFloat(parent.quick_price)}}</span>
 						</view>
 					</view>
+					
 					<view class="btn-group ptb8 plr10">
 						<!-- 待支付 -->
 						<view class="btn-item" v-if="parent.status == 1">
@@ -59,6 +59,7 @@
 						</view>
 						<!-- 骑手已接单 -->
 						<view class="btn-item" v-if="parent.status == 5">
+							<view class="btn-nav obtn" @click="goto('/pages/order/after-sale/main?order_no='+parent.order_no,1)">申请售后</view>
 							<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
 						</view>
 						<!-- 6：骑手已取货；7：骑手已送达 -->
@@ -71,17 +72,19 @@
 						</view> -->
 						<!-- 已完成 -->
 						<view class="btn-item" v-if="parent.status == 9">
-						
 							<view class="btn-nav" @click="gotoOrder(parent)">订单详情</view>
-							<view class="btn-nav" @click="goto('/pages/order/evaluate/main?order_no='+parent.order_no,1)">{{parent.suggestStatus == 0 ? '去评价' : '已评价'}}</view>
+							<view class="btn-nav" @click="goto('/pages/order/evaluate/main?order_no='+parent.order_no,1)">
+							{{parent.suggestStatus == 0 ? '去评价' : '已评价'}}</view>
 						</view>
 						<!-- 售后中-->
-						<div class="btn-item" v-if="parent.status == 10">
-							<div class="btn-nav obtn" @click="goto('/pages/order/after-sale/index?order_no='+parent.order_no,1)">售后详情</div>
-						</div>
+						<view class="btn-item" v-if="parent.status == 10">
+							<view class="btn-nav obtn" @click="goto('/pages/order/after-sale/main?order_no='+parent.order_no,1)">售后详情</view>
+						</view>
 					</view>
 				</view>
-				<view class="complete-icon" v-if="status == 9 || status == 99"><image class="img" src="https://appmarket.doxinsoft.com/images/wap/complete-icon.png"></image></view>
+				<view class="complete-icon" v-if="status == 9 || status == 99">
+					<image class="img" src="https://appmarket.doxinsoft.com/images/wap/complete-icon.png"></image>
+				</view>
 			</view>
 			<hasMore :parentData="data" source='nodata'></hasMore>
 		</view>

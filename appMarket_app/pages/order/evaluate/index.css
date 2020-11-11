@@ -1,1 +1,4 @@
 .evGroup{margin-top: 24upx;background-color: #fff;}
+
+.evaluate /deep/.dx-text{line-height: 1.6;font-size: 30upx;color: #999;}
+.evaluate /deep/.dx-text .uni-textarea-placeholder{color: #999;}
