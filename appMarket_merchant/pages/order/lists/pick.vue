@@ -119,21 +119,8 @@
 				return this.goto("/pages/order/buy/detail?order_no="+item.order_no,1);
 			},
 			search(){
-				this.listsShow = false;
-				if(this.status == 99){
-					this.getAjaxForApp(this,{status:9}).then(msg => {
-						  this.listsShow = true;  
-					});
-						
-				}else if(this.status == 9){
-					this.getAjaxForApp(this,{status:9,suggestStatus:0}).then(msg => {
-						   this.listsShow = true; 
-					});
-				}else{
-					this.getAjaxForApp(this,{status:this.status}).then(msg => {
-						   this.listsShow = true; 
-					});
-				}
+				this.ajax();
+				
 			},
 			ajax() {
 				this.listsShow = false;
