@@ -236,6 +236,13 @@
 			}
 		},
 		{
+			"path": "pages/order/service/index",
+			"style": {
+				"navigationBarTitleText": "售后列表",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
 			"path": "pages/order/evaluate/main",
 			"style": {
 				"navigationBarTitleText": "商品评价",
