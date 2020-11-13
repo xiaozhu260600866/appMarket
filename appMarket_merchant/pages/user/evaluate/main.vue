@@ -12,7 +12,7 @@
 			</view>
 			
 			<view class="evalute">
-				<view class="evalute-item p10 bg-f bd-be" v-for="v in data.lists.data">
+				<view class="evalute-item p10 bg-f bd-be" v-for="v in data.lists.data" v-if="v.user">
 					<view class="u-info">
 						<view class="u-info-box">
 							<view class="u-img">
